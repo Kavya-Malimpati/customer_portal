@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.env
+coverage/
+.nyc_output/
+*storybook.log
+storybook-static

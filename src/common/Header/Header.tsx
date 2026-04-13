@@ -16,7 +16,7 @@ const Header = ({ onLogout }: HeaderProps) => {
         {/* Logo with "Pure" text */}
         <div className='flex items-center gap-3'>
           <img
-            src='/src/assets/images/logo.png'
+            src='https://valuemomentum.com/wp-content/uploads/2026/03/ValueMomentum_logo.svg'
             alt='Pure Logo'
             className='h-15 w-auto'
           />

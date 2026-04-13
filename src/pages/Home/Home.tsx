@@ -12,7 +12,7 @@ const Home = () => {
             >
                 <div className='max-w-7xl mx-auto'>
                     <Typography variant='h1' className='mb-4'>
-                        Welcome to Pure
+                        Welcome to ValueMomentum
                     </Typography>
                     <Typography variant='body1' style={{ color: 'var(--text-secondary)' }}>
                         This is your home page. Start building amazing applications here.

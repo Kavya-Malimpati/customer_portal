@@ -1,22 +1,22 @@
 /* =====================================================
-   Design Tokens – Consolidated
-   Covers ALL common React UI components
+   Design Tokens – ValueMomentum (Strategy Consulting)
+   Reverse Engineered & Normalized
    ===================================================== */
 
 :root {
   /* -------------------------------
      Brand & Semantic Colors
   -------------------------------- */
-  --color-primary: #008d7e;
-  --color-primary-hover: #007369;
-  --color-primary-active: #006659;
+  --color-primary: #00a19a;        /* teal brand */
+  --color-primary-hover: #008b84;
+  --color-primary-active: #00736d;
 
-  --color-secondary: #008d7e;
+  --color-secondary: #1f3c88;      /* deep blue accent */
 
-  --color-success: #22c55e;
+  --color-success: #16a34a;
   --color-warning: #f59e0b;
-  --color-error: #ef4444;
-  --color-info: #3b82f6;
+  --color-error: #dc2626;
+  --color-info: #2563eb;
 
   /* -------------------------------
      Neutral Palette
@@ -24,40 +24,42 @@
   --color-white: #ffffff;
   --color-black: #000000;
 
-  --color-gray-50: #f9fafb;
-  --color-gray-100: #f3f4f6;
-  --color-gray-200: #e5e7eb;
-  --color-gray-300: #d1d5db;
-  --color-gray-400: #9ca3af;
-  --color-gray-500: #6b7280;
-  --color-gray-600: #4b5563;
-  --color-gray-700: #374151;
-  --color-gray-800: #1f2937;
-  --color-gray-900: #111827;
+  --color-gray-50: #f8fafc;
+  --color-gray-100: #f1f5f9;
+  --color-gray-200: #e2e8f0;
+  --color-gray-300: #cbd5e1;
+  --color-gray-400: #94a3b8;
+  --color-gray-500: #64748b;
+  --color-gray-600: #475569;
+  --color-gray-700: #334155;
+  --color-gray-800: #1e293b;
+  --color-gray-900: #0f172a;
 
   /* -------------------------------
      Text Colors
   -------------------------------- */
-  --text-primary: var(--color-gray-900);
-  --text-secondary: var(--color-gray-600);
-  --text-muted: var(--color-gray-400);
-  --text-inverse: var(--color-white);
-  --text-matte-black: #212121;
+  --text-primary: #0f172a;         /* dark navy */
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --text-inverse: #ffffff;
+  --text-heading: #1f3c88;         /* brand blue headings */
 
   /* -------------------------------
      Backgrounds
   -------------------------------- */
-  --bg-page: var(--color-gray-50);
-  --bg-surface: var(--color-white);
-  --bg-muted: var(--color-gray-100);
-  --bg-hover: var(--color-gray-100);
-  --bg-selected: var(--color-gray-200);
+  --bg-page: #ffffff;
+  --bg-surface: #ffffff;
+  --bg-muted: #f1f5f9;
+  --bg-section-alt: #f8fafc;
+  --bg-dark: #0f172a;              /* footer/hero overlay */
+  --bg-hover: #f1f5f9;
+  --bg-selected: #e2e8f0;
 
   /* -------------------------------
      Borders
   -------------------------------- */
-  --border-color: #eaedee;
-  --border-color-hover: #d1d5db;
+  --border-color: #e2e8f0;
+  --border-color-hover: #cbd5e1;
   --border-color-focus: var(--color-primary);
 
   --border-width-sm: 1px;
@@ -66,67 +68,70 @@
   /* -------------------------------
      Typography
   -------------------------------- */
-  --font-family-sans: HelveticaNeueLT, Helvetica Neue, Helvetica, Arial, sans-serif;
+  --font-family-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
   --font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas;
 
   --font-size-xs: 0.75rem;   /* 12px */
   --font-size-sm: 0.875rem;  /* 14px */
   --font-size-md: 1rem;      /* 16px */
   --font-size-lg: 1.125rem;  /* 18px */
-  --font-size-xl: 1.25rem;   /* 20px */
-  --font-size-2xl: 1.5rem;   /* 24px */
+  --font-size-xl: 1.375rem;  /* 22px */
+  --font-size-2xl: 1.75rem;  /* 28px */
+  --font-size-3xl: 2.25rem;  /* 36px - hero headings */
 
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
 
-  --line-height-tight: 1.25;
-  --line-height-normal: 1.5;
-  --line-height-relaxed: 1.75;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.6;
+  --line-height-relaxed: 1.8;
 
   /* -------------------------------
-     Spacing (used everywhere)
+     Spacing (Generous enterprise spacing)
   -------------------------------- */
   --space-0: 0;
-  --space-1: 0.25rem;  /* 4px */
-  --space-2: 0.5rem;   /* 8px */
-  --space-3: 0.75rem;  /* 12px */
-  --space-4: 1rem;     /* 16px */
-  --space-5: 1.25rem;  /* 20px */
-  --space-6: 1.5rem;   /* 24px */
-  --space-8: 2rem;     /* 32px */
-  --space-10: 2.5rem;  /* 40px */
-  --space-12: 3rem;    /* 48px */
+  --space-1: 0.25rem;  
+  --space-2: 0.5rem;   
+  --space-3: 0.75rem;  
+  --space-4: 1rem;     
+  --space-5: 1.25rem;  
+  --space-6: 1.5rem;   
+  --space-8: 2rem;     
+  --space-10: 2.5rem;  
+  --space-12: 3rem;    
+  --space-16: 4rem;    /* section padding */
+  --space-20: 5rem;    /* large hero spacing */
 
   /* -------------------------------
      Component Sizes
   -------------------------------- */
-  --control-height-sm: 32px;
-  --control-height-md: 40px;
-  --control-height-lg: 48px;
+  --control-height-sm: 34px;
+  --control-height-md: 42px;
+  --control-height-lg: 50px;
 
   /* -------------------------------
      Border Radius
   -------------------------------- */
   --radius-none: 0;
   --radius-sm: 0.25rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
   --radius-full: 9999px;
 
   /* -------------------------------
      Elevation / Shadows
   -------------------------------- */
-  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.12);
-  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.15);
-  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.2);
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 6px 12px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.16);
+  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.2);
 
   /* -------------------------------
-     Z-Index (Overlay System)
+     Z-Index
   -------------------------------- */
   --z-base: 0;
   --z-header: 100;
@@ -141,7 +146,7 @@
   /* -------------------------------
      Overlays
   -------------------------------- */
-  --overlay-backdrop: rgba(0, 0, 0, 0.5);
+  --overlay-backdrop: rgba(15, 23, 42, 0.6);
 
   /* -------------------------------
      States
@@ -152,26 +157,36 @@
   /* -------------------------------
      Transitions & Motion
   -------------------------------- */
-  --transition-fast: 150ms ease-in-out;
-  --transition-normal: 250ms ease-in-out;
-  --transition-slow: 400ms ease-in-out;
+  --transition-fast: 120ms ease-in-out;
+  --transition-normal: 220ms ease-in-out;
+  --transition-slow: 350ms ease-in-out;
 
   /* -------------------------------
      Focus
   -------------------------------- */
-  --focus-ring: 0 0 0 3px rgba(0, 133, 126, 0.35);
+  --focus-ring: 0 0 0 3px rgba(0, 161, 154, 0.35);
 
+  /* -------------------------------
+     Stroke
+  -------------------------------- */
   --stroke-width-sm: 1;
   --stroke-width-md: 2;
   --stroke-width-lg: 3;
 
   /* -------------------------------
-     Accordion
+     Layout-specific (Observed)
   -------------------------------- */
-  --accordion-max-height: 500px;
+  --container-max-width: 1200px;
+  --section-padding-y: var(--space-16);
+  --card-padding: var(--space-6);
 
   /* -------------------------------
-     AutoComplete
+     Accordion / Lists
   -------------------------------- */
-  --autocomplete-max-height: 300px;
+  --accordion-max-height: 600px;
+
+  /* -------------------------------
+     AutoComplete / Dropdown
+  -------------------------------- */
+  --autocomplete-max-height: 320px;
 }

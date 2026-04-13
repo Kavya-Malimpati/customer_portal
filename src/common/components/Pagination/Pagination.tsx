@@ -1,68 +1,30 @@
 import React, { useCallback } from 'react';
 import '../../../src/styles/tokens.css';
-
-/**
- * Pagination Component
- *
- * A pagination button for use in pagination controls.
- * Supports multiple variants (contained, outlined, text) and sizes.
- * Fully accessible with ARIA attributes.
- *
- * @example
- * ```tsx
- * <Pagination value={1} selected onClick={() => goToPage(1)} />
- * <Pagination value={2} onClick={() => goToPage(2)} />
- * ```
- */
 export type Size = 'sm' | 'md' | 'lg';
 export type Variant = 'contained' | 'outlined' | 'text';
-
 export interface PaginationProps {
-  /** Unique identifier for the button */
   id?: string;
-  /** Additional CSS classes for custom styling */
   className?: string;
-  /** Page number or label to display */
   value?: number | string;
-  /** Whether the button is disabled */
   disabled?: boolean;
-  /** Whether this is the current selected page */
   selected?: boolean;
-  /** Tooltip text */
   title?: string;
-  /** Tab order */
   tabIndex?: number;
-  /** Size of the pagination button */
   size?: Size;
-  /** Visual variant of the button */
   variant?: Variant;
-  /** Click handler */
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  /** Double click handler */
   onDoubleClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  /** Focus handler */
   onFocus?: (e: React.FocusEvent<HTMLButtonElement>) => void;
-  /** Blur handler */
   onBlur?: (e: React.FocusEvent<HTMLButtonElement>) => void;
-
-  /** ARIA label */
   'aria-label'?: string;
-  /** ID of element that labels this button */
   'aria-labelledby'?: string;
-  /** ID of element that describes this button */
   'aria-describedby'?: string;
-  /** Whether the button is disabled (for screen readers) */
   'aria-disabled'?: boolean;
-  /** Whether this page is selected (for screen readers) */
   'aria-selected'?: boolean;
-  /** IDs of elements controlled by this button */
   'aria-controls'?: string;
-  /** Indicates if this is the current page */
   'aria-current'?: 'page' | 'step' | 'true' | 'false';
-  /** Announces changes in pagination state */
   'aria-live'?: 'off' | 'polite' | 'assertive';
 }
-
 const sizeConfig: Record<Size, React.CSSProperties> = {
   sm: {
     padding: 'var(--space-1) var(--space-2)',
@@ -83,7 +45,6 @@ const sizeConfig: Record<Size, React.CSSProperties> = {
     height: 'var(--control-height-lg)',
   },
 };
-
 const variantConfig: Record<Variant, {
   contained: { color: string; backgroundColor: string; borderColor: string };
   outlined: { color: string; backgroundColor: string; borderColor: string };
@@ -105,7 +66,6 @@ const variantConfig: Record<Variant, {
     text: { color: 'var(--color-primary)', backgroundColor: 'transparent', borderColor: 'transparent' },
   },
 };
-
 const Pagination: React.FC<PaginationProps> = ({
   id,
   className = '',
@@ -135,10 +95,8 @@ const Pagination: React.FC<PaginationProps> = ({
     },
     [disabled, onClick]
   );
-
   const sizeStyle = sizeConfig[size];
   const selectedStyle = selected ? variantConfig[variant].contained : variantConfig[variant][variant];
-
   const baseStyle: React.CSSProperties = {
     fontFamily: 'var(--font-family-sans)',
     fontWeight: selected ? 'var(--font-weight-semibold)' : 'var(--font-weight-medium)',
@@ -156,9 +114,7 @@ const Pagination: React.FC<PaginationProps> = ({
     backgroundColor: selectedStyle.backgroundColor,
     borderColor: selectedStyle.borderColor,
   };
-
   const ariaCurrentValue = selected ? 'page' : undefined;
-
   return (
     <button
       id={id}
@@ -193,5 +149,5 @@ const Pagination: React.FC<PaginationProps> = ({
     </button>
   );
 };
-
 export default Pagination;
+

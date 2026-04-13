@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import type { Meta } from '@storybook/react';
 import TextField from './TextField';
 import type { Props } from './TextField';
-
 const meta: Meta<typeof TextField> = {
   title: 'Components/TextField',
   component: TextField,
@@ -11,41 +10,28 @@ const meta: Meta<typeof TextField> = {
     layout: 'padded',
   },
 };
-
 export default meta;
-
-// Default story
 export const Default = () => (
   <TextField label="Text Field" placeholder="Enter text" />
 );
-
-// Size variants
 export const SizeSmall = () => (
   <TextField label="Small TextField" size="sm" placeholder="Small input" />
 );
-
 export const SizeMedium = () => (
   <TextField label="Medium TextField" size="md" placeholder="Medium input" />
 );
-
 export const SizeLarge = () => (
   <TextField label="Large TextField" size="lg" placeholder="Large input" />
 );
-
-// Variant styles
 export const VariantDefault = () => (
   <TextField label="Default Variant" variant="default" placeholder="Default style" />
 );
-
 export const VariantOutlined = () => (
   <TextField label="Outlined Variant" variant="outlined" placeholder="Outlined style" />
 );
-
 export const VariantFilled = () => (
   <TextField label="Filled Variant" variant="filled" placeholder="Filled style" />
 );
-
-// States
 export const Disabled = () => (
   <TextField 
     label="Disabled TextField" 
@@ -54,7 +40,6 @@ export const Disabled = () => (
     value="Disabled state"
   />
 );
-
 export const ReadOnly = () => (
   <TextField 
     label="Read-only TextField" 
@@ -63,8 +48,6 @@ export const ReadOnly = () => (
     value="Cannot modify"
   />
 );
-
-// Validation
 export const WithError = () => (
   <TextField 
     label="Username" 
@@ -73,7 +56,6 @@ export const WithError = () => (
     aria-invalid={true}
   />
 );
-
 export const Required = () => (
   <TextField 
     label="Required Field" 
@@ -82,8 +64,6 @@ export const Required = () => (
     aria-required={true}
   />
 );
-
-// With decorators
 export const WithStartDecorator = () => {
   const emailIcon = (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -91,7 +71,6 @@ export const WithStartDecorator = () => {
       <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
     </svg>
   );
-
   return (
     <TextField 
       label="Email" 
@@ -101,7 +80,6 @@ export const WithStartDecorator = () => {
     />
   );
 };
-
 export const WithEndDecorator = () => {
   const clearIcon = (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -109,7 +87,6 @@ export const WithEndDecorator = () => {
       <line x1="6" y1="6" x2="18" y2="18" />
     </svg>
   );
-
   return (
     <TextField 
       label="Searchable" 
@@ -118,7 +95,6 @@ export const WithEndDecorator = () => {
     />
   );
 };
-
 export const WithBothDecorators = () => {
   const lockIcon = (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -126,14 +102,12 @@ export const WithBothDecorators = () => {
       <path d="M7 11V7a5 5 0 0 1 10 0v4" />
     </svg>
   );
-
   const eyeIcon = (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
       <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
       <circle cx="12" cy="12" r="3" />
     </svg>
   );
-
   return (
     <TextField 
       label="Password" 
@@ -144,8 +118,6 @@ export const WithBothDecorators = () => {
     />
   );
 };
-
-// Different input types
 export const TypeEmail = () => (
   <TextField 
     label="Email Address" 
@@ -153,7 +125,6 @@ export const TypeEmail = () => (
     placeholder="name@example.com"
   />
 );
-
 export const TypePassword = () => (
   <TextField 
     label="Password" 
@@ -161,7 +132,6 @@ export const TypePassword = () => (
     placeholder="Enter your password"
   />
 );
-
 export const TypeNumber = () => (
   <TextField 
     label="Phone Number" 
@@ -169,24 +139,18 @@ export const TypeNumber = () => (
     placeholder="123-456-7890"
   />
 );
-
-// Interactive state
 export const Interactive = () => {
   const [value, setValue] = useState('');
   const [error, setError] = useState('');
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
     setValue(newValue);
-    
-    // Simple validation
     if (newValue.length > 0 && newValue.length < 3) {
       setError('Must be at least 3 characters');
     } else {
       setError('');
     }
   };
-
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
       <TextField 
@@ -208,8 +172,6 @@ export const Interactive = () => {
     </div>
   );
 };
-
-// Combination stories
 export const AllSizeVariants = () => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-6)' }}>
     <TextField label="Small Size" size="sm" placeholder="Small" />
@@ -217,7 +179,6 @@ export const AllSizeVariants = () => (
     <TextField label="Large Size" size="lg" placeholder="Large" />
   </div>
 );
-
 export const AllVariants = () => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-6)' }}>
     <TextField label="Default" variant="default" placeholder="Default variant" />
@@ -225,7 +186,6 @@ export const AllVariants = () => (
     <TextField label="Filled" variant="filled" placeholder="Filled variant" />
   </div>
 );
-
 export const Comprehensive = () => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-6)' }}>
     <TextField 
@@ -257,3 +217,4 @@ export const Comprehensive = () => (
     />
   </div>
 );
+

@@ -1,7 +1,6 @@
 import React from 'react';
 import type { Meta } from '@storybook/react';
 import Tooltip from './Tooltip';
-
 const meta: Meta<typeof Tooltip> = {
   title: 'Components/Tooltip',
   component: Tooltip,
@@ -10,10 +9,7 @@ const meta: Meta<typeof Tooltip> = {
     layout: 'centered',
   },
 };
-
 export default meta;
-
-// Helper button component for tooltip trigger
 const TriggerButton = () => (
   <button
     style={{
@@ -37,8 +33,6 @@ const TriggerButton = () => (
     Hover me
   </button>
 );
-
-// Default story
 export const Default = () => (
   <div style={{ padding: 'var(--space-12)' }}>
     <Tooltip title="Tooltip text" placement="top">
@@ -46,8 +40,6 @@ export const Default = () => (
     </Tooltip>
   </div>
 );
-
-// Size variants
 export const SizeSmall = () => (
   <div style={{ padding: 'var(--space-12)' }}>
     <Tooltip title="Small tooltip" size="sm" placement="top">
@@ -55,7 +47,6 @@ export const SizeSmall = () => (
     </Tooltip>
   </div>
 );
-
 export const SizeMedium = () => (
   <div style={{ padding: 'var(--space-12)' }}>
     <Tooltip title="Medium tooltip with more content" size="md" placement="top">
@@ -63,7 +54,6 @@ export const SizeMedium = () => (
     </Tooltip>
   </div>
 );
-
 export const SizeLarge = () => (
   <div style={{ padding: 'var(--space-12)' }}>
     <Tooltip 
@@ -75,8 +65,6 @@ export const SizeLarge = () => (
     </Tooltip>
   </div>
 );
-
-// Placement variants
 export const PlacementTop = () => (
   <div style={{ padding: 'var(--space-12)', display: 'flex', justifyContent: 'center' }}>
     <Tooltip title="Top placement" placement="top">
@@ -84,7 +72,6 @@ export const PlacementTop = () => (
     </Tooltip>
   </div>
 );
-
 export const PlacementBottom = () => (
   <div style={{ padding: 'var(--space-12)', display: 'flex', justifyContent: 'center' }}>
     <Tooltip title="Bottom placement" placement="bottom">
@@ -92,7 +79,6 @@ export const PlacementBottom = () => (
     </Tooltip>
   </div>
 );
-
 export const PlacementLeft = () => (
   <div style={{ padding: 'var(--space-12)', display: 'flex', justifyContent: 'center' }}>
     <Tooltip title="Left placement" placement="left">
@@ -100,7 +86,6 @@ export const PlacementLeft = () => (
     </Tooltip>
   </div>
 );
-
 export const PlacementRight = () => (
   <div style={{ padding: 'var(--space-12)', display: 'flex', justifyContent: 'center' }}>
     <Tooltip title="Right placement" placement="right">
@@ -108,8 +93,6 @@ export const PlacementRight = () => (
     </Tooltip>
   </div>
 );
-
-// With custom delays
 export const CustomEnterDelay = () => (
   <div style={{ padding: 'var(--space-12)' }}>
     <Tooltip 
@@ -121,7 +104,6 @@ export const CustomEnterDelay = () => (
     </Tooltip>
   </div>
 );
-
 export const CustomLeaveDelay = () => (
   <div style={{ padding: 'var(--space-12)' }}>
     <Tooltip 
@@ -133,8 +115,6 @@ export const CustomLeaveDelay = () => (
     </Tooltip>
   </div>
 );
-
-// With long content
 export const LongContent = () => (
   <div style={{ padding: 'var(--space-12)' }}>
     <Tooltip 
@@ -146,8 +126,6 @@ export const LongContent = () => (
     </Tooltip>
   </div>
 );
-
-// With rich content
 export const RichContent = () => (
   <div style={{ padding: 'var(--space-12)' }}>
     <Tooltip 
@@ -163,8 +141,6 @@ export const RichContent = () => (
     </Tooltip>
   </div>
 );
-
-// Multiple placements showcase
 export const AllPlacements = () => (
   <div
     style={{
@@ -190,8 +166,6 @@ export const AllPlacements = () => (
     </Tooltip>
   </div>
 );
-
-// All sizes comparison
 export const AllSizes = () => (
   <div
     style={{
@@ -212,8 +186,6 @@ export const AllSizes = () => (
     </Tooltip>
   </div>
 );
-
-// With icon content
 export const WithIcon = () => (
   <div style={{ padding: 'var(--space-12)' }}>
     <Tooltip 
@@ -244,8 +216,6 @@ export const WithIcon = () => (
     </Tooltip>
   </div>
 );
-
-// With keyboard interaction
 export const KeyboardInteraction = () => (
   <div style={{ padding: 'var(--space-12)' }}>
     <Tooltip 
@@ -256,8 +226,6 @@ export const KeyboardInteraction = () => (
     </Tooltip>
   </div>
 );
-
-// Accessibility example
 export const Accessibility = () => (
   <div style={{ padding: 'var(--space-12)' }}>
     <Tooltip 
@@ -270,8 +238,6 @@ export const Accessibility = () => (
     </Tooltip>
   </div>
 );
-
-// Comprehensive example
 export const Comprehensive = () => (
   <div
     style={{
@@ -305,7 +271,6 @@ export const Comprehensive = () => (
         </button>
       </Tooltip>
     </div>
-
     <div>
       <h3 style={{ marginBottom: 'var(--space-4)', color: 'var(--text-primary)' }}>
         Delete Action
@@ -330,7 +295,6 @@ export const Comprehensive = () => (
         </button>
       </Tooltip>
     </div>
-
     <div>
       <h3 style={{ marginBottom: 'var(--space-4)', color: 'var(--text-primary)' }}>
         Download Action
@@ -357,3 +321,4 @@ export const Comprehensive = () => (
     </div>
   </div>
 );
+

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Snackbar } from './Snackbar';
-
 const meta = {
   title: 'Components/Snackbar',
   component: Snackbar,
@@ -51,13 +50,8 @@ const meta = {
     },
   },
 } satisfies Meta<typeof Snackbar>;
-
 export default meta;
 type Story = StoryObj<typeof meta>;
-
-/**
- * Default snackbar with medium size and standard variant
- */
 export const Default: Story = {
   args: {
     open: true,
@@ -69,10 +63,6 @@ export const Default: Story = {
     'aria-live': 'polite',
   },
 };
-
-/**
- * Small snackbar size variant
- */
 export const Small: Story = {
   args: {
     ...Default.args,
@@ -80,10 +70,6 @@ export const Small: Story = {
     children: 'Small notification',
   },
 };
-
-/**
- * Medium snackbar size variant (default)
- */
 export const Medium: Story = {
   args: {
     ...Default.args,
@@ -91,10 +77,6 @@ export const Medium: Story = {
     children: 'Medium notification',
   },
 };
-
-/**
- * Large snackbar size variant
- */
 export const Large: Story = {
   args: {
     ...Default.args,
@@ -102,10 +84,6 @@ export const Large: Story = {
     children: 'Large notification with more content',
   },
 };
-
-/**
- * Filled variant with primary color
- */
 export const Filled: Story = {
   args: {
     ...Default.args,
@@ -113,10 +91,6 @@ export const Filled: Story = {
     children: 'Success! Your changes have been saved.',
   },
 };
-
-/**
- * Outlined variant with border
- */
 export const Outlined: Story = {
   args: {
     ...Default.args,
@@ -124,10 +98,6 @@ export const Outlined: Story = {
     children: 'This is an outlined snackbar.',
   },
 };
-
-/**
- * Standard variant (default)
- */
 export const Standard: Story = {
   args: {
     ...Default.args,
@@ -135,70 +105,42 @@ export const Standard: Story = {
     children: 'This is a standard snackbar.',
   },
 };
-
-/**
- * Bottom-right position (default)
- */
 export const PositionBottomRight: Story = {
   args: {
     ...Default.args,
     position: 'bottom-right',
   },
 };
-
-/**
- * Bottom-left position
- */
 export const PositionBottomLeft: Story = {
   args: {
     ...Default.args,
     position: 'bottom-left',
   },
 };
-
-/**
- * Bottom-center position
- */
 export const PositionBottomCenter: Story = {
   args: {
     ...Default.args,
     position: 'bottom-center',
   },
 };
-
-/**
- * Top-right position
- */
 export const PositionTopRight: Story = {
   args: {
     ...Default.args,
     position: 'top-right',
   },
 };
-
-/**
- * Top-left position
- */
 export const PositionTopLeft: Story = {
   args: {
     ...Default.args,
     position: 'top-left',
   },
 };
-
-/**
- * Top-center position
- */
 export const PositionTopCenter: Story = {
   args: {
     ...Default.args,
     position: 'top-center',
   },
 };
-
-/**
- * Snackbar with start decorator (icon)
- */
 export const WithStartDecorator: Story = {
   args: {
     ...Default.args,
@@ -221,10 +163,6 @@ export const WithStartDecorator: Story = {
     variant: 'filled',
   },
 };
-
-/**
- * Snackbar with end decorator (badge)
- */
 export const WithEndDecorator: Story = {
   args: {
     ...Default.args,
@@ -247,10 +185,6 @@ export const WithEndDecorator: Story = {
     children: 'You have 3 new messages',
   },
 };
-
-/**
- * Snackbar with both decorators
- */
 export const WithBothDecorators: Story = {
   args: {
     ...Default.args,
@@ -285,10 +219,6 @@ export const WithBothDecorators: Story = {
     children: 'Processing your request...',
   },
 };
-
-/**
- * Snackbar with no auto-hide
- */
 export const NoAutoHide: Story = {
   args: {
     ...Default.args,
@@ -296,10 +226,6 @@ export const NoAutoHide: Story = {
     children: 'This snackbar will not auto-hide. Click X to close.',
   },
 };
-
-/**
- * Snackbar that is controlled and can be toggled
- */
 export const Controlled: Story = {
   render: (args) => {
     return <ControlledSnackbarStory {...args} />;
@@ -310,13 +236,8 @@ export const Controlled: Story = {
     children: 'This snackbar is controlled. Toggle via the button above.',
   },
 };
-
-/**
- * Internal component for controlled story
- */
 function ControlledSnackbarStory(args: StoryObj<typeof Snackbar>) {
   const [open, setOpen] = useState(true);
-
   return (
     <div style={{ padding: '20px' }}>
       <button
@@ -337,10 +258,6 @@ function ControlledSnackbarStory(args: StoryObj<typeof Snackbar>) {
     </div>
   );
 }
-
-/**
- * Multiple snackbars at different positions
- */
 export const MultiplePositions: Story = {
   render: () => (
     <div style={{ position: 'relative', width: '100%', height: '100vh' }}>
@@ -379,10 +296,6 @@ export const MultiplePositions: Story = {
     </div>
   ),
 };
-
-/**
- * Assertive snackbar for important alerts
- */
 export const AssertiveAlert: Story = {
   args: {
     ...Default.args,
@@ -392,3 +305,4 @@ export const AssertiveAlert: Story = {
     autoHideDuration: 0,
   },
 };
+

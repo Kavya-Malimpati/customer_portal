@@ -3,67 +3,30 @@ import FileUploadInput from './FileUploadInput';
 import fileUploadImg from '../../../assets/fileUpload.png';
 import Button from '../Button/Button';
 import '../../../src/styles/tokens.css';
-
-/**
- * FileUpload Component
- *
- * A reusable, accessible file upload component with drag-and-drop support.
- * Provides a rich UX with visual feedback, file display, and error handling.
- * Uses design tokens for consistent styling across the application.
- *
- * @example
- * <FileUpload
- *   label="Upload Documents"
- *   accept=".pdf,.doc"
- *   multiple
- *   onChange={handleFileChange}
- *   size="md"
- *   variant="contained"
- * />
- */
 export type Size = 'small' | 'medium' | 'large';
 export type Variant = 'contained' | 'outlined' | 'text';
-
 export interface FileUploadProps {
-  /** Unique identifier for the component */
   id?: string;
-  /** HTML name attribute */
   name?: string;
-  /** Additional CSS classes for style extension */
   className?: string;
-  /** Current file(s) value */
   value?: File | File[] | null;
-  /** Label text displayed above input */
   label?: React.ReactNode;
-  /** Mark input as required */
   required?: boolean;
-  /** Disable user interaction */
   disabled?: boolean;
-  /** Make input read-only */
   readOnly?: boolean;
-  /** Tab index for keyboard navigation */
   tabIndex?: number;
-  /** Error state - boolean or error message string */
   error?: boolean | string;
-  /** Component size - affects button and spacing */
+  hasError?: boolean;
+  errorMessage?: string;
   size?: Size;
-  /** Button variant - contained, outlined, or text */
   variant?: Variant;
-  /** Helper text displayed below input */
   helperText?: React.ReactNode;
-  /** Accepted file types */
   accept?: string;
-  /** Allow multiple file selection */
   multiple?: boolean;
-  /** Change event handler */
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  /** Focus event handler */
   onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
-  /** Blur event handler */
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
-  /** HTML title attribute for tooltip */
   title?: React.ReactNode;
-  // ARIA attributes for accessibility
   'aria-label'?: string;
   'aria-labelledby'?: string;
   'aria-describedby'?: string;
@@ -71,7 +34,6 @@ export interface FileUploadProps {
   'aria-live'?: 'off' | 'polite' | 'assertive';
   'aria-required'?: boolean;
 }
-
 const FileUpload: React.FC<FileUploadProps> = ({
   id,
   name,
@@ -82,6 +44,8 @@ const FileUpload: React.FC<FileUploadProps> = ({
   readOnly,
   tabIndex,
   error,
+  hasError = false,
+  errorMessage,
   size = 'medium',
   variant = 'contained',
   helperText,
@@ -99,31 +63,27 @@ const FileUpload: React.FC<FileUploadProps> = ({
   'aria-live': ariaLive,
   'aria-required': ariaRequired,
 }) => {
+  const isErrorState = Boolean(error) || hasError;
+  const displayError = typeof error === 'string' ? error : errorMessage || '';
+  const errorId = displayError ? `${id || 'fileupload'}-error` : undefined;
   const inputRef = useRef<HTMLInputElement | null>(null);
-  
-  // Convert value to initial file array
   const getInitialFiles = (): File[] => {
     if (Array.isArray(value)) return value;
     if (value) return [value];
     return [];
   };
-  
   const [files, setFiles] = useState<File[]>(getInitialFiles());
   const [isDragActive, setIsDragActive] = useState(false);
-
   const handleClick = () => {
     if (disabled || readOnly) return;
     inputRef.current?.click();
   };
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFiles = Array.from(e.target.files || []);
     const uniqueFiles = selectedFiles.filter(
       (file) => !files.some((existingFile) => existingFile.name === file.name && existingFile.size === file.size)
     );
-
     setFiles((prev) => [...prev, ...uniqueFiles]);
-
     if (onChange) {
       const event = {
         ...e,
@@ -139,19 +99,16 @@ const FileUpload: React.FC<FileUploadProps> = ({
       onChange(event as React.ChangeEvent<HTMLInputElement>);
     }
   };
-
   const handleDragOver = (e: React.DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
     setIsDragActive(true);
   };
-
   const handleDragLeave = (e: React.DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
     setIsDragActive(false);
   };
-
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -160,10 +117,8 @@ const FileUpload: React.FC<FileUploadProps> = ({
     const uniqueFiles = droppedFiles.filter(
       (file) => !files.some((existingFile) => existingFile.name === file.name && existingFile.size === file.size)
     );
-
     if (uniqueFiles.length) {
       setFiles((prev) => [...prev, ...uniqueFiles]);
-
       if (onChange) {
         const event = {
           target: {
@@ -177,7 +132,6 @@ const FileUpload: React.FC<FileUploadProps> = ({
       }
     }
   };
-
   const clearFiles = () => {
     setFiles([]);
     if (inputRef.current) inputRef.current.value = '';
@@ -186,21 +140,16 @@ const FileUpload: React.FC<FileUploadProps> = ({
       onChange(event);
     }
   };
-
   const fileNames = useMemo(() => {
     return files.length > 0 ? files.map((f) => f.name).join(', ') : '';
   }, [files]);
-
   const showError = Boolean(error);
   const shouldShowClear = !!(files && files.length > 0) || value;
-
-  // Styles using design tokens
   const labelStyles: React.CSSProperties = {
     fontSize: 'var(--font-size-sm)',
     fontWeight: 'var(--font-weight-medium)',
     color: 'var(--text-primary)',
   };
-
   const fieldsetStyles: React.CSSProperties = {
     display: 'flex',
     alignItems: 'center',
@@ -209,12 +158,10 @@ const FileUpload: React.FC<FileUploadProps> = ({
     padding: 0,
     margin: 0,
   };
-
   const fileDisplayStyles: React.CSSProperties = {
     minWidth: '120px',
     width: 'auto',
   };
-
   const fileNameDisplayStyles: React.CSSProperties = {
     fontSize: 'var(--font-size-sm)',
     overflow: 'hidden',
@@ -230,11 +177,9 @@ const FileUpload: React.FC<FileUploadProps> = ({
     transition: `all var(--transition-normal)`,
     boxShadow: isDragActive ? '0 0 0 3px var(--color-primary)' : 'none',
   };
-
   const placeholderTextStyles: React.CSSProperties = {
     color: 'var(--text-muted)',
   };
-
   const clearButtonStyles: React.CSSProperties = {
     fontSize: 'var(--font-size-sm)',
     color: 'var(--text-secondary)',
@@ -244,19 +189,16 @@ const FileUpload: React.FC<FileUploadProps> = ({
     transition: `color var(--transition-normal)`,
     padding: `var(--space-1) var(--space-2)`,
   };
-
   const helperTextStyles: React.CSSProperties = {
     fontSize: 'var(--font-size-xs)',
     color: showError ? 'var(--color-error)' : 'var(--text-muted)',
     marginTop: 'var(--space-1)',
   };
-
   const errorMessageStyles: React.CSSProperties = {
     fontSize: 'var(--font-size-xs)',
     color: 'var(--color-error)',
     marginTop: 'var(--space-1)',
   };
-
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-1)' }} className={className}>
       {label ? (
@@ -267,7 +209,6 @@ const FileUpload: React.FC<FileUploadProps> = ({
           ) : null}
         </label>
       ) : null}
-
       <fieldset
         style={fieldsetStyles}
         onDragOver={handleDragOver}
@@ -289,12 +230,12 @@ const FileUpload: React.FC<FileUploadProps> = ({
           tabIndex={tabIndex}
           aria-label={ariaLabel}
           aria-labelledby={ariaLabelledby}
-          aria-describedby={ariaDescribedby}
+          aria-describedby={errorId || ariaDescribedby}
           aria-disabled={ariaDisabled ?? disabled}
+          aria-invalid={isErrorState}
           aria-live={ariaLive}
           aria-required={ariaRequired ?? required}
         />
-
         <Button
           onClick={handleClick}
           variant={variant}
@@ -306,7 +247,6 @@ const FileUpload: React.FC<FileUploadProps> = ({
         >
           Upload files
         </Button>
-
         <div style={fileDisplayStyles}>
           <div
             style={fileNameDisplayStyles}
@@ -320,7 +260,6 @@ const FileUpload: React.FC<FileUploadProps> = ({
             )}
           </div>
         </div>
-
         {shouldShowClear ? (
           <button
             type="button"
@@ -338,16 +277,20 @@ const FileUpload: React.FC<FileUploadProps> = ({
           </button>
         ) : null}
       </fieldset>
-
       {helperText ? (
         <div style={helperTextStyles}>{helperText}</div>
       ) : null}
-
-      {showError && typeof error === 'string' ? (
-        <div style={errorMessageStyles}>{error}</div>
+      {isErrorState && displayError ? (
+        <div 
+          id={errorId}
+          style={errorMessageStyles}
+          role="alert"
+        >
+          {displayError}
+        </div>
       ) : null}
     </div>
   );
 };
-
 export default FileUpload;
+

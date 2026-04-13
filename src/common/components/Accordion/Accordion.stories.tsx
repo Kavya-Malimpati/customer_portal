@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Accordion from "./Accordion";
-
 const meta: Meta<typeof Accordion> = {
   title: "Common/Accordion",
   component: Accordion,
@@ -15,10 +14,8 @@ const meta: Meta<typeof Accordion> = {
     disabled: { control: "boolean" },
   },
 };
-
 export default meta;
 type Story = StoryObj<typeof Accordion>;
-
 export const Default: Story = {
   args: {
     title: "Accordion Summary",
@@ -28,7 +25,6 @@ export const Default: Story = {
     variant: "outlined",
   },
 };
-
 export const Expanded: Story = {
   args: {
     title: "Expanded Accordion",
@@ -38,7 +34,6 @@ export const Expanded: Story = {
     variant: "outlined",
   },
 };
-
 export const Disabled: Story = {
   args: {
     title: "Disabled Accordion",
@@ -49,7 +44,6 @@ export const Disabled: Story = {
     variant: "outlined",
   },
 };
-
 export const Small: Story = {
   args: {
     title: "Small Accordion",
@@ -59,7 +53,6 @@ export const Small: Story = {
     variant: "outlined",
   },
 };
-
 export const Large: Story = {
   args: {
     title: "Large Accordion",
@@ -69,7 +62,6 @@ export const Large: Story = {
     variant: "outlined",
   },
 };
-
 export const Elevation: Story = {
   args: {
     id: "accordion-elevation",
@@ -81,3 +73,4 @@ export const Elevation: Story = {
     "aria-label": "Elevation variant accordion",
   },
 };
+

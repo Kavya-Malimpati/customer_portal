@@ -2,7 +2,6 @@ import { useState } from 'react';
 import type { Meta } from '@storybook/react';
 import { Table, type TableColumn, type TableSize, type TableVariant } from './Table';
 import '../../../src/styles/tokens.css';
-
 interface SampleRow extends Record<string, unknown> {
   id: number;
   name: string;
@@ -11,7 +10,6 @@ interface SampleRow extends Record<string, unknown> {
   joinDate: string;
   amount: number;
 }
-
 const sampleData: SampleRow[] = [
   { id: 1, name: 'Alice Johnson', email: 'alice@example.com', status: 'active', joinDate: '2024-01-15', amount: 1250 },
   { id: 2, name: 'Bob Smith', email: 'bob@example.com', status: 'active', joinDate: '2024-02-20', amount: 2100 },
@@ -22,7 +20,6 @@ const sampleData: SampleRow[] = [
   { id: 7, name: 'Grace Lee', email: 'grace@example.com', status: 'inactive', joinDate: '2023-11-20', amount: 920 },
   { id: 8, name: 'Henry Taylor', email: 'henry@example.com', status: 'pending', joinDate: '2024-03-05', amount: 2100 },
 ];
-
 const meta = {
   title: 'Components/Table',
   component: Table,
@@ -35,9 +32,7 @@ const meta = {
     dense: { control: { type: 'boolean' } },
   },
 } satisfies Meta<typeof Table>;
-
 export default meta;
-
 export const Default = {
   render: () => {
     const columns: TableColumn<SampleRow>[] = [
@@ -49,7 +44,6 @@ export const Default = {
     return <Table<SampleRow> id="default-table" size="md" variant="standard" columns={columns} rows={sampleData} />;
   },
 };
-
 export const SizeSmall = {
   render: () => {
     const columns: TableColumn<SampleRow>[] = [
@@ -60,7 +54,6 @@ export const SizeSmall = {
     return <Table<SampleRow> id="small-table" size="sm" variant="standard" columns={columns} rows={sampleData} />;
   },
 };
-
 export const SizeMedium = {
   render: () => {
     const columns: TableColumn<SampleRow>[] = [
@@ -72,7 +65,6 @@ export const SizeMedium = {
     return <Table<SampleRow> id="medium-table" size="md" variant="standard" columns={columns} rows={sampleData} />;
   },
 };
-
 export const SizeLarge = {
   render: () => {
     const columns: TableColumn<SampleRow>[] = [
@@ -84,7 +76,6 @@ export const SizeLarge = {
     return <Table<SampleRow> id="large-table" size="lg" variant="standard" columns={columns} rows={sampleData} />;
   },
 };
-
 export const VariantStandard = {
   render: () => {
     const columns: TableColumn<SampleRow>[] = [
@@ -96,7 +87,6 @@ export const VariantStandard = {
     return <Table<SampleRow> id="standard-table" size="md" variant="standard" columns={columns} rows={sampleData} />;
   },
 };
-
 export const VariantStriped = {
   render: () => {
     const columns: TableColumn<SampleRow>[] = [
@@ -108,7 +98,6 @@ export const VariantStriped = {
     return <Table<SampleRow> id="striped-table" size="md" variant="striped" columns={columns} rows={sampleData} />;
   },
 };
-
 export const VariantOutlined = {
   render: () => {
     const columns: TableColumn<SampleRow>[] = [
@@ -120,7 +109,6 @@ export const VariantOutlined = {
     return <Table<SampleRow> id="outlined-table" size="md" variant="outlined" columns={columns} rows={sampleData} />;
   },
 };
-
 export const CustomRendering = {
   render: () => {
     const columns: TableColumn<SampleRow>[] = [
@@ -152,7 +140,6 @@ export const CustomRendering = {
     return <Table<SampleRow> id="custom-table" size="md" variant="striped" columns={columns} rows={sampleData} />;
   },
 };
-
 export const WithSorting = {
   render: () => {
     const columns: TableColumn<SampleRow>[] = [
@@ -175,7 +162,6 @@ export const WithSorting = {
     );
   },
 };
-
 export const StickyHeader = {
   render: () => {
     const columns: TableColumn<SampleRow>[] = [
@@ -192,7 +178,6 @@ export const StickyHeader = {
     );
   },
 };
-
 export const Dense = {
   render: () => {
     const columns: TableColumn<SampleRow>[] = [
@@ -204,11 +189,9 @@ export const Dense = {
     return <Table<SampleRow> id="dense-table" size="md" variant="striped" dense={true} columns={columns} rows={sampleData} />;
   },
 };
-
 export const WithRowClick = {
   render: () => <RowClickTable />,
 };
-
 function RowClickTable() {
   const [selectedRow, setSelectedRow] = useState<SampleRow | null>(null);
   const columns: TableColumn<SampleRow>[] = [
@@ -229,7 +212,6 @@ function RowClickTable() {
     </div>
   );
 }
-
 export const HiddenColumns = {
   render: () => {
     const columns: TableColumn<SampleRow>[] = [
@@ -241,11 +223,9 @@ export const HiddenColumns = {
     return <Table<SampleRow> id="hidden-table" size="md" variant="standard" columns={columns} rows={sampleData} />;
   },
 };
-
 export const Comprehensive = {
   render: () => <ComprehensiveTable />,
 };
-
 function ComprehensiveTable() {
   const [selectedRow, setSelectedRow] = useState<SampleRow | null>(null);
   const columns: TableColumn<SampleRow>[] = [
@@ -291,6 +271,4 @@ function ComprehensiveTable() {
     </div>
   );
 }
-
-
 

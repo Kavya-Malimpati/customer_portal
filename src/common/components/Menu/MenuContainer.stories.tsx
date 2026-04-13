@@ -2,10 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 import MenuContainer from './MenuContainer';
 import MenuItem from './MenuItem';
 import MenuItemWithIcon from './MenuItemWithIcon';
-
-/**
- * MenuContainer Stories - Showcase menu structure with MenuItem and MenuItemWithIcon variants
- */
 const meta: Meta<typeof MenuContainer> = {
   title: 'Components/Menu/MenuContainer',
   component: MenuContainer,
@@ -14,13 +10,8 @@ const meta: Meta<typeof MenuContainer> = {
   },
   tags: ['autodocs'],
 };
-
 export default meta;
 type Story = StoryObj<typeof meta>;
-
-/**
- * Basic vertical menu with MenuItem components
- */
 export const Basic: Story = {
   args: {
     orientation: 'vertical',
@@ -34,10 +25,6 @@ export const Basic: Story = {
     ),
   },
 };
-
-/**
- * Horizontal menu layout
- */
 export const Horizontal: Story = {
   args: {
     orientation: 'horizontal',
@@ -51,10 +38,6 @@ export const Horizontal: Story = {
     ),
   },
 };
-
-/**
- * Menu with selected and disabled states
- */
 export const WithStates: Story = {
   args: {
     children: (
@@ -67,10 +50,6 @@ export const WithStates: Story = {
     ),
   },
 };
-
-/**
- * Menu items with different sizes
- */
 export const Sizes: Story = {
   args: {
     children: (
@@ -82,10 +61,6 @@ export const Sizes: Story = {
     ),
   },
 };
-
-/**
- * Menu items with icons at the start (default)
- */
 export const WithIconsStart: Story = {
   args: {
     children: (
@@ -106,10 +81,6 @@ export const WithIconsStart: Story = {
     ),
   },
 };
-
-/**
- * Menu items with icons at the end
- */
 export const WithIconsEnd: Story = {
   args: {
     children: (
@@ -127,10 +98,6 @@ export const WithIconsEnd: Story = {
     ),
   },
 };
-
-/**
- * Menu items with badges (notifications/counts)
- */
 export const WithBadges: Story = {
   args: {
     children: (
@@ -148,10 +115,6 @@ export const WithBadges: Story = {
     ),
   },
 };
-
-/**
- * Menu with mixed item types and sizes
- */
 export const Mixed: Story = {
   args: {
     children: (
@@ -173,10 +136,6 @@ export const Mixed: Story = {
     ),
   },
 };
-
-/**
- * Compact menu with small size items
- */
 export const Compact: Story = {
   args: {
     children: (
@@ -194,10 +153,6 @@ export const Compact: Story = {
     ),
   },
 };
-
-/**
- * Spacious menu with large size items
- */
 export const Spacious: Story = {
   args: {
     children: (
@@ -215,10 +170,6 @@ export const Spacious: Story = {
     ),
   },
 };
-
-/**
- * Menu with ARIA attributes and accessibility features
- */
 export const Accessible: Story = {
   args: {
     'aria-label': 'Main navigation menu',
@@ -238,10 +189,6 @@ export const Accessible: Story = {
     ),
   },
 };
-
-/**
- * Dark theme variant with custom styling
- */
 export const DarkTheme: Story = {
   args: {
     className: 'bg-gray-800 border-gray-700',
@@ -273,10 +220,6 @@ export const DarkTheme: Story = {
     ),
   },
 };
-
-/**
- * Context menu style with icons and custom styling
- */
 export const ContextMenu: Story = {
   args: {
     className: 'min-w-max',
@@ -299,10 +242,6 @@ export const ContextMenu: Story = {
     ),
   },
 };
-
-/**
- * User menu with profile icon and badge
- */
 export const UserMenu: Story = {
   args: {
     children: (
@@ -324,3 +263,4 @@ export const UserMenu: Story = {
     ),
   },
 };
+

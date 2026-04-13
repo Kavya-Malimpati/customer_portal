@@ -1,21 +1,7 @@
-/**
- * RadioGroup Component Stories
- *
- * Storybook stories demonstrating the RadioGroup component variants including:
- * - Size variants: sm, md, lg
- * - States: normal, disabled, error
- * - With and without labels
- * - Horizontal and vertical orientation
- */
 
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import RadioGroup from './RadioGroup';
-
-/**
- * RadioGroup Meta Configuration
- * Defines the component, title, and default arguments
- */
 const meta: Meta<typeof RadioGroup> = {
   title: 'Common/RadioGroup',
   component: RadioGroup,
@@ -68,15 +54,8 @@ const meta: Meta<typeof RadioGroup> = {
     layout: 'padded',
   },
 };
-
 export default meta;
-
 type RadioGroupStory = StoryObj<typeof RadioGroup>;
-
-/**
- * RadioGroup Default Story
- * Shows a basic radio group with three options in medium size
- */
 export const Default: RadioGroupStory = {
   args: {
     id: 'radio-default',
@@ -111,11 +90,6 @@ export const Default: RadioGroupStory = {
     },
   },
 };
-
-/**
- * RadioGroup Size Variants Story
- * Shows radio groups in all available sizes
- */
 export const Sizes: RadioGroupStory = {
   render: (args) => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
@@ -129,7 +103,6 @@ export const Sizes: RadioGroupStory = {
           Small option 2
         </label>
       </RadioGroup>
-
       <RadioGroup {...args} label="Medium (md)" size="md">
         <label style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           <input type="radio" name="size-md" value="option1" defaultChecked />
@@ -140,7 +113,6 @@ export const Sizes: RadioGroupStory = {
           Medium option 2
         </label>
       </RadioGroup>
-
       <RadioGroup {...args} label="Large (lg)" size="lg">
         <label style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           <input type="radio" name="size-lg" value="option1" defaultChecked />
@@ -161,11 +133,6 @@ export const Sizes: RadioGroupStory = {
     },
   },
 };
-
-/**
- * RadioGroup Disabled State Story
- * Shows a disabled radio group with all options disabled
- */
 export const Disabled: RadioGroupStory = {
   args: {
     label: 'Disabled options',
@@ -197,11 +164,6 @@ export const Disabled: RadioGroupStory = {
     },
   },
 };
-
-/**
- * RadioGroup Error State Story
- * Shows a radio group with error styling
- */
 export const Error: RadioGroupStory = {
   args: {
     label: 'Select a valid option',
@@ -246,11 +208,6 @@ export const Error: RadioGroupStory = {
     },
   },
 };
-
-/**
- * RadioGroup Required Story
- * Shows a radio group marked as required
- */
 export const Required: RadioGroupStory = {
   args: {
     label: 'Choose an option',
@@ -282,11 +239,6 @@ export const Required: RadioGroupStory = {
     },
   },
 };
-
-/**
- * RadioGroup Horizontal Orientation Story
- * Shows a radio group with horizontal layout
- */
 export const Horizontal: RadioGroupStory = {
   args: {
     label: 'Select one',
@@ -299,14 +251,12 @@ export const Horizontal: RadioGroupStory = {
       gap: '24px',
       alignItems: 'flex-start',
     };
-
     const groupStyle: React.CSSProperties = {
       display: 'flex',
       flexDirection: 'row',
       gap: '12px',
       alignItems: 'center',
     };
-
     return (
       <div style={containerStyle}>
         <RadioGroup {...args} style={groupStyle}>
@@ -334,15 +284,9 @@ export const Horizontal: RadioGroupStory = {
     },
   },
 };
-
-/**
- * RadioGroup Controlled Story
- * Shows a radio group with controlled state using React hooks
- */
 export const Controlled: RadioGroupStory = {
   render: (args) => {
     const [selectedValue, setSelectedValue] = useState('option1');
-
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
         <RadioGroup {...args} label="Select your preference">
@@ -397,3 +341,4 @@ export const Controlled: RadioGroupStory = {
     },
   },
 };
+

@@ -1,88 +1,38 @@
 import React, { forwardRef, useImperativeHandle, useRef, useEffect } from 'react';
 import '../../../src/styles/tokens.css';
-
-/**
- * NumberField Component
- *
- * A controlled/uncontrolled number input field with support for validation,
- * sizing, and visual variants. Uses design tokens for consistent styling.
- *
- * @example
- * ```tsx
- * <NumberField
- *   label="Age"
- *   min={0}
- *   max={120}
- *   value={age}
- *   onChange={(e) => setAge(e.target.value)}
- * />
- * ```
- */
 export interface NumberFieldProps {
-  /** Unique identifier for the input */
   id?: string;
-  /** Name attribute for form submission */
   name?: string;
-  /** Additional CSS classes for custom styling */
   className?: string;
-  /** Controlled value */
   value?: number | string;
-  /** Default value when uncontrolled */
   defaultValue?: number | string;
-  /** Placeholder text */
   placeholder?: string;
-  /** Label text displayed above the field */
   label?: React.ReactNode;
-  /** Whether the field is required */
   required?: boolean;
-  /** Whether the field is disabled */
   disabled?: boolean;
-  /** Whether the field is read-only */
   readOnly?: boolean;
-  /** Minimum value allowed */
   min?: number | string;
-  /** Maximum value allowed */
   max?: number | string;
-  /** Step increment for arrows */
   step?: number | string;
-  /** Title attribute for tooltip */
   title?: string;
-  /** Whether the field has an error state */
   error?: boolean;
-  /** Size of the input field */
   size?: 'sm' | 'md' | 'lg';
-  /** Visual variant of the input */
   variant?: 'outlined' | 'filled' | 'standard';
-  /** Ref to forward to the input element */
   inputRef?: React.Ref<HTMLInputElement>;
-  /** Whether to focus the field on mount */
   autoFocus?: boolean;
-  /** Autocomplete hint */
   autoComplete?: string;
-  /** Active step indicator (for stepper usage) */
   activeStep?: number;
-  /** Change event handler */
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  /** Focus event handler */
   onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
-  /** Blur event handler */
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
-  /** ARIA label */
   'aria-label'?: string;
-  /** ID of element that labels this field */
   'aria-labelledby'?: string;
-  /** ID of element that describes this field */
   'aria-describedby'?: string;
-  /** Whether the field is disabled (for screen readers) */
   'aria-disabled'?: boolean;
-  /** Announces changes to the field */
   'aria-live'?: 'off' | 'polite' | 'assertive';
-  /** Whether the field has a validation error */
   'aria-invalid'?: boolean;
-  /** Whether the field is required (for screen readers) */
   'aria-required'?: boolean;
 }
-
 const sizeConfig: Record<NonNullable<NumberFieldProps['size']>, React.CSSProperties> = {
   sm: {
     padding: 'var(--space-1) var(--space-2)',
@@ -100,7 +50,6 @@ const sizeConfig: Record<NonNullable<NumberFieldProps['size']>, React.CSSPropert
     height: 'var(--control-height-lg)',
   },
 };
-
 const variantConfig: Record<NonNullable<NumberFieldProps['variant']>, React.CSSProperties> = {
   outlined: {
     border: '1px solid var(--border-color)',
@@ -118,7 +67,6 @@ const variantConfig: Record<NonNullable<NumberFieldProps['variant']>, React.CSSP
     borderRadius: '0',
   },
 };
-
 const NumberField = forwardRef<HTMLInputElement, NumberFieldProps>((props, ref) => {
   const {
     id,
@@ -153,35 +101,26 @@ const NumberField = forwardRef<HTMLInputElement, NumberFieldProps>((props, ref) 
     'aria-invalid': ariaInvalid,
     'aria-required': ariaRequired,
   } = props;
-
   const innerRef = useRef<HTMLInputElement | null>(null);
-
-  // Expose via forwarded ref
   useImperativeHandle(ref, () => innerRef.current as HTMLInputElement);
-
-  // Expose via inputRef prop
   useEffect(() => {
     if (!inputRef) return;
     if (typeof inputRef === 'function') {
       inputRef(innerRef.current);
     }
   }, [inputRef]);
-
   const sizeStyle = sizeConfig[size];
   const variantStyle = variantConfig[variant];
-
   const containerStyle: React.CSSProperties = {
     display: 'flex',
     flexDirection: 'column',
   };
-
   const labelStyle: React.CSSProperties = {
     marginBottom: 'var(--space-2)',
     fontSize: 'var(--font-size-sm)',
     fontWeight: 'var(--font-weight-medium)',
     color: 'var(--text-primary)',
   };
-
   const inputStyle: React.CSSProperties = {
     fontFamily: 'var(--font-family-sans)',
     color: disabled ? 'var(--text-muted)' : 'var(--text-primary)',
@@ -197,29 +136,24 @@ const NumberField = forwardRef<HTMLInputElement, NumberFieldProps>((props, ref) 
       borderWidth: '1px',
     }),
   };
-
   const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
     (e.currentTarget as HTMLInputElement).style.boxShadow = 'var(--focus-ring)';
     onFocus?.(e);
   };
-
   const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     (e.currentTarget as HTMLInputElement).style.boxShadow = 'none';
     onBlur?.(e);
   };
-
   const handleMouseEnter = (e: React.MouseEvent<HTMLInputElement>) => {
     if (!disabled && !error) {
       (e.currentTarget as HTMLInputElement).style.borderColor = 'var(--border-color-hover)';
     }
   };
-
   const handleMouseLeave = (e: React.MouseEvent<HTMLInputElement>) => {
     if (!error) {
       (e.currentTarget as HTMLInputElement).style.borderColor = 'var(--border-color)';
     }
   };
-
   return (
     <div style={containerStyle} data-active-step={activeStep}>
       {label && (
@@ -232,7 +166,6 @@ const NumberField = forwardRef<HTMLInputElement, NumberFieldProps>((props, ref) 
           )}
         </label>
       )}
-
       <input
         ref={innerRef}
         id={id}
@@ -268,8 +201,6 @@ const NumberField = forwardRef<HTMLInputElement, NumberFieldProps>((props, ref) 
     </div>
   );
 });
-
 NumberField.displayName = 'NumberField';
-
 export default NumberField;
 

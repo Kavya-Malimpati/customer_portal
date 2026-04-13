@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import List from './List';
-
 const meta: Meta<typeof List> = {
   title: 'Common/List',
   component: List,
@@ -13,10 +12,8 @@ const meta: Meta<typeof List> = {
     'aria-live': { control: 'select', options: ['off', 'polite', 'assertive'] },
   },
 };
-
 export default meta;
 type Story = StoryObj<typeof List>;
-
 export const Default: Story = {
   args: {
     'aria-label': 'Basic list',
@@ -68,7 +65,6 @@ export const Default: Story = {
     ),
   },
 };
-
 export const WithTitle: Story = {
   args: {
     title: 'Menu Items',
@@ -121,7 +117,6 @@ export const WithTitle: Story = {
     ),
   },
 };
-
 export const Disabled: Story = {
   args: {
     title: 'Disabled List',
@@ -160,7 +155,6 @@ export const Disabled: Story = {
     ),
   },
 };
-
 export const WithAriaLive: Story = {
   args: {
     'aria-label': 'Dynamic list',
@@ -199,17 +193,12 @@ export const WithAriaLive: Story = {
     ),
   },
 };
-
 export const Empty: Story = {
   args: {
     'aria-label': 'Empty list',
     children: <li style={{ padding: 'var(--space-3)', color: 'var(--text-muted)' }}>No items</li>,
   },
 };
-
-/**
- * Vertical list with aria-orientation.
- */
 export const Vertical: Story = {
   args: {
     'aria-orientation': 'vertical',
@@ -229,10 +218,6 @@ export const Vertical: Story = {
     ),
   },
 };
-
-/**
- * List with aria-live set to polite (announcements without interrupting).
- */
 export const WithAriaLivePolite: Story = {
   args: {
     tooltip: 'Updates',
@@ -250,10 +235,6 @@ export const WithAriaLivePolite: Story = {
     ),
   },
 };
-
-/**
- * List with aria-live set to assertive (important announcements).
- */
 export const WithAriaLiveAssertive: Story = {
   args: {
     tooltip: 'Alerts',
@@ -271,10 +252,6 @@ export const WithAriaLiveAssertive: Story = {
     ),
   },
 };
-
-/**
- * List with ARIA labelledby attribute linking to external title.
- */
 export const WithAriaLabelledby: Story = {
   render: args => (
     <div>
@@ -292,10 +269,6 @@ export const WithAriaLabelledby: Story = {
     </div>
   ),
 };
-
-/**
- * List with aria-describedby for additional description.
- */
 export const WithAriaDescribedby: Story = {
   render: args => (
     <div>
@@ -313,10 +286,6 @@ export const WithAriaDescribedby: Story = {
     </div>
   ),
 };
-
-/**
- * List with custom className for additional styling.
- */
 export const WithCustomClassName: Story = {
   args: {
     tooltip: 'Custom Styled List',
@@ -335,10 +304,6 @@ export const WithCustomClassName: Story = {
     ),
   },
 };
-
-/**
- * List with multiple items showing divider pattern.
- */
 export const WithDividers: Story = {
   args: {
     tooltip: 'Sectioned List',
@@ -362,3 +327,4 @@ export const WithDividers: Story = {
     ),
   },
 };
+

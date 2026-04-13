@@ -3,7 +3,6 @@ import Card from './Card';
 import CardHeader from './CardHeader';
 import CardContent from './CardContent';
 import CardFooter from './CardFooter';
-
 const meta: Meta<typeof Card> = {
   title: 'Common/Card',
   component: Card,
@@ -16,11 +15,8 @@ const meta: Meta<typeof Card> = {
     'aria-label': { control: 'text' },
   },
 };
-
 export default meta;
-
 type Story = StoryObj<typeof Card>;
-
 export const Default: Story = {
   render: (args) => (
     <Card {...args}>
@@ -47,7 +43,6 @@ export const Default: Story = {
     'aria-label': 'User profile information',
   },
 };
-
 export const Elevation: Story = {
   args: {
     size: 'md',
@@ -62,7 +57,6 @@ export const Elevation: Story = {
     </Card>
   ),
 };
-
 export const Outlined: Story = {
   args: {
     size: 'md',
@@ -77,7 +71,6 @@ export const Outlined: Story = {
     </Card>
   ),
 };
-
 export const OutlinedRaised: Story = {
   args: {
     size: 'md',
@@ -92,7 +85,6 @@ export const OutlinedRaised: Story = {
     </Card>
   ),
 };
-
 export const Small: Story = {
   args: {
     size: 'sm',
@@ -107,7 +99,6 @@ export const Small: Story = {
     </Card>
   ),
 };
-
 export const Large: Story = {
   args: {
     size: 'lg',
@@ -122,7 +113,6 @@ export const Large: Story = {
     </Card>
   ),
 };
-
 export const Interactive: Story = {
   args: {
     size: 'md',
@@ -139,7 +129,6 @@ export const Interactive: Story = {
     </Card>
   ),
 };
-
 export const Playground: Story = {
   render: (args) => (
     <Card {...args}>
@@ -157,3 +146,4 @@ export const Playground: Story = {
     title: 'Playground',
   },
 };
+

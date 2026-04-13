@@ -1,58 +1,19 @@
-/**
- * LinearProgress Component
- *
- * A linear (horizontal) progress bar component that displays progress as a filled bar.
- * Supports determinate (with value), indeterminate (animated), buffer, and query variants.
- * Uses design tokens from tokens.css for consistent color theming and sizing.
- *
- * @example
- * ```tsx
- * // Determinate progress (60%)
- * <LinearProgress value={60} variant="determinate" color="primary" />
- *
- * // Indeterminate loading state
- * <LinearProgress variant="indeterminate" size="md" />
- * ```
- */
 
 import React from 'react';
 import '../../../src/styles/tokens.css';
-
 export interface LinearProgressProps {
-  /** Unique identifier for the component */
   id?: string;
-
-  /** Progress value (0-100) for determinate variant */
   value?: number;
-
-  /** Progress variant type - determines animation and rendering style */
   variant?: 'determinate' | 'indeterminate' | 'buffer' | 'query';
-
-  /** Color variant using design tokens */
   color?: 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning' | 'inherit';
-
-  /** Additional CSS classes for custom styling */
   className?: string;
-
-  /** Additional inline styles */
   style?: React.CSSProperties;
-
-  /** Current progress value for accessibility */
   'aria-valuenow'?: number;
-
-  /** Text description of current progress for accessibility */
   'aria-valuetext'?: string;
-
-  /** Height of the progress bar - 'sm' (4px), 'md' (8px), 'lg' (12px) */
   size?: 'sm' | 'md' | 'lg';
-
-  /** Accessibility label for screen readers */
   'aria-label'?: string;
-
-  /** ID of element that labels this component */
   'aria-labelledby'?: string;
 }
-
 const colorMap: Record<string, string> = {
   primary: 'var(--color-primary)',
   secondary: 'var(--color-secondary)',
@@ -62,20 +23,11 @@ const colorMap: Record<string, string> = {
   warning: 'var(--color-warning)',
   inherit: 'inherit',
 };
-
 const sizeConfig: Record<'sm' | 'md' | 'lg', number> = {
   sm: 4,
   md: 8,
   lg: 12,
 };
-
-/**
- * LinearProgress Component
- *
- * Renders a horizontal progress bar with support for multiple variants including
- * determinate (fixed progress value), indeterminate (animated loading),
- * buffer, and query states. Integrates with design tokens for colors and sizing.
- */
 const LinearProgress: React.FC<LinearProgressProps> = ({
   id,
   value = 0,
@@ -89,17 +41,12 @@ const LinearProgress: React.FC<LinearProgressProps> = ({
   'aria-valuenow': ariaValueNow,
   'aria-valuetext': ariaValueText,
 }) => {
-  // Calculate percentage for determinate variant (0-100)
   const percent = Math.min(Math.max(value, 0), 100);
-
-  // Resolve height from size prop
   const height = sizeConfig[size] || 8;
-
   const containerStyle: React.CSSProperties = {
     width: '100%',
     ...style,
   };
-
   const trackStyle: React.CSSProperties = {
     width: '100%',
     height: `${height}px`,
@@ -108,7 +55,6 @@ const LinearProgress: React.FC<LinearProgressProps> = ({
     overflow: 'hidden',
     position: 'relative',
   };
-
   const barStyle: React.CSSProperties = {
     height: '100%',
     backgroundColor: colorMap[color],
@@ -116,7 +62,6 @@ const LinearProgress: React.FC<LinearProgressProps> = ({
     transition: variant === 'determinate' ? `width var(--transition-normal)` : undefined,
     borderRadius: 'var(--radius-sm)',
   };
-
   const indeterminateAnimationStyle: React.CSSProperties = {
     ...barStyle,
     animation:
@@ -127,7 +72,6 @@ const LinearProgress: React.FC<LinearProgressProps> = ({
           : undefined,
     width: '30%',
   };
-
   const ariaProps = {
     'aria-valuenow': ariaValueNow,
     'aria-valuemin': 0,
@@ -136,7 +80,6 @@ const LinearProgress: React.FC<LinearProgressProps> = ({
     'aria-label': ariaLabel,
     'aria-labelledby': ariaLabelledby,
   };
-
   return (
     <div style={containerStyle} className={className} role="progressbar" {...ariaProps}>
       <style>{`
@@ -162,7 +105,6 @@ const LinearProgress: React.FC<LinearProgressProps> = ({
           }
         }
       `}</style>
-
       {variant === 'determinate' ? (
         <progress
           id={id}
@@ -179,5 +121,5 @@ const LinearProgress: React.FC<LinearProgressProps> = ({
     </div>
   );
 };
-
 export default LinearProgress;
+

@@ -1,6 +1,5 @@
 import type { Meta } from '@storybook/react';
 import Typography from './Typography';
-
 const meta: Meta<typeof Typography> = {
   title: 'Components/Typography',
   component: Typography,
@@ -9,60 +8,47 @@ const meta: Meta<typeof Typography> = {
     layout: 'padded',
   },
 };
-
 export default meta;
-
-// Headings
 export const H1 = () => (
   <Typography variant="h1">
     This is an H1 Heading
   </Typography>
 );
-
 export const H2 = () => (
   <Typography variant="h2">
     This is an H2 Heading
   </Typography>
 );
-
 export const H3 = () => (
   <Typography variant="h3">
     This is an H3 Heading
   </Typography>
 );
-
 export const H4 = () => (
   <Typography variant="h4">
     This is an H4 Heading
   </Typography>
 );
-
 export const H5 = () => (
   <Typography variant="h5">
     This is an H5 Heading
   </Typography>
 );
-
 export const H6 = () => (
   <Typography variant="h6">
     This is an H6 Heading
   </Typography>
 );
-
-// Subtitles
 export const Subtitle1 = () => (
   <Typography variant="subtitle1">
     This is a Subtitle 1 - Used as primary subtitle
   </Typography>
 );
-
 export const Subtitle2 = () => (
   <Typography variant="subtitle2">
     This is a Subtitle 2 - Used as secondary subtitle
   </Typography>
 );
-
-// Body text
 export const Body1 = () => (
   <Typography variant="body1">
     This is body1 text. It's the standard paragraph text used throughout the application. 
@@ -70,35 +56,27 @@ export const Body1 = () => (
     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
   </Typography>
 );
-
 export const Body2 = () => (
   <Typography variant="body2">
     This is body2 text. It's a smaller variant of body text, useful for supplementary content 
     or compact layouts. It maintains readability while taking up less space.
   </Typography>
 );
-
-// Caption and overline
 export const Caption = () => (
   <Typography variant="caption">
     This is caption text - typically used for small, secondary information
   </Typography>
 );
-
 export const Overline = () => (
   <Typography variant="overline">
     This is overline text
   </Typography>
 );
-
-// Button text
 export const ButtonText = () => (
   <Typography variant="button">
     Button Text
   </Typography>
 );
-
-// All variants together
 export const AllVariants = () => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-6)' }}>
     <Typography variant="h1">H1 Heading - Page Title</Typography>
@@ -121,8 +99,6 @@ export const AllVariants = () => (
     <Typography variant="button">BUTTON TEXT</Typography>
   </div>
 );
-
-// With styling
 export const WithCustomStyling = () => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
     <Typography 
@@ -142,8 +118,6 @@ export const WithCustomStyling = () => (
     </Typography>
   </div>
 );
-
-// Accessibility features
 export const WithAccessibility = () => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-6)' }}>
     <Typography 
@@ -167,8 +141,6 @@ export const WithAccessibility = () => (
     </Typography>
   </div>
 );
-
-// Different content scenarios
 export const ArticleLayout = () => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)', maxWidth: '800px' }}>
     <Typography variant="overline">Featured Article</Typography>
@@ -186,21 +158,17 @@ export const ArticleLayout = () => (
     </Typography>
   </div>
 );
-
-// Semantic HTML test
 export const SemanticMarkup = () => (
   <article style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
     <Typography variant="h1">Article Title (h1)</Typography>
     <Typography variant="body1">
       First paragraph of article content. This should use semantic h1 tag for page structure.
     </Typography>
-    
     <section>
       <Typography variant="h2">Section Heading (h2)</Typography>
       <Typography variant="body1">
         Subsection content here. Heading hierarchy is important for accessibility.
       </Typography>
-      
       <Typography variant="h3">Subsection (h3)</Typography>
       <Typography variant="body2">
         Even smaller heading with body2 text content.
@@ -208,8 +176,6 @@ export const SemanticMarkup = () => (
     </section>
   </article>
 );
-
-// Responsive text
 export const ResponsiveExample = () => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-6)' }}>
     <Typography variant="h1" className="text-2xl md:text-4xl">
@@ -220,8 +186,6 @@ export const ResponsiveExample = () => (
     </Typography>
   </div>
 );
-
-// Live region example
 export const LiveRegion = () => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
     <Typography variant="h3">Status Updates</Typography>
@@ -234,3 +198,4 @@ export const LiveRegion = () => (
     </Typography>
   </div>
 );
+

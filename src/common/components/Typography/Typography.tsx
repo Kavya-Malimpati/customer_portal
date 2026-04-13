@@ -1,7 +1,6 @@
 
 import React from 'react';
 import '../../../styles/tokens.css';
-
 export type Variant =
   | 'h1'
   | 'h2'
@@ -17,22 +16,17 @@ export type Variant =
   | 'overline'
   | 'button'
   | 'inherit';
-
 export interface TypographyProps extends React.HTMLAttributes<HTMLElement> {
   id?: string;
   className?: string;
   children?: React.ReactNode;
   variant?: Variant;
-
-
   ariaLabel?: string;
   ariaLabelledby?: string;
   ariaDescribedby?: string;
   ariaHidden?: boolean;
   ariaLive?: 'off' | 'polite' | 'assertive';
 }
-
-
 const variantTagMap: Record<Variant, React.ElementType> = {
   h1: 'h1',
   h2: 'h2',
@@ -49,7 +43,6 @@ const variantTagMap: Record<Variant, React.ElementType> = {
   button: 'span',
   inherit: 'span',
 };
-
 const variantClassMap: Record<Variant, React.CSSProperties> = {
   h1: { fontSize: 'var(--font-size-2xl)', lineHeight: 'var(--line-height-tight)', fontWeight: 'var(--font-weight-bold)' },
   h2: { fontSize: '1.75rem', lineHeight: 'var(--line-height-tight)', fontWeight: 'var(--font-weight-bold)' },
@@ -66,7 +59,6 @@ const variantClassMap: Record<Variant, React.CSSProperties> = {
   button: { fontSize: 'var(--font-size-sm)', textTransform: 'uppercase', fontWeight: 'var(--font-weight-medium)', color: 'var(--color-primary)' },
   inherit: {},
 };
-
 const Typography: React.FC<TypographyProps> = ({
   id,
   className = '',
@@ -81,12 +73,10 @@ const Typography: React.FC<TypographyProps> = ({
 }) => {
   const ComponentTag = variantTagMap[variant] || 'p';
   const variantStyle = variantClassMap[variant] || {};
-
   const baseStyle: React.CSSProperties = {
     display: 'block',
     ...variantStyle,
   };
-
   const props: React.HTMLAttributes<HTMLElement> = {
     id,
     className,
@@ -98,8 +88,7 @@ const Typography: React.FC<TypographyProps> = ({
     'aria-live': ariaLive,
     ...rest,
   };
-
   return React.createElement(ComponentTag as React.ElementType, props, children);
 };
-
 export default Typography;
+

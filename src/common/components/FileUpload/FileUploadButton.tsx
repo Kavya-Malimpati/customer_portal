@@ -1,25 +1,18 @@
-/**
- * Button used by FileUpload (small reusable button)
- * Provides `variant` and `size` and maps styles to tokens in `src/styles/tokens.css`.
- */
-import React from 'react';
 
+import React from 'react';
 type ButtonVariant = 'contained' | 'outlined' | 'text';
 type ButtonSize = 'small' | 'medium' | 'large';
-
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   size?: ButtonSize;
   loading?: boolean;
   icon?: React.ReactNode;
 }
-
 const sizeClasses: Record<ButtonSize, string> = {
   small: 'text-[var(--font-size-small)] px-3 py-1.5 min-h-[var(--min-height-small)]',
   medium: 'text-[var(--font-size-medium)] px-4 py-2 min-h-[var(--min-height-medium)]',
   large: 'text-[var(--font-size-large)] px-6 py-2.5 min-h-[var(--min-height-large)]',
 };
-
 const FileUploadButton: React.FC<Props> = ({
   variant = 'contained',
   size = 'medium',
@@ -31,8 +24,6 @@ const FileUploadButton: React.FC<Props> = ({
   ...rest
 }) => {
   const base = 'inline-flex items-center gap-2 rounded-md font-medium focus:outline-none';
-
-  // Determine variant-specific classes based on button variant
   const getVariantClasses = () => {
     if (variant === 'contained') {
       return 'bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary-dark)]';
@@ -42,11 +33,8 @@ const FileUploadButton: React.FC<Props> = ({
     }
     return 'bg-transparent text-[var(--color-primary)] hover:bg-[var(--color-primary-light)]';
   };
-
   const variantClasses = getVariantClasses();
-
   const disabledClasses = disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer';
-
   return (
     <button
       type="button"
@@ -60,5 +48,5 @@ const FileUploadButton: React.FC<Props> = ({
     </button>
   );
 };
-
 export default FileUploadButton;
+

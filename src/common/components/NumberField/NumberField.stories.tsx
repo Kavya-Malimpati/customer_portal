@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import NumberField from './NumberField';
-
 const meta: Meta<typeof NumberField> = {
   title: 'Common/NumberField',
   component: NumberField,
@@ -20,13 +19,8 @@ const meta: Meta<typeof NumberField> = {
     error: { control: 'boolean' },
   },
 };
-
 export default meta;
 type Story = StoryObj<typeof NumberField>;
-
-/**
- * Default number field with standard styling.
- */
 export const Default: Story = {
   render: () => (
     <div style={{ padding: 'var(--space-4)' }}>
@@ -34,10 +28,6 @@ export const Default: Story = {
     </div>
   ),
 };
-
-/**
- * Controlled number field with state management.
- */
 export const Controlled: Story = {
   render: () => {
     const Demo = () => {
@@ -60,10 +50,6 @@ export const Controlled: Story = {
     return <Demo />;
   },
 };
-
-/**
- * Number field with minimum and maximum constraints.
- */
 export const WithMinMax: Story = {
   render: () => (
     <div style={{ padding: 'var(--space-4)' }}>
@@ -71,10 +57,6 @@ export const WithMinMax: Story = {
     </div>
   ),
 };
-
-/**
- * Disabled number field.
- */
 export const Disabled: Story = {
   render: () => (
     <div style={{ padding: 'var(--space-4)' }}>
@@ -82,10 +64,6 @@ export const Disabled: Story = {
     </div>
   ),
 };
-
-/**
- * Number field in error state.
- */
 export const ErrorState: Story = {
   render: () => (
     <div style={{ padding: 'var(--space-4)' }}>
@@ -93,10 +71,6 @@ export const ErrorState: Story = {
     </div>
   ),
 };
-
-/**
- * Required number field.
- */
 export const Required: Story = {
   render: () => (
     <div style={{ padding: 'var(--space-4)' }}>
@@ -104,10 +78,6 @@ export const Required: Story = {
     </div>
   ),
 };
-
-/**
- * Different size variants (small, medium, large).
- */
 export const Sizes: Story = {
   render: () => (
     <div style={{ padding: 'var(--space-4)', display: 'flex', flexDirection: 'column', gap: 'var(--space-6)' }}>
@@ -117,10 +87,6 @@ export const Sizes: Story = {
     </div>
   ),
 };
-
-/**
- * Different visual variants (outlined, filled, standard).
- */
 export const Variants: Story = {
   render: () => (
     <div style={{ padding: 'var(--space-4)', display: 'flex', flexDirection: 'column', gap: 'var(--space-6)' }}>
@@ -130,10 +96,6 @@ export const Variants: Story = {
     </div>
   ),
 };
-
-/**
- * Number field with custom step increment.
- */
 export const WithStep: Story = {
   render: () => (
     <div style={{ padding: 'var(--space-4)' }}>
@@ -141,3 +103,4 @@ export const WithStep: Story = {
     </div>
   ),
 };
+

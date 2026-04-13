@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Button from './Button';
-
 const meta: Meta<typeof Button> = {
   title: 'Common/Button',
   component: Button,
@@ -34,10 +33,8 @@ const meta: Meta<typeof Button> = {
     onClick: { action: 'clicked' },
   },
 };
-
 export default meta;
 type Story = StoryObj<typeof Button>;
-
 export const Contained: Story = {
   args: {
     children: 'Contained Button',
@@ -46,7 +43,6 @@ export const Contained: Story = {
     size: "large"
   },
 };
-
 export const Outlined: Story = {
   args: {
     children: 'Outlined Button',
@@ -54,7 +50,6 @@ export const Outlined: Story = {
     color: 'primary',
   },
 };
-
 export const Text: Story = {
   args: {
     children: 'Text Button',
@@ -62,25 +57,22 @@ export const Text: Story = {
     color: 'primary',
   },
 };
-
 export const WithStartIcon: Story = {
   args: {
     children: 'Start Icon',
-    startIcon: <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ctext y='20' font-size='20'%3E⭐%3C/text%3E%3C/svg%3E" alt="star" width="24" height="24" />,
+    startIcon: <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor'%3E%3Cpath d='M5 12h14m-7-7 7 7-7 7'/%3E%3C/svg%3E" alt="Start icon" width="16" height="16" />,
     variant: 'contained',
     color: 'secondary',
   },
 };
-
 export const WithEndIcon: Story = {
   args: {
     children: 'End Icon',
-    endIcon: <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ctext y='20' font-size='20'%3E➡️%3C/text%3E%3C/svg%3E" alt="arrow" width="24" height="24" />,
+    endIcon: <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor'%3E%3Cpath d='M5 12h14m-7-7 7 7-7 7'/%3E%3C/svg%3E" alt="End icon" width="16" height="16" />,
     variant: 'contained',
     color: 'success',
   },
 };
-
 export const Disabled: Story = {
   args: {
     children: 'Disabled',
@@ -89,3 +81,4 @@ export const Disabled: Story = {
     color: 'error',
   },
 };
+

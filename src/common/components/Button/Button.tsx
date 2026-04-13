@@ -1,44 +1,4 @@
-/**
- * Button Component
- *
- * Purpose: A reusable, accessible Button component using design tokens from tokens.css
- * for all styling values. Supports multiple variants, colors, and sizes with full ARIA support.
- *
- * Design Tokens Used:
- *   - Colors: --color-primary, --color-primary-hover, --color-secondary, --color-success, --color-error, --color-info, --color-warning
- *   - Text: --text-inverse, --text-muted, --text-primary
- *   - Backgrounds: --bg-muted, --bg-hover
- *   - Borders: --border-color, --border-color-focus, --border-width-sm
- *   - Spacing: --space-2, --space-3, --space-4, --space-6
- *   - Sizing: --control-height-sm, --control-height-md, --control-height-lg
- *   - Typography: --font-size-sm, --font-size-md, --font-size-lg, --font-weight-medium
- *   - Border Radius: --radius-md
- *   - Shadows: --shadow-sm, --shadow-md
- *   - Transitions: --transition-normal
- *   - States: --opacity-disabled, --cursor-disabled, --focus-ring
- *
- * Props:
- *   - children: Button label/content
- *   - variant: "contained" | "outlined" | "text" (visual style)
- *   - color: Color variant mapped to design tokens
- *   - size: "small" | "medium" | "large" (controls sizing)
- *   - fullWidth: Whether button spans full width
- *   - disabled: Disables the button
- *   - startIcon, endIcon: Icons before/after text
- *   - ariaLabel: Accessibility label
- *   - Event handlers: onClick, onMouseEnter, onMouseLeave, onFocus, onBlur
- *
- * Behavior:
- *   - Renders semantic button element with custom styling using design tokens
- *   - Full keyboard accessibility (Tab, Enter, Space)
- *   - Proper focus management with --focus-ring
- *   - Smooth transitions between states using --transition-normal
- *   - All colors, spacing, and sizing reference tokens.css only
- *   - No hardcoded design values
- */
-
 import React from 'react';
-
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'contained' | 'outlined' | 'text';
   color?: 'primary' | 'secondary' | 'success' | 'error' | 'info' | 'warning' | 'inherit';
@@ -49,7 +9,6 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   disableElevation?: boolean;
   ariaLabel?: string;
 }
-
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
@@ -73,10 +32,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref
   ) => {
-    /**
-     * Maps color prop to corresponding color tokens
-     * Each color variant has base and hover states
-     */
     const getColorTokens = (color: string, variant: string) => {
       const colorMap: Record<string, { base: string; hover: string; light: string }> = {
         primary: {
@@ -117,11 +72,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       };
       return colorMap[color] || colorMap.primary;
     };
-
-    /**
-     * Maps size prop to corresponding spacing and sizing tokens
-     * Ensures consistent sizing across all button sizes
-     */
     const getSizeTokens = (size: string) => {
       const sizeMap: Record<string, { padding: string; height: string; fontSize: string }> = {
         small: {
@@ -142,11 +92,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       };
       return sizeMap[size] || sizeMap.medium;
     };
-
-    /**
-     * Builds variant-specific styles using design tokens
-     * Each variant uses different color and background strategies
-     */
     const getVariantStyles = (variant: string, colorTokens: ReturnType<typeof getColorTokens>, disabled: boolean) => {
       const baseStyles: React.CSSProperties = {
         fontWeight: 'var(--font-weight-medium)',
@@ -156,7 +101,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         opacity: disabled ? 'var(--opacity-disabled)' : 1,
         outline: 'none',
       };
-
       if (variant === 'contained') {
         return {
           ...baseStyles,
@@ -174,7 +118,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           boxShadow: 'none',
         };
       } else {
-        // text variant
         return {
           ...baseStyles,
           backgroundColor: 'var(--bg-transparent)',
@@ -184,11 +127,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         };
       }
     };
-
     const colorTokens = getColorTokens(color, variant);
     const sizeTokens = getSizeTokens(size);
     const variantStyles = getVariantStyles(variant, colorTokens, disabled);
-
     const buttonStyle: React.CSSProperties = {
       ...variantStyles,
       padding: sizeTokens.padding,
@@ -200,13 +141,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       justifyContent: 'center',
       gap: 'var(--space-2)',
     };
-
     const iconStyle: React.CSSProperties = {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
     };
-
     const handleMouseEnter = (e: React.MouseEvent<HTMLButtonElement>) => {
       if (!disabled) {
         const el = e.currentTarget as HTMLButtonElement;
@@ -222,7 +161,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       }
       onMouseEnter?.(e);
     };
-
     const handleMouseLeave = (e: React.MouseEvent<HTMLButtonElement>) => {
       if (!disabled) {
         const el = e.currentTarget as HTMLButtonElement;
@@ -234,7 +172,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       }
       onMouseLeave?.(e);
     };
-
     const handleFocus = (e: React.FocusEvent<HTMLButtonElement>) => {
       if (!disabled) {
         const el = e.currentTarget as HTMLButtonElement;
@@ -242,7 +179,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       }
       onFocus?.(e);
     };
-
     const handleBlur = (e: React.FocusEvent<HTMLButtonElement>) => {
       if (!disabled) {
         const el = e.currentTarget as HTMLButtonElement;
@@ -250,7 +186,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       }
       onBlur?.(e);
     };
-
     return (
       <button
         ref={ref}
@@ -281,7 +216,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     );
   }
 );
-
 Button.displayName = 'Button';
-
 export default Button;
+

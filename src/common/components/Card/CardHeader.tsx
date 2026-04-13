@@ -1,5 +1,4 @@
 import React from 'react';
-
 export interface CardHeaderProps {
   title?: React.ReactNode;
   subheader?: React.ReactNode;
@@ -7,7 +6,6 @@ export interface CardHeaderProps {
   action?: React.ReactNode;
   className?: string;
 }
-
 const CardHeader: React.FC<CardHeaderProps> = ({ title, subheader, avatar, action, className = '' }) => {
   return (
     <div className={`flex items-center justify-between gap-[var(--gap-small)] ${className}`}>
@@ -22,5 +20,5 @@ const CardHeader: React.FC<CardHeaderProps> = ({ title, subheader, avatar, actio
     </div>
   );
 };
-
 export default CardHeader;
+

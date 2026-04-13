@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import Checkbox from './Checkbox';
-
 const meta: Meta<typeof Checkbox> = {
   title: 'Common/Checkbox',
   component: Checkbox,
@@ -15,11 +14,8 @@ const meta: Meta<typeof Checkbox> = {
     checked: { control: 'boolean' },
   },
 };
-
 export default meta;
-
 type Story = StoryObj<typeof Checkbox>;
-
 export const Default: Story = {
   args: {
     label: 'Unchecked Checkbox',
@@ -27,7 +23,6 @@ export const Default: Story = {
     variant: 'outline',
   },
 };
-
 export const Checked: Story = {
   args: {
     label: 'Checked Checkbox',
@@ -36,7 +31,6 @@ export const Checked: Story = {
     variant: 'outline',
   },
 };
-
 export const Small: Story = {
   args: {
     label: 'Small Size',
@@ -44,7 +38,6 @@ export const Small: Story = {
     variant: 'outline',
   },
 };
-
 export const Medium: Story = {
   args: {
     label: 'Medium Size',
@@ -52,7 +45,6 @@ export const Medium: Story = {
     variant: 'outline',
   },
 };
-
 export const Large: Story = {
   args: {
     label: 'Large Size',
@@ -60,7 +52,6 @@ export const Large: Story = {
     variant: 'outline',
   },
 };
-
 export const OutlineVariant: Story = {
   args: {
     label: 'Outline Variant',
@@ -68,7 +59,6 @@ export const OutlineVariant: Story = {
     variant: 'outline',
   },
 };
-
 export const FilledVariant: Story = {
   args: {
     label: 'Filled Variant',
@@ -76,7 +66,6 @@ export const FilledVariant: Story = {
     variant: 'filled',
   },
 };
-
 export const Required: Story = {
   args: {
     label: 'Required Checkbox',
@@ -85,7 +74,6 @@ export const Required: Story = {
     variant: 'outline',
   },
 };
-
 export const Disabled: Story = {
   args: {
     label: 'Disabled Checkbox',
@@ -94,7 +82,6 @@ export const Disabled: Story = {
     variant: 'outline',
   },
 };
-
 export const DisabledChecked: Story = {
   args: {
     label: 'Disabled Checked',
@@ -104,7 +91,6 @@ export const DisabledChecked: Story = {
     variant: 'outline',
   },
 };
-
 export const Controlled: Story = {
   render: (args) => {
     const [checked, setChecked] = useState(false);
@@ -122,7 +108,6 @@ export const Controlled: Story = {
     variant: 'outline',
   },
 };
-
 export const Uncontrolled: Story = {
   render: (args) => (
     <Checkbox
@@ -137,3 +122,4 @@ export const Uncontrolled: Story = {
     variant: 'outline',
   },
 };
+

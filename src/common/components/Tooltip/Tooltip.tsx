@@ -1,7 +1,6 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import '../../../src/styles/tokens.css';
-
 export interface TooltipProps {
   title: React.ReactNode;
   children: React.ReactNode;
@@ -14,9 +13,6 @@ export interface TooltipProps {
   enterDelay?: number;
   leaveDelay?: number;
 }
-
-
-// Size configuration using design tokens
 const createSizeConfig = (size: "sm" | "md" | "lg"): React.CSSProperties => ({
   sm: {
     padding: 'var(--space-2) var(--space-3)',
@@ -31,7 +27,6 @@ const createSizeConfig = (size: "sm" | "md" | "lg"): React.CSSProperties => ({
     fontSize: 'var(--font-size-md)',
   },
 }[size]);
-
 const Tooltip: React.FC<TooltipProps> = ({
   title,
   children,
@@ -48,52 +43,39 @@ const Tooltip: React.FC<TooltipProps> = ({
   const [tooltipId] = useState(() => `tooltip-${Math.random().toString(36).slice(2, 9)}`);
   const enterTimer = useRef<number | null>(null);
   const leaveTimer = useRef<number | null>(null);
-
   useEffect(() => {
     return () => {
       if (enterTimer.current) globalThis.clearTimeout(enterTimer.current);
       if (leaveTimer.current) globalThis.clearTimeout(leaveTimer.current);
     };
   }, []);
-
   const show = () => {
     if (leaveTimer.current) globalThis.clearTimeout(leaveTimer.current);
     enterTimer.current = globalThis.setTimeout(() => setOpen(true), enterDelay);
   };
-
   const hide = () => {
     if (enterTimer.current) globalThis.clearTimeout(enterTimer.current);
     leaveTimer.current = globalThis.setTimeout(() => setOpen(false), leaveDelay);
   };
-
   const handleTooltipKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Escape") {
       hide();
     }
   };
-
-  
   const sizeConfig = createSizeConfig(size);
-
-  // Placement styles for tooltip positioning
   const placementStyles: Record<string, React.CSSProperties> = {
     top: { bottom: '100%', left: '50%', transform: 'translateX(-50%) translateY(-8px)' },
     bottom: { top: '100%', left: '50%', transform: 'translateX(-50%) translateY(8px)' },
     left: { right: '100%', top: '50%', transform: 'translateY(-50%) translateX(-8px)' },
     right: { left: '100%', top: '50%', transform: 'translateY(-50%) translateX(8px)' },
   };
-
-  // Arrow positioning styles
   const arrowStyles: Record<string, React.CSSProperties> = {
     top: { bottom: '-4px', left: '50%', transform: 'translateX(-50%) rotate(45deg)' },
     bottom: { top: '-4px', left: '50%', transform: 'translateX(-50%) rotate(45deg)' },
     left: { right: '-4px', top: '50%', transform: 'translateY(-50%) rotate(45deg)' },
     right: { left: '-4px', top: '50%', transform: 'translateY(-50%) rotate(45deg)' },
   };
-
-  // Determine aria-describedby for children based on state
   const childAriaDescribedBy = ariaDescribedby || (open ? tooltipId : undefined);
-
   return (
     <button
       style={{ position: 'relative', display: 'inline-flex' }}
@@ -116,7 +98,6 @@ const Tooltip: React.FC<TooltipProps> = ({
             ...(ariaLabelledby ? { "aria-labelledby": ariaLabelledby } : {}),
           } as Record<string, unknown>)
         : children}
-
       {open && (
         <span
           id={tooltipId}
@@ -137,7 +118,6 @@ const Tooltip: React.FC<TooltipProps> = ({
           }}
         >
           <span style={{ display: 'inline' }}>{title}</span>
-
           <span
             aria-hidden
             style={{
@@ -154,5 +134,5 @@ const Tooltip: React.FC<TooltipProps> = ({
     </button>
   );
 };
-
 export default Tooltip;
+

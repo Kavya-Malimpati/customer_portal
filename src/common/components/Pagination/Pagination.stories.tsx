@@ -1,11 +1,7 @@
-/**
- * Pagination Component Stories
- * Demonstrates all variants, sizes, states, and ARIA configurations
- */
+
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import Pagination from './Pagination';
-
 const meta: Meta<typeof Pagination> = {
   title: 'Common/Pagination',
   component: Pagination,
@@ -23,13 +19,8 @@ const meta: Meta<typeof Pagination> = {
     selected: { control: 'boolean' },
   },
 };
-
 export default meta;
 type Story = StoryObj<typeof Pagination>;
-
-/**
- * Default pagination buttons with outlined variant.
- */
 export const Default: Story = {
   render: () => (
     <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-2)' }}>
@@ -40,10 +31,6 @@ export const Default: Story = {
     </div>
   ),
 };
-
-/**
- * Different visual variants.
- */
 export const Variants: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-6)' }}>
@@ -58,7 +45,6 @@ export const Variants: Story = {
           <Pagination value={4} variant="contained" disabled />
         </div>
       </div>
-
       <div>
         <h3 style={{ fontSize: 'var(--font-size-lg)', fontWeight: 'var(--font-weight-semibold)', marginBottom: 'var(--space-3)' }}>
           Outlined Variant
@@ -70,7 +56,6 @@ export const Variants: Story = {
           <Pagination value={4} variant="outlined" disabled />
         </div>
       </div>
-
       <div>
         <h3 style={{ fontSize: 'var(--font-size-lg)', fontWeight: 'var(--font-weight-semibold)', marginBottom: 'var(--space-3)' }}>
           Text Variant
@@ -85,10 +70,6 @@ export const Variants: Story = {
     </div>
   ),
 };
-
-/**
- * Different size variants.
- */
 export const Sizes: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-6)' }}>
@@ -102,7 +83,6 @@ export const Sizes: Story = {
           <Pagination value={3} size="sm" />
         </div>
       </div>
-
       <div>
         <h3 style={{ fontSize: 'var(--font-size-lg)', fontWeight: 'var(--font-weight-semibold)', marginBottom: 'var(--space-3)' }}>
           Medium Size
@@ -113,7 +93,6 @@ export const Sizes: Story = {
           <Pagination value={3} size="md" />
         </div>
       </div>
-
       <div>
         <h3 style={{ fontSize: 'var(--font-size-lg)', fontWeight: 'var(--font-weight-semibold)', marginBottom: 'var(--space-3)' }}>
           Large Size
@@ -127,10 +106,6 @@ export const Sizes: Story = {
     </div>
   ),
 };
-
-/**
- * Different states: selected, disabled, and combined.
- */
 export const States: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-6)' }}>
@@ -144,7 +119,6 @@ export const States: Story = {
           <Pagination value={3} selected variant="text" />
         </div>
       </div>
-
       <div>
         <h3 style={{ fontSize: 'var(--font-size-lg)', fontWeight: 'var(--font-weight-semibold)', marginBottom: 'var(--space-3)' }}>
           Disabled State
@@ -155,7 +129,6 @@ export const States: Story = {
           <Pagination value={3} disabled variant="text" />
         </div>
       </div>
-
       <div>
         <h3 style={{ fontSize: 'var(--font-size-lg)', fontWeight: 'var(--font-weight-semibold)', marginBottom: 'var(--space-3)' }}>
           Disabled + Selected
@@ -169,16 +142,11 @@ export const States: Story = {
     </div>
   ),
 };
-
-/**
- * Interactive pagination with state management.
- */
 export const Interactive: Story = {
   render: () => {
     const Demo = () => {
       const [currentPage, setCurrentPage] = useState(1);
       const totalPages = 5;
-
       const buttonStyle: React.CSSProperties = {
         padding: 'var(--space-2) var(--space-3)',
         borderRadius: 'var(--radius-md)',
@@ -188,7 +156,6 @@ export const Interactive: Story = {
         fontSize: 'var(--font-size-md)',
         transition: `all var(--transition-normal)`,
       };
-
       return (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-6)' }}>
           <div>
@@ -208,7 +175,6 @@ export const Interactive: Story = {
               ))}
             </div>
           </div>
-
           <div>
             <h3 style={{ fontSize: 'var(--font-size-lg)', fontWeight: 'var(--font-weight-semibold)', marginBottom: 'var(--space-3)' }}>
               With Previous/Next
@@ -225,7 +191,6 @@ export const Interactive: Story = {
               >
                 Previous
               </button>
-
               {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
                 <Pagination
                   key={page}
@@ -235,7 +200,6 @@ export const Interactive: Story = {
                   aria-current={page === currentPage ? 'page' : undefined}
                 />
               ))}
-
               <button
                 style={{
                   ...buttonStyle,
@@ -255,10 +219,6 @@ export const Interactive: Story = {
     return <Demo />;
   },
 };
-
-/**
- * Pagination with comprehensive ARIA attributes.
- */
 export const WithAriaAttributes: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-6)' }}>
@@ -292,3 +252,4 @@ export const WithAriaAttributes: Story = {
     </div>
   ),
 };
+

@@ -1,21 +1,7 @@
-/**
- * Select Component Stories
- *
- * Storybook stories demonstrating the Select component variants including:
- * - Size variants: sm, md, lg
- * - Visual variants: outlined, filled, standard
- * - States: normal, disabled, error, required
- * - Controlled and uncontrolled modes
- */
 
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import Select from './Select';
-
-/**
- * Select Meta Configuration
- * Defines the component, title, and default arguments
- */
 const meta: Meta<typeof Select> = {
   title: 'Common/Select',
   component: Select,
@@ -72,15 +58,8 @@ const meta: Meta<typeof Select> = {
     layout: 'padded',
   },
 };
-
 export default meta;
-
 type SelectStory = StoryObj<typeof Select>;
-
-/**
- * Select Default Story
- * Shows a basic select with three options
- */
 export const Default: SelectStory = {
   args: {
     id: 'select-default',
@@ -109,11 +88,6 @@ export const Default: SelectStory = {
     },
   },
 };
-
-/**
- * Select Controlled Story
- * Shows a select with controlled state using React hooks
- */
 export const Controlled: SelectStory = {
   render: args => {
     const [val, setVal] = useState<string | number>('2');
@@ -149,11 +123,6 @@ export const Controlled: SelectStory = {
     },
   },
 };
-
-/**
- * Select Disabled Story
- * Shows a disabled select element
- */
 export const Disabled: SelectStory = {
   args: {
     label: 'Disabled Select',
@@ -177,11 +146,6 @@ export const Disabled: SelectStory = {
     },
   },
 };
-
-/**
- * Select Error State Story
- * Shows a select with error styling
- */
 export const Error: SelectStory = {
   args: {
     label: 'Select with Error',
@@ -206,11 +170,6 @@ export const Error: SelectStory = {
     },
   },
 };
-
-/**
- * Select Required Story
- * Shows a required select element with indicator
- */
 export const Required: SelectStory = {
   args: {
     label: 'Required Field',
@@ -234,11 +193,6 @@ export const Required: SelectStory = {
     },
   },
 };
-
-/**
- * Select Size Variants Story
- * Shows select elements in all available sizes
- */
 export const Sizes: SelectStory = {
   render: args => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', maxWidth: '300px' }}>
@@ -246,12 +200,10 @@ export const Sizes: SelectStory = {
         <option value='1'>Small One</option>
         <option value='2'>Small Two</option>
       </Select>
-
       <Select {...args} label='Medium (md)' size='md' defaultValue='1'>
         <option value='1'>Medium One</option>
         <option value='2'>Medium Two</option>
       </Select>
-
       <Select {...args} label='Large (lg)' size='lg' defaultValue='1'>
         <option value='1'>Large One</option>
         <option value='2'>Large Two</option>
@@ -266,11 +218,6 @@ export const Sizes: SelectStory = {
     },
   },
 };
-
-/**
- * Select Visual Variants Story
- * Shows select elements with different visual variants
- */
 export const Variants: SelectStory = {
   render: args => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', maxWidth: '300px' }}>
@@ -278,12 +225,10 @@ export const Variants: SelectStory = {
         <option value='1'>Outlined One</option>
         <option value='2'>Outlined Two</option>
       </Select>
-
       <Select {...args} label='Filled Variant' variant='filled' defaultValue='1'>
         <option value='1'>Filled One</option>
         <option value='2'>Filled Two</option>
       </Select>
-
       <Select {...args} label='Standard Variant' variant='standard' defaultValue='1'>
         <option value='1'>Standard One</option>
         <option value='2'>Standard Two</option>
@@ -299,11 +244,6 @@ export const Variants: SelectStory = {
     },
   },
 };
-
-/**
- * Select with Long Options Story
- * Shows a select with long option labels
- */
 export const WithLongOptions: SelectStory = {
   render: args => (
     <div style={{ maxWidth: '400px' }}>
@@ -325,11 +265,6 @@ export const WithLongOptions: SelectStory = {
     },
   },
 };
-
-/**
- * Select Combined States Story
- * Shows multiple size and variant combinations
- */
 export const Combined: SelectStory = {
   render: args => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
@@ -348,7 +283,6 @@ export const Combined: SelectStory = {
           <option value='2'>Option 2</option>
         </Select>
       </div>
-
       <div style={{ maxWidth: '300px' }}>
         <h4
           style={{
@@ -364,7 +298,6 @@ export const Combined: SelectStory = {
           <option value='2'>Option 2</option>
         </Select>
       </div>
-
       <div style={{ maxWidth: '300px' }}>
         <h4
           style={{
@@ -390,3 +323,4 @@ export const Combined: SelectStory = {
     },
   },
 };
+

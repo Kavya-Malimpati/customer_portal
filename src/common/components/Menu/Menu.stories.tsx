@@ -1,7 +1,6 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import Menu from './Menu';
-
 const meta: Meta<typeof Menu> = {
   title: 'Common/Menu',
   component: Menu,
@@ -26,13 +25,8 @@ const meta: Meta<typeof Menu> = {
     tabIndex: { control: 'number' },
   },
 };
-
 export default meta;
 type Story = StoryObj<typeof meta>;
-
-/**
- * Default menu button with standard styling.
- */
 export const Default: Story = {
   args: {
     children: 'Menu',
@@ -40,10 +34,6 @@ export const Default: Story = {
     size: 'md',
   },
 };
-
-/**
- * Primary variant menu button.
- */
 export const Primary: Story = {
   args: {
     children: 'Primary Menu',
@@ -51,10 +41,6 @@ export const Primary: Story = {
     size: 'md',
   },
 };
-
-/**
- * Secondary variant menu button.
- */
 export const Secondary: Story = {
   args: {
     children: 'Secondary Menu',
@@ -62,10 +48,6 @@ export const Secondary: Story = {
     size: 'md',
   },
 };
-
-/**
- * Danger variant menu button for destructive actions.
- */
 export const Danger: Story = {
   args: {
     children: 'Delete',
@@ -73,10 +55,6 @@ export const Danger: Story = {
     size: 'md',
   },
 };
-
-/**
- * Link variant menu button.
- */
 export const Link: Story = {
   args: {
     children: 'Link Menu',
@@ -84,10 +62,6 @@ export const Link: Story = {
     size: 'md',
   },
 };
-
-/**
- * Small size menu button.
- */
 export const SmallSize: Story = {
   args: {
     children: 'Small',
@@ -95,10 +69,6 @@ export const SmallSize: Story = {
     size: 'sm',
   },
 };
-
-/**
- * Large size menu button.
- */
 export const LargeSize: Story = {
   args: {
     children: 'Large',
@@ -106,10 +76,6 @@ export const LargeSize: Story = {
     size: 'lg',
   },
 };
-
-/**
- * Menu button in disabled state.
- */
 export const Disabled: Story = {
   args: {
     disabled: true,
@@ -117,10 +83,6 @@ export const Disabled: Story = {
     variant: 'primary',
   },
 };
-
-/**
- * Menu button with title attribute for tooltip.
- */
 export const WithTitle: Story = {
   args: {
     children: 'Menu',
@@ -128,10 +90,6 @@ export const WithTitle: Story = {
     variant: 'primary',
   },
 };
-
-/**
- * Menu button with ARIA attributes for expanded/controls.
- */
 export const WithAriaAttributes: Story = {
   args: {
     'aria-label': 'Options menu',
@@ -141,15 +99,10 @@ export const WithAriaAttributes: Story = {
     variant: 'primary',
   },
 };
-
-/**
- * Controlled menu with state management.
- */
 export const Controlled: Story = {
   render: (args) => {
     const ControlledMenu = () => {
       const [isOpen, setIsOpen] = React.useState(false);
-
       return (
         <Menu
           {...args}
@@ -164,10 +117,6 @@ export const Controlled: Story = {
     return <ControlledMenu />;
   },
 };
-
-/**
- * Menu button with custom className for additional styling.
- */
 export const WithCustomClassName: Story = {
   args: {
     children: 'Custom Styled',
@@ -175,3 +124,4 @@ export const WithCustomClassName: Story = {
     variant: 'primary',
   },
 };
+

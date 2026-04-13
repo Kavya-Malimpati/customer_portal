@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Link from "./Link";
 import { BrowserRouter } from "react-router-dom";
-
 const meta: Meta<typeof Link> = {
   title: "Common/Link",
   component: Link,
@@ -38,18 +37,14 @@ const meta: Meta<typeof Link> = {
     children: { control: "text" },
   },
 };
-
 export default meta;
-
 type Story = StoryObj<typeof Link>;
-
 export const Default: Story = {
   args: {
     to: "/",
     children: "Home Link",
   },
 };
-
 export const Primary: Story = {
   args: {
     to: "/about",
@@ -57,7 +52,6 @@ export const Primary: Story = {
     children: "Primary Link",
   },
 };
-
 export const Secondary: Story = {
   args: {
     to: "/services",
@@ -65,7 +59,6 @@ export const Secondary: Story = {
     children: "Secondary Link",
   },
 };
-
 export const Success: Story = {
   args: {
     to: "/success",
@@ -73,7 +66,6 @@ export const Success: Story = {
     children: "Success Link",
   },
 };
-
 export const Error: Story = {
   args: {
     to: "/error",
@@ -81,7 +73,6 @@ export const Error: Story = {
     children: "Error Link",
   },
 };
-
 export const Info: Story = {
   args: {
     to: "/info",
@@ -89,7 +80,6 @@ export const Info: Story = {
     children: "Info Link",
   },
 };
-
 export const SmallSize: Story = {
   args: {
     to: "/small",
@@ -97,7 +87,6 @@ export const SmallSize: Story = {
     children: "Small Link",
   },
 };
-
 export const MediumSize: Story = {
   args: {
     to: "/medium",
@@ -105,7 +94,6 @@ export const MediumSize: Story = {
     children: "Medium Link",
   },
 };
-
 export const LargeSize: Story = {
   args: {
     to: "/large",
@@ -113,7 +101,6 @@ export const LargeSize: Story = {
     children: "Large Link",
   },
 };
-
 export const UnderlineHover: Story = {
   args: {
     to: "/hover",
@@ -121,7 +108,6 @@ export const UnderlineHover: Story = {
     children: "Hover to Underline",
   },
 };
-
 export const UnderlineAlways: Story = {
   args: {
     to: "/always",
@@ -129,7 +115,6 @@ export const UnderlineAlways: Story = {
     children: "Always Underlined",
   },
 };
-
 export const UnderlineNone: Story = {
   args: {
     to: "/none",
@@ -137,7 +122,6 @@ export const UnderlineNone: Story = {
     children: "No Underline",
   },
 };
-
 export const Inherit: Story = {
   args: {
     to: "/inherit",
@@ -145,3 +129,4 @@ export const Inherit: Story = {
     children: "Inherited Color",
   },
 };
+

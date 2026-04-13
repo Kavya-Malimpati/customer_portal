@@ -1,56 +1,24 @@
 import React, { useState } from 'react';
 import '../../../src/styles/tokens.css';
-
-/**
- * Checkbox Component
- *
- * A reusable, accessible Checkbox component with full design token integration.
- * Supports both controlled and uncontrolled modes with complete ARIA accessibility.
- * Uses CSS variables from tokens.css for consistent styling across the application.
- *
- * @example
- * <Checkbox
- *   id="agree"
- *   label="I agree to terms"
- *   onChange={(e) => console.log(e.target.checked)}
- *   size="md"
- *   variant="outline"
- * />
- */
 export interface CheckboxProps {
-  /** Unique identifier for the checkbox */
   id?: string;
-  /** HTML name attribute */
   name?: string;
-  /** Additional CSS classes for style extension */
   className?: string;
-  /** HTML value attribute */
   value?: string | number;
-  /** Default checked state (uncontrolled) */
   defaultChecked?: boolean;
-  /** Checked state (controlled) */
   checked?: boolean;
-  /** Label text displayed next to checkbox */
   label?: string;
-  /** Mark checkbox as required */
   required?: boolean;
-  /** Disable user interaction */
   disabled?: boolean;
-  /** Checkbox size - affects visual dimensions */
   size?: 'sm' | 'md' | 'lg';
-  /** Visual variant - outline or filled */
   variant?: 'outline' | 'filled';
-  /** Tab index for keyboard navigation */
   tabIndex?: number;
-  /** Click event handler */
   onClick?: React.MouseEventHandler<HTMLInputElement>;
-  /** Change event handler */
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
-  /** Focus event handler */
   onFocus?: React.FocusEventHandler<HTMLInputElement>;
-  /** Blur event handler */
+  hasError?: boolean;
+  errorMessage?: string;
   onBlur?: React.FocusEventHandler<HTMLInputElement>;
-  // ARIA attributes for accessibility
   'aria-label'?: string;
   'aria-labelledby'?: string;
   'aria-describedby'?: string;
@@ -60,7 +28,6 @@ export interface CheckboxProps {
   'aria-invalid'?: boolean;
   'aria-required'?: boolean;
 }
-
 const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
   (
     {
@@ -79,6 +46,8 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
       onClick,
       onChange,
       onFocus,
+      hasError = false,
+      errorMessage,
       onBlur,
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledby,
@@ -92,18 +61,15 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
     ref,
   ) => {
     const [uncontrolledChecked, setUncontrolledChecked] = useState(defaultChecked || false);
-
-    // Support both controlled and uncontrolled modes
     const isChecked = checked ?? uncontrolledChecked;
-
+    const isErrorState = hasError || ariaInvalid;
+    const errorId = errorMessage ? `${id || 'checkbox'}-error` : undefined;
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       if (checked === undefined) {
         setUncontrolledChecked(e.target.checked);
       }
       onChange?.(e);
     };
-
-    // Size configuration using design tokens
     const sizeConfig = {
       sm: {
         width: '20px',
@@ -121,8 +87,6 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
         fontSize: 'var(--font-size-md)',
       },
     };
-
-    // Variant configuration using design tokens
     const variantConfig = {
       outline: {
         border: `var(--border-width-sm) solid var(--border-color)`,
@@ -133,12 +97,9 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
         backgroundColor: 'var(--bg-muted)',
       },
     };
-
     const currentSize = sizeConfig[size];
     const currentVariant = variantConfig[variant];
     const checkboxId = id || 'checkbox';
-
-    // Checkbox container styles
     const containerStyles: React.CSSProperties = {
       display: 'flex',
       alignItems: 'center',
@@ -146,8 +107,6 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
       opacity: disabled ? 'var(--opacity-disabled)' : 1,
       cursor: disabled ? 'var(--cursor-disabled)' : 'pointer',
     };
-
-    // Custom checkbox display styles
     const checkboxDisplayStyles: React.CSSProperties = {
       width: currentSize.width,
       height: currentSize.height,
@@ -160,11 +119,11 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
       backgroundColor: isChecked ? 'var(--color-primary)' : currentVariant.backgroundColor,
       border: isChecked
         ? `var(--border-width-sm) solid var(--color-primary)`
+        : isErrorState
+        ? `var(--border-width-sm) solid var(--color-error)`
         : currentVariant.border,
       flexShrink: 0,
     };
-
-    // Label styles
     const labelStyles: React.CSSProperties = {
       fontSize: currentSize.fontSize,
       color: 'var(--text-primary)',
@@ -175,29 +134,24 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
       alignItems: 'center',
       gap: 'var(--space-1)',
     };
-
     const requiredIndicatorStyles: React.CSSProperties = {
       color: 'var(--color-error)',
       marginLeft: 'var(--space-1)',
       fontWeight: 'var(--font-weight-medium)',
     };
-
     const svgStyles: React.CSSProperties = {
       width: '60%',
       height: '60%',
       transition: `opacity var(--transition-fast)`,
     };
-
     return (
       <div style={containerStyles} className={className}>
-        {/* Hidden native checkbox for accessibility */}
         <input
           ref={ref}
           id={checkboxId}
           type='checkbox'
           name={name}
           value={value}
-          // defaultChecked={defaultChecked}
           checked={isChecked}
           disabled={disabled}
           required={required}
@@ -209,15 +163,13 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
           className='sr-only'
           aria-label={ariaLabel || label}
           aria-labelledby={ariaLabelledby}
-          aria-describedby={ariaDescribedby}
+          aria-describedby={errorId || ariaDescribedby}
           aria-hidden={ariaHidden}
           aria-disabled={ariaDisabled ?? disabled}
           aria-live={ariaLive}
-          aria-invalid={ariaInvalid}
+          aria-invalid={isErrorState}
           aria-required={ariaRequired ?? required}
         />
-
-        {/* Custom checkbox display */}
         <label
           htmlFor={checkboxId}
           style={checkboxDisplayStyles}
@@ -257,19 +209,30 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
             </svg>
           )}
         </label>
-
-        {/* Label text */}
         {label && (
           <label htmlFor={checkboxId} style={labelStyles}>
             {label}
             {required && <span style={requiredIndicatorStyles}>*</span>}
           </label>
         )}
+        {hasError && errorMessage && (
+          <div
+            id={errorId}
+            style={{
+              marginTop: 'var(--space-1)',
+              fontSize: 'var(--font-size-sm)',
+              color: 'var(--color-error)',
+              fontWeight: 'var(--font-weight-regular)',
+            }}
+            role="alert"
+          >
+            {errorMessage}
+          </div>
+        )}
       </div>
     );
   },
 );
-
 Checkbox.displayName = 'Checkbox';
-
 export default Checkbox;
+

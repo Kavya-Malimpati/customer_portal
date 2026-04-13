@@ -1,12 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import FormInput from './FormInput';
-
-/**
- * FormInput Component Stories
- * Showcases various states and configurations of the FormInput component
- */
-
 const meta: Meta<typeof FormInput> = {
   title: 'Common/FormInput',
   component: FormInput,
@@ -45,13 +39,8 @@ const meta: Meta<typeof FormInput> = {
     onChange: { action: 'changed' },
   },
 };
-
 export default meta;
 type Story = StoryObj<typeof FormInput>;
-
-/**
- * Default FormInput with text type
- */
 export const Default: Story = {
   args: {
     id: 'username',
@@ -65,10 +54,6 @@ export const Default: Story = {
     variant: 'outlined',
   },
 };
-
-/**
- * Email input field with required indicator
- */
 export const Email: Story = {
   args: {
     id: 'email',
@@ -82,10 +67,6 @@ export const Email: Story = {
     variant: 'outlined',
   },
 };
-
-/**
- * Password input field with required indicator
- */
 export const Password: Story = {
   args: {
     id: 'password',
@@ -99,10 +80,6 @@ export const Password: Story = {
     variant: 'outlined',
   },
 };
-
-/**
- * Input field with error state and helper text
- */
 export const WithError: Story = {
   args: {
     id: 'email-error',
@@ -118,10 +95,6 @@ export const WithError: Story = {
     variant: 'outlined',
   },
 };
-
-/**
- * Input field with filled value
- */
 export const Filled: Story = {
   args: {
     id: 'filled-input',
@@ -135,10 +108,6 @@ export const Filled: Story = {
     variant: 'outlined',
   },
 };
-
-/**
- * Number input field
- */
 export const Number: Story = {
   args: {
     id: 'age',
@@ -152,10 +121,6 @@ export const Number: Story = {
     variant: 'outlined',
   },
 };
-
-/**
- * Telephone input field
- */
 export const Telephone: Story = {
   args: {
     id: 'phone',
@@ -169,27 +134,19 @@ export const Telephone: Story = {
     variant: 'outlined',
   },
 };
-
-/**
- * URL input field
- */
 export const URL: Story = {
   args: {
     id: 'website',
     type: 'url',
     name: 'website',
     label: 'Website',
-    placeholder: 'https://example.com',
+    placeholder: 'https:
     value: '',
     required: false,
     size: 'md',
     variant: 'outlined',
   },
 };
-
-/**
- * Size variants
- */
 export const Small: Story = {
   args: {
     id: 'small-input',
@@ -202,7 +159,6 @@ export const Small: Story = {
     variant: 'outlined',
   },
 };
-
 export const Large: Story = {
   args: {
     id: 'large-input',
@@ -215,10 +171,6 @@ export const Large: Story = {
     variant: 'outlined',
   },
 };
-
-/**
- * Variant styles
- */
 export const FilledVariant: Story = {
   args: {
     id: 'filled-variant',
@@ -231,7 +183,6 @@ export const FilledVariant: Story = {
     variant: 'filled',
   },
 };
-
 export const StandardVariant: Story = {
   args: {
     id: 'standard-variant',
@@ -244,10 +195,6 @@ export const StandardVariant: Story = {
     variant: 'standard',
   },
 };
-
-/**
- * Disabled state
- */
 export const Disabled: Story = {
   args: {
     id: 'disabled-input',
@@ -261,10 +208,6 @@ export const Disabled: Story = {
     variant: 'outlined',
   },
 };
-
-/**
- * With helper text
- */
 export const WithHelperText: Story = {
   args: {
     id: 'helper-text',
@@ -279,21 +222,14 @@ export const WithHelperText: Story = {
     variant: 'outlined',
   },
 };
-
-/**
- * Interactive FormInput with state management
- */
 export const Interactive: Story = {
   render: () => {
     const [value, setValue] = useState('');
     const [error, setError] = useState(false);
     const [helperText, setHelperText] = useState('');
-
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       const val = e.target.value;
       setValue(val);
-
-      // Simple email validation
       if (val && !val.includes('@')) {
         setError(true);
         setHelperText('Please enter a valid email');
@@ -302,7 +238,6 @@ export const Interactive: Story = {
         setHelperText('');
       }
     };
-
     return (
       <FormInput
         id="interactive-email"
@@ -321,40 +256,29 @@ export const Interactive: Story = {
     );
   },
 };
-
-/**
- * Multiple FormInputs showcase (Login Form)
- */
 export const LoginForm: Story = {
   render: () => {
     const [formData, setFormData] = useState({ email: '', password: '' });
     const [errors, setErrors] = useState({ email: '', password: '' });
-
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       const { name, value } = e.target;
       setFormData((prev) => ({ ...prev, [name]: value }));
-
       if (errors[name as keyof typeof errors]) {
         setErrors((prev) => ({ ...prev, [name]: '' }));
       }
     };
-
     const handleSubmit = (e: React.FormEvent) => {
       e.preventDefault();
       const newErrors = { email: '', password: '' };
-
       if (!formData.email) newErrors.email = 'Email is required';
       if (!formData.password) newErrors.password = 'Password is required';
-
       setErrors(newErrors);
     };
-
     return (
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
           <h2 className="text-2xl font-bold text-gray-900 mb-6">Login</h2>
         </div>
-
         <FormInput
           id="login-email"
           type="email"
@@ -369,7 +293,6 @@ export const LoginForm: Story = {
           size="md"
           variant="outlined"
         />
-
         <FormInput
           id="login-password"
           type="password"
@@ -384,7 +307,6 @@ export const LoginForm: Story = {
           size="md"
           variant="outlined"
         />
-
         <button
           type="submit"
           className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200"
@@ -395,10 +317,6 @@ export const LoginForm: Story = {
     );
   },
 };
-
-/**
- * FormInput with required field indicator
- */
 export const Required: Story = {
   args: {
     id: 'required-field',
@@ -412,3 +330,4 @@ export const Required: Story = {
     variant: 'outlined',
   },
 };
+

@@ -1,48 +1,16 @@
 import React from 'react';
 import '../../../styles/tokens.css';
-
-/**
- * Card Component
- * 
- * A versatile container component for displaying content with consistent styling.
- * Supports interactive and non-interactive modes with full design token integration.
- * 
- * When onClick/tabIndex are present, card becomes interactive (role="button").
- * When interactive, aria-hidden should NOT be used.
- * 
- * @example
- * <Card size="md" variant="elevation">
- *   <h2>Card Title</h2>
- *   <p>Card content</p>
- * </Card>
- * 
- * @example
- * <Card size="md" variant="outlined" onClick={handleClick} tabIndex={0}>
- *   Clickable card
- * </Card>
- */
 export interface CardProps {
-  /** Unique identifier for the card */
   id?: string;
-  /** Additional CSS classes for style extension */
   className?: string;
-  /** Tab index for keyboard navigation (makes card interactive) */
   tabIndex?: number;
-  /** Card size - affects padding and spacing */
   size?: 'sm' | 'md' | 'lg';
-  /** Visual variant - elevation uses shadow, outlined uses border */
   variant?: 'elevation' | 'outlined' | 'outlined-raised';
-  /** Click handler (makes card interactive) */
   onClick?: (e: React.MouseEvent<HTMLElement>) => void;
-  /** Focus event handler */
   onFocus?: (e: React.FocusEvent<HTMLElement>) => void;
-  /** Blur event handler */
   onBlur?: (e: React.FocusEvent<HTMLElement>) => void;
-  /** HTML title attribute for tooltip */
   title?: string;
-  /** Card content */
   children?: React.ReactNode;
-  // ARIA attributes
   'aria-label'?: string;
   'aria-labelledby'?: string;
   'aria-describedby'?: string;
@@ -51,8 +19,6 @@ export interface CardProps {
   'aria-live'?: 'off' | 'polite' | 'assertive';
   'aria-haspopup'?: boolean | 'menu' | 'listbox' | 'tree' | 'grid' | 'dialog';
 }
-
-// Size configuration using design tokens
 const sizeConfig = {
   sm: {
     padding: 'var(--space-3)',
@@ -67,8 +33,6 @@ const sizeConfig = {
     minHeight: '200px',
   },
 };
-
-// Variant configuration using design tokens
 const variantConfig = {
   elevation: {
     backgroundColor: 'var(--bg-surface)',
@@ -86,7 +50,6 @@ const variantConfig = {
     boxShadow: 'var(--shadow-sm)',
   },
 };
-
 const Card: React.FC<CardProps> = ({
   id,
   className = '',
@@ -108,8 +71,6 @@ const Card: React.FC<CardProps> = ({
 }) => {
   const currentSize = sizeConfig[size];
   const currentVariant = variantConfig[variant];
-
-  // Base styles using design tokens
   const baseStyles: React.CSSProperties = {
     display: 'flex',
     flexDirection: 'column',
@@ -117,23 +78,17 @@ const Card: React.FC<CardProps> = ({
     transition: `all var(--transition-normal)`,
     color: 'var(--text-primary)',
   };
-
   const cardStyles: React.CSSProperties = {
     ...baseStyles,
     ...currentVariant,
     padding: currentSize.padding,
     minHeight: currentSize.minHeight,
   };
-
-  // Determine if card is interactive (has click handler or is focusable)
   const isInteractive = Boolean(onClick || tabIndex !== undefined);
-
-  // Interactive card with hover and focus states
   const interactiveStyles: React.CSSProperties = {
     ...cardStyles,
     cursor: 'pointer',
   };
-
   const getInteractiveStateStyles = (state: 'hover' | 'focus'): React.CSSProperties => {
     switch (state) {
       case 'hover':
@@ -153,29 +108,24 @@ const Card: React.FC<CardProps> = ({
         return {};
     }
   };
-
   const handleMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
     if (!isInteractive) return;
     Object.assign(e.currentTarget.style, getInteractiveStateStyles('hover'));
   };
-
   const handleMouseLeave = (e: React.MouseEvent<HTMLElement>) => {
     if (!isInteractive) return;
     Object.assign(e.currentTarget.style, interactiveStyles);
   };
-
   const handleFocus = (e: React.FocusEvent<HTMLElement>) => {
     if (!isInteractive) return;
     Object.assign(e.currentTarget.style, getInteractiveStateStyles('focus'));
     onFocus?.(e);
   };
-
   const handleBlur = (e: React.FocusEvent<HTMLElement>) => {
     if (!isInteractive) return;
     Object.assign(e.currentTarget.style, interactiveStyles);
     onBlur?.(e);
   };
-
   const commonProps = {
     id,
     style: isInteractive ? interactiveStyles : cardStyles,
@@ -187,7 +137,6 @@ const Card: React.FC<CardProps> = ({
     'aria-live': ariaLive,
     'aria-haspopup': ariaHaspopup,
   };
-
   return (
     <>
       {isInteractive ? (
@@ -215,5 +164,5 @@ const Card: React.FC<CardProps> = ({
     </>
   );
 };
-
 export default Card;
+

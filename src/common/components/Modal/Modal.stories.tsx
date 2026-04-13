@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import Modal from './Modal';
-
 const meta: Meta<typeof Modal> = {
   title: 'Common/Modal',
   component: Modal,
@@ -12,13 +11,8 @@ const meta: Meta<typeof Modal> = {
     hideBackdrop: { control: 'boolean' },
   },
 };
-
 export default meta;
 type Story = StoryObj<typeof meta>;
-
-/**
- * Default modal with title and simple content.
- */
 export const Default: Story = {
   render: () => {
     const Demo = () => {
@@ -66,10 +60,6 @@ export const Default: Story = {
     return <Demo />;
   },
 };
-
-/**
- * Modal without backdrop overlay.
- */
 export const WithoutBackdrop: Story = {
   render: () => {
     const Demo = () => {
@@ -100,10 +90,6 @@ export const WithoutBackdrop: Story = {
     return <Demo />;
   },
 };
-
-/**
- * Modal with Escape key disabled.
- */
 export const DisableEscape: Story = {
   render: () => {
     const Demo = () => {
@@ -154,10 +140,6 @@ export const DisableEscape: Story = {
     return <Demo />;
   },
 };
-
-/**
- * Modal with custom slots (header, footer, actions).
- */
 export const WithSlots: Story = {
   render: () => {
     const Demo = () => {
@@ -234,10 +216,6 @@ export const WithSlots: Story = {
     return <Demo />;
   },
 };
-
-/**
- * Modal with long scrollable content.
- */
 export const ScrollableContent: Story = {
   render: () => {
     const Demo = () => {
@@ -272,3 +250,4 @@ export const ScrollableContent: Story = {
     return <Demo />;
   },
 };
+

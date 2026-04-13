@@ -1,21 +1,3 @@
-/**
- * Tabs System - Reusable component with design tokens
- * - Supports numeric and string values for tabs
- * - Full keyboard navigation (Home/End/Arrow keys)
- * - Animated indicator bar using design tokens
- * - Auto-scroll for scrollable variant
- * - Fade-in TabPanels
- * - Registers/unregisters tabs in DOM order
- * - Uses design tokens from `src/styles/tokens.css`
- *
- * Usage:
- *   <Tabs defaultValue={0} variant="scrollable" size="md">
- *     <Tab value={0} label="One" />
- *     <Tab value="two" label="Two" />
- *     <TabPanel value={0}> ... </TabPanel>
- *     <TabPanel value="two"> ... </TabPanel>
- *   </Tabs>
- */
 
 import React, {
   createContext,
@@ -30,10 +12,6 @@ import React, {
   useId,
 } from "react";
 import '../../../src/styles/tokens.css';
-
-// ============================================================================
-// Types
-// ============================================================================
 export type TabSize = 'sm' | 'md' | 'lg';
 export type TabVariant =
   | "basic"
@@ -42,13 +20,11 @@ export type TabVariant =
   | "full-width"
   | "vertical"
   | "vertical-centered";
-
 interface RegisteredTab {
   value: string | number;
   el: HTMLButtonElement | null;
   id?: string;
 }
-
 interface TabsContextType {
   value: string | number;
   onChange: (value: string | number) => void;
@@ -62,9 +38,7 @@ interface TabsContextType {
   tabsListRef: React.MutableRefObject<RegisteredTab[]>;
   sizeConfig: ReturnType<typeof createSizeConfig>;
 }
-
 const TabsContext = createContext<TabsContextType | undefined>(undefined);
-
 const useTabsContext = () => {
   const context = useContext(TabsContext);
   if (!context) {
@@ -72,10 +46,6 @@ const useTabsContext = () => {
   }
   return context;
 };
-
-// ============================================================================
-// Size Configuration
-// ============================================================================
 const createSizeConfig = (size: TabSize) => ({
   sm: {
     tab: { fontSize: 'var(--font-size-xs)', padding: 'var(--space-2) var(--space-3)' },
@@ -90,10 +60,6 @@ const createSizeConfig = (size: TabSize) => ({
     panel: { fontSize: 'var(--font-size-md)' },
   },
 }[size]);
-
-// ============================================================================
-// Props Interfaces
-// ============================================================================
 export interface TabsProps {
   id?: string;
   className?: string;
@@ -109,7 +75,6 @@ export interface TabsProps {
   "aria-describedby"?: string;
   "aria-orientation"?: "horizontal" | "vertical";
 }
-
 export interface TabProps {
   id?: string;
   className?: string;
@@ -128,7 +93,6 @@ export interface TabProps {
   "aria-labelledby"?: string;
   "aria-describedby"?: string;
 }
-
 export interface TabPanelProps {
   id?: string;
   className?: string;
@@ -138,10 +102,6 @@ export interface TabPanelProps {
   "aria-labelledby"?: string;
   "aria-describedby"?: string;
 }
-
-// ============================================================================
-// Variant Container Styles
-// ============================================================================
 const variantContainerStyles: Record<TabVariant, React.CSSProperties> = {
   basic: {
     display: 'flex',
@@ -173,10 +133,6 @@ const variantContainerStyles: Record<TabVariant, React.CSSProperties> = {
     borderRight: 'var(--border-width-sm) solid var(--border-color)',
   },
 };
-
-// ============================================================================
-// Variant Tab Styles
-// ============================================================================
 const tabBaseStyle: React.CSSProperties = {
   display: 'inline-flex',
   alignItems: 'center',
@@ -187,7 +143,6 @@ const tabBaseStyle: React.CSSProperties = {
   border: 'none',
   background: 'transparent',
 };
-
 const getTabStyle = (variant: TabVariant, isSelected: boolean, isDisabled: boolean | undefined): React.CSSProperties => ({
   ...tabBaseStyle,
   color: isSelected ? 'var(--color-primary)' : 'var(--text-secondary)',
@@ -198,10 +153,6 @@ const getTabStyle = (variant: TabVariant, isSelected: boolean, isDisabled: boole
   ...(variant === 'full-width' && { flex: 1 }),
   ...(variant === 'vertical-centered' && { flex: 1 }),
 });
-
-// ============================================================================
-// Tabs Component
-// ============================================================================
 const Tabs = ({
   id,
   className = "",
@@ -224,16 +175,9 @@ const Tabs = ({
   const isVertical = (ariaOrientation ?? (variant.includes("vertical") ? "vertical" : "horizontal")) === "vertical";
   const orientation = isVertical ? "vertical" : "horizontal";
   const sizeConfig = createSizeConfig(size);
-
-  // ordered registered tabs (in DOM order)
   const tabsListRef = useRef<RegisteredTab[]>([]);
-
-  // indicator state
   const [indicator, setIndicator] = useState({ left: 0, width: 0, top: 0, height: 0 });
-
-  // container ref to compute offsets
   const containerRef = useRef<HTMLDivElement | null>(null);
-
   const handleChange = useCallback((newValue: string | number) => {
     if (!disabled) {
       if (controlledValue === undefined) {
@@ -242,28 +186,18 @@ const Tabs = ({
       if (onChange) onChange(newValue);
     }
   }, [disabled, controlledValue, onChange]);
-
-  // register / unregister tabs (keeps DOM order)
   const registerTab = useCallback((tabValue: string | number, el: HTMLButtonElement | null, tabId?: string) => {
-    // If el is null, ensure it's removed.
     tabsListRef.current = tabsListRef.current.filter((r) => r.value !== tabValue);
     if (el) {
-      // Insert at end (DOM order is represented by render order of Tab components)
       tabsListRef.current.push({ value: tabValue, el, id: tabId });
     }
-    // update indicator after registration
-    // do in layout effect via effect triggered by value change below
   }, []);
-
   const unregisterTab = useCallback((tabValue: string | number) => {
     tabsListRef.current = tabsListRef.current.filter((r) => r.value !== tabValue);
   }, []);
-
   const getTabIndex = useCallback((tabValue: string | number) => {
     return tabsListRef.current.findIndex((r) => r.value === tabValue);
   }, []);
-
-  // compute indicator when value or tabs list changes or on resize
   useLayoutEffect(() => {
     const entries = tabsListRef.current;
     const entry = entries.find((e) => e.value === value);
@@ -278,7 +212,6 @@ const Tabs = ({
           height: 2,
         });
       } else {
-        // vertical indicator (height & top)
         setIndicator({
           left: 0,
           width: 2,
@@ -286,16 +219,12 @@ const Tabs = ({
           height: elRect.height,
         });
       }
-
-      // if scrollable variant, ensure selected tab is visible
       if (variant === "scrollable") {
         entry.el.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
       }
     } else {
-      // no entry found - collapse indicator
       setIndicator({ left: 0, width: 0, top: 0, height: 0 });
     }
-    // recompute on window resize
     const handleResize = () => {
       const e = tabsListRef.current.find((e) => e.value === value);
       if (e?.el && containerRef.current) {
@@ -318,12 +247,9 @@ const Tabs = ({
         }
       }
     };
-
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, [value, children, variant, orientation]);
-
-  // Provider value - memoized to prevent unnecessary re-renders of consuming components
   const providerValue: TabsContextType = useMemo(
     () => ({
       value,
@@ -340,14 +266,11 @@ const Tabs = ({
     }),
     [value, handleChange, variant, size, disabled, orientation, registerTab, unregisterTab, getTabIndex, tabsListRef, sizeConfig]
   );
-
-  // outer container style
   const containerStyle: React.CSSProperties = {
     ...variantContainerStyles[variant],
     ...(isVertical && { display: 'flex', flexDirection: 'column' }),
     position: 'relative',
   };
-
   return (
     <TabsContext.Provider value={providerValue}>
       <div
@@ -361,11 +284,10 @@ const Tabs = ({
         aria-describedby={ariaDescribedby}
         aria-orientation={orientation}
       >
-        {/* tabs are rendered by children */}
+        {}
         {children}
-
-        {/* Animated indicator */}
-        {/* Horizontal: bottom underline, Vertical: left rail */}
+        {}
+        {}
         <span
           aria-hidden
           style={
@@ -396,10 +318,6 @@ const Tabs = ({
     </TabsContext.Provider>
   );
 };
-
-// ============================================================================
-// Tab Component
-// ============================================================================
 const Tab = ({
   id,
   className = "",
@@ -429,57 +347,39 @@ const Tab = ({
     tabsListRef,
     sizeConfig,
   } = useTabsContext();
-
   const tabRef = useRef<HTMLButtonElement | null>(null);
   const generatedId = useId();
   const tabId = id ?? `tab-${generatedId}-${String(value)}`;
   const isSelected = selectedValue === value;
   const isDisabled = disabled || tabsDisabled;
-
-  // Register tab when mounted and update on unmount
   useEffect(() => {
     registerTab(value, tabRef.current, tabId);
     return () => unregisterTab(value);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);
-
-  // Keep registration updated if element ref changes
   useEffect(() => {
-    // update element pointer
     registerTab(value, tabRef.current, tabId);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tabRef.current]);
-
-  // When selected, ensure scroll into view for scrollable variant
   useEffect(() => {
     if (isSelected && variant === "scrollable" && tabRef.current) {
       tabRef.current.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
     }
   }, [isSelected, variant]);
-
-  // handle click
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (!isDisabled) {
       onChange(value);
     }
     if (onClick) onClick(e);
   };
-
-  // keyboard nav using tabsListRef (DOM order preserved)
   const handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
     if (isDisabled) return;
-
-    const entries = tabsListRef.current.filter((r) => r.el); // available elements
+    const entries = tabsListRef.current.filter((r) => r.el); 
     const currentIndex = entries.findIndex((r) => r.value === value);
-
     const focusIndex = (index: number) => {
       if (entries.length === 0) return;
       const idx = (index + entries.length) % entries.length;
       const el = entries[idx].el;
       if (el) el.focus();
     };
-
-    // Handle key down for both horizontal and vertical navigation
     const handleKeyNavigation = () => {
       if (e.key === "Home") {
         e.preventDefault();
@@ -499,7 +399,6 @@ const Tab = ({
           focusIndex(currentIndex + 1);
         }
       } else if (orientation === "vertical") {
-        // vertical navigation: up/down
         if (e.key === "ArrowUp") {
           e.preventDefault();
           focusIndex(currentIndex - 1);
@@ -509,12 +408,9 @@ const Tab = ({
         }
       }
     };
-
     handleKeyNavigation();
   };
-
   const baseStyle = getTabStyle(variant, isSelected, isDisabled);
-
   return (
     <button
       ref={tabRef}
@@ -565,10 +461,6 @@ const Tab = ({
     </button>
   );
 };
-
-// ============================================================================
-// TabPanel Component
-// ============================================================================
 const TabPanel = ({
   id,
   className = "",
@@ -582,7 +474,6 @@ const TabPanel = ({
   const isSelected = selectedValue === value;
   const generatedId = useId();
   const panelId = id ?? `tabpanel-${generatedId}-${String(value)}`;
-
   return (
     <div
       id={`${panelId}-panel`}
@@ -605,9 +496,6 @@ const TabPanel = ({
     </div>
   );
 };
-
-// ============================================================================
-// Exports
-// ============================================================================
 export { Tabs, Tab, TabPanel };
 export default Tabs;
+

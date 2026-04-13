@@ -1,50 +1,24 @@
 import React, { useState } from 'react';
 import '../../../src/styles/tokens.css';
-
-/**
- * Accordion Component (Updated with Tokens)
- * 
- * A collapsible section component that expands/collapses to show/hide content.
- * Features smooth animations, customizable sizing and styling, with full design token integration.
- * 
- * @example
- * <Accordion title="Section 1" size="md" variant="outlined">
- *   <p>Content goes here</p>
- * </Accordion>
- */
 export interface AccordionProps {
-  /** Unique identifier for the accordion */
   id?: string;
-  /** Additional CSS classes for style extension */
   className?: string;
-  /** Title/header text for the accordion */
   children?: React.ReactNode;
-  /** Header title text */
   title?: string;
-  /** Control state - whether accordion is open */
   isOpen?: boolean;
-  /** Callback triggered when accordion state changes */
   onChange?: (isOpen: boolean) => void;
-  /** Component size - affects padding and text size */
   size?: 'sm' | 'md' | 'lg';
-  /** Visual variant - elevation uses shadow, outlined uses border */
   variant?: 'elevation' | 'outlined';
-  /** Disable user interaction */
   disabled?: boolean;
-  /** ARIA label for accessibility */
   'aria-label'?: string;
-  /** ARIA labelledby for accessibility */
   'aria-labelledby'?: string;
-  /** ARIA describedby for accessibility */
   'aria-describedby'?: string;
-  /** ARIA hidden from accessibility tree */
   'aria-hidden'?: boolean;
-  /** ARIA live region announcement */
   'aria-live'?: 'off' | 'polite' | 'assertive';
-  /** ARIA invalid state */
   'aria-invalid'?: boolean;
+  hasError?: boolean;
+  errorMessage?: string;
 }
-
 const Accordion: React.FC<AccordionProps> = ({
   id,
   className = '',
@@ -61,20 +35,17 @@ const Accordion: React.FC<AccordionProps> = ({
   'aria-hidden': ariaHidden,
   'aria-invalid': ariaInvalid,
   'aria-live': ariaLive,
+  hasError = false,
+  errorMessage,
 }) => {
   const [uncontrolledIsOpen, setUncontrolledIsOpen] = useState(false);
-
-  // Support both controlled and uncontrolled modes
   const isOpen = controlledIsOpen ?? uncontrolledIsOpen;
-
   const handleToggle = () => {
     if (disabled) return;
     const newState = !isOpen;
     setUncontrolledIsOpen(newState);
     onChange?.(newState);
   };
-
-  // Size configuration - maps to design tokens
   const sizeConfig: Record<'sm' | 'md' | 'lg', { padding: string; fontSize: string }> = {
     sm: {
       padding: 'var(--space-2) var(--space-3)',
@@ -89,8 +60,6 @@ const Accordion: React.FC<AccordionProps> = ({
       fontSize: 'var(--font-size-lg)',
     },
   };
-
-  // Variant configuration - uses design tokens
   const variantConfig: Record<'elevation' | 'outlined', { boxShadow: string; border: string }> = {
     elevation: {
       boxShadow: 'var(--shadow-md)',
@@ -101,11 +70,9 @@ const Accordion: React.FC<AccordionProps> = ({
       boxShadow: 'none',
     },
   };
-
   const contentId = `${id || 'accordion'}-content`;
   const currentSize = sizeConfig[size] || sizeConfig.md;
   const currentVariant = variantConfig[variant] || variantConfig.outlined;
-
   const headerStyles: React.CSSProperties = {
     padding: currentSize.padding,
     fontSize: currentSize.fontSize,
@@ -117,25 +84,27 @@ const Accordion: React.FC<AccordionProps> = ({
     cursor: disabled ? 'var(--cursor-disabled)' : 'pointer',
     opacity: disabled ? 'var(--opacity-disabled)' : 1,
   };
-
   const contentWrapperStyles: React.CSSProperties = {
     overflow: 'hidden',
     transition: `all var(--transition-normal)`,
     maxHeight: isOpen ? 'var(--accordion-max-height)' : '0',
   };
-
   const contentStyles: React.CSSProperties = {
     padding: currentSize.padding,
     backgroundColor: 'var(--bg-surface)',
     color: 'var(--text-secondary)',
   };
-
+  const isErrorState = ariaInvalid || hasError;
+  const errorId = errorMessage ? `${id || 'accordion'}-error` : undefined;
   const containerStyles: React.CSSProperties = {
     borderRadius: 'var(--radius-lg)',
     overflow: 'hidden',
     ...currentVariant,
+    ...(isErrorState ? {
+      border: 'var(--border-width-sm) solid var(--color-error)',
+      boxShadow: '0 0 0 1px var(--color-error-light)'
+    } : {}),
   };
-
   return (
     <div
       id={id}
@@ -145,7 +114,6 @@ const Accordion: React.FC<AccordionProps> = ({
       aria-hidden={ariaHidden}
       aria-invalid={ariaInvalid}
     >
-      {/* Header */}
       <button
         onClick={handleToggle}
         disabled={disabled}
@@ -162,7 +130,8 @@ const Accordion: React.FC<AccordionProps> = ({
         aria-controls={contentId} 
         aria-label={ariaLabel || title}
         aria-labelledby={ariaLabelledby}
-        aria-describedby={ariaDescribedby}
+        aria-describedby={errorId || ariaDescribedby}
+        aria-invalid={isErrorState}
         onMouseEnter={(e) => {
           if (!disabled) {
             e.currentTarget.style.backgroundColor = 'var(--bg-hover)';
@@ -201,8 +170,6 @@ const Accordion: React.FC<AccordionProps> = ({
           />
         </svg>
       </button>
-
-      {/* Content */}
       <div
         id={contentId}
         style={contentWrapperStyles}
@@ -213,8 +180,23 @@ const Accordion: React.FC<AccordionProps> = ({
           {children || <p>Accordion content goes here.</p>}
         </div>
       </div>
+      {hasError && errorMessage && (
+        <div
+          id={errorId}
+          style={{
+            padding: 'var(--space-2) var(--space-3)',
+            backgroundColor: 'var(--color-error-light)',
+            color: 'var(--color-error-dark)',
+            fontSize: 'var(--font-size-sm)',
+            borderTop: 'var(--border-width-sm) solid var(--color-error)',
+          }}
+          role="alert"
+        >
+          {errorMessage}
+        </div>
+      )}
     </div>
   );
 };
-
 export default Accordion;
+

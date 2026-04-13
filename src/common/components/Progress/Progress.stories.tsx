@@ -1,23 +1,8 @@
-/**
- * Progress Component Stories
- *
- * Storybook stories demonstrating the Progress component variants including:
- * - LinearProgress: Horizontal progress bars with multiple variants
- * - CircularProgress: Circular progress indicators with sizing options
- * - Various states: determinate, indeterminate, buffer, query
- * - Color variants: primary, secondary, error, info, success, warning
- * - Size options: sm, md, lg
- */
 
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import LinearProgress from './LinearProgress';
 import CircularProgress from './CircularProgress';
-
-/**
- * LinearProgress Meta Configuration
- * Defines the component, title, and default arguments for LinearProgress stories
- */
 const LinearMeta: Meta<typeof LinearProgress> = {
   title: 'Common/Progress/LinearProgress',
   component: LinearProgress,
@@ -62,15 +47,8 @@ const LinearMeta: Meta<typeof LinearProgress> = {
     layout: 'padded',
   },
 };
-
 export default LinearMeta;
-
 type LinearProgressStory = StoryObj<typeof LinearProgress>;
-
-/**
- * LinearProgress Default Story
- * Shows a determinate linear progress bar at 50%
- */
 export const LinearDefault: LinearProgressStory = {
   args: {
     id: 'linear-default',
@@ -89,11 +67,6 @@ export const LinearDefault: LinearProgressStory = {
     },
   },
 };
-
-/**
- * LinearProgress Determinate Story
- * Shows a linear progress bar with interactive slider
- */
 export const LinearDeterminate: LinearProgressStory = {
   render: (args) => {
     const [value, setValue] = useState(40);
@@ -132,11 +105,6 @@ export const LinearDeterminate: LinearProgressStory = {
     },
   },
 };
-
-/**
- * LinearProgress Indeterminate Story
- * Shows an animated linear progress bar for indefinite loading
- */
 export const LinearIndeterminate: LinearProgressStory = {
   args: {
     id: 'linear-indeterminate',
@@ -155,11 +123,6 @@ export const LinearIndeterminate: LinearProgressStory = {
     },
   },
 };
-
-/**
- * LinearProgress Color Variants Story
- * Shows linear progress bars in all available color themes
- */
 export const LinearColors: LinearProgressStory = {
   render: (args) => {
     const colors: Array<'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning'> = [
@@ -202,11 +165,6 @@ export const LinearColors: LinearProgressStory = {
     },
   },
 };
-
-/**
- * LinearProgress Size Variants Story
- * Shows linear progress bars in all available sizes
- */
 export const LinearSizes: LinearProgressStory = {
   render: (args) => (
     <div style={{ width: '100%', maxWidth: '600px', padding: '16px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
@@ -262,11 +220,6 @@ export const LinearSizes: LinearProgressStory = {
     },
   },
 };
-
-/**
- * CircularProgress Meta Configuration
- * Defines the component, title, and default arguments for CircularProgress stories
- */
 export const CircularMeta: Meta<typeof CircularProgress> = {
   title: 'Common/Progress/CircularProgress',
   component: CircularProgress,
@@ -312,13 +265,7 @@ export const CircularMeta: Meta<typeof CircularProgress> = {
     layout: 'centered',
   },
 };
-
 type CircularProgressStory = StoryObj<typeof CircularProgress>;
-
-/**
- * CircularProgress Default Story
- * Shows a determinate circular progress indicator at 50%
- */
 export const CircularDefault: CircularProgressStory = {
   args: {
     id: 'circular-default',
@@ -337,11 +284,6 @@ export const CircularDefault: CircularProgressStory = {
     },
   },
 };
-
-/**
- * CircularProgress Determinate Story
- * Shows a circular progress indicator with interactive slider
- */
 export const CircularDeterminate: CircularProgressStory = {
   render: (args) => {
     const [value, setValue] = useState(60);
@@ -380,11 +322,6 @@ export const CircularDeterminate: CircularProgressStory = {
     },
   },
 };
-
-/**
- * CircularProgress Indeterminate Story
- * Shows animated circular progress indicators for indefinite loading
- */
 export const CircularIndeterminate: CircularProgressStory = {
   render: (args) => (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '24px', padding: '16px' }}>
@@ -428,11 +365,6 @@ export const CircularIndeterminate: CircularProgressStory = {
     },
   },
 };
-
-/**
- * CircularProgress Color Variants Story
- * Shows circular progress indicators in all available color themes
- */
 export const CircularColors: CircularProgressStory = {
   render: (args) => {
     const colors: Array<'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning'> = [
@@ -477,11 +409,6 @@ export const CircularColors: CircularProgressStory = {
     },
   },
 };
-
-/**
- * CircularProgress Size Variants Story
- * Shows circular progress indicators in all available sizes
- */
 export const CircularSizes: CircularProgressStory = {
   render: (args) => (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '24px', padding: '16px' }}>
@@ -540,5 +467,4 @@ export const CircularSizes: CircularProgressStory = {
     },
   },
 };
-
 

@@ -1,69 +1,10 @@
-/**
- * AutoComplete Component
- *
- * Purpose: A reusable, accessible AutoComplete component with search functionality,
- * dropdown suggestions, and full WCAG 2.2 Level AA compliance.
- *
- * Design Tokens Used:
- *   - Colors: --color-primary, --color-primary-hover, --color-error, --color-gray-*
- *   - Text: --text-primary, --text-secondary, --text-muted
- *   - Backgrounds: --bg-surface, --bg-muted, --bg-hover
- *   - Borders: --border-color, --border-color-focus, --border-width-sm
- *   - Spacing: --space-2, --space-3, --space-4
- *   - Sizing: --control-height-sm, --control-height-md, --control-height-lg
- *   - Typography: --font-size-sm, --font-size-md, --font-weight-medium
- *   - Border Radius: --radius-md, --radius-lg
- *   - Shadows: --shadow-sm, --shadow-md
- *   - Z-Index: --z-dropdown
- *   - States: --opacity-disabled, --cursor-disabled
- *
- * Props:
- *   - id: Unique identifier for the input
- *   - name: HTML name attribute for form submission
- *   - className: Additional CSS classes for styling override
- *   - value: Current input/selected value
- *   - placeholder: Placeholder text for the input
- *   - required: Whether the field is required
- *   - disabled: Disables the input and dropdown
- *   - readOnly: Makes input read-only but still focusable
- *   - title: Title/tooltip text
- *   - size: "sm" | "md" | "lg" (controls visual size)
- *   - autoFocus: Auto-focus on mount
- *   - autoComplete: HTML autocomplete attribute
- *   - options: Array of suggestion options (string[] or {label, value}[])
- *   - onChange: Called when input value changes
- *   - onFocus: Called when input receives focus
- *   - onBlur: Called when input loses focus
- *   - onSelect: Called when an option is selected
- *   - aria-label: ARIA label for screen readers
- *   - aria-labelledby: ID of element that labels this input
- *   - aria-describedby: ID of element that describes this input
- *   - aria-disabled: Programmatic disabled state
- *   - aria-controls: ID of popup the input controls
- *   - aria-live: Live region announcement level
- *   - aria-invalid: Whether the input value is invalid
- *   - aria-required: Whether the input is required
- *
- * Behavior:
- *   - Renders semantic input with dropdown suggestion list
- *   - Shows/hides dropdown on focus/blur with proper timing
- *   - Filters suggestions based on input value
- *   - Keyboard navigation: Arrow keys to select, Enter to confirm, Escape to close
- *   - Full ARIA support: listbox role, option role, aria-expanded, aria-activedescendant
- *   - Accessible focus management with visible focus indicator
- *   - Screen reader announcements for suggestion counts and selections
- */
-
 import React, { useState, useRef, useId, useMemo, useCallback } from 'react';
 import '../../styles/tokens.css';
-
 interface Option {
   label: string;
   value: string;
 }
-
 type AutoCompleteSize = 'sm' | 'md' | 'lg';
-
 export interface AutoCompleteProps {
   id?: string;
   name?: string;
@@ -91,20 +32,12 @@ export interface AutoCompleteProps {
   'aria-invalid'?: boolean;
   'aria-required'?: boolean;
 }
-
-/**
- * Normalizes option format to consistent {label, value} structure
- */
 const normalizeOption = (option: string | Option): Option => {
   if (typeof option === 'string') {
     return { label: option, value: option };
   }
   return option;
 };
-
-/**
- * Filters options based on input value
- */
 const filterOptions = (inputValue: string, options: Option[]): Option[] => {
   const lowerInput = inputValue.toLowerCase().trim();
   if (!lowerInput) return options;
@@ -112,7 +45,6 @@ const filterOptions = (inputValue: string, options: Option[]): Option[] => {
     opt.label.toLowerCase().includes(lowerInput)
   );
 };
-
 const AutoComplete = React.forwardRef<HTMLInputElement, AutoCompleteProps>(
   (
     {
@@ -148,27 +80,20 @@ const AutoComplete = React.forwardRef<HTMLInputElement, AutoCompleteProps>(
     const fieldId = id || `autocomplete-${generatedId}`;
     const listboxId = ariaControls || `${fieldId}-listbox`;
     const announcementId = `${fieldId}-announce`;
-
     const [inputValue, setInputValue] = useState(value);
     const [isOpen, setIsOpen] = useState(false);
     const [highlightedIndex, setHighlightedIndex] = useState<number | null>(null);
     const inputRef = useRef<HTMLInputElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
-
     React.useImperativeHandle(ref, () => inputRef.current as HTMLInputElement);
-
-    // Normalize and filter options
     const normalizedOptions = useMemo(
       () => options.map(normalizeOption),
       [options]
     );
-
     const filteredOptions = useMemo(
       () => filterOptions(inputValue, normalizedOptions),
       [inputValue, normalizedOptions]
     );
-
-    // Size mapping
     const sizeClasses = useMemo(() => {
       const sizes: Record<AutoCompleteSize, string> = {
         sm: 'px-3 py-2 text-sm h-8',
@@ -177,60 +102,40 @@ const AutoComplete = React.forwardRef<HTMLInputElement, AutoCompleteProps>(
       };
       return sizes[size];
     }, [size]);
-
-    /**
-     * Handle input change with filtering
-     */
     const handleInputChange = useCallback(
       (e: React.ChangeEvent<HTMLInputElement>) => {
         const newValue = e.target.value;
         setInputValue(newValue);
         setHighlightedIndex(null);
         setIsOpen(true);
-
         if (onChange) {
           onChange(e, newValue);
         }
       },
       [onChange]
     );
-
-    /**
-     * Handle input focus - show suggestions
-     */
     const handleInputFocus = useCallback(
       (e: React.FocusEvent<HTMLInputElement>) => {
         setIsOpen(true);
         setHighlightedIndex(null);
-
         if (onFocus) {
           onFocus(e);
         }
       },
       [onFocus]
     );
-
-    /**
-     * Handle input blur - close suggestions
-     */
     const handleInputBlur = useCallback(
       (e: React.FocusEvent<HTMLInputElement>) => {
-        // Delay to allow option click to register
         setTimeout(() => {
           setIsOpen(false);
           setHighlightedIndex(null);
         }, 100);
-
         if (onBlur) {
           onBlur(e);
         }
       },
       [onBlur]
     );
-
-    /**
-     * Handle keyboard navigation
-     */
     const handleKeyDown = useCallback(
       (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (!isOpen || filteredOptions.length === 0) {
@@ -239,7 +144,6 @@ const AutoComplete = React.forwardRef<HTMLInputElement, AutoCompleteProps>(
           }
           return;
         }
-
         switch (e.key) {
           case 'ArrowDown':
             e.preventDefault();
@@ -249,14 +153,12 @@ const AutoComplete = React.forwardRef<HTMLInputElement, AutoCompleteProps>(
                 : Math.min(prev + 1, filteredOptions.length - 1)
             );
             break;
-
           case 'ArrowUp':
             e.preventDefault();
             setHighlightedIndex((prev) =>
               prev === null || prev === 0 ? filteredOptions.length - 1 : prev - 1
             );
             break;
-
           case 'Enter':
             e.preventDefault();
             if (highlightedIndex !== null) {
@@ -264,41 +166,29 @@ const AutoComplete = React.forwardRef<HTMLInputElement, AutoCompleteProps>(
               handleSelectOption(selectedOption);
             }
             break;
-
           case 'Escape':
             e.preventDefault();
             setIsOpen(false);
             setHighlightedIndex(null);
             break;
-
           default:
             break;
         }
       },
       [isOpen, filteredOptions, highlightedIndex, inputValue]
     );
-
-    /**
-     * Handle option selection
-     */
     const handleSelectOption = useCallback(
       (option: Option) => {
         setInputValue(option.label);
         setIsOpen(false);
         setHighlightedIndex(null);
-
         if (onSelect) {
           onSelect(option);
         }
-
         inputRef.current?.focus();
       },
       [onSelect]
     );
-
-    /**
-     * Handle click outside to close dropdown
-     */
     React.useEffect(() => {
       const handleClickOutside = (e: MouseEvent) => {
         if (
@@ -309,23 +199,19 @@ const AutoComplete = React.forwardRef<HTMLInputElement, AutoCompleteProps>(
           setHighlightedIndex(null);
         }
       };
-
       document.addEventListener('mousedown', handleClickOutside);
       return () => {
         document.removeEventListener('mousedown', handleClickOutside);
       };
     }, []);
-
     const isFieldDisabled = disabled || ariaDisabled;
     const suggestionCount = filteredOptions.length;
     const hasResults = isOpen && suggestionCount > 0;
-
     return (
       <div
         ref={containerRef}
         className={`relative w-full ${className}`}
       >
-        {/* Input Field */}
         <input
           ref={inputRef}
           id={fieldId}
@@ -368,8 +254,6 @@ const AutoComplete = React.forwardRef<HTMLInputElement, AutoCompleteProps>(
             ${readOnly ? 'cursor-default' : ''}
           `}
         />
-
-        {/* Live Region Announcements */}
         <div
           id={announcementId}
           role="status"
@@ -383,8 +267,7 @@ const AutoComplete = React.forwardRef<HTMLInputElement, AutoCompleteProps>(
               ? 'No suggestions found'
               : ''}
         </div>
-
-        {/* Dropdown List */}
+        {}
         {isOpen && filteredOptions.length > 0 && (
           <ul
             id={listboxId}
@@ -423,8 +306,7 @@ const AutoComplete = React.forwardRef<HTMLInputElement, AutoCompleteProps>(
             ))}
           </ul>
         )}
-
-        {/* Empty State Message */}
+        {}
         {isOpen && filteredOptions.length === 0 && inputValue && (
           <div
             className={`
@@ -442,7 +324,6 @@ const AutoComplete = React.forwardRef<HTMLInputElement, AutoCompleteProps>(
     );
   }
 );
-
 AutoComplete.displayName = 'AutoComplete';
-
 export default AutoComplete;
+

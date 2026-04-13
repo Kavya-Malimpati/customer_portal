@@ -1,20 +1,8 @@
-/**
- * Stepper Component Stories
- *
- * Comprehensive Storybook stories demonstrating the Stepper component variants including:
- * - Horizontal and vertical orientations
- * - Linear (sequential) and non-linear (free navigation) types
- * - Alternative labels and completed steps
- * - Color variants and size options
- * - Keyboard navigation and accessibility features
- * - Controlled and uncontrolled usage
- */
 
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import type { StepperStep } from './Stepper';
 import Stepper from './Stepper';
-
 const meta = {
   title: 'Components/Stepper',
   component: Stepper,
@@ -56,14 +44,8 @@ const meta = {
     },
   },
 } satisfies Meta<typeof Stepper>;
-
 export default meta;
 type Story = StoryObj<typeof meta>;
-
-/**
- * Horizontal Linear Stepper
- * User can only proceed forward through completed steps.
- */
 export const HorizontalLinear: Story = {
   render: () => {
     const [active, setActive] = useState(0);
@@ -72,7 +54,6 @@ export const HorizontalLinear: Story = {
       { label: 'Profile', description: 'Complete your profile' },
       { label: 'Confirmation', description: 'Confirm details' },
     ];
-
     return (
       <div
         style={{
@@ -108,11 +89,6 @@ export const HorizontalLinear: Story = {
     );
   },
 };
-
-/**
- * Horizontal Non-Linear Stepper
- * User can jump to any step at any time.
- */
 export const HorizontalNonLinear: Story = {
   render: () => {
     const [active, setActive] = useState(0);
@@ -122,7 +98,6 @@ export const HorizontalNonLinear: Story = {
       { label: 'Step 3' },
       { label: 'Step 4' },
     ];
-
     return (
       <div
         style={{
@@ -157,11 +132,6 @@ export const HorizontalNonLinear: Story = {
     );
   },
 };
-
-/**
- * Vertical Stepper
- * Demonstrates vertical layout for step-by-step wizards.
- */
 export const VerticalStepper: Story = {
   render: () => {
     const [active, setActive] = useState(0);
@@ -170,7 +140,6 @@ export const VerticalStepper: Story = {
       { label: 'Create Ad Group', description: 'Set up ad group' },
       { label: 'Create Ads', description: 'Design your ads' },
     ];
-
     return (
       <div
         style={{
@@ -205,11 +174,6 @@ export const VerticalStepper: Story = {
     );
   },
 };
-
-/**
- * Alternative Labels
- * Labels positioned below step indicators.
- */
 export const AlternativeLabels: Story = {
   render: () => {
     const [active, setActive] = useState(0);
@@ -218,7 +182,6 @@ export const AlternativeLabels: Story = {
       { label: 'Create an ad group' },
       { label: 'Create ads' },
     ];
-
     return (
       <div
         style={{
@@ -256,11 +219,6 @@ export const AlternativeLabels: Story = {
     );
   },
 };
-
-/**
- * Completed Steps
- * Stepper with completed steps marked with checkmarks.
- */
 export const CompletedSteps: Story = {
   render: () => {
     const [active, setActive] = useState(2);
@@ -269,7 +227,6 @@ export const CompletedSteps: Story = {
       { label: 'Step 2', description: 'Completed', completed: true },
       { label: 'Step 3', description: 'In Progress' },
     ];
-
     return (
       <div
         style={{
@@ -305,16 +262,10 @@ export const CompletedSteps: Story = {
     );
   },
 };
-
-/**
- * Size Variants
- * Small, medium, and large step indicators.
- */
 export const SizeVariants: Story = {
   render: () => {
     const [active, setActive] = useState(1);
     const steps: StepperStep[] = [{ label: 'Step 1' }, { label: 'Step 2' }, { label: 'Step 3' }];
-
     return (
       <div
         style={{
@@ -358,16 +309,10 @@ export const SizeVariants: Story = {
     );
   },
 };
-
-/**
- * Color Variants
- * All available color themes using design tokens.
- */
 export const ColorVariants: Story = {
   render: () => {
     const [active, setActive] = useState(1);
     const steps: StepperStep[] = [{ label: 'Step 1' }, { label: 'Step 2' }, { label: 'Step 3' }];
-
     return (
       <div
         style={{
@@ -411,11 +356,6 @@ export const ColorVariants: Story = {
     );
   },
 };
-
-/**
- * Disabled Steps
- * Individual steps can be disabled.
- */
 export const DisabledSteps: Story = {
   render: () => {
     const [active, setActive] = useState(0);
@@ -424,7 +364,6 @@ export const DisabledSteps: Story = {
       { label: 'Step 2', description: 'Disabled', disabled: true },
       { label: 'Step 3', description: 'Enabled' },
     ];
-
     return (
       <div
         style={{
@@ -459,11 +398,6 @@ export const DisabledSteps: Story = {
     );
   },
 };
-
-/**
- * Custom Icons
- * Steps with custom emoji or icon indicators.
- */
 export const CustomIcons: Story = {
   render: () => {
     const [active, setActive] = useState(1);
@@ -472,7 +406,6 @@ export const CustomIcons: Story = {
       { label: 'Payment', description: 'Process payment', icon: '💳' },
       { label: 'Confirmation', description: 'Confirm order', icon: '✅' },
     ];
-
     return (
       <div
         style={{
@@ -508,11 +441,6 @@ export const CustomIcons: Story = {
     );
   },
 };
-
-/**
- * Keyboard Navigation
- * Demonstrates full keyboard accessibility.
- */
 export const KeyboardNavigation: Story = {
   render: () => {
     const [active, setActive] = useState(0);
@@ -522,7 +450,6 @@ export const KeyboardNavigation: Story = {
       { label: 'Step 3', description: 'Home/End go to first/last' },
       { label: 'Step 4', description: 'All controls accessible' },
     ];
-
     return (
       <div
         style={{
@@ -558,11 +485,6 @@ export const KeyboardNavigation: Story = {
     );
   },
 };
-
-/**
- * Controlled Stepper
- * Full control over step state with navigation buttons.
- */
 export const ControlledStepper: Story = {
   render: () => {
     const [step, setStep] = useState(0);
@@ -571,15 +493,12 @@ export const ControlledStepper: Story = {
       { label: 'Shipping' },
       { label: 'Payment' },
     ];
-
     const handleNext = () => {
       setStep(prev => Math.min(prev + 1, steps.length - 1));
     };
-
     const handlePrev = () => {
       setStep(prev => Math.max(prev - 1, 0));
     };
-
     return (
       <div
         style={{
@@ -648,12 +567,6 @@ export const ControlledStepper: Story = {
     );
   },
 };
-
-/**
- * Horizontal Stepper - Linear flow (Interactive)
- * Demonstrates a basic horizontal stepper with linear step progression.
- * User can only proceed forward through completed steps.
- */
 export const HorizontalLinearInteractive = () => {
   const [active, setActive] = useState(0);
   const steps: StepperStep[] = [
@@ -661,7 +574,6 @@ export const HorizontalLinearInteractive = () => {
     { label: 'Profile', description: 'Complete your profile', content: 'Profile information form' },
     { label: 'Confirmation', description: 'Confirm details', content: 'Review and confirm' },
   ];
-
   return (
     <div className='space-y-6 p-4'>
       <div>
@@ -685,7 +597,6 @@ export const HorizontalLinearInteractive = () => {
     </div>
   );
 };
-
 export const HorizontalNonLinearDemo = () => {
   const [active, setActive] = useState(0);
   const steps: StepperStep[] = [
@@ -694,7 +605,6 @@ export const HorizontalNonLinearDemo = () => {
     { label: 'Step 3', description: 'Third step', content: 'Content for step 3' },
     { label: 'Step 4', description: 'Fourth step', content: 'Content for step 4' },
   ];
-
   return (
     <div className='space-y-6 p-4'>
       <div>
@@ -716,7 +626,6 @@ export const HorizontalNonLinearDemo = () => {
     </div>
   );
 };
-
 export const VerticalStepperDemo = () => {
   const [active, setActive] = useState(0);
   const steps: StepperStep[] = [
@@ -732,7 +641,6 @@ export const VerticalStepperDemo = () => {
     },
     { label: 'Create Ads', description: 'Design your ads', content: 'Ad creation form' },
   ];
-
   return (
     <div className='space-y-6 p-4'>
       <div>
@@ -756,11 +664,6 @@ export const VerticalStepperDemo = () => {
     </div>
   );
 };
-
-/**
- * Alternative Labels
- * Demonstrates stepper with labels positioned below step indicators.
- */
 export const AlternativeLabelsDemo = () => {
   const [active, setActive] = useState(0);
   const steps: StepperStep[] = [
@@ -768,7 +671,6 @@ export const AlternativeLabelsDemo = () => {
     { label: 'Create an ad group', description: 'Step 2: Ad Group' },
     { label: 'Create ads', description: 'Step 3: Ads' },
   ];
-
   return (
     <div className='space-y-6 p-4'>
       <div>
@@ -790,11 +692,6 @@ export const AlternativeLabelsDemo = () => {
     </div>
   );
 };
-
-/**
- * Completed Steps
- * Demonstrates stepper with completed steps marked with checkmarks.
- */
 export const CompletedStepsDemo = () => {
   const [active, setActive] = useState(2);
   const steps: StepperStep[] = [
@@ -802,7 +699,6 @@ export const CompletedStepsDemo = () => {
     { label: 'Step 2', description: 'Completed', completed: true },
     { label: 'Step 3', description: 'In Progress' },
   ];
-
   return (
     <div className='space-y-6 p-4'>
       <div>
@@ -824,11 +720,6 @@ export const CompletedStepsDemo = () => {
     </div>
   );
 };
-
-/**
- * Color Variants
- * Demonstrates stepper in all available color themes using design tokens.
- */
 export const ColorVariantsDemo = () => {
   const [active, setActive] = useState(1);
   const steps: StepperStep[] = [
@@ -836,7 +727,6 @@ export const ColorVariantsDemo = () => {
     { label: 'Step 2', description: 'Second' },
     { label: 'Step 3', description: 'Third' },
   ];
-
   const colors: Array<'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning'> = [
     'primary',
     'secondary',
@@ -845,7 +735,6 @@ export const ColorVariantsDemo = () => {
     'success',
     'warning',
   ];
-
   return (
     <div className='space-y-6 p-4'>
       <Typography variant='h6'>Stepper Color Variants</Typography>
@@ -869,17 +758,10 @@ export const ColorVariantsDemo = () => {
     </div>
   );
 };
-
-/**
- * Size Variants
- * Demonstrates stepper in different sizes: small, medium, large.
- */
 export const SizeVariantsDemo = () => {
   const [active, setActive] = useState(1);
   const steps: StepperStep[] = [{ label: 'Step 1' }, { label: 'Step 2' }, { label: 'Step 3' }];
-
   const sizes: Array<'small' | 'medium' | 'large'> = ['small', 'medium', 'large'];
-
   return (
     <div className='space-y-8 p-4'>
       <Typography variant='h6'>Stepper Size Variants</Typography>
@@ -903,11 +785,6 @@ export const SizeVariantsDemo = () => {
     </div>
   );
 };
-
-/**
- * Disabled Steps
- * Demonstrates stepper with individually disabled steps.
- */
 export const DisabledStepsDemo = () => {
   const [active, setActive] = useState(0);
   const steps: StepperStep[] = [
@@ -915,7 +792,6 @@ export const DisabledStepsDemo = () => {
     { label: 'Step 2', description: 'Disabled', disabled: true },
     { label: 'Step 3', description: 'Enabled' },
   ];
-
   return (
     <div className='space-y-6 p-4'>
       <div>
@@ -936,11 +812,6 @@ export const DisabledStepsDemo = () => {
     </div>
   );
 };
-
-/**
- * Controlled Stepper
- * Demonstrates using controlled component pattern with value prop.
- */
 export const ControlledStepperDemo = () => {
   const [step, setStep] = useState(0);
   const steps: StepperStep[] = [
@@ -948,15 +819,12 @@ export const ControlledStepperDemo = () => {
     { label: 'Shipping', content: 'Enter your address' },
     { label: 'Payment', content: 'Enter payment details' },
   ];
-
   const handleNext = () => {
     setStep(prev => Math.min(prev + 1, steps.length - 1));
   };
-
   const handlePrev = () => {
     setStep(prev => Math.max(prev - 1, 0));
   };
-
   return (
     <div className='space-y-6 p-4'>
       <div>
@@ -996,11 +864,6 @@ export const ControlledStepperDemo = () => {
     </div>
   );
 };
-
-/**
- * Custom Icons
- * Demonstrates stepper with custom icons for each step.
- */
 export const CustomIconsDemo = () => {
   const [active, setActive] = useState(1);
   const steps: StepperStep[] = [
@@ -1020,7 +883,6 @@ export const CustomIconsDemo = () => {
       icon: '✅',
     },
   ];
-
   return (
     <div className='space-y-6 p-4'>
       <div>
@@ -1042,11 +904,6 @@ export const CustomIconsDemo = () => {
     </div>
   );
 };
-
-/**
- * Keyboard Navigation
- * Demonstrates keyboard accessibility features.
- */
 export const KeyboardNavigationDemo = () => {
   const [active, setActive] = useState(0);
   const steps: StepperStep[] = [
@@ -1055,7 +912,6 @@ export const KeyboardNavigationDemo = () => {
     { label: 'Step 3', description: 'Home goes to first, End goes to last' },
     { label: 'Step 4', description: 'All controls are fully accessible' },
   ];
-
   return (
     <div className='space-y-6 p-4'>
       <div>
@@ -1078,3 +934,4 @@ export const KeyboardNavigationDemo = () => {
     </div>
   );
 };
+

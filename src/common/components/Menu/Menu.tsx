@@ -4,71 +4,29 @@ import React, {
   useImperativeHandle,
 } from 'react';
 import '../../../src/styles/tokens.css';
-
-/**
- * Menu Button Component
- *
- * A versatile menu button that triggers dropdown or context menus.
- * Supports multiple variants, sizes, and comprehensive accessibility features.
- *
- * @example
- * ```tsx
- * <Menu variant="primary" size="md">
- *   Open Menu
- * </Menu>
- * ```
- */
-
 export interface MenuProps {
-  /** Unique identifier for the menu button */
   id?: string;
-  /** Additional CSS classes for custom styling */
   className?: string;
-  /** Whether the menu button is disabled */
   disabled?: boolean;
-  /** Tab order for keyboard navigation */
   tabIndex?: number;
-
-  /** Visual variant of the menu button */
   variant?: 'default' | 'primary' | 'secondary' | 'danger' | 'link';
-  /** Size of the menu button */
   size?: 'sm' | 'md' | 'lg';
-  /** Border radius style */
   rounded?: 'none' | 'sm' | 'md' | 'lg' | 'xl' | 'full';
-
-  /** Click event handler */
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  /** Focus event handler */
   onFocus?: (e: React.FocusEvent<HTMLButtonElement>) => void;
-  /** Blur event handler */
   onBlur?: (e: React.FocusEvent<HTMLButtonElement>) => void;
-
-  /** HTML title attribute for tooltip */
   title?: string;
-  /** Accessibility label */
   'aria-label'?: string;
-  /** References element that labels this menu */
   'aria-labelledby'?: string;
-  /** References element that describes this menu */
   'aria-describedby'?: string;
-  /** Whether the menu is expanded */
   'aria-expanded'?: boolean;
-  /** Whether the menu is disabled (for screen readers) */
   'aria-disabled'?: boolean;
-  /** Whether this menu item is selected */
   'aria-selected'?: boolean;
-  /** ID of the menu popup controlled by this button */
   'aria-controls'?: string;
-  /** Current page/location context */
   'aria-current'?: 'page' | 'step' | 'location' | 'date' | 'time' | boolean;
-  /** Menu orientation */
   'aria-orientation'?: 'horizontal' | 'vertical';
-
-  /** Content to display inside the menu button */
   children?: React.ReactNode;
 }
-
-
 const sizeConfig: Record<NonNullable<MenuProps['size']>, React.CSSProperties> = {
   sm: {
     padding: 'var(--space-1) var(--space-2)',
@@ -86,7 +44,6 @@ const sizeConfig: Record<NonNullable<MenuProps['size']>, React.CSSProperties> = 
     height: 'var(--control-height-lg)',
   },
 };
-
 const roundedConfig: Record<NonNullable<MenuProps['rounded']>, string> = {
   none: '0',
   sm: 'var(--radius-sm)',
@@ -95,7 +52,6 @@ const roundedConfig: Record<NonNullable<MenuProps['rounded']>, string> = {
   xl: 'var(--radius-xl)',
   full: 'var(--radius-full)',
 };
-
 const variantConfig: Record<NonNullable<MenuProps['variant']>, {
   color: string;
   backgroundColor: string;
@@ -139,11 +95,6 @@ const variantConfig: Record<NonNullable<MenuProps['variant']>, {
     hoverBackgroundColor: 'transparent',
   },
 };
-
-/* =========================
-   COMPONENT
-========================= */
-
 const Menu = forwardRef<HTMLButtonElement, MenuProps>(
   (props, ref) => {
     const {
@@ -151,27 +102,21 @@ const Menu = forwardRef<HTMLButtonElement, MenuProps>(
       className = '',
       disabled = false,
       tabIndex = 0,
-
       variant = 'default',
       size = 'md',
       rounded = 'md',
-
       onClick,
       onFocus,
       onBlur,
       title,
-
       children,
       ...ariaProps
     } = props;
-
     const innerRef = useRef<HTMLButtonElement | null>(null);
     useImperativeHandle(ref, () => innerRef.current!, []);
-
     const variantStyle = variantConfig[variant];
     const sizeStyle = sizeConfig[size];
     const radiusValue = roundedConfig[rounded];
-
     const baseStyle: React.CSSProperties = {
       fontFamily: 'var(--font-family-sans)',
       fontWeight: 'var(--font-weight-medium)',
@@ -190,7 +135,6 @@ const Menu = forwardRef<HTMLButtonElement, MenuProps>(
       backgroundColor: variantStyle.backgroundColor,
       borderColor: variantStyle.borderColor,
     };
-
     return (
       <button
         ref={innerRef}
@@ -225,7 +169,6 @@ const Menu = forwardRef<HTMLButtonElement, MenuProps>(
     );
   }
 );
-
 Menu.displayName = 'Menu';
-
 export default Menu;
+

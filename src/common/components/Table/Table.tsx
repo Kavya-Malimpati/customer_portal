@@ -1,113 +1,37 @@
-/**
- * Table Component
- *
- * A flexible table component for displaying and managing tabular data.
- * Supports sorting, custom rendering, sticky headers, and multiple visual variants.
- * Uses design tokens from tokens.css for consistent styling.
- *
- * @example
- * ```tsx
- * const columns = [
- *   { id: 'name', field: 'name', headerName: 'Name' },
- *   { id: 'email', field: 'email', headerName: 'Email' },
- * ];
- * const rows = [
- *   { name: 'John', email: 'john@example.com' },
- *   { name: 'Jane', email: 'jane@example.com' },
- * ];
- * <Table columns={columns} rows={rows} />
- * ```
- */
 
 import React, { useMemo, useState } from 'react';
 import '../../../src/styles/tokens.css';
-
 export type TableSize = 'sm' | 'md' | 'lg';
 export type TableVariant = 'standard' | 'striped' | 'outlined';
-
 export interface TableColumn<T> {
-  /** Unique column identifier */
   id?: string;
-
-  /** Field name from row data */
   field: keyof T | string;
-
-  /** Display label for column header */
   headerName?: string;
-
-  /** Text alignment: left, center, or right */
   align?: 'left' | 'center' | 'right';
-
-  /** Column width in px or percentage */
   width?: string | number;
-
-  /** Enable sorting for this column */
   sortable?: boolean;
-
-  /** Custom render function for cell content */
   renderCell?: (row: T) => React.ReactNode;
-
-  /** Tooltip text for header */
   tooltip?: React.ReactNode;
-
-  /** Additional CSS classes for cells */
   className?: string;
-
-  /** Hide this column from display */
   hide?: boolean;
 }
-
 export interface TableProps<T> {
-  /** Unique identifier for the table */
   id?: string;
-
-  /** Additional CSS classes */
   className?: string;
-
-  /** Size variant: small, medium, large */
   size?: TableSize;
-
-  /** Visual variant: standard, striped, outlined */
   variant?: TableVariant;
-
-  /** Accessibility label for table */
   'aria-label'?: string;
-
-  /** ID of element labeling the table */
   'aria-labelledby'?: string;
-
-  /** ID of element describing the table */
   'aria-describedby'?: string;
-
-  /** Live region announcement mode */
   'aria-live'?: 'polite' | 'assertive' | 'off';
-
-  /** Column definitions */
   columns: TableColumn<T>[];
-
-  /** Row data */
   rows: T[];
-
-  /** Enable column sorting */
   sortable?: boolean;
-
-  /** Initial sort configuration */
   defaultSort?: { field: keyof T | string; order: 'asc' | 'desc' } | null;
-
-  /** Row click handler */
   onRowClick?: (row: T) => void;
-
-  /** Stick header to top during scroll */
   stickyHeader?: boolean;
-
-  /** Reduce padding for compact display */
   dense?: boolean;
 }
-
-/**
- * Size configuration for table cells
- * Maps size variants to padding and font sizes
- */
 const sizeConfig: Record<TableSize, { padding: string; fontSize: string }> = {
   sm: {
     padding: 'var(--space-1) var(--space-2)',
@@ -122,30 +46,19 @@ const sizeConfig: Record<TableSize, { padding: string; fontSize: string }> = {
     fontSize: 'var(--font-size-md)',
   },
 };
-
-/**
- * Table Component
- *
- * Renders a fully accessible data table with sorting, custom rendering,
- * and visual customization options.
- */
 const Table = <T extends Record<string, unknown>>({
   id,
   className = '',
   size = 'md',
   variant = 'standard',
-
   'aria-label': ariaLabel,
   'aria-labelledby': ariaLabelledby,
   'aria-describedby': ariaDescribedby,
   'aria-live': ariaLive,
-
   columns = [],
   rows = [],
-
   sortable = true,
   defaultSort = null,
-
   onRowClick,
   stickyHeader = false,
   dense = false,
@@ -153,29 +66,19 @@ const Table = <T extends Record<string, unknown>>({
   const [sortState, setSortState] = useState<{ field?: string; order?: 'asc' | 'desc' }>(() =>
     defaultSort ? { field: String(defaultSort.field), order: defaultSort.order } : {}
   );
-
-  /**
-   * Handle column sort
-   */
   const handleSort = (field: string) => {
     if (!sortable) return;
     setSortState((prev) =>
       prev.field === field ? { field, order: prev.order === 'asc' ? 'desc' : 'asc' } : { field, order: 'asc' }
     );
   };
-
-  /**
-   * Sort rows based on sortState
-   */
   const sortedRows = useMemo(() => {
     if (!sortState.field) return rows;
-
     const valueToString = (val: unknown): string => {
       if (typeof val === 'string') return val;
       if (typeof val === 'object') return JSON.stringify(val);
       return String(val);
     };
-
     const compareValues = (av: unknown, bv: unknown, order: number): number => {
       if (av === bv) return 0;
       if (av == null) return -1 * order;
@@ -193,22 +96,15 @@ const Table = <T extends Record<string, unknown>>({
       }
       return valueToString(av).localeCompare(valueToString(bv)) * order;
     };
-
     const field = sortState.field;
     const order = sortState.order === 'desc' ? -1 : 1;
-
     return [...rows].sort((a, b) => {
       const av = a[field];
       const bv = b[field];
       return compareValues(av, bv, order);
     });
   }, [rows, sortState]);
-
   const sizeConfig_value = sizeConfig[size] || sizeConfig.md;
-
-  /**
-   * Get variant-specific row styling
-   */
   const getVariantStyle = (rowIndex: number): React.CSSProperties => {
     if (variant === 'striped') {
       return {
@@ -222,7 +118,6 @@ const Table = <T extends Record<string, unknown>>({
     }
     return {};
   };
-
   const headerStyle: React.CSSProperties = {
     padding: sizeConfig_value.padding,
     fontSize: sizeConfig_value.fontSize,
@@ -234,13 +129,11 @@ const Table = <T extends Record<string, unknown>>({
     top: stickyHeader ? 0 : undefined,
     zIndex: stickyHeader ? 10 : undefined,
   };
-
   const cellStyle: React.CSSProperties = {
     padding: dense ? `${parseFloat(sizeConfig_value.padding.split(' ')[0]) / 2}rem ${parseFloat(sizeConfig_value.padding.split(' ')[1]) || parseFloat(sizeConfig_value.padding.split(' ')[0])}rem` : sizeConfig_value.padding,
     fontSize: sizeConfig_value.fontSize,
     borderBottom: variant === 'outlined' ? `var(--border-width-sm) solid var(--border-color)` : undefined,
   };
-
   return (
     <div
       id={id}
@@ -270,7 +163,6 @@ const Table = <T extends Record<string, unknown>>({
                   ? 'ascending'
                   : 'descending'
                 : undefined;
-
               return (
                 <th
                   key={col.id ?? String(col.field)}
@@ -290,7 +182,6 @@ const Table = <T extends Record<string, unknown>>({
                     }}
                   >
                     <span>{col.headerName ?? String(col.field)}</span>
-
                     {sortable && col.sortable !== false && (
                       <button
                         type="button"
@@ -341,13 +232,11 @@ const Table = <T extends Record<string, unknown>>({
             })}
           </tr>
         </thead>
-
         <tbody>
           {sortedRows.map((row: T, rowIndex: number) => {
             const rowKey = `row-${Object.values(row)
               .map((val) => (typeof val === 'object' && val !== null ? JSON.stringify(val) : String(val)))
               .join('-')}`;
-
             return (
               <tr
                 key={rowKey}
@@ -389,6 +278,6 @@ const Table = <T extends Record<string, unknown>>({
     </div>
   );
 };
-
 export default Table;
 export { Table };
+

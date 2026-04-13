@@ -1,9 +1,7 @@
 import React, { useMemo, useId } from 'react';
 import '../../../styles/tokens.css';
-
 type TextFieldSize = 'small' | 'medium' | 'large';
 type TextFieldVariant = 'default' | 'outlined' | 'filled';
-
 export interface Props {
   id?: string;
   name?: string;
@@ -40,7 +38,6 @@ export interface Props {
   'aria-required'?: boolean;
   tooltip?: string;
 }
-
 const TextField = ({
   id,
   name,
@@ -78,17 +75,13 @@ const TextField = ({
   tooltip,
   ...rest
 }: Props) => {
-  // Map isRequired from JSON config to required prop
   const isFieldRequired = required || isRequired || false;
-  // Use error prop, or fallback to errorMessage from JSON config
   const fieldError = error || errorMessage || '';
-  // Use ariaInvalid or fallback to hasError from JSON config
   const isFieldInvalid = ariaInvalid || hasError || false;
   const generatedId = useId();
   const fieldId = id || `textfield-${generatedId}`;
   const labelId = label ? `${fieldId}-label` : undefined;
   const errorId = fieldError ? `${fieldId}-error` : undefined;
-
   const sizeClasses = useMemo(() => {
     const sizes = {
       small: 'px-2 py-1 text-sm h-8',
@@ -97,7 +90,6 @@ const TextField = ({
     };
     return sizes[size];
   }, [size]);
-
   const variantClasses = useMemo(() => {
     const variants = {
       default: 'border border-gray-300 bg-white hover:border-gray-400 focus:border-blue-500',
@@ -106,13 +98,10 @@ const TextField = ({
     };
     return variants[variant];
   }, [variant]);
-
   const descriptionIds = useMemo(() => {
     return [ariaLabelledby, ariaDescribedby, errorId].filter(Boolean).join(' ');
   }, [ariaLabelledby, ariaDescribedby, errorId]);
-
   const isInvalid = fieldError || isFieldInvalid;
-
   const inputClasses = [
     'w-full',
     'rounded-lg',
@@ -132,7 +121,6 @@ const TextField = ({
   ]
     .filter(Boolean)
     .join(' ');
-
   return (
     <div className={`flex flex-col gap-2 w-full ${disabled ? 'opacity-50' : ''}`}>
       {label && (
@@ -145,7 +133,6 @@ const TextField = ({
           {label}
         </label>
       )}
-
       <div className='flex items-center w-full'>
         {startDecorator && (
           <div
@@ -154,7 +141,6 @@ const TextField = ({
             {startDecorator}
           </div>
         )}
-
         <input
           id={fieldId}
           name={name}
@@ -179,7 +165,6 @@ const TextField = ({
           aria-required={ariaRequired || isFieldRequired}
           {...rest}
         />
-
         {endDecorator && (
           <div
             className={`flex items-center px-3 py-2 text-gray-600 ${size === 'small' ? 'text-sm' : 'text-base'}`}
@@ -188,7 +173,6 @@ const TextField = ({
           </div>
         )}
       </div>
-
       {fieldError && (
         <span id={errorId} className='text-sm text-red-600' role='alert'>
           {fieldError}
@@ -197,5 +181,5 @@ const TextField = ({
     </div>
   );
 };
-
 export default TextField;
+

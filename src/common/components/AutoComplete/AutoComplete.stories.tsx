@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import AutoComplete from './AutoComplete';
-
 const meta: Meta<typeof AutoComplete> = {
   title: 'Common/AutoComplete',
   component: AutoComplete,
@@ -60,10 +59,8 @@ const meta: Meta<typeof AutoComplete> = {
     },
   },
 };
-
 export default meta;
 type Story = StoryObj<typeof AutoComplete>;
-
 const programmingLanguages = [
   'JavaScript',
   'TypeScript',
@@ -78,7 +75,6 @@ const programmingLanguages = [
   'Swift',
   'Kotlin',
 ];
-
 const countriesData = [
   { label: 'United States', value: 'US' },
   { label: 'United Kingdom', value: 'UK' },
@@ -91,10 +87,6 @@ const countriesData = [
   { label: 'Brazil', value: 'BR' },
   { label: 'Mexico', value: 'MX' },
 ];
-
-/**
- * Default AutoComplete with string options
- */
 export const Default: Story = {
   args: {
     placeholder: 'Select a programming language...',
@@ -102,10 +94,6 @@ export const Default: Story = {
     size: 'md',
   },
 };
-
-/**
- * Small size AutoComplete
- */
 export const Small: Story = {
   args: {
     placeholder: 'Small size',
@@ -113,10 +101,6 @@ export const Small: Story = {
     size: 'sm',
   },
 };
-
-/**
- * Large size AutoComplete
- */
 export const Large: Story = {
   args: {
     placeholder: 'Large size',
@@ -124,10 +108,6 @@ export const Large: Story = {
     size: 'lg',
   },
 };
-
-/**
- * With object options (label/value pairs)
- */
 export const WithObjectOptions: Story = {
   args: {
     placeholder: 'Select a country...',
@@ -135,10 +115,6 @@ export const WithObjectOptions: Story = {
     size: 'md',
   },
 };
-
-/**
- * Disabled state
- */
 export const Disabled: Story = {
   args: {
     placeholder: 'Disabled input',
@@ -147,10 +123,6 @@ export const Disabled: Story = {
     size: 'md',
   },
 };
-
-/**
- * Read-only state
- */
 export const ReadOnly: Story = {
   args: {
     value: 'JavaScript',
@@ -160,10 +132,6 @@ export const ReadOnly: Story = {
     size: 'md',
   },
 };
-
-/**
- * Required field with ARIA support
- */
 export const Required: Story = {
   args: {
     placeholder: 'Select a language (required)',
@@ -174,10 +142,6 @@ export const Required: Story = {
     size: 'md',
   },
 };
-
-/**
- * Invalid state
- */
 export const Invalid: Story = {
   args: {
     placeholder: 'Invalid input',
@@ -188,10 +152,6 @@ export const Invalid: Story = {
     size: 'md',
   },
 };
-
-/**
- * With auto-focus
- */
 export const AutoFocused: Story = {
   args: {
     placeholder: 'Auto-focused input',
@@ -200,10 +160,6 @@ export const AutoFocused: Story = {
     size: 'md',
   },
 };
-
-/**
- * With ARIA label for accessibility
- */
 export const WithAriaLabel: Story = {
   args: {
     'aria-label': 'Search programming languages',
@@ -212,10 +168,6 @@ export const WithAriaLabel: Story = {
     size: 'md',
   },
 };
-
-/**
- * With many options (scrollable)
- */
 export const ManyOptions: Story = {
   args: {
     placeholder: 'Select from many options...',
@@ -223,10 +175,6 @@ export const ManyOptions: Story = {
     size: 'md',
   },
 };
-
-/**
- * Controlled component with value
- */
 export const ControlledValue: Story = {
   args: {
     value: 'TypeScript',
@@ -235,10 +183,6 @@ export const ControlledValue: Story = {
     size: 'md',
   },
 };
-
-/**
- * Interactive example with onChange and onSelect
- */
 export const Interactive: Story = {
   args: {
     placeholder: 'Type to search languages...',
@@ -248,7 +192,6 @@ export const Interactive: Story = {
   },
   render: (args) => {
     const [selected, setSelected] = React.useState('');
-
     return (
       <div>
         <AutoComplete
@@ -272,3 +215,4 @@ export const Interactive: Story = {
     );
   },
 };
+

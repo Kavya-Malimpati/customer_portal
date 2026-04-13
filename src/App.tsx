@@ -1,8 +1,8 @@
 import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import './App.css';
-import Login from './pages/Login';
 import Home from './pages/Home';
 import MainLayout from './common/MainLayout';
+import Login from './pages/Login';
 
 /**
  * App Component

@@ -1,6 +1,6 @@
 
 import React from 'react';
-import '../../../src/styles/tokens.css';
+import '../../../styles/tokens.css';
 
 export type Variant =
   | 'h1'
@@ -21,7 +21,7 @@ export type Variant =
 export interface TypographyProps extends React.HTMLAttributes<HTMLElement> {
   id?: string;
   className?: string;
-  children?: React.ReactNode; 
+  children?: React.ReactNode;
   variant?: Variant;
 
 
@@ -40,8 +40,8 @@ const variantTagMap: Record<Variant, React.ElementType> = {
   h4: 'h4',
   h5: 'h5',
   h6: 'h6',
-  subtitle1: 'p', 
-  subtitle2: 'p', 
+  subtitle1: 'p',
+  subtitle2: 'p',
   body1: 'p',
   body2: 'p',
   caption: 'span',

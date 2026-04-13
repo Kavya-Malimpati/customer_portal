@@ -1,17 +1,19 @@
 ﻿import { useState, type ChangeEvent, type FormEvent } from 'react';
+import { useNavigate } from 'react-router-dom';
 import loginConfig from '../config/login.json';
 import { deepClone } from '../scripts/utils';
 import { validateFormFields } from '../scripts/validationsService';
-import Card from '../components/Card';
-import Typography from '../components/Typography/Typography';
-import CardContent from '../components/Card/CardContent';
-import TextField from '../components/TextField/TextField';
-import Button from '../components/Button/Button';
-import Select from '../components/Select';
+import Card from '../common/components/Card';
+import Typography from '../common/components/Typography/Typography';
+import CardContent from '../common/components/Card/CardContent';
+import TextField from '../common/components/TextField/TextField';
+import Button from '../common/components/Button/Button';
+import Select from '../common/components/Select';
 
 type FormDataType = typeof loginConfig;
 
 const Login = () => {
+  const navigate = useNavigate();
   // Deep clone the login config to avoid mutating the original JSON
   const clonedLoginConfig = deepClone(loginConfig);
 
@@ -41,9 +43,9 @@ const Login = () => {
 
     if (status) {
       // Form is valid, proceed with submission logic
-      alert('Login Successful!');
       // Reset form after successful submission
       setFormData(clonedLoginConfig);
+      navigate('/home');
     } else {
       // Form has validation errors, map validation errors to form data structure
       setFormData(prevData =>

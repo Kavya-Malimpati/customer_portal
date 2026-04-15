@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home';
+import UpdateContact from './pages/UpdateContact';
 import MainLayout from './common/MainLayout';
 import Login from './pages/Login';
 
@@ -25,6 +26,14 @@ function App() {
         element={
           <MainLayout onLogout={handleLogout}>
             <Home />
+          </MainLayout>
+        }
+      />
+      <Route
+        path="/update-contact"
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <UpdateContact />
           </MainLayout>
         }
       />

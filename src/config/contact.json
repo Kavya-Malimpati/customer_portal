@@ -1,0 +1,203 @@
+{
+  "phone": {
+    "id": "phone",
+    "type": "phone",
+    "name": "phone",
+    "placeholder": "Enter your phone number",
+    "label": "Phone",
+    "value": "",
+    "isRequired": true,
+    "hasError": false,
+    "errorMessage": "",
+    "validationRules": {
+      "required": { "value": true, "errorMessage": "Phone is required." },
+      "pattern": {
+        "value": "MOBILE_NUMBER",
+        "errorMessage": "Please enter a valid 10-digit phone number."
+      }
+    },
+    "aria-label": "Phone",
+    "aria-describedby": "phoneHelp"
+  },
+  "email": {
+    "id": "email",
+    "type": "email",
+    "name": "email",
+    "placeholder": "Enter your email",
+    "label": "Email Address",
+    "value": "",
+    "isRequired": true,
+    "hasError": false,
+    "errorMessage": "",
+    "validationRules": {
+      "required": {
+        "value": true,
+        "errorMessage": "Email Address is required."
+      },
+      "pattern": {
+        "value": "EMAIL",
+        "errorMessage": "Please enter a valid email address."
+      }
+    },
+    "aria-label": "Email Address",
+    "aria-describedby": "emailHelp"
+  },
+  "streetAddress": {
+    "id": "streetAddress",
+    "type": "streetAddress",
+    "name": "streetAddress",
+    "placeholder": "123 Main St",
+    "label": "Street Address",
+    "value": "",
+    "isRequired": true,
+    "hasError": false,
+    "errorMessage": "",
+    "validationRules": {
+      "required": { "value": true, "errorMessage": "Street address is required." },
+      "minLength": { "value": 3, "errorMessage": "Street address must be at least 3 characters." }
+    },
+    "aria-label": "Street Address",
+    "aria-describedby": "streetAddressHelp"
+  },
+  "aptNumber": {
+    "id": "aptNumber",
+    "type": "aptNumber",
+    "name": "aptNumber",
+    "placeholder": "Apt, suite, unit (optional)",
+    "label": "Apt / Suite",
+    "value": "",
+    "isRequired": false,
+    "hasError": false,
+    "errorMessage": "",
+    "validationRules": {},
+    "aria-label": "Apt Number",
+    "aria-describedby": "aptHelp"
+  },
+  "city": {
+    "id": "city",
+    "type": "select",
+    "name": "city",
+    "placeholder": "Select your city",
+    "label": "City",
+    "value": "",
+    "isRequired": true,
+    "hasError": false,
+    "errorMessage": "",
+    "validationRules": {
+      "required": { "value": true, "errorMessage": "City is required." }
+    },
+    "aria-label": "City",
+    "aria-describedby": "cityHelp",
+
+    "options": [
+      { "value": "", "label": "Select your city" },
+      {
+        "value": "new_york_city",
+        "label": "New York City",
+        "stateValue": "new_york"
+      },
+      {
+        "value": "los_angeles",
+        "label": "Los Angeles",
+        "stateValue": "california"
+      },
+      {
+        "value": "chicago",
+        "label": "Chicago",
+        "stateValue": "illinois"
+      },
+      {
+        "value": "houston",
+        "label": "Houston",
+        "stateValue": "texas"
+      },
+      {
+        "value": "phoenix",
+        "label": "Phoenix",
+        "stateValue": "arizona"
+      }
+    ]
+  },
+  "state": {
+    "id": "state",
+    "type": "state",
+    "name": "state",
+    "placeholder": "Select your state",
+    "label": "State",
+    "value": "",
+    "isRequired": true,
+    "hasError": false,
+    "errorMessage": "",
+    "validationRules": {
+      "required": { "value": true, "errorMessage": "State is required." }
+    },
+    "aria-label": "State",
+    "aria-describedby": "stateHelp",
+    "options": [
+      { "value": "", "label": "Select your state" },
+      { "value": "new_york", "label": "New York" },
+      { "value": "california", "label": "California" },
+      { "value": "illinois", "label": "Illinois" },
+      { "value": "texas", "label": "Texas" },
+      { "value": "arizona", "label": "Arizona" }
+    ]
+  },
+  "zipcode": {
+    "id": "zipcode",
+    "type": "zipcode",
+    "name": "zipcode",
+    "placeholder": "Zip Code",
+    "label": "Zip Code",
+    "value": "",
+    "isRequired": true,
+    "hasError": false,
+    "errorMessage": "",
+    "validationRules": {
+      "required": { "value": true, "errorMessage": "Zip code is required." },
+      "pattern": {
+        "value": "^\\d{5}$",
+        "errorMessage": "Please enter a valid 5-digit zip code."
+      },
+      "minLength": { "value": 5, "errorMessage": "Zip code must be 5 digits." },
+      "maxLength": { "value": 5, "errorMessage": "Zip code must be 5 digits." }
+    },
+    "aria-label": "Zip Code",
+    "aria-describedby": "zipHelp",
+    "maxLength": 5,
+    "minLength": 5
+  },
+  "country": {
+    "id": "country",
+    "type": "country",
+    "name": "country",
+    "placeholder": "Country",
+    "label": "Country",
+    "value": "USA",
+    "isRequired": true,
+    "hasError": false,
+    "errorMessage": "",
+    "validationRules": {},
+    "aria-label": "Country",
+    "aria-describedby": "countryHelp",
+    "readOnly": true
+  },
+  "reVerification": {
+    "id": "verificationMethod",
+    "type": "select",
+    "name": "verificationMethod",
+    "label": "Verification Method",
+    "placeholder": "Select verification method",
+    "value": "",
+    "isRequired": true,
+    "hasError": false,
+    "errorMessage": "",
+    "options": [
+      { "value": "", "label": "Select verification method" },
+      { "value": "sms", "label": "SMS" },
+      { "value": "email", "label": "Email" },
+      { "value": "portal", "label": "Portal" }
+    ],
+    "aria-label": "Verification Method",
+    "aria-describedby": "verificationHelp"
+  }
+}

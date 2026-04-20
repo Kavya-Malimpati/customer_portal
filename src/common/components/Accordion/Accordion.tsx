@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../../../src/styles/tokens.css';
+import '../../../styles/tokens.css';
 export interface AccordionProps {
   id?: string;
   className?: string;

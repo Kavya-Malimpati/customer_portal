@@ -1,6 +1,6 @@
 
 import React, { forwardRef, useRef, useImperativeHandle } from 'react';
-import '../../../src/styles/tokens.css';
+import '../../../styles/tokens.css';
 export interface RadioGroupProps {
   id?: string;
   className?: string;

@@ -3,7 +3,7 @@ import React, {
   useRef,
   useImperativeHandle,
 } from 'react';
-import '../../../src/styles/tokens.css';
+import '../../../styles/tokens.css';
 export interface MenuProps {
   id?: string;
   className?: string;

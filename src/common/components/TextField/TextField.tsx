@@ -105,7 +105,7 @@ const TextField = ({
   const inputClasses = [
     'w-full',
     'rounded-lg',
-    'font-medium',
+    'font-normal',
     'transition-all',
     'focus-visible:outline-none',
     'focus-visible:ring-2',

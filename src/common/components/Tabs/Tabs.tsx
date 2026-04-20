@@ -11,7 +11,7 @@ import React, {
   type ReactNode,
   useId,
 } from "react";
-import '../../../src/styles/tokens.css';
+import '../../../styles/tokens.css';
 export type TabSize = 'sm' | 'md' | 'lg';
 export type TabVariant =
   | "basic"

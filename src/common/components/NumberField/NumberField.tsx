@@ -1,5 +1,5 @@
 import React, { forwardRef, useImperativeHandle, useRef, useEffect } from 'react';
-import '../../../src/styles/tokens.css';
+import '../../../styles/tokens.css';
 export interface NumberFieldProps {
   id?: string;
   name?: string;

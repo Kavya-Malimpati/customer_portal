@@ -1,6 +1,6 @@
 
 import React from 'react';
-import '../../../src/styles/tokens.css';
+import '../../../styles/tokens.css';
 export interface CircularProgressProps {
   id?: string;
   className?: string;

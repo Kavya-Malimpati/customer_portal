@@ -1,6 +1,6 @@
 
 import React, { useEffect, useRef, useState } from "react";
-import '../../../src/styles/tokens.css';
+import '../../../styles/tokens.css';
 export interface TooltipProps {
   title: React.ReactNode;
   children: React.ReactNode;

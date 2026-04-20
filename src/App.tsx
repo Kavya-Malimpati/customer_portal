@@ -3,13 +3,8 @@ import './App.css';
 import Home from './pages/Home';
 import MainLayout from './common/MainLayout';
 import Login from './pages/Login';
+import EditPersonalDetails from './pages/Profile/EditPersonalDetails';
 
-/**
- * App Component
- *
- * Main application component that serves as the root wrapper.
- * Configures routing for all pages including Home (Login).
- */
 function App() {
   const navigate = useNavigate();
 
@@ -19,12 +14,22 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Login />} />
+      <Route
+        path="/"
+        element={  <Login />  } />
       <Route
         path="/home"
         element={
           <MainLayout onLogout={handleLogout}>
             <Home />
+          </MainLayout>
+        }
+      />
+      <Route
+        path="/profile/edit"
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <EditPersonalDetails />
           </MainLayout>
         }
       />

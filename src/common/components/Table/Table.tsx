@@ -1,6 +1,6 @@
 
 import React, { useMemo, useState } from 'react';
-import '../../../src/styles/tokens.css';
+import '../../../styles/tokens.css';
 export type TableSize = 'sm' | 'md' | 'lg';
 export type TableVariant = 'standard' | 'striped' | 'outlined';
 export interface TableColumn<T> {

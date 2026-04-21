@@ -4,7 +4,6 @@ import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 
 import MainLayout from './common/MainLayout';
 import Home from './pages/Home';
-import Login from './pages/Login';
 import AddContactDetails from './pages/Profile/AddContactDetails';
 import PaperlessPreferences from './pages/Profile/PaperlessPreferences';
 
@@ -17,10 +16,8 @@ function App() {
 
   return (
     <Routes>
-      <Route path='/' element={<Login />} />
-
       <Route
-        path='/home'
+        path='/'
         element={
           <MainLayout onLogout={handleLogout}>
             <Home />

@@ -8,7 +8,17 @@
     "value": "",
     "isRequired": true,
     "hasError": false,
-    "errorMessage": ""
+    "errorMessage": "",
+    "validationRules": {
+      "required": {
+        "value": true,
+        "errorMessage": "Primary Phone Number is required"
+      },
+      "pattern": {
+        "value": "MOBILE_NUMBER",
+        "errorMessage": "Please enter a valid phone number (10 digits)"
+      }
+    }
   },
   "secondaryPhone": {
     "id": "secondaryPhone",
@@ -19,7 +29,13 @@
     "value": "",
     "isRequired": false,
     "hasError": false,
-    "errorMessage": ""
+    "errorMessage": "",
+    "validationRules": {
+      "pattern": {
+        "value": "MOBILE_NUMBER",
+        "errorMessage": "Please enter a valid phone number (10 digits)"
+      }
+    }
   },
   "email": {
     "id": "email",
@@ -30,7 +46,17 @@
     "value": "",
     "isRequired": true,
     "hasError": false,
-    "errorMessage": ""
+    "errorMessage": "",
+    "validationRules": {
+      "required": {
+        "value": true,
+        "errorMessage": "Email Address is required"
+      },
+      "pattern": {
+        "value": "EMAIL",
+        "errorMessage": "Please enter a valid email address"
+      }
+    }
   },
 
   "street": {
@@ -42,7 +68,17 @@
     "value": "",
     "isRequired": true,
     "hasError": false,
-    "errorMessage": ""
+    "errorMessage": "",
+    "validationRules": {
+      "required": {
+        "value": true,
+        "errorMessage": "Street is required"
+      },
+      "minLength": {
+        "value": 3,
+        "errorMessage": "Street must be at least 3 characters"
+      }
+    }
   },
   "city": {
     "id": "city",
@@ -53,7 +89,17 @@
     "value": "",
     "isRequired": true,
     "hasError": false,
-    "errorMessage": ""
+    "errorMessage": "",
+    "validationRules": {
+      "required": {
+        "value": true,
+        "errorMessage": "City is required"
+      },
+      "minLength": {
+        "value": 2,
+        "errorMessage": "City must be at least 2 characters"
+      }
+    }
   },
   "state": {
     "id": "state",
@@ -68,7 +114,13 @@
     ],
     "isRequired": true,
     "hasError": false,
-    "errorMessage": ""
+    "errorMessage": "",
+    "validationRules": {
+      "required": {
+        "value": true,
+        "errorMessage": "State is required"
+      }
+    }
   },
   "zipCode": {
     "id": "zipCode",
@@ -79,7 +131,17 @@
     "value": "",
     "isRequired": true,
     "hasError": false,
-    "errorMessage": ""
+    "errorMessage": "",
+    "validationRules": {
+      "required": {
+        "value": true,
+        "errorMessage": "ZIP Code is required"
+      },
+      "pattern": {
+        "value": "ZIP_CODE",
+        "errorMessage": "Please enter a valid ZIP code"
+      }
+    }
   },
 
   "mailingSame": {
@@ -102,7 +164,13 @@
     "value": "",
     "isRequired": false,
     "hasError": false,
-    "errorMessage": ""
+    "errorMessage": "",
+    "validationRules": {
+      "minLength": {
+        "value": 3,
+        "errorMessage": "Mailing Street must be at least 3 characters"
+      }
+    }
   },
   "mailingCity": {
     "id": "mailingCity",
@@ -113,7 +181,13 @@
     "value": "",
     "isRequired": false,
     "hasError": false,
-    "errorMessage": ""
+    "errorMessage": "",
+    "validationRules": {
+      "minLength": {
+        "value": 2,
+        "errorMessage": "Mailing City must be at least 2 characters"
+      }
+    }
   },
   "mailingState": {
     "id": "mailingState",
@@ -135,7 +209,13 @@
     "value": "",
     "isRequired": false,
     "hasError": false,
-    "errorMessage": ""
+    "errorMessage": "",
+    "validationRules": {
+      "pattern": {
+        "value": "ZIP_CODE",
+        "errorMessage": "Please enter a valid ZIP code"
+      }
+    }
   },
 
   "preferredCommunication": {

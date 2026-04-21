@@ -12,6 +12,7 @@ export interface FormField {
   hasError: boolean;
   errorMessage: string;
   options?: { label: string; value: string }[];
+  validationRules?: Record<string, { value: unknown; errorMessage?: string }>;
 }
 
 export interface FormDataType {

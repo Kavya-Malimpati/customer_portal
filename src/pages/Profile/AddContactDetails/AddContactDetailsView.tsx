@@ -31,6 +31,7 @@ function AddContactDetailsView({
               onChange={handleInputChange}
               hasError={formData.primaryPhone.hasError}
               errorMessage={formData.primaryPhone.errorMessage}
+              isRequired={formData.primaryPhone.isRequired}
             />
             <TextField
               id={formData.secondaryPhone.id}
@@ -40,6 +41,7 @@ function AddContactDetailsView({
               onChange={handleInputChange}
               hasError={formData.secondaryPhone.hasError}
               errorMessage={formData.secondaryPhone.errorMessage}
+              isRequired={formData.secondaryPhone.isRequired}
             />
             <TextField
               id={formData.email.id}
@@ -49,6 +51,7 @@ function AddContactDetailsView({
               onChange={handleInputChange}
               hasError={formData.email.hasError}
               errorMessage={formData.email.errorMessage}
+              isRequired={formData.email.isRequired}
             />
 
             <TextField
@@ -59,6 +62,7 @@ function AddContactDetailsView({
               onChange={handleInputChange}
               hasError={formData.street.hasError}
               errorMessage={formData.street.errorMessage}
+              isRequired={formData.street.isRequired}
             />
             <TextField
               id={formData.city.id}
@@ -68,6 +72,7 @@ function AddContactDetailsView({
               onChange={handleInputChange}
               hasError={formData.city.hasError}
               errorMessage={formData.city.errorMessage}
+              isRequired={formData.city.isRequired}
             />
             <Select
               id={formData.state.id}
@@ -77,6 +82,7 @@ function AddContactDetailsView({
               onChange={handleInputChange}
               hasError={formData.state.hasError}
               errorMessage={formData.state.errorMessage}
+              isRequired={formData.state.isRequired}
             />
             <TextField
               id={formData.zipCode.id}
@@ -86,6 +92,7 @@ function AddContactDetailsView({
               onChange={handleInputChange}
               hasError={formData.zipCode.hasError}
               errorMessage={formData.zipCode.errorMessage}
+              isRequired={formData.zipCode.isRequired}
             />
 
             <Checkbox
@@ -107,6 +114,7 @@ function AddContactDetailsView({
               onChange={handleInputChange}
               hasError={formData.preferredCommunication.hasError}
               errorMessage={formData.preferredCommunication.errorMessage}
+              isRequired={formData.preferredCommunication.isRequired}
             />
           </CardContent>
 

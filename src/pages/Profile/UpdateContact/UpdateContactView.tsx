@@ -1,11 +1,11 @@
-import Card from '../../common/components/Card';
-import CardContent from '../../common/components/Card/CardContent';
-import Typography from '../../common/components/Typography/Typography';
-import TextField from '../../common/components/TextField/TextField';
-import Select from '../../common/components/Select';
-import Button from '../../common/components/Button/Button';
+import Card from '../../../common/components/Card';
+import CardContent from '../../../common/components/Card/CardContent';
+import Typography from '../../../common/components/Typography/Typography';
+import TextField from '../../../common/components/TextField/TextField';
+import Select from '../../../common/components/Select';
+import Button from '../../../common/components/Button/Button';
 
-import contactConfig from '../../config/contact.json';
+import contactConfig from '../../../config/contact.json';
 import type { UpdateContactViewProps } from './interfaces';
 
 type ExtendedProps = UpdateContactViewProps & {

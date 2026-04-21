@@ -1,11 +1,13 @@
 import logo from '../../assets/images/logo.png';
 import Typography from '../components/Typography/Typography';
+import { Link, useNavigate } from 'react-router-dom';
 
 interface HeaderProps {
   onLogout?: () => void;
 }
 
 const Header = ({ onLogout }: HeaderProps) => {
+  const navigate = useNavigate();
   return (
     <header
       className='w-full bg-white shadow-sm'
@@ -24,21 +26,35 @@ const Header = ({ onLogout }: HeaderProps) => {
           <Typography
             variant='body1'
             className='cursor-pointer transition-all hover:opacity-70'
+            onClick={() => navigate('/home')}
             style={{
               color: 'var(--text-primary)',
             }}
           >
             Dashboard
           </Typography>
-          <Typography
-            variant='body1'
-            className='cursor-pointer transition-all hover:opacity-70'
-            style={{
-              color: 'var(--text-primary)',
-            }}
-          >
-            Settings
-          </Typography>
+
+          <Link to='/profile/digital-documents'>
+            <Typography
+              variant='body1'
+              className='cursor-pointer transition-all hover:opacity-70'
+              style={{ color: 'var(--text-primary)' }}
+            >
+              Documents
+            </Typography>
+          </Link>
+
+          <Link to='/profile/settings'>
+            <Typography
+              variant='body1'
+              className='cursor-pointer transition-all hover:opacity-70'
+              style={{
+                color: 'var(--text-primary)',
+              }}
+            >
+              Settings
+            </Typography>
+          </Link>
           <Typography
             variant='body1'
             className='cursor-pointer transition-all hover:opacity-70'

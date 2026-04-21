@@ -167,7 +167,7 @@ const UpdateContactView = ({
         <div className='fixed inset-0 z-(--z-modal) flex items-center justify-center px-(--space-4)'>
           <div
             className='absolute inset-0'
-            style={{ backgroundColor: 'rgba(15, 23, 42, 0.4)' }}
+            style={{ backgroundColor: 'var(--overlay-backdrop)' }}
             onClick={onCancelVerification}
           />
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import contactConfig from '../../../config/contact.json';
-import verificationConfig from '../../../config/verification.json';
+import contactConfig from '../../../config/updatecontactdetails.json';
+import verificationConfig from '../../../config/verificationmethod.json';
 
 import { deepClone } from '../../../scripts/utils';
 import { validateFormFields } from '../../../scripts/validationsService';
@@ -40,23 +40,6 @@ const UpdateContact = () => {
         [id]: {
           ...prev[id as keyof VerificationType],
           value,
-          hasError: false,
-          errorMessage: '',
-        },
-      }));
-      return;
-    }
-
-    // City → State auto-map
-    if (id === 'city') {
-      const selectedCity = contactConfig.city.options.find(o => o.value === value);
-
-      setFormData(prev => ({
-        ...prev,
-        city: { ...prev.city, value, hasError: false, errorMessage: '' },
-        state: {
-          ...prev.state,
-          value: selectedCity?.stateValue || '',
           hasError: false,
           errorMessage: '',
         },
@@ -120,16 +103,25 @@ const UpdateContact = () => {
   const handleConfirmVerification = () => {
     if (!pendingContact) return;
 
-    const code = verificationData.verificationCode.value;
-    if (!/^\d{6}$/.test(code)) {
-      setVerificationData(prev => ({
-        ...prev,
-        verificationCode: {
-          ...prev.verificationCode,
-          hasError: true,
-          errorMessage: 'Enter a valid 6-digit code',
-        },
-      }));
+    const { status, data } = validateFormFields(verificationData);
+
+    if (!status) {
+      setVerificationData(prevData =>
+        Object.entries(prevData).reduce((acc, [key, field], index) => {
+          const validationResult = data[index] as
+            | { isValid: boolean; errorMessage?: string }
+            | undefined;
+
+          return {
+            ...acc,
+            [key]: {
+              ...field,
+              hasError: !validationResult?.isValid,
+              errorMessage: validationResult?.errorMessage || '',
+            },
+          };
+        }, {} as VerificationType),
+      );
       return;
     }
 

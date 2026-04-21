@@ -29,22 +29,27 @@
     "id": "verificationCode",
     "type": "text",
     "name": "verificationCode",
-    "label": "Verification Code",
-    "placeholder": "Enter 6-digit code",
+    "label": "OTP Code",
+    "placeholder": "Enter 6-digit OTP",
     "value": "",
     "isRequired": true,
     "hasError": false,
     "errorMessage": "",
-    "maxLength": 6,
     "validationRules": {
       "required": {
         "value": true,
-        "errorMessage": "Verification code is required."
+        "errorMessage": "OTP is required."
       },
       "pattern": {
-        "value": "^\\d{6}$",
-        "errorMessage": "Verification code must be exactly 6 digits."
-      }
-    }
+        "value": "OTP_NUMBER",
+        "errorMessage": "Please enter a valid 6-digit OTP."
+      },
+      "minLength": { "value": 6, "errorMessage": "Please enter a valid 6-digit OTP" },
+      "maxLength": { "value": 6, "errorMessage": "Please enter a valid 6-digit OTP" }
+    },
+    "aria-label": "Verification Code",
+    "aria-describedby": "verificationHelp",
+    "maxLength": 6,
+    "minLength": 6
   }
 }

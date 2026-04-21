@@ -5,7 +5,7 @@ import TextField from '../../../common/components/TextField/TextField';
 import Select from '../../../common/components/Select';
 import Button from '../../../common/components/Button/Button';
 
-import contactConfig from '../../../config/contact.json';
+import contactConfig from '../../../config/updatecontactdetails.json';
 import type { UpdateContactViewProps } from './interfaces';
 
 type ExtendedProps = UpdateContactViewProps & {
@@ -33,8 +33,6 @@ const UpdateContactView = ({
 }: ExtendedProps) => {
   const getSelectLabel = (options: { value: string; label: string }[], value: string) =>
     options.find(o => o.value === value)?.label || value;
-
-  const isVerificationCodeValid = /^\d{6}$/.test(verificationData.verificationCode.value || '');
 
   // Render
   return (
@@ -79,10 +77,10 @@ const UpdateContactView = ({
                     <TextField {...formData.aptNumber} onChange={onInputChange} />
                   </div>
                   <div className='col-span-12 md:col-span-6'>
-                    <Select {...formData.city} onChange={onInputChange} />
+                    <TextField {...formData.city} onChange={onInputChange} />
                   </div>
                   <div className='col-span-12 md:col-span-6'>
-                    <Select {...formData.state} disabled />
+                    <Select {...formData.state} onChange={onInputChange} />
                   </div>
                   <div className='col-span-12 md:col-span-6'>
                     <TextField {...formData.zipcode} onChange={onInputChange} />
@@ -122,7 +120,7 @@ const UpdateContactView = ({
             >
               <div className='px-(--space-6) py-(--space-4) bg-(--bg-muted)'>
                 <Typography variant='h2' className='text-(--text-heading) text-center'>
-                  Contact History
+                  Update History
                 </Typography>
               </div>
 
@@ -149,8 +147,8 @@ const UpdateContactView = ({
                           {c.aptNumber && `, Apt ${c.aptNumber}`}
                         </Typography>
                         <Typography variant='body2'>
-                          {getSelectLabel(contactConfig.city.options, c.city)},{' '}
-                          {getSelectLabel(contactConfig.state.options, c.state)} {c.zipcode}
+                          {c.city}, {getSelectLabel(contactConfig.state.options, c.state)}{' '}
+                          {c.zipcode}
                         </Typography>
                       </>
                     )}
@@ -177,23 +175,26 @@ const UpdateContactView = ({
           >
             <CardContent className='p-(--space-6) flex flex-col gap-(--space-4)'>
               <Typography variant='h3' className='text-(--text-heading) text-center'>
-                Re-verify Contact Details
+                OTP Verification
               </Typography>
 
               <Typography variant='body2' className='text-(--text-secondary) text-center'>
-                Please select how you’d like to re-verify your updated contact details.
+                Please select below to get OTP code.
               </Typography>
 
               <Select {...verificationData.verificationMethod} onChange={onInputChange} />
 
-              <TextField {...verificationData.verificationCode} onChange={onInputChange} />
+              <TextField
+                {...verificationData.verificationCode}
+                onChange={onInputChange}
+                disabled={!verificationData.verificationMethod.value}
+              />
 
               <div className='flex flex-col gap-(--space-3) sm:flex-row sm:justify-end'>
                 <Button
                   variant='contained'
                   color='primary'
                   className='w-full sm:w-auto'
-                  disabled={!isVerificationCodeValid}
                   onClick={onConfirmVerification}
                 >
                   Continue Verification

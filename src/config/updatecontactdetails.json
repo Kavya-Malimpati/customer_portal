@@ -46,7 +46,7 @@
     "id": "streetAddress",
     "type": "streetAddress",
     "name": "streetAddress",
-    "placeholder": "123 Main St",
+    "placeholder": "Street Address",
     "label": "Street Address",
     "value": "",
     "isRequired": true,
@@ -63,8 +63,8 @@
     "id": "aptNumber",
     "type": "aptNumber",
     "name": "aptNumber",
-    "placeholder": "Apt, suite, unit (optional)",
-    "label": "Apt / Suite",
+    "placeholder": "Apt No. / Suite No.",
+    "label": "Apt No. / Suite No. (Optional)",
     "value": "",
     "isRequired": false,
     "hasError": false,
@@ -84,39 +84,13 @@
     "hasError": false,
     "errorMessage": "",
     "validationRules": {
-      "required": { "value": true, "errorMessage": "City is required." }
+      "required": {
+        "value": true,
+        "errorMessage": "City is required."
+      }
     },
     "aria-label": "City",
-    "aria-describedby": "cityHelp",
-
-    "options": [
-      { "value": "", "label": "Select your city" },
-      {
-        "value": "new_york_city",
-        "label": "New York City",
-        "stateValue": "new_york"
-      },
-      {
-        "value": "los_angeles",
-        "label": "Los Angeles",
-        "stateValue": "california"
-      },
-      {
-        "value": "chicago",
-        "label": "Chicago",
-        "stateValue": "illinois"
-      },
-      {
-        "value": "houston",
-        "label": "Houston",
-        "stateValue": "texas"
-      },
-      {
-        "value": "phoenix",
-        "label": "Phoenix",
-        "stateValue": "arizona"
-      }
-    ]
+    "aria-describedby": "cityHelp"
   },
   "state": {
     "id": "state",
@@ -135,11 +109,56 @@
     "aria-describedby": "stateHelp",
     "options": [
       { "value": "", "label": "Select your state" },
-      { "value": "new_york", "label": "New York" },
+      { "value": "alabama", "label": "Alabama" },
+      { "value": "alaska", "label": "Alaska" },
+      { "value": "arizona", "label": "Arizona" },
+      { "value": "arkansas", "label": "Arkansas" },
       { "value": "california", "label": "California" },
+      { "value": "colorado", "label": "Colorado" },
+      { "value": "connecticut", "label": "Connecticut" },
+      { "value": "delaware", "label": "Delaware" },
+      { "value": "florida", "label": "Florida" },
+      { "value": "georgia", "label": "Georgia" },
+      { "value": "hawaii", "label": "Hawaii" },
+      { "value": "idaho", "label": "Idaho" },
       { "value": "illinois", "label": "Illinois" },
+      { "value": "indiana", "label": "Indiana" },
+      { "value": "iowa", "label": "Iowa" },
+      { "value": "kansas", "label": "Kansas" },
+      { "value": "kentucky", "label": "Kentucky" },
+      { "value": "louisiana", "label": "Louisiana" },
+      { "value": "maine", "label": "Maine" },
+      { "value": "maryland", "label": "Maryland" },
+      { "value": "massachusetts", "label": "Massachusetts" },
+      { "value": "michigan", "label": "Michigan" },
+      { "value": "minnesota", "label": "Minnesota" },
+      { "value": "mississippi", "label": "Mississippi" },
+      { "value": "missouri", "label": "Missouri" },
+      { "value": "montana", "label": "Montana" },
+      { "value": "nebraska", "label": "Nebraska" },
+      { "value": "nevada", "label": "Nevada" },
+      { "value": "new_hampshire", "label": "New Hampshire" },
+      { "value": "new_jersey", "label": "New Jersey" },
+      { "value": "new_mexico", "label": "New Mexico" },
+      { "value": "new_york", "label": "New York" },
+      { "value": "north_carolina", "label": "North Carolina" },
+      { "value": "north_dakota", "label": "North Dakota" },
+      { "value": "ohio", "label": "Ohio" },
+      { "value": "oklahoma", "label": "Oklahoma" },
+      { "value": "oregon", "label": "Oregon" },
+      { "value": "pennsylvania", "label": "Pennsylvania" },
+      { "value": "rhode_island", "label": "Rhode Island" },
+      { "value": "south_carolina", "label": "South Carolina" },
+      { "value": "south_dakota", "label": "South Dakota" },
+      { "value": "tennessee", "label": "Tennessee" },
       { "value": "texas", "label": "Texas" },
-      { "value": "arizona", "label": "Arizona" }
+      { "value": "utah", "label": "Utah" },
+      { "value": "vermont", "label": "Vermont" },
+      { "value": "virginia", "label": "Virginia" },
+      { "value": "washington", "label": "Washington" },
+      { "value": "west_virginia", "label": "West Virginia" },
+      { "value": "wisconsin", "label": "Wisconsin" },
+      { "value": "wyoming", "label": "Wyoming" }
     ]
   },
   "zipcode": {
@@ -155,7 +174,7 @@
     "validationRules": {
       "required": { "value": true, "errorMessage": "Zip code is required." },
       "pattern": {
-        "value": "^\\d{5}$",
+        "value": "ZIP_CODE",
         "errorMessage": "Please enter a valid 5-digit zip code."
       },
       "minLength": { "value": 5, "errorMessage": "Zip code must be 5 digits." },
@@ -180,24 +199,5 @@
     "aria-label": "Country",
     "aria-describedby": "countryHelp",
     "readOnly": true
-  },
-  "reVerification": {
-    "id": "verificationMethod",
-    "type": "select",
-    "name": "verificationMethod",
-    "label": "Verification Method",
-    "placeholder": "Select verification method",
-    "value": "",
-    "isRequired": true,
-    "hasError": false,
-    "errorMessage": "",
-    "options": [
-      { "value": "", "label": "Select verification method" },
-      { "value": "sms", "label": "SMS" },
-      { "value": "email", "label": "Email" },
-      { "value": "portal", "label": "Portal" }
-    ],
-    "aria-label": "Verification Method",
-    "aria-describedby": "verificationHelp"
   }
 }

@@ -6,7 +6,7 @@ import MainLayout from './common/MainLayout';
 import Home from './pages/Home';
 import AddContactDetails from './pages/Profile/AddContactDetails';
 import PaperlessPreferences from './pages/Profile/PaperlessPreferences';
-import UpdateContact from './pages/Profile/UpdateContact';
+import UpdateContactDetails from './pages/Profile/UpdateContactDetails';
 
 function App() {
   const navigate = useNavigate();
@@ -48,7 +48,7 @@ function App() {
         path='/update-contact'
         element={
           <MainLayout onLogout={handleLogout}>
-            <UpdateContact />
+            <UpdateContactDetails />
           </MainLayout>
         }
       />

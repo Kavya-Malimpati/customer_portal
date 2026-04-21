@@ -1,6 +1,7 @@
+import '../../../styles/tokens.css';
 
 import React, { useMemo, useState } from 'react';
-import '../../../src/styles/tokens.css';
+
 export type TableSize = 'sm' | 'md' | 'lg';
 export type TableVariant = 'standard' | 'striped' | 'outlined';
 export interface TableColumn<T> {
@@ -64,12 +65,14 @@ const Table = <T extends Record<string, unknown>>({
   dense = false,
 }: TableProps<T>) => {
   const [sortState, setSortState] = useState<{ field?: string; order?: 'asc' | 'desc' }>(() =>
-    defaultSort ? { field: String(defaultSort.field), order: defaultSort.order } : {}
+    defaultSort ? { field: String(defaultSort.field), order: defaultSort.order } : {},
   );
   const handleSort = (field: string) => {
     if (!sortable) return;
-    setSortState((prev) =>
-      prev.field === field ? { field, order: prev.order === 'asc' ? 'desc' : 'asc' } : { field, order: 'asc' }
+    setSortState(prev =>
+      prev.field === field
+        ? { field, order: prev.order === 'asc' ? 'desc' : 'asc' }
+        : { field, order: 'asc' },
     );
   };
   const sortedRows = useMemo(() => {
@@ -130,9 +133,12 @@ const Table = <T extends Record<string, unknown>>({
     zIndex: stickyHeader ? 10 : undefined,
   };
   const cellStyle: React.CSSProperties = {
-    padding: dense ? `${parseFloat(sizeConfig_value.padding.split(' ')[0]) / 2}rem ${parseFloat(sizeConfig_value.padding.split(' ')[1]) || parseFloat(sizeConfig_value.padding.split(' ')[0])}rem` : sizeConfig_value.padding,
+    padding: dense
+      ? `${parseFloat(sizeConfig_value.padding.split(' ')[0]) / 2}rem ${parseFloat(sizeConfig_value.padding.split(' ')[1]) || parseFloat(sizeConfig_value.padding.split(' ')[0])}rem`
+      : sizeConfig_value.padding,
     fontSize: sizeConfig_value.fontSize,
-    borderBottom: variant === 'outlined' ? `var(--border-width-sm) solid var(--border-color)` : undefined,
+    borderBottom:
+      variant === 'outlined' ? `var(--border-width-sm) solid var(--border-color)` : undefined,
   };
   return (
     <div
@@ -156,86 +162,90 @@ const Table = <T extends Record<string, unknown>>({
       >
         <thead>
           <tr>
-            {columns.filter((c) => !c.hide).map((col) => {
-              const isCurrentSortField = sortState.field === String(col.field);
-              const ariaSort: 'ascending' | 'descending' | undefined = isCurrentSortField
-                ? sortState.order === 'asc'
-                  ? 'ascending'
-                  : 'descending'
-                : undefined;
-              return (
-                <th
-                  key={col.id ?? String(col.field)}
-                  style={{
-                    ...headerStyle,
-                    width: col.width,
-                    textAlign: col.align || 'left',
-                  }}
-                  className={col.className}
-                  aria-sort={ariaSort}
-                >
-                  <div
+            {columns
+              .filter(c => !c.hide)
+              .map(col => {
+                const isCurrentSortField = sortState.field === String(col.field);
+                const ariaSort: 'ascending' | 'descending' | undefined = isCurrentSortField
+                  ? sortState.order === 'asc'
+                    ? 'ascending'
+                    : 'descending'
+                  : undefined;
+                return (
+                  <th
+                    key={col.id ?? String(col.field)}
                     style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 'var(--space-2)',
+                      ...headerStyle,
+                      width: col.width,
+                      textAlign: col.align || 'left',
                     }}
+                    className={col.className}
+                    aria-sort={ariaSort}
                   >
-                    <span>{col.headerName ?? String(col.field)}</span>
-                    {sortable && col.sortable !== false && (
-                      <button
-                        type="button"
-                        style={{
-                          marginLeft: 'var(--space-1)',
-                          color: 'var(--text-muted)',
-                          backgroundColor: 'transparent',
-                          border: 'none',
-                          cursor: 'pointer',
-                          padding: 0,
-                          display: 'flex',
-                          alignItems: 'center',
-                          transition: 'color var(--transition-fast)',
-                        }}
-                        onClick={() => handleSort(String(col.field))}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.color = 'var(--color-primary)';
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.color = 'var(--text-muted)';
-                        }}
-                        aria-label={`Sort by ${col.headerName ?? String(col.field)}`}
-                      >
-                        <svg
+                    <div
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 'var(--space-2)',
+                      }}
+                    >
+                      <span>{col.headerName ?? String(col.field)}</span>
+                      {sortable && col.sortable !== false && (
+                        <button
+                          type='button'
                           style={{
-                            width: '12px',
-                            height: '12px',
-                            display: 'inline-block',
-                            transform:
-                              sortState.field === String(col.field) && sortState.order === 'desc'
-                                ? 'rotate(180deg)'
-                                : undefined,
-                            transition: 'transform var(--transition-fast)',
+                            marginLeft: 'var(--space-1)',
+                            color: 'var(--text-muted)',
+                            backgroundColor: 'transparent',
+                            border: 'none',
+                            cursor: 'pointer',
+                            padding: 0,
+                            display: 'flex',
+                            alignItems: 'center',
+                            transition: 'color var(--transition-fast)',
                           }}
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth={2}
+                          onClick={() => handleSort(String(col.field))}
+                          onMouseEnter={e => {
+                            e.currentTarget.style.color = 'var(--color-primary)';
+                          }}
+                          onMouseLeave={e => {
+                            e.currentTarget.style.color = 'var(--text-muted)';
+                          }}
+                          aria-label={`Sort by ${col.headerName ?? String(col.field)}`}
                         >
-                          <path d="M6 9l6-6 6 6" />
-                          <path d="M6 15l6 6 6-6" />
-                        </svg>
-                      </button>
-                    )}
-                  </div>
-                </th>
-              );
-            })}
+                          <svg
+                            style={{
+                              width: '12px',
+                              height: '12px',
+                              display: 'inline-block',
+                              transform:
+                                sortState.field === String(col.field) && sortState.order === 'desc'
+                                  ? 'rotate(180deg)'
+                                  : undefined,
+                              transition: 'transform var(--transition-fast)',
+                            }}
+                            viewBox='0 0 24 24'
+                            fill='none'
+                            stroke='currentColor'
+                            strokeWidth={2}
+                          >
+                            <path d='M6 9l6-6 6 6' />
+                            <path d='M6 15l6 6 6-6' />
+                          </svg>
+                        </button>
+                      )}
+                    </div>
+                  </th>
+                );
+              })}
           </tr>
         </thead>
         <tbody>
           {sortedRows.map((row: T, rowIndex: number) => {
             const rowKey = `row-${Object.values(row)
-              .map((val) => (typeof val === 'object' && val !== null ? JSON.stringify(val) : String(val)))
+              .map(val =>
+                typeof val === 'object' && val !== null ? JSON.stringify(val) : String(val),
+              )
               .join('-')}`;
             return (
               <tr
@@ -245,20 +255,20 @@ const Table = <T extends Record<string, unknown>>({
                   transition: 'background-color var(--transition-fast)',
                   ...getVariantStyle(rowIndex),
                 }}
-                onMouseEnter={(e) => {
+                onMouseEnter={e => {
                   if (onRowClick) {
                     e.currentTarget.style.backgroundColor = 'var(--bg-hover)';
                   }
                 }}
-                onMouseLeave={(e) => {
+                onMouseLeave={e => {
                   const variantBg = getVariantStyle(rowIndex).backgroundColor;
                   e.currentTarget.style.backgroundColor = variantBg || 'transparent';
                 }}
                 onClick={() => onRowClick?.(row)}
               >
                 {columns
-                  .filter((c) => !c.hide)
-                  .map((col) => (
+                  .filter(c => !c.hide)
+                  .map(col => (
                     <td
                       key={col.id ?? String(col.field)}
                       style={{
@@ -267,7 +277,9 @@ const Table = <T extends Record<string, unknown>>({
                       }}
                       className={col.className}
                     >
-                      {col.renderCell ? col.renderCell(row) : String(row[col.field as keyof T] ?? '')}
+                      {col.renderCell
+                        ? col.renderCell(row)
+                        : String(row[col.field as keyof T] ?? '')}
                     </td>
                   ))}
               </tr>
@@ -280,4 +292,3 @@ const Table = <T extends Record<string, unknown>>({
 };
 export default Table;
 export { Table };
-

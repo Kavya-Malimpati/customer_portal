@@ -1,0 +1,30 @@
+{
+  "title": "Paperless Preferences",
+  "description": "Manage your communication settings",
+  "mainToggle": {
+    "label": "Paperless Communication",
+    "hint": "Receive documents digitally instead of paper mail"
+  },
+  "options": [
+    {
+      "id": "email",
+      "label": "Email Notifications",
+      "value": true,
+      "required": false
+    },
+    {
+      "id": "sms",
+      "label": "SMS Alerts",
+      "value": true,
+      "required": false
+    },
+    {
+      "id": "documents",
+      "label": "Policy Documents",
+      "value": true,
+      "required": false
+    }
+  ],
+  "warning": "⚠️ You will not receive physical copies once enabled.",
+  "enabledState": false
+}

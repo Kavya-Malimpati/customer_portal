@@ -1,15 +1,13 @@
-import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import './App.css';
-import Home from './pages/Home';
-import MainLayout from './common/MainLayout';
-import Login from './pages/Login';
 
-/**
- * App Component
- *
- * Main application component that serves as the root wrapper.
- * Configures routing for all pages including Home (Login).
- */
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
+
+import MainLayout from './common/MainLayout';
+import AddContactDetails from './pages/AddContactDetails';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import PaperlessPreferences from './pages/PaperlessPreferences';
+
 function App() {
   const navigate = useNavigate();
 
@@ -19,16 +17,36 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Login />} />
+      <Route path='/' element={<Login />} />
+
       <Route
-        path="/home"
+        path='/home'
         element={
           <MainLayout onLogout={handleLogout}>
             <Home />
           </MainLayout>
         }
       />
-      <Route path="*" element={<Navigate to="/" replace />} />
+
+      <Route
+        path='/cdetails'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <AddContactDetails />
+          </MainLayout>
+        }
+      />
+
+      <Route
+        path='/paperless'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <PaperlessPreferences />
+          </MainLayout>
+        }
+      />
+
+      <Route path='*' element={<Navigate to='/' replace />} />
     </Routes>
   );
 }

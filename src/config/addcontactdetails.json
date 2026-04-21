@@ -1,0 +1,157 @@
+{
+  "primaryPhone": {
+    "id": "primaryPhone",
+    "type": "text",
+    "name": "primaryPhone",
+    "placeholder": "Enter primary phone number",
+    "label": "Primary Phone Number",
+    "value": "",
+    "isRequired": true,
+    "hasError": false,
+    "errorMessage": ""
+  },
+  "secondaryPhone": {
+    "id": "secondaryPhone",
+    "type": "text",
+    "name": "secondaryPhone",
+    "placeholder": "Enter secondary phone number",
+    "label": "Secondary Phone Number",
+    "value": "",
+    "isRequired": false,
+    "hasError": false,
+    "errorMessage": ""
+  },
+  "email": {
+    "id": "email",
+    "type": "email",
+    "name": "email",
+    "placeholder": "Enter your email",
+    "label": "Email Address",
+    "value": "",
+    "isRequired": true,
+    "hasError": false,
+    "errorMessage": ""
+  },
+
+  "street": {
+    "id": "street",
+    "type": "text",
+    "name": "street",
+    "placeholder": "Enter street",
+    "label": "Street",
+    "value": "",
+    "isRequired": true,
+    "hasError": false,
+    "errorMessage": ""
+  },
+  "city": {
+    "id": "city",
+    "type": "text",
+    "name": "city",
+    "placeholder": "Enter city",
+    "label": "City",
+    "value": "",
+    "isRequired": true,
+    "hasError": false,
+    "errorMessage": ""
+  },
+  "state": {
+    "id": "state",
+    "type": "select",
+    "name": "state",
+    "label": "State",
+    "value": "",
+    "options": [
+      { "value": "", "label": "Select state" },
+      { "value": "Telangana", "label": "Telangana" },
+      { "value": "Andhra Pradesh", "label": "Andhra Pradesh" }
+    ],
+    "isRequired": true,
+    "hasError": false,
+    "errorMessage": ""
+  },
+  "zipCode": {
+    "id": "zipCode",
+    "type": "text",
+    "name": "zipCode",
+    "placeholder": "Enter ZIP Code",
+    "label": "ZIP Code",
+    "value": "",
+    "isRequired": true,
+    "hasError": false,
+    "errorMessage": ""
+  },
+
+  "mailingSame": {
+    "id": "mailingSame",
+    "type": "checkbox",
+    "name": "mailingSame",
+    "label": "Mailing address same as primary",
+    "value": false,
+    "isRequired": false,
+    "hasError": false,
+    "errorMessage": ""
+  },
+
+  "mailingStreet": {
+    "id": "mailingStreet",
+    "type": "text",
+    "name": "mailingStreet",
+    "placeholder": "Enter mailing street",
+    "label": "Mailing Street",
+    "value": "",
+    "isRequired": false,
+    "hasError": false,
+    "errorMessage": ""
+  },
+  "mailingCity": {
+    "id": "mailingCity",
+    "type": "text",
+    "name": "mailingCity",
+    "placeholder": "Enter mailing city",
+    "label": "Mailing City",
+    "value": "",
+    "isRequired": false,
+    "hasError": false,
+    "errorMessage": ""
+  },
+  "mailingState": {
+    "id": "mailingState",
+    "type": "text",
+    "name": "mailingState",
+    "placeholder": "Enter mailing state",
+    "label": "Mailing State",
+    "value": "",
+    "isRequired": false,
+    "hasError": false,
+    "errorMessage": ""
+  },
+  "mailingZipCode": {
+    "id": "mailingZipCode",
+    "type": "text",
+    "name": "mailingZipCode",
+    "placeholder": "Enter mailing ZIP Code",
+    "label": "Mailing ZIP Code",
+    "value": "",
+    "isRequired": false,
+    "hasError": false,
+    "errorMessage": ""
+  },
+
+  "preferredCommunication": {
+    "id": "preferredCommunication",
+    "type": "select",
+    "name": "preferredCommunication",
+    "label": "Preferred Communication",
+    "value": "",
+    "options": [
+      { "value": "", "label": "Select option" },
+      { "value": "email", "label": "Email" },
+      { "value": "sms", "label": "SMS" },
+      { "value": "portal", "label": "Portal" }
+    ],
+    "isRequired": false,
+    "hasError": false,
+    "errorMessage": ""
+  }
+}

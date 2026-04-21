@@ -1,3 +1,4 @@
+import '../../../styles/tokens.css';
 import React, { useCallback } from 'react';
 import '../../../styles/tokens.css';
 export type Size = 'sm' | 'md' | 'lg';
@@ -45,25 +46,64 @@ const sizeConfig: Record<Size, React.CSSProperties> = {
     height: 'var(--control-height-lg)',
   },
 };
-const variantConfig: Record<Variant, {
-  contained: { color: string; backgroundColor: string; borderColor: string };
-  outlined: { color: string; backgroundColor: string; borderColor: string };
-  text: { color: string; backgroundColor: string; borderColor: string };
-}> = {
+const variantConfig: Record<
+  Variant,
+  {
+    contained: { color: string; backgroundColor: string; borderColor: string };
+    outlined: { color: string; backgroundColor: string; borderColor: string };
+    text: { color: string; backgroundColor: string; borderColor: string };
+  }
+> = {
   contained: {
-    contained: { color: 'var(--text-inverse)', backgroundColor: 'var(--color-primary)', borderColor: 'var(--color-primary)' },
-    outlined: { color: 'var(--color-primary)', backgroundColor: 'var(--bg-surface)', borderColor: 'var(--color-primary)' },
-    text: { color: 'var(--color-primary)', backgroundColor: 'transparent', borderColor: 'transparent' },
+    contained: {
+      color: 'var(--text-inverse)',
+      backgroundColor: 'var(--color-primary)',
+      borderColor: 'var(--color-primary)',
+    },
+    outlined: {
+      color: 'var(--color-primary)',
+      backgroundColor: 'var(--bg-surface)',
+      borderColor: 'var(--color-primary)',
+    },
+    text: {
+      color: 'var(--color-primary)',
+      backgroundColor: 'transparent',
+      borderColor: 'transparent',
+    },
   },
   outlined: {
-    contained: { color: 'var(--text-inverse)', backgroundColor: 'var(--color-primary)', borderColor: 'var(--color-primary)' },
-    outlined: { color: 'var(--color-primary)', backgroundColor: 'var(--bg-surface)', borderColor: 'var(--color-primary)' },
-    text: { color: 'var(--color-primary)', backgroundColor: 'transparent', borderColor: 'transparent' },
+    contained: {
+      color: 'var(--text-inverse)',
+      backgroundColor: 'var(--color-primary)',
+      borderColor: 'var(--color-primary)',
+    },
+    outlined: {
+      color: 'var(--color-primary)',
+      backgroundColor: 'var(--bg-surface)',
+      borderColor: 'var(--color-primary)',
+    },
+    text: {
+      color: 'var(--color-primary)',
+      backgroundColor: 'transparent',
+      borderColor: 'transparent',
+    },
   },
   text: {
-    contained: { color: 'var(--text-inverse)', backgroundColor: 'var(--color-primary)', borderColor: 'var(--color-primary)' },
-    outlined: { color: 'var(--color-primary)', backgroundColor: 'var(--bg-surface)', borderColor: 'var(--color-primary)' },
-    text: { color: 'var(--color-primary)', backgroundColor: 'transparent', borderColor: 'transparent' },
+    contained: {
+      color: 'var(--text-inverse)',
+      backgroundColor: 'var(--color-primary)',
+      borderColor: 'var(--color-primary)',
+    },
+    outlined: {
+      color: 'var(--color-primary)',
+      backgroundColor: 'var(--bg-surface)',
+      borderColor: 'var(--color-primary)',
+    },
+    text: {
+      color: 'var(--color-primary)',
+      backgroundColor: 'transparent',
+      borderColor: 'transparent',
+    },
   },
 };
 const Pagination: React.FC<PaginationProps> = ({
@@ -93,10 +133,12 @@ const Pagination: React.FC<PaginationProps> = ({
     (e: React.MouseEvent<HTMLButtonElement>) => {
       if (!disabled) onClick?.(e);
     },
-    [disabled, onClick]
+    [disabled, onClick],
   );
   const sizeStyle = sizeConfig[size];
-  const selectedStyle = selected ? variantConfig[variant].contained : variantConfig[variant][variant];
+  const selectedStyle = selected
+    ? variantConfig[variant].contained
+    : variantConfig[variant][variant];
   const baseStyle: React.CSSProperties = {
     fontFamily: 'var(--font-family-sans)',
     fontWeight: selected ? 'var(--font-weight-semibold)' : 'var(--font-weight-medium)',
@@ -118,18 +160,19 @@ const Pagination: React.FC<PaginationProps> = ({
   return (
     <button
       id={id}
-      type="button"
+      type='button'
       onClick={handleClick}
       onDoubleClick={onDoubleClick}
       onFocus={onFocus}
       onBlur={onBlur}
-      onMouseEnter={(e) => {
+      onMouseEnter={e => {
         if (!disabled && !selected) {
           (e.currentTarget as HTMLButtonElement).style.backgroundColor = 'var(--bg-hover)';
         }
       }}
-      onMouseLeave={(e) => {
-        (e.currentTarget as HTMLButtonElement).style.backgroundColor = selectedStyle.backgroundColor;
+      onMouseLeave={e => {
+        (e.currentTarget as HTMLButtonElement).style.backgroundColor =
+          selectedStyle.backgroundColor;
       }}
       disabled={disabled}
       tabIndex={disabled ? -1 : tabIndex}
@@ -150,4 +193,3 @@ const Pagination: React.FC<PaginationProps> = ({
   );
 };
 export default Pagination;
-

@@ -1,4 +1,3 @@
-
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import '../../../styles/tokens.css';
@@ -68,7 +67,10 @@ const variantConfig: Record<
     color: 'var(--text-primary)',
   },
 };
-const positionConfig: Record<SnackbarPosition, { bottom?: string; top?: string; left?: string; right?: string; transform?: string }> = {
+const positionConfig: Record<
+  SnackbarPosition,
+  { bottom?: string; top?: string; left?: string; right?: string; transform?: string }
+> = {
   'bottom-right': { bottom: 'var(--space-6)', right: 'var(--space-6)' },
   'bottom-left': { bottom: 'var(--space-6)', left: 'var(--space-6)' },
   'bottom-center': { bottom: 'var(--space-6)', left: '50%', transform: 'translateX(-50%)' },
@@ -211,38 +213,37 @@ export const Snackbar: React.FC<SnackbarProps> = ({
           <div style={contentStyle}>{children}</div>
           {endDecorator && <span style={endDecoratorStyle}>{endDecorator}</span>}
           <button
-            type="button"
+            type='button'
             onClick={handleClose}
-            aria-label="Close snackbar"
+            aria-label='Close snackbar'
             style={closeButtonStyle}
             className={closeButtonClassName}
-            onMouseEnter={(e) => {
+            onMouseEnter={e => {
               e.currentTarget.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
             }}
-            onMouseLeave={(e) => {
+            onMouseLeave={e => {
               e.currentTarget.style.backgroundColor = 'transparent';
             }}
           >
             <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+              width='18'
+              height='18'
+              viewBox='0 0 24 24'
+              fill='none'
+              stroke='currentColor'
+              strokeWidth='2'
+              strokeLinecap='round'
+              strokeLinejoin='round'
               aria-hidden
             >
-              <line x1="18" y1="6" x2="6" y2="18" />
-              <line x1="6" y1="6" x2="18" y2="18" />
+              <line x1='18' y1='6' x2='6' y2='18' />
+              <line x1='6' y1='6' x2='18' y2='18' />
             </svg>
           </button>
         </div>
       </div>
     </div>,
-    document.body
+    document.body,
   );
 };
 export default Snackbar;
-

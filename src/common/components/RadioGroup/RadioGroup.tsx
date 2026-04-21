@@ -1,4 +1,3 @@
-
 import React, { forwardRef, useRef, useImperativeHandle } from 'react';
 import '../../../styles/tokens.css';
 export interface RadioGroupProps {
@@ -46,7 +45,7 @@ const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
       'aria-orientation': ariaOrientation,
       children,
     },
-    ref
+    ref,
   ) => {
     const containerRef = useRef<HTMLDivElement | null>(null);
     useImperativeHandle(ref, () => containerRef.current as HTMLDivElement);
@@ -100,7 +99,7 @@ const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
         )}
         <div
           id={id}
-          role="radiogroup"
+          role='radiogroup'
           style={groupStyle}
           aria-label={ariaLabel}
           aria-labelledby={ariaLabelledby}
@@ -124,15 +123,14 @@ const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
               color: 'var(--color-error)',
               fontWeight: 'var(--font-weight-regular)',
             }}
-            role="alert"
+            role='alert'
           >
             {errorMessage}
           </div>
         )}
       </div>
     );
-  }
+  },
 );
 RadioGroup.displayName = 'RadioGroup';
 export default RadioGroup;
-

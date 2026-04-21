@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Tooltip from '../Tooltip/Tooltip';
 import '../../../styles/tokens.css';
@@ -40,7 +39,10 @@ export interface StepperProps {
   'aria-current'?: 'step' | 'page' | 'location' | 'date' | 'time' | boolean;
   'aria-live'?: 'off' | 'polite' | 'assertive';
 }
-const colorConfig: Record<'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning' | 'inherit', { color: string }> = {
+const colorConfig: Record<
+  'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning' | 'inherit',
+  { color: string }
+> = {
   primary: { color: 'var(--color-primary)' },
   secondary: { color: 'var(--color-secondary)' },
   error: { color: 'var(--color-error)' },
@@ -49,7 +51,10 @@ const colorConfig: Record<'primary' | 'secondary' | 'error' | 'info' | 'success'
   warning: { color: 'var(--color-warning)' },
   inherit: { color: 'inherit' },
 };
-const bgColorConfig: Record<'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning' | 'inherit', { backgroundColor: string }> = {
+const bgColorConfig: Record<
+  'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning' | 'inherit',
+  { backgroundColor: string }
+> = {
   primary: { backgroundColor: 'var(--color-primary)' },
   secondary: { backgroundColor: 'var(--color-secondary)' },
   error: { backgroundColor: 'var(--color-error)' },
@@ -58,7 +63,10 @@ const bgColorConfig: Record<'primary' | 'secondary' | 'error' | 'info' | 'succes
   warning: { backgroundColor: 'var(--color-warning)' },
   inherit: { backgroundColor: 'inherit' },
 };
-const sizeConfig: Record<'sm' | 'md' | 'lg', { width: string; height: string; fontSize: string; iconSize: string }> = {
+const sizeConfig: Record<
+  'sm' | 'md' | 'lg',
+  { width: string; height: string; fontSize: string; iconSize: string }
+> = {
   sm: {
     width: 'var(--control-height-sm)',
     height: 'var(--control-height-sm)',
@@ -110,12 +118,14 @@ const Stepper: React.FC<StepperProps> = ({
 }) => {
   const isControlled = controlledValue !== undefined;
   const [uncontrolledValue, setUncontrolledValue] = useState(Math.max(min ?? 0, defaultValue));
-  const currentStep = isControlled ? Math.min(controlledValue, max ?? steps.length - 1) : (legacyActiveStep ?? uncontrolledValue);
+  const currentStep = isControlled
+    ? Math.min(controlledValue, max ?? steps.length - 1)
+    : (legacyActiveStep ?? uncontrolledValue);
   const handleStepClick = (stepIndex: number) => {
     if (disabled || steps[stepIndex]?.disabled) return;
     const validatedIndex = Math.max(min ?? 0, Math.min(stepIndex, max ?? steps.length - 1));
     if (type === 'linear' && validatedIndex > currentStep) {
-      const canProceed = steps.slice(0, validatedIndex).every((s) => s.completed);
+      const canProceed = steps.slice(0, validatedIndex).every(s => s.completed);
       if (!canProceed) return;
     }
     if (!isControlled) {
@@ -152,22 +162,30 @@ const Stepper: React.FC<StepperProps> = ({
   const getCurrentStepAriaProps = (stepIndex: number) => {
     const isCurrentStep = stepIndex === currentStep;
     return {
-      'aria-current': isCurrentStep ? (ariaCurrent || 'step') : undefined,
+      'aria-current': isCurrentStep ? ariaCurrent || 'step' : undefined,
       'aria-selected': isCurrentStep,
     };
   };
   const getStepButtonStyle = (
     isActive: boolean,
     isCompleted: boolean,
-    isDisabled: boolean | undefined
+    isDisabled: boolean | undefined,
   ): React.CSSProperties => {
     const sizeConfig_value = sizeConfig[size] || sizeConfig.md;
-    const colorValue = color as 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning' | 'inherit';
+    const colorValue = color as
+      | 'primary'
+      | 'secondary'
+      | 'error'
+      | 'info'
+      | 'success'
+      | 'warning'
+      | 'inherit';
     let backgroundColor = 'var(--bg-surface)';
     let borderColor = 'var(--color-secondary)';
     let textColor = colorConfig[colorValue]?.color || colorConfig.primary.color;
     if (isActive) {
-      backgroundColor = bgColorConfig[colorValue]?.backgroundColor || bgColorConfig.primary.backgroundColor;
+      backgroundColor =
+        bgColorConfig[colorValue]?.backgroundColor || bgColorConfig.primary.backgroundColor;
       borderColor = 'transparent';
       textColor = 'white';
     } else if (isCompleted) {
@@ -191,25 +209,37 @@ const Stepper: React.FC<StepperProps> = ({
       opacity: isDisabled ? 'var(--opacity-disabled)' : 1,
     };
   };
-  const getStepIndicatorContent = (stepData: StepperStep, stepIndex: number, isCompleted: boolean): React.ReactNode => {
+  const getStepIndicatorContent = (
+    stepData: StepperStep,
+    stepIndex: number,
+    isCompleted: boolean,
+  ): React.ReactNode => {
     if (stepData.icon) return stepData.icon;
-    if (isCompleted) return <span className="text-lg">✓</span>;
+    if (isCompleted) return <span className='text-lg'>✓</span>;
     return <span>{stepIndex + 1}</span>;
   };
   const sizeConfig_value = sizeConfig[size] || sizeConfig.md;
-  const colorValue = color as 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning' | 'inherit';
+  const colorValue = color as
+    | 'primary'
+    | 'secondary'
+    | 'error'
+    | 'info'
+    | 'success'
+    | 'warning'
+    | 'inherit';
   const stepperContent = (
     <div
       id={id}
       style={{
         display: 'flex',
         flexDirection: orientation === 'vertical' ? 'column' : 'row',
-        justifyContent: alternativeLabel && orientation === 'horizontal' ? 'space-between' : undefined,
+        justifyContent:
+          alternativeLabel && orientation === 'horizontal' ? 'space-between' : undefined,
         gap: 'var(--space-4)',
         ...style,
       }}
       className={className}
-      role="tablist"
+      role='tablist'
       aria-orientation={orientation}
       aria-label={ariaLabel || `Stepper with ${steps.length} steps`}
       aria-labelledby={ariaLabelledby}
@@ -223,9 +253,12 @@ const Stepper: React.FC<StepperProps> = ({
         const isCompleted = stepData.completed ?? stepIndex < currentStep;
         const isDisabled = disabled || stepData.disabled;
         const canNavigate =
-          type === 'non-linear' || stepIndex <= currentStep || (isCompleted && stepIndex === currentStep + 1);
+          type === 'non-linear' ||
+          stepIndex <= currentStep ||
+          (isCompleted && stepIndex === currentStep + 1);
         const stepKey = `step-${typeof stepData.label === 'string' ? stepData.label.toLowerCase().replaceAll(/\s+/g, '-') : stepIndex}`;
-        const stepLabel = typeof stepData.label === 'string' ? stepData.label : `Step ${stepIndex + 1}`;
+        const stepLabel =
+          typeof stepData.label === 'string' ? stepData.label : `Step ${stepIndex + 1}`;
         const stepAriaLabel = ariaLabel || stepLabel;
         return (
           <div
@@ -234,17 +267,18 @@ const Stepper: React.FC<StepperProps> = ({
               display: 'flex',
               alignItems: 'center',
               marginBottom: orientation === 'vertical' ? 'var(--space-4)' : undefined,
-              flexDirection: alternativeLabel && orientation === 'horizontal' ? 'column' : undefined,
+              flexDirection:
+                alternativeLabel && orientation === 'horizontal' ? 'column' : undefined,
               position: orientation === 'horizontal' ? 'relative' : undefined,
             }}
           >
             {}
             <button
-              type="button"
+              type='button'
               style={getStepButtonStyle(isActive, isCompleted, isDisabled)}
               aria-label={stepAriaLabel}
               onClick={() => handleStepClick(stepIndex)}
-              onKeyDown={(e) => handleKeyDown(e, stepIndex)}
+              onKeyDown={e => handleKeyDown(e, stepIndex)}
               onFocus={() => handleStepFocus(stepIndex)}
               onBlur={() => handleStepBlur(stepIndex)}
               disabled={isDisabled || !canNavigate}
@@ -256,8 +290,10 @@ const Stepper: React.FC<StepperProps> = ({
             {}
             <div
               style={{
-                marginTop: alternativeLabel && orientation === 'horizontal' ? 'var(--space-2)' : undefined,
-                marginLeft: !alternativeLabel && orientation !== 'vertical' ? 'var(--space-3)' : undefined,
+                marginTop:
+                  alternativeLabel && orientation === 'horizontal' ? 'var(--space-2)' : undefined,
+                marginLeft:
+                  !alternativeLabel && orientation !== 'vertical' ? 'var(--space-3)' : undefined,
                 textAlign: alternativeLabel ? 'center' : undefined,
               }}
             >
@@ -265,7 +301,9 @@ const Stepper: React.FC<StepperProps> = ({
                 style={{
                   fontWeight: 'var(--font-weight-semibold)',
                   fontSize: sizeConfig_value.fontSize,
-                  color: isActive ? colorConfig[colorValue]?.color || colorConfig.primary.color : 'var(--color-gray-700)',
+                  color: isActive
+                    ? colorConfig[colorValue]?.color || colorConfig.primary.color
+                    : 'var(--color-gray-700)',
                   margin: 0,
                 }}
               >
@@ -307,11 +345,6 @@ const Stepper: React.FC<StepperProps> = ({
       })}
     </div>
   );
-  return title ? (
-    <Tooltip title={title}>{stepperContent}</Tooltip>
-  ) : (
-    stepperContent
-  );
+  return title ? <Tooltip title={title}>{stepperContent}</Tooltip> : stepperContent;
 };
 export default Stepper;
-

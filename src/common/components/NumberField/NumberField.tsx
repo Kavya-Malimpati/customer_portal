@@ -170,7 +170,7 @@ const NumberField = forwardRef<HTMLInputElement, NumberFieldProps>((props, ref) 
         ref={innerRef}
         id={id}
         name={name}
-        type="number"
+        type='number'
         value={value}
         defaultValue={defaultValue}
         placeholder={placeholder}
@@ -203,4 +203,3 @@ const NumberField = forwardRef<HTMLInputElement, NumberFieldProps>((props, ref) 
 });
 NumberField.displayName = 'NumberField';
 export default NumberField;
-

@@ -1,5 +1,5 @@
+
 import React, { useMemo, useRef, useState } from 'react';
-import FileUploadInput from './FileUploadInput';
 import fileUploadImg from '../../../assets/fileUpload.png';
 import Button from '../Button/Button';
 import '../../../styles/tokens.css';
@@ -81,9 +81,12 @@ const FileUpload: React.FC<FileUploadProps> = ({
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFiles = Array.from(e.target.files || []);
     const uniqueFiles = selectedFiles.filter(
-      (file) => !files.some((existingFile) => existingFile.name === file.name && existingFile.size === file.size)
+      file =>
+        !files.some(
+          existingFile => existingFile.name === file.name && existingFile.size === file.size,
+        ),
     );
-    setFiles((prev) => [...prev, ...uniqueFiles]);
+    setFiles(prev => [...prev, ...uniqueFiles]);
     if (onChange) {
       const event = {
         ...e,
@@ -115,10 +118,13 @@ const FileUpload: React.FC<FileUploadProps> = ({
     setIsDragActive(false);
     const droppedFiles = Array.from(e.dataTransfer.files || []);
     const uniqueFiles = droppedFiles.filter(
-      (file) => !files.some((existingFile) => existingFile.name === file.name && existingFile.size === file.size)
+      file =>
+        !files.some(
+          existingFile => existingFile.name === file.name && existingFile.size === file.size,
+        ),
     );
     if (uniqueFiles.length) {
-      setFiles((prev) => [...prev, ...uniqueFiles]);
+      setFiles(prev => [...prev, ...uniqueFiles]);
       if (onChange) {
         const event = {
           target: {
@@ -141,7 +147,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
     }
   };
   const fileNames = useMemo(() => {
-    return files.length > 0 ? files.map((f) => f.name).join(', ') : '';
+    return files.length > 0 ? files.map(f => f.name).join(', ') : '';
   }, [files]);
   const showError = Boolean(error);
   const shouldShowClear = !!(files && files.length > 0) || value;
@@ -200,13 +206,13 @@ const FileUpload: React.FC<FileUploadProps> = ({
     marginTop: 'var(--space-1)',
   };
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-1)' }} className={className}>
+    <div
+      style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-1)' }}
+      className={className}
+    >
       {label ? (
         <label style={labelStyles} htmlFor={id}>
-          {label}{' '}
-          {required ? (
-            <span style={{ color: 'var(--color-error)' }}>*</span>
-          ) : null}
+          {label} {required ? <span style={{ color: 'var(--color-error)' }}>*</span> : null}
         </label>
       ) : null}
       <fieldset
@@ -216,7 +222,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
       >
-        <legend className="sr-only">{ariaLabel || 'File upload dropzone'}</legend>
+        <legend className='sr-only'>{ariaLabel || 'File upload dropzone'}</legend>
         <FileUploadInput
           ref={inputRef}
           id={id}
@@ -242,8 +248,8 @@ const FileUpload: React.FC<FileUploadProps> = ({
           size={size}
           disabled={disabled}
           aria-disabled={disabled}
-          className="!px-4"
-          startIcon={<img src={fileUploadImg} width={20} height={20} alt="Upload icon" />}
+          className='!px-4'
+          startIcon={<img src={fileUploadImg} width={20} height={20} alt='Upload icon' />}
         >
           Upload files
         </Button>
@@ -253,39 +259,29 @@ const FileUpload: React.FC<FileUploadProps> = ({
             title={typeof title === 'string' ? title : fileNames}
             aria-live={ariaLive}
           >
-            {fileNames ? (
-              fileNames
-            ) : (
-              <span style={placeholderTextStyles}>No file selected</span>
-            )}
+            {fileNames ? fileNames : <span style={placeholderTextStyles}>No file selected</span>}
           </div>
         </div>
         {shouldShowClear ? (
           <button
-            type="button"
+            type='button'
             onClick={clearFiles}
             style={clearButtonStyles}
-            onMouseEnter={(e) => {
+            onMouseEnter={e => {
               (e.currentTarget as HTMLElement).style.color = 'var(--text-primary)';
             }}
-            onMouseLeave={(e) => {
+            onMouseLeave={e => {
               (e.currentTarget as HTMLElement).style.color = 'var(--text-secondary)';
             }}
-            aria-label="Clear files"
+            aria-label='Clear files'
           >
             Clear
           </button>
         ) : null}
       </fieldset>
-      {helperText ? (
-        <div style={helperTextStyles}>{helperText}</div>
-      ) : null}
+      {helperText ? <div style={helperTextStyles}>{helperText}</div> : null}
       {isErrorState && displayError ? (
-        <div 
-          id={errorId}
-          style={errorMessageStyles}
-          role="alert"
-        >
+        <div id={errorId} style={errorMessageStyles} role='alert'>
           {displayError}
         </div>
       ) : null}
@@ -293,4 +289,3 @@ const FileUpload: React.FC<FileUploadProps> = ({
   );
 };
 export default FileUpload;
-

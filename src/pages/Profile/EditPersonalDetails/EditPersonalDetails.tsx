@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import personalDetailsConfigJson from '../../../config/personalDetailsConfig.json';
 import { deepClone } from '../../../scripts/utils';
 import { validateFormFields } from '../../../scripts/validationsService';
-import { getPersonalDetailsApi } from './personalDetailsApi';
+import { getPersonalDetailsApi } from './PersonalDetailsApi';
 import EditPersonalDetailsUi from './EditPersonalDetailsView';
 import type { ValidationResult,FormDataType } from './Interfaces';
 

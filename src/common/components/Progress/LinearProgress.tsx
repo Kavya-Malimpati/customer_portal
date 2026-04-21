@@ -1,4 +1,3 @@
-
 import React from 'react';
 import '../../../styles/tokens.css';
 export interface LinearProgressProps {
@@ -81,7 +80,7 @@ const LinearProgress: React.FC<LinearProgressProps> = ({
     'aria-labelledby': ariaLabelledby,
   };
   return (
-    <div style={containerStyle} className={className} role="progressbar" {...ariaProps}>
+    <div style={containerStyle} className={className} role='progressbar' {...ariaProps}>
       <style>{`
         @keyframes progress-animation {
           0% {
@@ -122,4 +121,3 @@ const LinearProgress: React.FC<LinearProgressProps> = ({
   );
 };
 export default LinearProgress;
-

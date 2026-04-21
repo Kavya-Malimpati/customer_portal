@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import '../../../styles/tokens.css';
 export interface BackdropProps {
@@ -67,7 +68,8 @@ const Modal: React.FC<ModalProps> = ({
     left: 0,
     right: 0,
     bottom: 0,
-    zIndex: parseInt(getComputedStyle(document.documentElement).getPropertyValue('--z-modal')) || 1050,
+    zIndex:
+      parseInt(getComputedStyle(document.documentElement).getPropertyValue('--z-modal')) || 1050,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -118,8 +120,8 @@ const Modal: React.FC<ModalProps> = ({
       {}
       {!hideBackdrop && (
         <button
-          type="button"
-          aria-label="close modal"
+          type='button'
+          aria-label='close modal'
           onClick={() => onClose?.(undefined)}
           style={backdropStyle}
           className={BackdropProps?.className}
@@ -128,7 +130,7 @@ const Modal: React.FC<ModalProps> = ({
       {}
       <div
         ref={containerRef}
-        role="dialog"
+        role='dialog'
         aria-label={ariaLabel}
         aria-labelledby={ariaLabelledby}
         aria-describedby={ariaDescribedby}
@@ -140,40 +142,26 @@ const Modal: React.FC<ModalProps> = ({
         className={className}
       >
         {}
-        {slots?.header ?? (
-          title ? (
-            <div style={headerStyle}>
-              {title}
-            </div>
-          ) : null
-        )}
+        {slots?.header ?? (title ? <div style={headerStyle}>{title}</div> : null)}
         {}
         <div style={{ color: 'var(--text-primary)', lineHeight: 'var(--line-height-normal)' }}>
           {children}
         </div>
         {}
-        {slots?.footer && (
-          <div style={{ marginTop: 'var(--space-6)' }}>
-            {slots.footer}
-          </div>
-        )}
+        {slots?.footer && <div style={{ marginTop: 'var(--space-6)' }}>{slots.footer}</div>}
         {}
-        {slots?.actions && (
-          <div style={{ marginTop: 'var(--space-4)' }}>
-            {slots.actions}
-          </div>
-        )}
+        {slots?.actions && <div style={{ marginTop: 'var(--space-4)' }}>{slots.actions}</div>}
         {}
         {onClose && (
           <button
-            type="button"
-            aria-label="close modal"
+            type='button'
+            aria-label='close modal'
             onClick={() => onClose?.(undefined)}
             style={closeButtonStyle}
-            onMouseEnter={(e) => {
+            onMouseEnter={e => {
               (e.currentTarget as HTMLButtonElement).style.color = 'var(--text-primary)';
             }}
-            onMouseLeave={(e) => {
+            onMouseLeave={e => {
               (e.currentTarget as HTMLButtonElement).style.color = 'var(--text-secondary)';
             }}
           >
@@ -185,4 +173,3 @@ const Modal: React.FC<ModalProps> = ({
   );
 };
 export default Modal;
-

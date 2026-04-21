@@ -1,8 +1,9 @@
-import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import './App.css';
-import Home from './pages/Home';
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import MainLayout from './common/MainLayout';
-import Login from './pages/Login';
+import Home from './pages/Home';
+import AddContactDetails from './pages/Profile/AddContactDetails';
+import PaperlessPreferences from './pages/Profile/PaperlessPreferences';
 import EditPersonalDetails from './pages/Profile/EditPersonalDetails';
 
 function App() {
@@ -15,25 +16,41 @@ function App() {
   return (
     <Routes>
       <Route
-        path="/"
-        element={  <Login />  } />
-      <Route
-        path="/home"
+        path='/'
         element={
           <MainLayout onLogout={handleLogout}>
             <Home />
           </MainLayout>
         }
       />
+
       <Route
-        path="/profile/edit"
+        path='/cdetails'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <AddContactDetails />
+          </MainLayout>
+        }
+      />
+
+      <Route
+        path='/paperless'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <PaperlessPreferences />
+          </MainLayout>
+        }
+      />
+       <Route
+        path='/edit-personal-details'
         element={
           <MainLayout onLogout={handleLogout}>
             <EditPersonalDetails />
           </MainLayout>
         }
       />
-      <Route path="*" element={<Navigate to="/" replace />} />
+
+      <Route path='*' element={<Navigate to='/' replace />} />
     </Routes>
   );
 }

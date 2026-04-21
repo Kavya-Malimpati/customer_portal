@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
 import '../../../styles/tokens.css';
+
+import React, { useState } from 'react';
+
 export interface AccordionProps {
   id?: string;
   className?: string;
@@ -100,10 +102,12 @@ const Accordion: React.FC<AccordionProps> = ({
     borderRadius: 'var(--radius-lg)',
     overflow: 'hidden',
     ...currentVariant,
-    ...(isErrorState ? {
-      border: 'var(--border-width-sm) solid var(--color-error)',
-      boxShadow: '0 0 0 1px var(--color-error-light)'
-    } : {}),
+    ...(isErrorState
+      ? {
+          border: 'var(--border-width-sm) solid var(--color-error)',
+          boxShadow: '0 0 0 1px var(--color-error-light)',
+        }
+      : {}),
   };
   return (
     <div
@@ -127,24 +131,24 @@ const Accordion: React.FC<AccordionProps> = ({
           outline: 'none',
         }}
         aria-expanded={isOpen}
-        aria-controls={contentId} 
+        aria-controls={contentId}
         aria-label={ariaLabel || title}
         aria-labelledby={ariaLabelledby}
         aria-describedby={errorId || ariaDescribedby}
         aria-invalid={isErrorState}
-        onMouseEnter={(e) => {
+        onMouseEnter={e => {
           if (!disabled) {
             e.currentTarget.style.backgroundColor = 'var(--bg-hover)';
           }
         }}
-        onMouseLeave={(e) => {
+        onMouseLeave={e => {
           e.currentTarget.style.backgroundColor = 'var(--bg-muted)';
         }}
-        onFocus={(e) => {
+        onFocus={e => {
           e.currentTarget.style.boxShadow = 'var(--focus-ring)';
           e.currentTarget.style.borderRadius = 'var(--radius-lg)';
         }}
-        onBlur={(e) => {
+        onBlur={e => {
           e.currentTarget.style.boxShadow = 'none';
         }}
       >
@@ -158,27 +162,25 @@ const Accordion: React.FC<AccordionProps> = ({
             flexShrink: 0,
             stroke: 'var(--text-primary)',
           }}
-          fill="none"
-          viewBox="0 0 24 24"
-          aria-hidden="true"
+          fill='none'
+          viewBox='0 0 24 24'
+          aria-hidden='true'
         >
           <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
+            strokeLinecap='round'
+            strokeLinejoin='round'
             strokeWidth={2}
-            d="M19 14l-7 7m0 0l-7-7m7 7V3"
+            d='M19 14l-7 7m0 0l-7-7m7 7V3'
           />
         </svg>
       </button>
       <div
         id={contentId}
         style={contentWrapperStyles}
-        role="region"
+        role='region'
         aria-labelledby={id ? `${id}-button` : undefined}
       >
-        <div style={contentStyles}>
-          {children || <p>Accordion content goes here.</p>}
-        </div>
+        <div style={contentStyles}>{children || <p>Accordion content goes here.</p>}</div>
       </div>
       {hasError && errorMessage && (
         <div
@@ -190,7 +192,7 @@ const Accordion: React.FC<AccordionProps> = ({
             fontSize: 'var(--font-size-sm)',
             borderTop: 'var(--border-width-sm) solid var(--color-error)',
           }}
-          role="alert"
+          role='alert'
         >
           {errorMessage}
         </div>
@@ -199,4 +201,3 @@ const Accordion: React.FC<AccordionProps> = ({
   );
 };
 export default Accordion;
-

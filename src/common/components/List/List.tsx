@@ -1,5 +1,7 @@
-import React, { forwardRef, useRef, useImperativeHandle } from 'react';
-import '../../../src/styles/tokens.css';
+import '../../../styles/tokens.css';
+
+import React, { forwardRef, useImperativeHandle, useRef } from 'react';
+
 export interface ListProps {
   id?: string;
   className?: string;
@@ -28,7 +30,10 @@ const List = forwardRef<HTMLUListElement, ListProps>((props, ref) => {
     children,
   } = props;
   const innerRef = useRef<HTMLUListElement | null>(null);
-  useImperativeHandle<HTMLUListElement | null, HTMLUListElement | null>(ref, () => innerRef.current);
+  useImperativeHandle<HTMLUListElement | null, HTMLUListElement | null>(
+    ref,
+    () => innerRef.current,
+  );
   const listStyles: React.CSSProperties = {
     listStyle: 'none',
     padding: 0,
@@ -62,4 +67,3 @@ const List = forwardRef<HTMLUListElement, ListProps>((props, ref) => {
 });
 List.displayName = 'List';
 export default List;
-

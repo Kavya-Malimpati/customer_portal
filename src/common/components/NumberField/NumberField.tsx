@@ -1,5 +1,7 @@
-import React, { forwardRef, useImperativeHandle, useRef, useEffect } from 'react';
-import '../../../src/styles/tokens.css';
+import '../../../styles/tokens.css';
+
+import React, { forwardRef, useEffect, useImperativeHandle, useRef } from 'react';
+
 export interface NumberFieldProps {
   id?: string;
   name?: string;
@@ -170,7 +172,7 @@ const NumberField = forwardRef<HTMLInputElement, NumberFieldProps>((props, ref) 
         ref={innerRef}
         id={id}
         name={name}
-        type="number"
+        type='number'
         value={value}
         defaultValue={defaultValue}
         placeholder={placeholder}
@@ -203,4 +205,3 @@ const NumberField = forwardRef<HTMLInputElement, NumberFieldProps>((props, ref) 
 });
 NumberField.displayName = 'NumberField';
 export default NumberField;
-

@@ -1,8 +1,8 @@
-import { Button, Card, CardContent, Modal } from '../../common/components';
-import CardFooter from '../../common/components/Card/CardFooter';
-import CardHeader from '../../common/components/Card/CardHeader';
-import Checkbox from '../../common/components/Checkbox/Checkbox';
-import paperlessConfig from '../../config/paperlesspreferences.json';
+import { Button, Card, CardContent, Modal } from '../../../common/components';
+import CardFooter from '../../../common/components/Card/CardFooter';
+import CardHeader from '../../../common/components/Card/CardHeader';
+import Checkbox from '../../../common/components/Checkbox/Checkbox';
+import paperlessConfig from '../../../config/paperlesspreferences.json';
 
 import type { PaperlessOptions } from './interfaces';
 

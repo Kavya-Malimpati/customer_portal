@@ -1,7 +1,7 @@
-import { Button, Card, CardContent, Modal, Select, TextField } from '../../common/components';
-import CardFooter from '../../common/components/Card/CardFooter';
-import CardHeader from '../../common/components/Card/CardHeader';
-import Checkbox from '../../common/components/Checkbox/Checkbox';
+import { Button, Card, CardContent, Modal, Select, TextField } from '../../../common/components';
+import CardFooter from '../../../common/components/Card/CardFooter';
+import CardHeader from '../../../common/components/Card/CardHeader';
+import Checkbox from '../../../common/components/Checkbox/Checkbox';
 
 import type { AddContactDetailsViewProps } from './interfaces';
 

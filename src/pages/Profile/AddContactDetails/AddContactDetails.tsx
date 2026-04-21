@@ -2,8 +2,8 @@ import type { ChangeEvent, FormEvent } from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import contactDetailsConfig from '../../config/addcontactdetails.json';
-import { validateFormFields } from '../../scripts/validationsService';
+import contactDetailsConfig from '../../../config/addcontactdetails.json';
+import { validateFormFields } from '../../../scripts/validationsService';
 import AddContactDetailsView from './AddContactDetailsView';
 
 import type { FormField, FormDataType } from './interfaces';

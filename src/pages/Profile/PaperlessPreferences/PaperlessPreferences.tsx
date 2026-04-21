@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import paperlessConfig from '../../config/paperlesspreferences.json';
+import paperlessConfig from '../../../config/paperlesspreferences.json';
 import PaperlessPreferencesView from './PaperlessPreferencesView';
 
 import type { PaperlessOptions } from './interfaces';

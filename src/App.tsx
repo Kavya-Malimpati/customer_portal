@@ -3,10 +3,10 @@ import './App.css';
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 
 import MainLayout from './common/MainLayout';
-import AddContactDetails from './pages/AddContactDetails';
 import Home from './pages/Home';
 import Login from './pages/Login';
-import PaperlessPreferences from './pages/PaperlessPreferences';
+import AddContactDetails from './pages/Profile/AddContactDetails';
+import PaperlessPreferences from './pages/Profile/PaperlessPreferences';
 
 function App() {
   const navigate = useNavigate();

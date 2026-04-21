@@ -39,7 +39,7 @@ const EditPersonalDetailsUi = ({
               <Select {...formData.preferredLanguage} onChange={onChange} />
 
               <div className="flex gap-3">
-                <Button type="button" variant="outlined" onClick={onBack}>
+                <Button type="button" variant='contained' color='primary' onClick={onBack}>
                   Back
                 </Button>
 

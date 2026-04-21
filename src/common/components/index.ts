@@ -10,13 +10,17 @@ export { default as Menu } from './Menu';
 export { default as MultiStepForm } from './MultiStepForm';
 export { default as NumberField } from './NumberField';
 export { default as Pagination } from './Pagination';
-export { default as Progress } from './Progress/CircularProgress';
+// export { default as Progress } from './Progress/CircularProgress'; 
+// two progress components - Circular and Linear. Need to decide on naming convention before exporting
 export { default as RadioGroup } from './RadioGroup';
 export { default as Stepper } from './Stepper';
 export { default as Table } from './Table';
 // export { default as Snackbar } from './Snackbar';
+//error
 // export { default as Tabs } from './Tabs';
+//issue with index file
 //  export { default as Tooltip } from './Tooltip';
+//error
 
 export { default as Button } from './Button';
 export { default as Card } from './Card';

@@ -4,7 +4,7 @@ import personalDetailsConfigJson from '../../../config/personalDetailsConfig.jso
 import { deepClone } from '../../../scripts/utils';
 import { validateFormFields } from '../../../scripts/validationsService';
 import { getPersonalDetailsApi } from './personalDetailsApi';
-import EditPersonalDetailsUi from './EditPersonalDetailsUi';
+import EditPersonalDetailsUi from './EditPersonalDetailsView';
 import type { ValidationResult,FormDataType } from './Interfaces';
 
 

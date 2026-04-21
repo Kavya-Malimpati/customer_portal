@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import '../../../src/styles/tokens.css';
+import '../../../styles/tokens.css';
 export interface BackdropProps {
   className?: string;
 }

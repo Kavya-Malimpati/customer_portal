@@ -1,17 +1,97 @@
 /* App Stylesheet */
 /* Global app styles - specific component styles are handled by Tailwind */
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 * {
   box-sizing: border-box;
 }
 
+html,
 body {
   margin: 0;
   padding: 0;
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-normal);
+  color: var(--text-primary);
+  background-color: var(--bg-page);
 }
 
 #root {
   width: 100%;
   min-height: 100vh;
+  font-family: var(--font-family-sans);
 }
 
+/* Apply font family to all elements */
+body,
+button,
+input,
+select,
+textarea,
+optgroup,
+option {
+  font-family: var(--font-family-sans);
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-heading);
+  line-height: var(--line-height-tight);
+}
+
+h1 {
+  font-size: var(--font-size-3xl);
+}
+
+h2 {
+  font-size: var(--font-size-2xl);
+}
+
+h3 {
+  font-size: var(--font-size-xl);
+}
+
+h4 {
+  font-size: var(--font-size-lg);
+}
+
+h5,
+h6 {
+  font-size: var(--font-size-md);
+}
+
+/* Paragraphs and text */
+p {
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-normal);
+  color: var(--text-primary);
+}
+
+/* Links */
+a {
+  font-family: var(--font-family-sans);
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+}
+
+/* Code and monospace */
+code,
+pre {
+  font-family: var(--font-family-mono);
+}

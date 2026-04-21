@@ -1,9 +1,7 @@
-import React, {
-  forwardRef,
-  useRef,
-  useImperativeHandle,
-} from 'react';
-import '../../../src/styles/tokens.css';
+import '../../../styles/tokens.css';
+
+import React, { forwardRef, useImperativeHandle, useRef } from 'react';
+
 export interface MenuProps {
   id?: string;
   className?: string;
@@ -52,13 +50,16 @@ const roundedConfig: Record<NonNullable<MenuProps['rounded']>, string> = {
   xl: 'var(--radius-xl)',
   full: 'var(--radius-full)',
 };
-const variantConfig: Record<NonNullable<MenuProps['variant']>, {
-  color: string;
-  backgroundColor: string;
-  borderColor: string;
-  hoverColor: string;
-  hoverBackgroundColor: string;
-}> = {
+const variantConfig: Record<
+  NonNullable<MenuProps['variant']>,
+  {
+    color: string;
+    backgroundColor: string;
+    borderColor: string;
+    hoverColor: string;
+    hoverBackgroundColor: string;
+  }
+> = {
   default: {
     color: 'var(--text-primary)',
     backgroundColor: 'transparent',
@@ -95,80 +96,78 @@ const variantConfig: Record<NonNullable<MenuProps['variant']>, {
     hoverBackgroundColor: 'transparent',
   },
 };
-const Menu = forwardRef<HTMLButtonElement, MenuProps>(
-  (props, ref) => {
-    const {
-      id,
-      className = '',
-      disabled = false,
-      tabIndex = 0,
-      variant = 'default',
-      size = 'md',
-      rounded = 'md',
-      onClick,
-      onFocus,
-      onBlur,
-      title,
-      children,
-      ...ariaProps
-    } = props;
-    const innerRef = useRef<HTMLButtonElement | null>(null);
-    useImperativeHandle(ref, () => innerRef.current!, []);
-    const variantStyle = variantConfig[variant];
-    const sizeStyle = sizeConfig[size];
-    const radiusValue = roundedConfig[rounded];
-    const baseStyle: React.CSSProperties = {
-      fontFamily: 'var(--font-family-sans)',
-      fontWeight: 'var(--font-weight-medium)',
-      lineHeight: 'var(--line-height-normal)',
-      border: '1px solid',
-      borderRadius: radiusValue,
-      transition: `all var(--transition-normal)`,
-      cursor: disabled ? 'var(--cursor-disabled)' : 'pointer',
-      opacity: disabled ? 'var(--opacity-disabled)' : 1,
-      display: 'inline-flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      outline: 'none',
-      ...sizeStyle,
-      color: variantStyle.color,
-      backgroundColor: variantStyle.backgroundColor,
-      borderColor: variantStyle.borderColor,
-    };
-    return (
-      <button
-        ref={innerRef}
-        id={id}
-        type="button"
-        disabled={disabled}
-        tabIndex={disabled ? -1 : tabIndex}
-        title={title}
-        onClick={onClick}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        onMouseEnter={(e) => {
-          if (!disabled) {
-            (e.currentTarget as HTMLButtonElement).style.color = variantStyle.hoverColor;
-            (e.currentTarget as HTMLButtonElement).style.backgroundColor = variantStyle.hoverBackgroundColor;
-          }
-        }}
-        onMouseLeave={(e) => {
-          (e.currentTarget as HTMLButtonElement).style.color = variantStyle.color;
-          (e.currentTarget as HTMLButtonElement).style.backgroundColor = variantStyle.backgroundColor;
-        }}
-        style={{
-          ...baseStyle,
-          boxShadow: `var(--focus-ring)`,
-        }}
-        className={className}
-        aria-disabled={disabled}
-        {...ariaProps}
-      >
-        {children}
-      </button>
-    );
-  }
-);
+const Menu = forwardRef<HTMLButtonElement, MenuProps>((props, ref) => {
+  const {
+    id,
+    className = '',
+    disabled = false,
+    tabIndex = 0,
+    variant = 'default',
+    size = 'md',
+    rounded = 'md',
+    onClick,
+    onFocus,
+    onBlur,
+    title,
+    children,
+    ...ariaProps
+  } = props;
+  const innerRef = useRef<HTMLButtonElement | null>(null);
+  useImperativeHandle(ref, () => innerRef.current!, []);
+  const variantStyle = variantConfig[variant];
+  const sizeStyle = sizeConfig[size];
+  const radiusValue = roundedConfig[rounded];
+  const baseStyle: React.CSSProperties = {
+    fontFamily: 'var(--font-family-sans)',
+    fontWeight: 'var(--font-weight-medium)',
+    lineHeight: 'var(--line-height-normal)',
+    border: '1px solid',
+    borderRadius: radiusValue,
+    transition: `all var(--transition-normal)`,
+    cursor: disabled ? 'var(--cursor-disabled)' : 'pointer',
+    opacity: disabled ? 'var(--opacity-disabled)' : 1,
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    outline: 'none',
+    ...sizeStyle,
+    color: variantStyle.color,
+    backgroundColor: variantStyle.backgroundColor,
+    borderColor: variantStyle.borderColor,
+  };
+  return (
+    <button
+      ref={innerRef}
+      id={id}
+      type='button'
+      disabled={disabled}
+      tabIndex={disabled ? -1 : tabIndex}
+      title={title}
+      onClick={onClick}
+      onFocus={onFocus}
+      onBlur={onBlur}
+      onMouseEnter={e => {
+        if (!disabled) {
+          (e.currentTarget as HTMLButtonElement).style.color = variantStyle.hoverColor;
+          (e.currentTarget as HTMLButtonElement).style.backgroundColor =
+            variantStyle.hoverBackgroundColor;
+        }
+      }}
+      onMouseLeave={e => {
+        (e.currentTarget as HTMLButtonElement).style.color = variantStyle.color;
+        (e.currentTarget as HTMLButtonElement).style.backgroundColor = variantStyle.backgroundColor;
+      }}
+      style={{
+        ...baseStyle,
+        boxShadow: `var(--focus-ring)`,
+      }}
+      className={className}
+      aria-disabled={disabled}
+      {...ariaProps}
+    >
+      {children}
+    </button>
+  );
+});
 Menu.displayName = 'Menu';
 export default Menu;
-

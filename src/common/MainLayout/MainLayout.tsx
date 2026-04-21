@@ -1,18 +1,32 @@
-import { ReactNode } from 'react';
-import Header from '../Header';
+import { useState } from 'react';
 
+import { Footer } from '../Footer';
+import Header from '../Header';
+import { Sidebar } from '../Sidebar';
+
+import type { ReactNode } from 'react';
 interface MainLayoutProps {
-    children: ReactNode;
-    onLogout?: () => void;
+  children: ReactNode;
+  onLogout?: () => void;
 }
 
-const MainLayout = ({ children, onLogout }: MainLayoutProps) => {
-    return (
-        <div className='min-h-screen w-full flex flex-col'>
-            <Header onLogout={onLogout} />
-            {children}
-        </div>
-    );
+const MainLayout = ({ children }: MainLayoutProps) => {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  return (
+    <div className='min-h-screen w-full flex flex-col'>
+      <Header onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
+
+      <div className='flex flex-1'>
+        <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+
+        <main className='flex-1 md:ml-0 flex flex-col'>
+          <div className='flex-1'>{children}</div>
+          <Footer />
+        </main>
+      </div>
+    </div>
+  );
 };
 
 export default MainLayout;

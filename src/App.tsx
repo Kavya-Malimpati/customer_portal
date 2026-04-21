@@ -3,6 +3,7 @@ import './App.css';
 import Home from './pages/Home';
 import MainLayout from './common/MainLayout';
 import Login from './pages/Login';
+import PersonalDetailsPage from './pages/Profile/PersonalDetails/PersonalDetailsPage';
 
 /**
  * App Component
@@ -19,16 +20,24 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Login />} />
+      <Route path='/' element={<Login />} />
       <Route
-        path="/home"
+        path='/home'
         element={
           <MainLayout onLogout={handleLogout}>
             <Home />
           </MainLayout>
         }
       />
-      <Route path="*" element={<Navigate to="/" replace />} />
+      <Route
+        path='/profile'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <PersonalDetailsPage />
+          </MainLayout>
+        }
+      />
+      <Route path='*' element={<Navigate to='/' replace />} />
     </Routes>
   );
 }

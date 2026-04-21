@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home';
-import UpdateContact from './pages/UpdateContact';
+import UpdateContact from './pages/Profile/UpdateContact';
 import MainLayout from './common/MainLayout';
 import Login from './pages/Login';
 
@@ -20,9 +20,9 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Login />} />
+      <Route path='/' element={<Login />} />
       <Route
-        path="/home"
+        path='/home'
         element={
           <MainLayout onLogout={handleLogout}>
             <Home />
@@ -30,14 +30,14 @@ function App() {
         }
       />
       <Route
-        path="/update-contact"
+        path='/update-contact'
         element={
           <MainLayout onLogout={handleLogout}>
             <UpdateContact />
           </MainLayout>
         }
       />
-      <Route path="*" element={<Navigate to="/" replace />} />
+      <Route path='*' element={<Navigate to='/' replace />} />
     </Routes>
   );
 }

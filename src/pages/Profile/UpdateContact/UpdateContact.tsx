@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import contactConfig from '../../config/contact.json';
-import verificationConfig from '../../config/verification.json';
+import contactConfig from '../../../config/contact.json';
+import verificationConfig from '../../../config/verification.json';
 
-import { deepClone } from '../../scripts/utils';
-import { validateFormFields } from '../../scripts/validationsService';
+import { deepClone } from '../../../scripts/utils';
+import { validateFormFields } from '../../../scripts/validationsService';
 
 import type { ContactHistoryItem, FormDataType, VerificationType } from './interfaces';
 import UpdateContactView from './UpdateContactView';

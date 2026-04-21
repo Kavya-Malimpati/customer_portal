@@ -1,5 +1,5 @@
-import contactConfig from '../../config/contact.json';
-import verificationConfig from '../../config/verification.json';
+import contactConfig from '../../../config/contact.json';
+import verificationConfig from '../../../config/verification.json';
 
 export type FormDataType = typeof contactConfig;
 export type VerificationType = typeof verificationConfig;

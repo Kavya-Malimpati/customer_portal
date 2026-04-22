@@ -1,7 +1,6 @@
 import '../../../styles/tokens.css';
-
 import React, { useCallback } from 'react';
-
+import '../../../styles/tokens.css';
 export type Size = 'sm' | 'md' | 'lg';
 export type Variant = 'contained' | 'outlined' | 'text';
 export interface PaginationProps {

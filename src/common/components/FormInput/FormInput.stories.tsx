@@ -140,7 +140,7 @@ export const URL: Story = {
     type: 'url',
     name: 'website',
     label: 'Website',
-    placeholder: 'https:
+    placeholder: 'https',
     value: '',
     required: false,
     size: 'md',

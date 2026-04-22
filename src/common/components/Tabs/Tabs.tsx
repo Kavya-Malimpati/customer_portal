@@ -2,7 +2,6 @@ import '../../../styles/tokens.css';
 
 import React, {
   createContext,
-  ReactNode,
   type,
   useCallback,
   useContext,
@@ -12,8 +11,9 @@ import React, {
   useMemo,
   useRef,
   useState,
-} from 'react';
-
+  type ReactNode,
+} from "react";
+import '../../../styles/tokens.css';
 export type TabSize = 'sm' | 'md' | 'lg';
 export type TabVariant =
   | 'basic'

@@ -188,7 +188,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
           onFocus={handleFocus}
           onBlur={handleBlur}
           className={`
-            w-full appearance-none font-[var(--font-family-sans)]
+            w-full appearance-none font-normal font-[var(--font-family-sans)]
             text-[var(--text-primary)] transition-all duration-[var(--transition-fast)]
             outline-none
             ${sizeClasses}

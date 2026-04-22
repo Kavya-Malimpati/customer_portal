@@ -1,11 +1,10 @@
 import './App.css';
-
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
-
 import MainLayout from './common/MainLayout';
 import Home from './pages/Home';
 import AddContactDetails from './pages/Profile/AddContactDetails';
 import PaperlessPreferences from './pages/Profile/PaperlessPreferences';
+import EditPersonalDetails from './pages/Profile/EditPersonalDetails';
 
 function App() {
   const navigate = useNavigate();
@@ -39,6 +38,14 @@ function App() {
         element={
           <MainLayout onLogout={handleLogout}>
             <PaperlessPreferences />
+          </MainLayout>
+        }
+      />
+       <Route
+        path='/edit-personal-details'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <EditPersonalDetails />
           </MainLayout>
         }
       />

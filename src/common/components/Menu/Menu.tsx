@@ -1,7 +1,9 @@
+import React, {
+  forwardRef,
+  useRef,
+  useImperativeHandle,
+} from 'react';
 import '../../../styles/tokens.css';
-
-import React, { forwardRef, useImperativeHandle, useRef } from 'react';
-
 export interface MenuProps {
   id?: string;
   className?: string;

@@ -1,21 +1,21 @@
-import { useState, type ChangeEvent, type FormEvent, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import personalDetailsConfigJson from '../../../config/personalDetailsConfig.json';
 import { deepClone } from '../../../scripts/utils';
 import { validateFormFields } from '../../../scripts/validationsService';
-import { getPersonalDetailsApi } from './PersonalDetailsApi';
 import EditPersonalDetailsUi from './EditPersonalDetailsView';
-import type { ValidationResult,FormDataType } from './Interfaces';
+import { getPersonalDetailsApi } from './personalDetailsApi';
 
+import type { ChangeEvent, FormEvent } from 'react';
+import type { ValidationResult, FormDataType } from './Interfaces';
 
 const personalDetailsConfig = personalDetailsConfigJson as FormDataType;
 
 const EditPersonalDetails = () => {
   const navigate = useNavigate();
 
-  const [formData, setFormData] = useState<FormDataType>(
-    deepClone(personalDetailsConfig)
-  );
+  const [formData, setFormData] = useState<FormDataType>(deepClone(personalDetailsConfig));
 
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
 
@@ -29,9 +29,9 @@ const EditPersonalDetails = () => {
           [key]: {
             ...field,
             value: data[key as keyof typeof data] || '',
-          }
+          },
         }),
-        {} as FormDataType
+        {} as FormDataType,
       );
 
       setFormData(updated);
@@ -40,19 +40,17 @@ const EditPersonalDetails = () => {
     fetchData();
   }, []);
 
-  const handleInputChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { id, value } = e.target;
 
     setFormData(prev => ({
       ...prev,
       [id]: {
-        ...prev[id as keyof FormDataType], 
+        ...prev[id as keyof FormDataType],
         value,
         hasError: false,
-        errorMessage: ''
-      }
+        errorMessage: '',
+      },
     }));
   };
 
@@ -77,7 +75,7 @@ const EditPersonalDetails = () => {
         updated[key] = {
           ...prev[key],
           hasError: !result?.isValid,
-          errorMessage: result?.errorMessage || ''
+          errorMessage: result?.errorMessage || '',
         };
       });
 

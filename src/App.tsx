@@ -4,6 +4,9 @@ import MainLayout from './common/MainLayout';
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import ContactDetails from './pages/Profile/Contact';
 import DocumentVault from './pages/Profile/DocumentVault';
+import PaperlessPreferences from './pages/Profile/PaperlessPreferences';
+import EditPersonalDetails from './pages/Profile/EditPersonalDetails';
+import AgentContactDetails from './pages/Profile/AgentContactDetails/';
 
 function App() {
   const navigate = useNavigate();
@@ -40,6 +43,33 @@ function App() {
         }
       />
       <Route path="*" element={<Navigate to="/" replace />} />
+
+      <Route
+        path='/paperless'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <PaperlessPreferences />
+          </MainLayout>
+        }
+      />
+       <Route
+        path='/edit-personal-details'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <EditPersonalDetails />
+          </MainLayout>
+        }
+      />
+      <Route
+        path='/agent-contact-details'
+        element={
+          <MainLayout onLogout={handleLogout}>  
+            <AgentContactDetails />
+          </MainLayout>
+        }
+      />
+
+      <Route path='*' element={<Navigate to='/' replace />} />
     </Routes>
   );
 }

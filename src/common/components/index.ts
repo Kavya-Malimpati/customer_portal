@@ -23,7 +23,7 @@ export {default as CardHeader} from './Card/CardHeader';
 //issue with index file
 //  export { default as Tooltip } from './Tooltip';
 //error
-
+export { default as Toggle } from './Toggle';
 export { default as Button } from './Button';
 export { default as Card } from './Card';
 export { default as CardContent } from './Card/CardContent';

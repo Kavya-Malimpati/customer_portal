@@ -5,8 +5,8 @@
  * Provides a clean API for implementing multi-step forms throughout the application.
  */
 
-export { default as MultiStepForm } from './MultiStepForm';
-export { default as MultiStepFormExample } from './MultiStepFormExample';
+export { default } from './MultiStepForm';
+
 export { useMultiStepForm } from './useMultiStepForm';
 export type { 
   FormData, 

@@ -1,16 +1,12 @@
-import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import './App.css';
-import Home from './pages/Home';
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import MainLayout from './common/MainLayout';
-import Login from './pages/Login';
-import CommunicationPreferences from './pages/Profile/CommunicationPreferences';
-import AgentContactDetails from './pages/Profile/AgentContactDetails';
-/**
- * App Component
- *
- * Main application component that serves as the root wrapper.
- * Configures routing for all pages including Home (Login).
- */
+import Home from './pages/Home';
+import AddContactDetails from './pages/Profile/AddContactDetails';
+import PaperlessPreferences from './pages/Profile/PaperlessPreferences';
+import EditPersonalDetails from './pages/Profile/EditPersonalDetails';
+import AgentContactDetails from './pages/Profile/AgentContactDetails/';
+
 function App() {
   const navigate = useNavigate();
 
@@ -20,34 +16,50 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Login />} />
       <Route
-           path="/home"
+        path='/'
         element={
           <MainLayout onLogout={handleLogout}>
             <Home />
           </MainLayout>
         }
       />
-      
+
       <Route
-        path="/profile/communication-preferences"
+        path='/cdetails'
         element={
           <MainLayout onLogout={handleLogout}>
-            <CommunicationPreferences />
+            <AddContactDetails />
+          </MainLayout>
+        }
+      />
+
+      <Route
+        path='/paperless'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <PaperlessPreferences />
+          </MainLayout>
+        }
+      />
+       <Route
+        path='/edit-personal-details'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <EditPersonalDetails />
           </MainLayout>
         }
       />
       <Route
-        path="/profile/agent-contact"
+        path='/agent-contact-details'
         element={
-          <MainLayout onLogout={handleLogout}>
+          <MainLayout onLogout={handleLogout}>  
             <AgentContactDetails />
           </MainLayout>
         }
       />
-      <Route path="*" element={
-        <Navigate to="/" replace />} />
+
+      <Route path='*' element={<Navigate to='/' replace />} />
     </Routes>
   );
 }

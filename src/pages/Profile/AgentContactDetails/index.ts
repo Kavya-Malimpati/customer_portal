@@ -1,2 +1,2 @@
 // Export for page routing
-export { default } from './AgentContactDetailsView';
+export { default } from './AgentContactDetails';

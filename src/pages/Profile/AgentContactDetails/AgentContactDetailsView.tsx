@@ -1,100 +1,116 @@
-import { useState, useEffect } from 'react';
-import Typography from '../../../common/components/Typography/Typography';
-import Button from '../../../common/components/Button';
-import AgentContactCard from './AgentContactCard';
-import { fetchAgentDetails } from './agentApi';
+import {Typography , Button , Modal } from '../../../common/components';
 import type { Agent } from './Interface';
-import Modal from '../../../common/components/Modal';
 
-const AgentContactDetails = () => {
-  const [agent, setAgent] = useState<Agent | null>(null);
+interface AgentContactDetailsViewProps {
+  agent: Agent | null;
+  isModalOpen: boolean;
+  message: string;
+  sent: boolean;
+  onMessageClick: () => void;
+  onCloseModal: () => void;
+  onSendMessage: () => void;
+  setMessage: (msg: string) => void;
+}
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [message, setMessage] = useState('');
-  const [sent, setSent] = useState(false);
-
-  useEffect(() => {
-    fetchAgentDetails().then(setAgent);
-  }, []);
-
-  const handleMessageButton = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleSendMessage = () => {
-    setSent(true);
-
-    setTimeout(() => {
-      setSent(false);
-      setIsModalOpen(false);
-    }, 1500);
-
-    setMessage('');
-  };
-
-  return (
-    <main
-      className="flex-1 w-full px-6 py-12"
-      style={{ backgroundColor: 'var(--bg-page)' }}
-    >
-      <div className="max-w-xl mx-auto">
-
-        <Typography variant="h1" className="mb-2">
-          Agent Contact Details
-        </Typography>
-
-        {agent ? (
-          <AgentContactCard
-            agent={agent}
-            onMessageClick={handleMessageButton}
-          />
-        ) : (
-          <Typography>Fetching agent details...</Typography>
-        )}
-        <Modal
-          isOpen={isModalOpen}
-          onClose={handleCloseModal}
-          title="Send Message to Agent"
-          aria-label="Send message modal"
+const AgentContactCard = ({ agent, onMessageClick }: { agent: Agent; onMessageClick: () => void }) => (
+  <div className="mb-6">
+    <div className="p-8 border rounded shadow-sm flex flex-col gap-4 bg-white">
+      <Typography variant="h2">{agent.name}</Typography>
+      <Typography variant="body1">Agency: {agent.agency}</Typography>
+      <Typography variant="body1">
+        Phone:{' '}
+        <a href={`tel:${agent.phone}`} style={{ color: 'var(--color-primary)' }}>{agent.phone}</a>
+      </Typography>
+      <Typography variant="body1">
+        Email:{' '}
+        <a href={`mailto:${agent.email}`} style={{ color: 'var(--color-primary)' }}>{agent.email}</a>
+      </Typography>
+      <div className="flex gap-4 mt-4">
+        <Button
+          variant="outlined"
+          color="primary"
+          size="medium"
+          aria-label="Call agent"
+          onClick={() => window.open(`tel:${agent.phone}`)}
         >
-          <div className="flex flex-col gap-4">
-
-            <textarea
-              autoFocus
-              className="w-full border border-gray-300 rounded p-2"
-              rows={4}
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              placeholder="Type your message..."
-              aria-label="Message input"
-            />
-
-            <Button
-              variant="contained"
-              color="primary"
-              size="large"
-              onClick={handleSendMessage}
-              disabled={!message.trim()}
-            >
-              Send
-            </Button>
-
-            {sent && (
-              <Typography >
-                Message sent!
-              </Typography>
-            )}
-
-          </div>
-        </Modal>
-
+          Call
+        </Button>
+        <Button
+          variant="outlined"
+          color="primary"
+          size="medium"
+          aria-label="Email agent"
+          onClick={() => window.open(`mailto:${agent.email}`)}
+        >
+          Email
+        </Button>
+        <Button
+          variant="outlined"
+          color="primary"
+          size="medium"
+          aria-label="Message agent"
+          onClick={onMessageClick}
+        >
+          Message
+        </Button>
       </div>
-    </main>
-  );
-};
+    </div>
+  </div>
+);
 
-export default AgentContactDetails;
+const AgentContactDetailsView = ({
+  agent,
+  isModalOpen,
+  message,
+  sent,
+  onMessageClick,
+  onCloseModal,
+  onSendMessage,
+  setMessage,
+}: AgentContactDetailsViewProps) => (
+  <main
+    className="flex-1 w-full px-6 py-12"
+    style={{ backgroundColor: 'var(--bg-page)' }}
+  >
+    <div className="max-w-xl mx-auto">
+      <Typography variant="h1" className="mb-2">
+        Agent Contact Details
+      </Typography>
+      {agent ? (
+        <AgentContactCard agent={agent} onMessageClick={onMessageClick} />
+      ) : (
+        <Typography>Fetching agent details...</Typography>
+      )}
+      <Modal
+        isOpen={isModalOpen}
+        onClose={onCloseModal}
+        title="Send Message to Agent"
+        aria-label="Send message modal"
+      >
+        <div className="flex flex-col gap-4">
+          <textarea
+            autoFocus
+            className="w-full border border-gray-300 rounded p-2"
+            rows={4}
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            placeholder="Type your message..."
+            aria-label="Message input"
+          />
+          <Button
+            variant="contained"
+            color="primary"
+            size="large"
+            onClick={onSendMessage}
+            disabled={!message.trim()}
+          >
+            Send
+          </Button>
+          {sent && <Typography>Message sent!</Typography>}
+        </div>
+      </Modal>
+    </div>
+  </main>
+);
+
+export default AgentContactDetailsView;

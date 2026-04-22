@@ -1,7 +1,10 @@
+import '../../../styles/tokens.css';
+
 import { useState } from 'react';
+
+import { Table, TableColumn, TableSize, TableVariant, type } from './Table';
+
 import type { Meta } from '@storybook/react';
-import { Table, type TableColumn, type TableSize, type TableVariant } from './Table';
-import '../../../src/styles/tokens.css';
 interface SampleRow extends Record<string, unknown> {
   id: number;
   name: string;
@@ -11,14 +14,70 @@ interface SampleRow extends Record<string, unknown> {
   amount: number;
 }
 const sampleData: SampleRow[] = [
-  { id: 1, name: 'Alice Johnson', email: 'alice@example.com', status: 'active', joinDate: '2024-01-15', amount: 1250 },
-  { id: 2, name: 'Bob Smith', email: 'bob@example.com', status: 'active', joinDate: '2024-02-20', amount: 2100 },
-  { id: 3, name: 'Carol Williams', email: 'carol@example.com', status: 'inactive', joinDate: '2023-12-01', amount: 890 },
-  { id: 4, name: 'David Brown', email: 'david@example.com', status: 'pending', joinDate: '2024-03-10', amount: 1500 },
-  { id: 5, name: 'Eve Davis', email: 'eve@example.com', status: 'active', joinDate: '2024-01-05', amount: 3200 },
-  { id: 6, name: 'Frank Miller', email: 'frank@example.com', status: 'active', joinDate: '2024-02-14', amount: 1750 },
-  { id: 7, name: 'Grace Lee', email: 'grace@example.com', status: 'inactive', joinDate: '2023-11-20', amount: 920 },
-  { id: 8, name: 'Henry Taylor', email: 'henry@example.com', status: 'pending', joinDate: '2024-03-05', amount: 2100 },
+  {
+    id: 1,
+    name: 'Alice Johnson',
+    email: 'alice@example.com',
+    status: 'active',
+    joinDate: '2024-01-15',
+    amount: 1250,
+  },
+  {
+    id: 2,
+    name: 'Bob Smith',
+    email: 'bob@example.com',
+    status: 'active',
+    joinDate: '2024-02-20',
+    amount: 2100,
+  },
+  {
+    id: 3,
+    name: 'Carol Williams',
+    email: 'carol@example.com',
+    status: 'inactive',
+    joinDate: '2023-12-01',
+    amount: 890,
+  },
+  {
+    id: 4,
+    name: 'David Brown',
+    email: 'david@example.com',
+    status: 'pending',
+    joinDate: '2024-03-10',
+    amount: 1500,
+  },
+  {
+    id: 5,
+    name: 'Eve Davis',
+    email: 'eve@example.com',
+    status: 'active',
+    joinDate: '2024-01-05',
+    amount: 3200,
+  },
+  {
+    id: 6,
+    name: 'Frank Miller',
+    email: 'frank@example.com',
+    status: 'active',
+    joinDate: '2024-02-14',
+    amount: 1750,
+  },
+  {
+    id: 7,
+    name: 'Grace Lee',
+    email: 'grace@example.com',
+    status: 'inactive',
+    joinDate: '2023-11-20',
+    amount: 920,
+  },
+  {
+    id: 8,
+    name: 'Henry Taylor',
+    email: 'henry@example.com',
+    status: 'pending',
+    joinDate: '2024-03-05',
+    amount: 2100,
+  },
 ];
 const meta = {
   title: 'Components/Table',
@@ -26,7 +85,10 @@ const meta = {
   parameters: { layout: 'padded' },
   argTypes: {
     size: { control: { type: 'radio' }, options: ['sm', 'md', 'lg'] as TableSize[] },
-    variant: { control: { type: 'radio' }, options: ['standard', 'striped', 'outlined'] as TableVariant[] },
+    variant: {
+      control: { type: 'radio' },
+      options: ['standard', 'striped', 'outlined'] as TableVariant[],
+    },
     sortable: { control: { type: 'boolean' } },
     stickyHeader: { control: { type: 'boolean' } },
     dense: { control: { type: 'boolean' } },
@@ -41,7 +103,15 @@ export const Default = {
       { id: 'status', field: 'status', headerName: 'Status' },
       { id: 'joinDate', field: 'joinDate', headerName: 'Join Date' },
     ];
-    return <Table<SampleRow> id="default-table" size="md" variant="standard" columns={columns} rows={sampleData} />;
+    return (
+      <Table<SampleRow>
+        id='default-table'
+        size='md'
+        variant='standard'
+        columns={columns}
+        rows={sampleData}
+      />
+    );
   },
 };
 export const SizeSmall = {
@@ -51,7 +121,15 @@ export const SizeSmall = {
       { id: 'email', field: 'email', headerName: 'Email' },
       { id: 'status', field: 'status', headerName: 'Status' },
     ];
-    return <Table<SampleRow> id="small-table" size="sm" variant="standard" columns={columns} rows={sampleData} />;
+    return (
+      <Table<SampleRow>
+        id='small-table'
+        size='sm'
+        variant='standard'
+        columns={columns}
+        rows={sampleData}
+      />
+    );
   },
 };
 export const SizeMedium = {
@@ -62,7 +140,15 @@ export const SizeMedium = {
       { id: 'status', field: 'status', headerName: 'Status' },
       { id: 'amount', field: 'amount', headerName: 'Amount', align: 'right' },
     ];
-    return <Table<SampleRow> id="medium-table" size="md" variant="standard" columns={columns} rows={sampleData} />;
+    return (
+      <Table<SampleRow>
+        id='medium-table'
+        size='md'
+        variant='standard'
+        columns={columns}
+        rows={sampleData}
+      />
+    );
   },
 };
 export const SizeLarge = {
@@ -73,7 +159,15 @@ export const SizeLarge = {
       { id: 'status', field: 'status', headerName: 'Status' },
       { id: 'joinDate', field: 'joinDate', headerName: 'Join Date' },
     ];
-    return <Table<SampleRow> id="large-table" size="lg" variant="standard" columns={columns} rows={sampleData} />;
+    return (
+      <Table<SampleRow>
+        id='large-table'
+        size='lg'
+        variant='standard'
+        columns={columns}
+        rows={sampleData}
+      />
+    );
   },
 };
 export const VariantStandard = {
@@ -84,7 +178,15 @@ export const VariantStandard = {
       { id: 'status', field: 'status', headerName: 'Status' },
       { id: 'amount', field: 'amount', headerName: 'Amount', align: 'right' },
     ];
-    return <Table<SampleRow> id="standard-table" size="md" variant="standard" columns={columns} rows={sampleData} />;
+    return (
+      <Table<SampleRow>
+        id='standard-table'
+        size='md'
+        variant='standard'
+        columns={columns}
+        rows={sampleData}
+      />
+    );
   },
 };
 export const VariantStriped = {
@@ -95,7 +197,15 @@ export const VariantStriped = {
       { id: 'status', field: 'status', headerName: 'Status' },
       { id: 'joinDate', field: 'joinDate', headerName: 'Join Date' },
     ];
-    return <Table<SampleRow> id="striped-table" size="md" variant="striped" columns={columns} rows={sampleData} />;
+    return (
+      <Table<SampleRow>
+        id='striped-table'
+        size='md'
+        variant='striped'
+        columns={columns}
+        rows={sampleData}
+      />
+    );
   },
 };
 export const VariantOutlined = {
@@ -106,7 +216,15 @@ export const VariantOutlined = {
       { id: 'status', field: 'status', headerName: 'Status' },
       { id: 'amount', field: 'amount', headerName: 'Amount', align: 'right' },
     ];
-    return <Table<SampleRow> id="outlined-table" size="md" variant="outlined" columns={columns} rows={sampleData} />;
+    return (
+      <Table<SampleRow>
+        id='outlined-table'
+        size='md'
+        variant='outlined'
+        columns={columns}
+        rows={sampleData}
+      />
+    );
   },
 };
 export const CustomRendering = {
@@ -118,7 +236,7 @@ export const CustomRendering = {
         id: 'status',
         field: 'status',
         headerName: 'Status',
-        renderCell: (row) => (
+        renderCell: row => (
           <span
             style={{
               display: 'inline-block',
@@ -127,7 +245,11 @@ export const CustomRendering = {
               fontSize: 'var(--font-size-xs)',
               fontWeight: 'var(--font-weight-semibold)',
               backgroundColor:
-                row.status === 'active' ? 'var(--color-success)' : row.status === 'inactive' ? 'var(--color-error)' : 'var(--color-warning)',
+                row.status === 'active'
+                  ? 'var(--color-success)'
+                  : row.status === 'inactive'
+                    ? 'var(--color-error)'
+                    : 'var(--color-warning)',
               color: 'white',
             }}
           >
@@ -135,9 +257,23 @@ export const CustomRendering = {
           </span>
         ),
       },
-      { id: 'amount', field: 'amount', headerName: 'Amount', align: 'right', renderCell: (row) => `$${row.amount.toLocaleString()}` },
+      {
+        id: 'amount',
+        field: 'amount',
+        headerName: 'Amount',
+        align: 'right',
+        renderCell: row => `$${row.amount.toLocaleString()}`,
+      },
     ];
-    return <Table<SampleRow> id="custom-table" size="md" variant="striped" columns={columns} rows={sampleData} />;
+    return (
+      <Table<SampleRow>
+        id='custom-table'
+        size='md'
+        variant='striped'
+        columns={columns}
+        rows={sampleData}
+      />
+    );
   },
 };
 export const WithSorting = {
@@ -151,9 +287,9 @@ export const WithSorting = {
     ];
     return (
       <Table<SampleRow>
-        id="sorting-table"
-        size="md"
-        variant="striped"
+        id='sorting-table'
+        size='md'
+        variant='striped'
         sortable={true}
         columns={columns}
         rows={sampleData}
@@ -172,8 +308,22 @@ export const StickyHeader = {
       { id: 'amount', field: 'amount', headerName: 'Amount', align: 'right' },
     ];
     return (
-      <div style={{ height: '300px', overflow: 'auto', border: 'var(--border-width-md) solid var(--border-color)', borderRadius: 'var(--radius-md)' }}>
-        <Table<SampleRow> id="sticky-table" size="md" variant="striped" stickyHeader={true} columns={columns} rows={sampleData} />
+      <div
+        style={{
+          height: '300px',
+          overflow: 'auto',
+          border: 'var(--border-width-md) solid var(--border-color)',
+          borderRadius: 'var(--radius-md)',
+        }}
+      >
+        <Table<SampleRow>
+          id='sticky-table'
+          size='md'
+          variant='striped'
+          stickyHeader={true}
+          columns={columns}
+          rows={sampleData}
+        />
       </div>
     );
   },
@@ -186,7 +336,16 @@ export const Dense = {
       { id: 'status', field: 'status', headerName: 'Status' },
       { id: 'joinDate', field: 'joinDate', headerName: 'Join Date' },
     ];
-    return <Table<SampleRow> id="dense-table" size="md" variant="striped" dense={true} columns={columns} rows={sampleData} />;
+    return (
+      <Table<SampleRow>
+        id='dense-table'
+        size='md'
+        variant='striped'
+        dense={true}
+        columns={columns}
+        rows={sampleData}
+      />
+    );
   },
 };
 export const WithRowClick = {
@@ -202,11 +361,41 @@ function RowClickTable() {
   ];
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
-      <Table<SampleRow> id="rowclick-table" size="md" variant="striped" columns={columns} rows={sampleData} onRowClick={setSelectedRow} />
+      <Table<SampleRow>
+        id='rowclick-table'
+        size='md'
+        variant='striped'
+        columns={columns}
+        rows={sampleData}
+        onRowClick={setSelectedRow}
+      />
       {selectedRow && (
-        <div style={{ padding: 'var(--space-3)', backgroundColor: 'var(--bg-muted)', borderRadius: 'var(--radius-md)', border: 'var(--border-width-sm) solid var(--border-color)' }}>
-          <p style={{ margin: '0', fontSize: 'var(--font-size-sm)', fontWeight: 'var(--font-weight-semibold)' }}>Selected: {selectedRow.name}</p>
-          <p style={{ margin: 'var(--space-1) 0 0 0', fontSize: 'var(--font-size-xs)', color: 'var(--text-secondary)' }}>{selectedRow.email}</p>
+        <div
+          style={{
+            padding: 'var(--space-3)',
+            backgroundColor: 'var(--bg-muted)',
+            borderRadius: 'var(--radius-md)',
+            border: 'var(--border-width-sm) solid var(--border-color)',
+          }}
+        >
+          <p
+            style={{
+              margin: '0',
+              fontSize: 'var(--font-size-sm)',
+              fontWeight: 'var(--font-weight-semibold)',
+            }}
+          >
+            Selected: {selectedRow.name}
+          </p>
+          <p
+            style={{
+              margin: 'var(--space-1) 0 0 0',
+              fontSize: 'var(--font-size-xs)',
+              color: 'var(--text-secondary)',
+            }}
+          >
+            {selectedRow.email}
+          </p>
         </div>
       )}
     </div>
@@ -220,7 +409,15 @@ export const HiddenColumns = {
       { id: 'joinDate', field: 'joinDate', headerName: 'Join Date' },
       { id: 'amount', field: 'amount', headerName: 'Amount', align: 'right' },
     ];
-    return <Table<SampleRow> id="hidden-table" size="md" variant="standard" columns={columns} rows={sampleData} />;
+    return (
+      <Table<SampleRow>
+        id='hidden-table'
+        size='md'
+        variant='standard'
+        columns={columns}
+        rows={sampleData}
+      />
+    );
   },
 };
 export const Comprehensive = {
@@ -236,7 +433,7 @@ function ComprehensiveTable() {
       field: 'status',
       headerName: 'Status',
       sortable: true,
-      renderCell: (row) => (
+      renderCell: row => (
         <span
           style={{
             display: 'inline-block',
@@ -245,7 +442,11 @@ function ComprehensiveTable() {
             fontSize: 'var(--font-size-xs)',
             fontWeight: 'var(--font-weight-semibold)',
             backgroundColor:
-              row.status === 'active' ? 'var(--color-success)' : row.status === 'inactive' ? 'var(--color-error)' : 'var(--color-warning)',
+              row.status === 'active'
+                ? 'var(--color-success)'
+                : row.status === 'inactive'
+                  ? 'var(--color-error)'
+                  : 'var(--color-warning)',
             color: 'white',
           }}
         >
@@ -254,13 +455,36 @@ function ComprehensiveTable() {
       ),
     },
     { id: 'joinDate', field: 'joinDate', headerName: 'Join Date', sortable: true },
-    { id: 'amount', field: 'amount', headerName: 'Amount', align: 'right', sortable: true, renderCell: (row) => `$${row.amount.toLocaleString()}` },
+    {
+      id: 'amount',
+      field: 'amount',
+      headerName: 'Amount',
+      align: 'right',
+      sortable: true,
+      renderCell: row => `$${row.amount.toLocaleString()}`,
+    },
   ];
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
-      <Table<SampleRow> id="comprehensive-table" size="md" variant="striped" sortable={true} columns={columns} rows={sampleData} defaultSort={{ field: 'name', order: 'asc' }} onRowClick={setSelectedRow} />
+      <Table<SampleRow>
+        id='comprehensive-table'
+        size='md'
+        variant='striped'
+        sortable={true}
+        columns={columns}
+        rows={sampleData}
+        defaultSort={{ field: 'name', order: 'asc' }}
+        onRowClick={setSelectedRow}
+      />
       {selectedRow && (
-        <div style={{ padding: 'var(--space-4)', backgroundColor: 'var(--color-primary)', color: 'white', borderRadius: 'var(--radius-md)' }}>
+        <div
+          style={{
+            padding: 'var(--space-4)',
+            backgroundColor: 'var(--color-primary)',
+            color: 'white',
+            borderRadius: 'var(--radius-md)',
+          }}
+        >
           <h4 style={{ margin: '0 0 var(--space-2) 0' }}>Selected: {selectedRow.name}</h4>
           <p style={{ margin: 'var(--space-1) 0' }}>Email: {selectedRow.email}</p>
           <p style={{ margin: 'var(--space-1) 0' }}>Status: {selectedRow.status}</p>
@@ -271,4 +495,3 @@ function ComprehensiveTable() {
     </div>
   );
 }
-

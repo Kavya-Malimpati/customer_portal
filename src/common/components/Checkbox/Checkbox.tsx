@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
 import '../../../styles/tokens.css';
+
+import React, { useState } from 'react';
 export interface CheckboxProps {
   id?: string;
   name?: string;
@@ -120,8 +121,8 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
       border: isChecked
         ? `var(--border-width-sm) solid var(--color-primary)`
         : isErrorState
-        ? `var(--border-width-sm) solid var(--color-error)`
-        : currentVariant.border,
+          ? `var(--border-width-sm) solid var(--color-error)`
+          : currentVariant.border,
       flexShrink: 0,
     };
     const labelStyles: React.CSSProperties = {
@@ -224,7 +225,7 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
               color: 'var(--color-error)',
               fontWeight: 'var(--font-weight-regular)',
             }}
-            role="alert"
+            role='alert'
           >
             {errorMessage}
           </div>
@@ -235,4 +236,3 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
 );
 Checkbox.displayName = 'Checkbox';
 export default Checkbox;
-

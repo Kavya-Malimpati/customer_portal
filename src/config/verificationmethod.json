@@ -1,0 +1,55 @@
+{
+  "verificationMethod": {
+    "id": "verificationMethod",
+    "type": "select",
+    "name": "verificationMethod",
+    "label": "Verification Method",
+    "placeholder": "Select verification method",
+    "value": "",
+    "isRequired": true,
+    "hasError": false,
+    "errorMessage": "",
+    "validationRules": {
+      "required": {
+        "value": true,
+        "errorMessage": "Please select a verification method."
+      }
+    },
+    "options": [
+      { "value": "", "label": "Select verification method" },
+      { "value": "sms", "label": "SMS" },
+      { "value": "email", "label": "Email" },
+      { "value": "portal", "label": "Portal" }
+    ],
+    "aria-label": "Verification Method",
+    "aria-describedby": "verificationHelp"
+  },
+
+  "verificationCode": {
+    "id": "verificationCode",
+    "type": "text",
+    "name": "verificationCode",
+    "label": "OTP Code",
+    "placeholder": "Enter 6-digit OTP",
+    "value": "",
+    "isRequired": true,
+    "hasError": false,
+    "errorMessage": "",
+    "validationRules": {
+      "required": {
+        "value": true,
+        "errorMessage": "OTP is required."
+      },
+      "pattern": {
+        "value": "OTP_NUMBER",
+        "errorMessage": "Please enter a valid 6-digit OTP."
+      },
+      "minLength": { "value": 6, "errorMessage": "Please enter a valid 6-digit OTP" },
+      "maxLength": { "value": 6, "errorMessage": "Please enter a valid 6-digit OTP" }
+    },
+    "aria-label": "Verification Code",
+    "aria-describedby": "verificationHelp",
+    "maxLength": 6,
+    "minLength": 6
+  }
+}

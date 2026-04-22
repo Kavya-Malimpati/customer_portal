@@ -4,6 +4,8 @@ import MainLayout from './common/MainLayout';
 import Login from './pages/Login';
 import PersonalDetailsPage from './pages/Profile/ViewPersonalDetails/PersonalDetailsPage';
 import Home from './pages/Home';
+import AddContactDetails from './pages/Profile/AddContactDetails';
+import UpdateContactDetails from './pages/Profile/UpdateContactDetails';
 import MainLayout from './common/MainLayout';
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import ContactDetails from './pages/Profile/Contact';
@@ -45,6 +47,15 @@ function App() {
         element={
           <MainLayout onLogout={handleLogout}>
             <DocumentVault />
+          </MainLayout>
+        }
+      />
+      
+      <Route
+        path='/update-contact'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <UpdateContactDetails />
           </MainLayout>
         }
       />

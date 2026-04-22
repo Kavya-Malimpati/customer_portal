@@ -1,4 +1,8 @@
 import './App.css';
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
+import MainLayout from './common/MainLayout';
+import Login from './pages/Login';
+import PersonalDetailsPage from './pages/Profile/ViewPersonalDetails/PersonalDetailsPage';
 import Home from './pages/Home';
 import MainLayout from './common/MainLayout';
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
@@ -72,11 +76,19 @@ function App() {
           </MainLayout>
         }
       />
-       <Route
+      <Route
         path='/edit-personal-details'
         element={
           <MainLayout onLogout={handleLogout}>
             <EditPersonalDetails />
+          </MainLayout>
+        }
+      />
+      <Route
+        path='/view-personal-details'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <PersonalDetailsPage />
           </MainLayout>
         }
       />

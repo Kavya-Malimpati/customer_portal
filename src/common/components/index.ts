@@ -13,6 +13,8 @@ export { default as Pagination } from './Pagination';
 export { default as RadioGroup } from './RadioGroup';
 export { default as Stepper } from './Stepper';
 export { default as Table } from './Table';
+export {default as CardFooter} from './Card/CardFooter';
+export {default as CardHeader} from './Card/CardHeader';
 // export { default as Progress } from './Progress/CircularProgress'; 
 // two progress components - Circular and Linear. Need to decide on naming convention before exporting
 // export { default as Snackbar } from './Snackbar';
@@ -25,8 +27,6 @@ export { default as Toggle } from './Toggle';
 export { default as Button } from './Button';
 export { default as Card } from './Card';
 export { default as CardContent } from './Card/CardContent';
-export { default as CardFooter } from './Card/CardFooter';
-export { default as CardHeader } from './Card/CardHeader';
 export { default as Modal } from './Modal';
 export { default as Select } from './Select';
 export { default as TextField } from './TextField';

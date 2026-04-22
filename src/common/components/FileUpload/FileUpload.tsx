@@ -1,9 +1,9 @@
 
 import React, { useMemo, useRef, useState } from 'react';
-import fileUploadImg from '../../../assets/fileUpload.png';
 import Button from '../Button/Button';
 import  FileUploadInput  from './FileUploadInput';
 import '../../../styles/tokens.css';
+import { FiUpload } from 'react-icons/fi';
 export type Size = 'small' | 'medium' | 'large';
 export type Variant = 'contained' | 'outlined' | 'text';
 export interface FileUploadProps {
@@ -176,9 +176,8 @@ const FileUpload: React.FC<FileUploadProps> = ({
     whiteSpace: 'nowrap',
     padding: `var(--space-2) var(--space-3)`,
     borderRadius: 'var(--radius-md)',
-    border: `var(--border-width-sm) solid ${
-      showError ? 'var(--color-error)' : 'var(--border-color)'
-    }`,
+    border: `var(--border-width-sm) solid ${showError ? 'var(--color-error)' : 'var(--border-color)'
+      }`,
     backgroundColor: 'var(--bg-surface)',
     color: showError ? 'var(--color-error)' : 'var(--text-primary)',
     transition: `all var(--transition-normal)`,
@@ -250,7 +249,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
           disabled={disabled}
           aria-disabled={disabled}
           className='!px-4'
-          startIcon={<img src={fileUploadImg} width={20} height={20} alt='Upload icon' />}
+          startIcon={<FiUpload className="w-5 h-5" />}
         >
           Upload files
         </Button>

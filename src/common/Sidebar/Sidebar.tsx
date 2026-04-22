@@ -1,9 +1,9 @@
 import '../../styles/tokens.css';
-
+ 
 import { useState } from 'react';
 import { FiBarChart2, FiClipboard, FiCreditCard, FiFile, FiSettings } from 'react-icons/fi';
 import { useLocation, useNavigate } from 'react-router-dom';
-
+ 
 interface SidebarItem {
   id: string;
   label: string;
@@ -11,7 +11,7 @@ interface SidebarItem {
   icon: React.ReactNode;
   subItems?: SidebarItem[];
 }
-
+ 
 const SIDEBAR_ITEMS: SidebarItem[] = [
   {
     id: 'dashboard',
@@ -44,35 +44,35 @@ const SIDEBAR_ITEMS: SidebarItem[] = [
     icon: <FiSettings />,
   },
 ];
-
+ 
 interface SidebarProps {
   isOpen?: boolean;
   onClose?: () => void;
 }
-
+ 
 function Sidebar({ isOpen = true, onClose }: SidebarProps) {
   const navigate = useNavigate();
   const location = useLocation();
   const [expandedItems, setExpandedItems] = useState<string[]>(['profile']);
-
+ 
   const toggleExpand = (itemId: string) => {
     setExpandedItems(prev =>
       prev.includes(itemId) ? prev.filter(id => id !== itemId) : [...prev, itemId],
     );
   };
-
+ 
   const handleNavigate = (path: string) => {
     navigate(path);
     onClose?.();
   };
-
+ 
   const isActive = (path: string) => location.pathname === path;
-
+ 
   const renderSidebarItem = (item: SidebarItem, level = 0) => {
     const hasSubItems = item.subItems && item.subItems.length > 0;
     const isExpanded = expandedItems.includes(item.id);
     const active = isActive(item.path);
-
+ 
     return (
       <div key={item.id}>
         <button
@@ -101,7 +101,7 @@ function Sidebar({ isOpen = true, onClose }: SidebarProps) {
           <span className='text-lg flex items-center'>{item.icon}</span>
           <span className='flex-1 text-lg'>{item.label}</span>
         </button>
-
+ 
         {hasSubItems && isExpanded && (
           <div className='bg-gray-50'>
             {item.subItems?.map(subItem => renderSidebarItem(subItem, level + 1))}
@@ -110,7 +110,7 @@ function Sidebar({ isOpen = true, onClose }: SidebarProps) {
       </div>
     );
   };
-
+ 
   return (
     <aside
       className={`
@@ -133,5 +133,7 @@ function Sidebar({ isOpen = true, onClose }: SidebarProps) {
     </aside>
   );
 }
-
+ 
 export default Sidebar;
+ 
+ 

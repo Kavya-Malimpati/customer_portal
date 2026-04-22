@@ -1,9 +1,15 @@
 import './App.css';
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import MainLayout from './common/MainLayout';
+import Login from './pages/Login';
+import PersonalDetailsPage from './pages/Profile/ViewPersonalDetails/PersonalDetailsPage';
 import Home from './pages/Home';
 import AddContactDetails from './pages/Profile/AddContactDetails';
 import UpdateContactDetails from './pages/Profile/UpdateContactDetails';
+import MainLayout from './common/MainLayout';
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
+import ContactDetails from './pages/Profile/Contact';
+import DocumentVault from './pages/Profile/DocumentVault';
 import PaperlessPreferences from './pages/Profile/PaperlessPreferences';
 import EditPersonalDetails from './pages/Profile/EditPersonalDetails';
 import DigitalDocuments from './pages/Profile/DigitalDocuments';
@@ -27,12 +33,20 @@ function App() {
           </MainLayout>
         }
       />
-
-      <Route
-        path='/cdetails'
+      <Route 
+        path="/home/contact"
         element={
           <MainLayout onLogout={handleLogout}>
-            <AddContactDetails />
+            <ContactDetails />
+          </MainLayout>
+        }
+      />
+      
+      <Route
+        path="/home/documents"
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <DocumentVault />
           </MainLayout>
         }
       />
@@ -45,6 +59,7 @@ function App() {
           </MainLayout>
         }
       />
+      <Route path="*" element={<Navigate to="/" replace />} />
 
             <Route
         path='/settings'
@@ -72,11 +87,19 @@ function App() {
           </MainLayout>
         }
       />
-       <Route
+      <Route
         path='/edit-personal-details'
         element={
           <MainLayout onLogout={handleLogout}>
             <EditPersonalDetails />
+          </MainLayout>
+        }
+      />
+      <Route
+        path='/view-personal-details'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <PersonalDetailsPage />
           </MainLayout>
         }
       />

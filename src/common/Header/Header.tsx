@@ -1,3 +1,4 @@
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import logo from '../../assets/images/logo.png';
 
 interface HeaderProps {
@@ -5,6 +6,11 @@ interface HeaderProps {
 }
 
 const Header = ({ onMenuClick }: HeaderProps) => {
+  const navigate = useNavigate();
+  const handleProfileClick = () =>{
+    navigate('/view-personal-details')
+  }
+
   return (
     <header
       className='w-full bg-white shadow-sm h-16 flex items-center'
@@ -78,6 +84,7 @@ const Header = ({ onMenuClick }: HeaderProps) => {
 
           {/* Profile Logo */}
           <button
+          onClick={handleProfileClick}
             className='w-9 h-9 rounded-full flex items-center justify-center transition-colors hover:bg-gray-100'
             aria-label='Profile'
             style={{

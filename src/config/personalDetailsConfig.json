@@ -1,0 +1,190 @@
+{
+  "firstName": {
+    "id": "firstName",
+    "type": "text",
+    "name": "firstName",
+    "placeholder": "Enter your first name",
+    "label": "First Name",
+    "value": "",
+    "isRequired": true,
+    "hasError": false,
+    "errorMessage": "",
+    "validationRules": {
+      "required": {
+        "value": true,
+        "errorMessage": "First Name is required."
+      },
+      "pattern": {
+        "value": "^[A-Za-z]+$",
+        "errorMessage": "Only alphabets are allowed."
+      }
+    }
+  },
+
+  "middleName": {
+    "id": "middleName",
+    "type": "text",
+    "name": "middleName",
+    "placeholder": "Enter your middle name",
+    "label": "Middle Name",
+    "value": "",
+    "isRequired": false,
+    "hasError": false,
+    "errorMessage": "",
+    "validationRules": {}
+  },
+
+  "lastName": {
+    "id": "lastName",
+    "type": "text",
+    "name": "lastName",
+    "placeholder": "Enter your last name",
+    "label": "Last Name",
+    "value": "",
+    "isRequired": true,
+    "hasError": false,
+    "errorMessage": "",
+    "validationRules": {
+      "required": {
+        "value": true,
+        "errorMessage": "Last Name is required."
+      },
+      "pattern": {
+        "value": "^[A-Za-z]+$",
+        "errorMessage": "Only alphabets are allowed."
+      }
+    }
+  },
+
+  "dateOfBirth": {
+    "id": "dateOfBirth",
+    "type": "date",
+    "name": "dateOfBirth",
+    "placeholder": "Select your date of birth",
+    "label": "Date of Birth",
+    "value": "",
+    "isRequired": true,
+    "hasError": false,
+    "errorMessage": "",
+    "validationRules": {
+      "required": {
+        "value": true,
+        "errorMessage": "Date of Birth is required."
+      }
+    }
+  },
+
+  "gender": {
+    "id": "gender",
+    "type": "select",
+    "name": "gender",
+    "placeholder": "Select gender",
+    "label": "Gender",
+    "value": "",
+    "isRequired": true,
+    "hasError": false,
+    "errorMessage": "",
+    "validationRules": {
+      "required": {
+        "value": true,
+        "errorMessage": "Gender is required."
+      }
+    },
+    "options": [
+      { "value": "", "label": "Select gender" },
+      { "value": "male", "label": "Male" },
+      { "value": "female", "label": "Female" },
+      { "value": "other", "label": "Other" }
+    ]
+  },
+
+  "maritalStatus": {
+    "id": "maritalStatus",
+    "type": "select",
+    "name": "maritalStatus",
+    "placeholder": "Select marital status",
+    "label": "Marital Status",
+    "value": "",
+    "isRequired": true,
+    "hasError": false,
+    "errorMessage": "",
+    "validationRules": {
+      "required": {
+        "value": true,
+        "errorMessage": "Marital Status is required."
+      }
+    },
+    "options": [
+      { "value": "", "label": "Select status" },
+      { "value": "single", "label": "Single" },
+      { "value": "married", "label": "Married" }
+    ]
+  },
+
+  "occupation": {
+    "id": "occupation",
+    "type": "text",
+    "name": "occupation",
+    "placeholder": "Enter your occupation",
+    "label": "Occupation",
+    "value": "",
+    "isRequired": true,
+    "hasError": false,
+    "errorMessage": "",
+    "validationRules": {
+      "required": {
+        "value": true,
+        "errorMessage": "Occupation is required."
+      }
+    }
+  },
+
+  "employmentStatus": {
+    "id": "employmentStatus",
+    "type": "select",
+    "name": "employmentStatus",
+    "placeholder": "Select employment status",
+    "label": "Employment Status",
+    "value": "",
+    "isRequired": true,
+    "hasError": false,
+    "errorMessage": "",
+    "validationRules": {
+      "required": {
+        "value": true,
+        "errorMessage": "Employment Status is required."
+      }
+    },
+    "options": [
+      { "value": "", "label": "Select status" },
+      { "value": "employed", "label": "Employed" },
+      { "value": "self_employed", "label": "Self Employed" },
+      { "value": "unemployed", "label": "Unemployed" },
+      { "value": "student", "label": "Student" }
+    ]
+  },
+
+  "preferredLanguage": {
+    "id": "preferredLanguage",
+    "type": "select",
+    "name": "preferredLanguage",
+    "placeholder": "Select preferred language",
+    "label": "Preferred Language",
+    "value": "",
+    "isRequired": true,
+    "hasError": false,
+    "errorMessage": "",
+    "validationRules": {
+      "required": {
+        "value": true,
+        "errorMessage": "Preferred Language is required."
+      }
+    },
+    "options": [
+      { "value": "", "label": "Select language" },
+      { "value": "english", "label": "English" },
+      { "value": "hindi", "label": "Hindi" },
+      { "value": "marathi", "label": "Marathi" }
+    ]
+  }
+}

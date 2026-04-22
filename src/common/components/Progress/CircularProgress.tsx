@@ -1,6 +1,5 @@
-
 import React from 'react';
-import '../../../src/styles/tokens.css';
+import '../../../styles/tokens.css';
 export interface CircularProgressProps {
   id?: string;
   className?: string;
@@ -47,22 +46,22 @@ const CircularProgress: React.FC<CircularProgressProps> = ({
   const radius = (numericSize - thickness) / 2;
   const circumference = 2 * Math.PI * radius;
   const offset =
-    variant === 'determinate'
-      ? circumference - (value / 100) * circumference
-      : circumference * 0.7;
+    variant === 'determinate' ? circumference - (value / 100) * circumference : circumference * 0.7;
   const containerStyle: React.CSSProperties = {
     display: 'inline-flex',
     ...style,
   };
   const svgStyle: React.CSSProperties = {
-    animation: variant === 'indeterminate' ? `spin var(--transition-slow) linear infinite` : undefined,
+    animation:
+      variant === 'indeterminate' ? `spin var(--transition-slow) linear infinite` : undefined,
   };
   const circleStyle: React.CSSProperties = {
     stroke: colorMap[color],
     strokeDasharray: circumference,
     strokeDashoffset: offset,
     strokeLinecap: 'round',
-    transition: variant === 'determinate' ? `stroke-dashoffset var(--transition-normal)` : undefined,
+    transition:
+      variant === 'determinate' ? `stroke-dashoffset var(--transition-normal)` : undefined,
   };
   const backgroundCircleStyle: React.CSSProperties = {
     stroke: 'var(--bg-muted)',
@@ -88,7 +87,7 @@ const CircularProgress: React.FC<CircularProgressProps> = ({
           width={numericSize}
           height={numericSize}
           style={svgStyle}
-          role="progressbar"
+          role='progressbar'
           aria-valuenow={ariaValueNow}
           aria-valuemin={0}
           aria-valuemax={100}
@@ -108,7 +107,7 @@ const CircularProgress: React.FC<CircularProgressProps> = ({
             cx={numericSize / 2}
             cy={numericSize / 2}
             r={radius}
-            fill="none"
+            fill='none'
             strokeWidth={thickness}
             style={backgroundCircleStyle}
           />
@@ -117,7 +116,7 @@ const CircularProgress: React.FC<CircularProgressProps> = ({
             cx={numericSize / 2}
             cy={numericSize / 2}
             r={radius}
-            fill="none"
+            fill='none'
             strokeWidth={thickness}
             style={circleStyle}
           />
@@ -127,4 +126,3 @@ const CircularProgress: React.FC<CircularProgressProps> = ({
   );
 };
 export default CircularProgress;
-

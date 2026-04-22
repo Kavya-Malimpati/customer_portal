@@ -6,7 +6,7 @@ const PersonalDetails = ({ data }: PersonalDetailsProps) => {
   const navigate = useNavigate();
 
   const handleEditClick = () => {
-    navigate('/profile/edit');
+    navigate('/edit-personal-details');
   };
 
   return (

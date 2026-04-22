@@ -15,10 +15,15 @@ export interface DisplaySettings {
   theme: 'light' | 'dark' | 'system';
 }
 
+export interface SmsEnrollment {
+  textEnrollment: boolean;
+}
+
 export interface PreferencesState {
   notifications: NotificationSettings;
   alerts: AlertPreferences;
   display: DisplaySettings;
+  smsEnrollment: SmsEnrollment;
   saved: boolean;
 }
 

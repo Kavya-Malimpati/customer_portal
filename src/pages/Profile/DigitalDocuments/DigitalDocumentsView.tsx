@@ -16,8 +16,6 @@ const DigitalDocumentsView = ({ documents, onView }: DigitalDocumentsViewProps) 
             variant='h1'
             style={{
               color: 'var(--text-heading)',
-              fontSize: 'var(--font-size-xl)',
-              fontWeight: 'var(--font-weight-semibold)',
             }}
           >
             Digital Documents
@@ -28,9 +26,7 @@ const DigitalDocumentsView = ({ documents, onView }: DigitalDocumentsViewProps) 
           <Typography
             variant='subtitle1'
             style={{
-              color: 'var(--text-heading)',
-              fontSize: 'var(--font-size-xl)',
-              fontWeight: 'var(--font-weight-semibold)',
+              color: 'var(--text-heading)'
             }}
           >
             Your Documents
@@ -43,7 +39,7 @@ const DigitalDocumentsView = ({ documents, onView }: DigitalDocumentsViewProps) 
                   <div className='flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3'>
                     <div>
                       <Typography
-                        variant='h2'
+                        variant='h4'
                         style={{
                           color: 'var(--text-heading)',
                           fontWeight: 'var(--font-weight-semibold)',

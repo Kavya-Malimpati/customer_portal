@@ -10,6 +10,26 @@ const getInitialPreferences = (): PreferencesState => {
       const parsed = JSON.parse(saved);
       return {
         ...parsed,
+        notifications: {
+          policies: parsed.notifications?.policies ?? false,
+          billing: parsed.notifications?.billing ?? false,
+          claims: parsed.notifications?.claims ?? false,
+        },
+        alerts: {
+          email: parsed.alerts?.email ?? false,
+          sms: parsed.alerts?.sms ?? false,
+          portal: parsed.alerts?.portal ?? false,
+        },
+        smsEnrollment: {
+          email: parsed.smsEnrollment?.email ?? false,
+          sms: parsed.smsEnrollment?.sms ?? false,
+          portal: parsed.smsEnrollment?.portal ?? false,
+          textEnrollment: parsed.smsEnrollment?.textEnrollment ?? false,
+        },
+        display: {
+          language: parsed.display?.language ?? 'english',
+          theme: parsed.display?.theme ?? 'light',
+        },
         saved: false,
       };
     }
@@ -28,6 +48,9 @@ const getInitialPreferences = (): PreferencesState => {
       sms: false,
       portal: false,
     },
+    smsEnrollment: {
+      textEnrollment: false,
+    },
     display: {
       language: 'english',
       theme: 'light',
@@ -36,7 +59,7 @@ const getInitialPreferences = (): PreferencesState => {
   };
 };
 
-const Setting = () => {
+const Settings = () => {
   const [preferences, setPreferences] = useState<PreferencesState>(getInitialPreferences);
 
   useEffect(() => {
@@ -45,10 +68,16 @@ const Setting = () => {
       JSON.stringify({
         notifications: preferences.notifications,
         alerts: preferences.alerts,
+        smsEnrollment: preferences.smsEnrollment,
         display: preferences.display,
       }),
     );
-  }, [preferences.notifications, preferences.alerts, preferences.display]);
+  }, [
+    preferences.notifications,
+    preferences.alerts,
+    preferences.smsEnrollment,
+    preferences.display,
+  ]);
 
   const handleSavePreferences = () => {
     setPreferences(prev => ({
@@ -74,4 +103,4 @@ const Setting = () => {
   );
 };
 
-export default Setting;
+export default Settings;

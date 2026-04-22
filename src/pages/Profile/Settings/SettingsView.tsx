@@ -107,6 +107,7 @@ const SettingsUI = ({
                 <Toggle
                   id='alert-sms'
                   checked={preferences.alerts.sms}
+                  disabled={!preferences.smsEnrollment.textEnrollment}
                   onChange={e =>
                     handlePreferenceChange({
                       alerts: {
@@ -138,6 +139,35 @@ const SettingsUI = ({
           </CardContent>
         </Card>
 
+       <Card variant='outlined-raised' size='lg'>
+  <CardContent>
+    <div className='space-y-4'>
+      <Typography variant='h2' style={{ color: 'var(--text-heading)' }}>SMS Enrollment</Typography>
+
+      <Toggle
+        id='sms-enroll-main'
+        checked={preferences.smsEnrollment.textEnrollment}
+        onChange={e =>
+          handlePreferenceChange({
+            smsEnrollment: {
+              ...preferences.smsEnrollment,
+              textEnrollment: e.target.checked,
+            },
+          })
+        }
+        label='Enable Text Enrollment'
+      />
+
+
+      {!preferences.smsEnrollment.textEnrollment && (
+        <Typography variant='body2' style={{ color: 'gray' }}>
+          Enable Text Enrollment to configure SMS settings
+        </Typography>
+      )}
+    </div>
+  </CardContent>
+</Card>
+
         <Card variant='outlined-raised' size='lg'>
           <CardContent>
             <div className='space-y-6'>
@@ -153,9 +183,7 @@ const SettingsUI = ({
                     value={preferences.display.language}
                     options={[
                       { label: 'English', value: 'english' },
-                      { label: 'Spanish', value: 'spanish' },
-                      { label: 'French', value: 'french' },
-                      { label: 'German', value: 'german' },
+                      { label: 'Spanish', value: 'spanish' }
                     ]}
                     onChange={e =>
                       handlePreferenceChange({

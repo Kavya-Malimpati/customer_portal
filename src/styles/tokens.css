@@ -10,14 +10,13 @@
   --color-primary: #4285f4; /* google blue */
   --color-primary-hover: #357ae8;
   --color-primary-active: #2e63d2;
- 
+
   --color-secondary: #ea4335; /* google red */
- 
+
   --color-success: #34a853; /* google green */
   --color-warning: #fbbc04; /* google yellow */
   --color-error: #ea4335; /* google red */
   --color-info: #4285f4; /* google blue */
-  
   /* -------------------------------
      Neutral Palette
   -------------------------------- */
@@ -38,11 +37,11 @@
   /* -------------------------------
      Text Colors
   -------------------------------- */
-  --text-primary: #0f172a;         /* dark navy */
-  --text-secondary: #475569;
-  --text-muted: #94a3b8;
+  --text-primary: #202124; /* dark gray */
+  --text-secondary: #5f6368;
+  --text-muted: #80868b;
   --text-inverse: #ffffff;
-  --text-heading: #1f3c88;         /* brand blue headings */
+  --text-heading: #4285f4; /* google blue headings */
 
   /* -------------------------------
      Backgrounds
@@ -51,15 +50,15 @@
   --bg-surface: #ffffff;
   --bg-muted: #f1f5f9;
   --bg-section-alt: #f8fafc;
-  --bg-dark: #0f172a;              /* footer/hero overlay */
+  --bg-dark: #0f172a; /* footer/hero overlay */
   --bg-hover: #f1f5f9;
   --bg-selected: #e2e8f0;
 
   /* -------------------------------
      Borders
   -------------------------------- */
-  --border-color: #e2e8f0;
-  --border-color-hover: #cbd5e1;
+  --border-color: #dadce0;
+  --border-color-hover: #e8eaed;
   --border-color-focus: var(--color-primary);
 
   --border-width-sm: 1px;
@@ -68,16 +67,16 @@
   /* -------------------------------
      Typography
   -------------------------------- */
-  --font-family-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-family-sans: 'Inter', 'Helvetica Neue', Arial, sans-serif;
   --font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas;
 
-  --font-size-xs: 0.75rem;   /* 12px */
-  --font-size-sm: 0.875rem;  /* 14px */
-  --font-size-md: 1rem;      /* 16px */
-  --font-size-lg: 1.125rem;  /* 18px */
-  --font-size-xl: 1.375rem;  /* 22px */
-  --font-size-2xl: 1.75rem;  /* 28px */
-  --font-size-3xl: 2.25rem;  /* 36px - hero headings */
+  --font-size-xs: 0.75rem; /* 12px */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-md: 1rem; /* 16px */
+  --font-size-lg: 1.125rem; /* 18px */
+  --font-size-xl: 1.375rem; /* 22px */
+  --font-size-2xl: 1.75rem; /* 28px */
+  --font-size-3xl: 2.25rem; /* 36px - hero headings */
 
   --font-weight-regular: 400;
   --font-weight-medium: 500;
@@ -92,17 +91,17 @@
      Spacing (Generous enterprise spacing)
   -------------------------------- */
   --space-0: 0;
-  --space-1: 0.25rem;  
-  --space-2: 0.5rem;   
-  --space-3: 0.75rem;  
-  --space-4: 1rem;     
-  --space-5: 1.25rem;  
-  --space-6: 1.5rem;   
-  --space-8: 2rem;     
-  --space-10: 2.5rem;  
-  --space-12: 3rem;    
-  --space-16: 4rem;    /* section padding */
-  --space-20: 5rem;    /* large hero spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem; /* section padding */
+  --space-20: 5rem; /* large hero spacing */
 
   /* -------------------------------
      Component Sizes
@@ -164,7 +163,7 @@
   /* -------------------------------
      Focus
   -------------------------------- */
-  --focus-ring: 0 0 0 3px rgba(0, 161, 154, 0.35);
+  --focus-ring: 0 0 0 3px rgba(66, 133, 244, 0.35);
 
   /* -------------------------------
      Stroke

@@ -1,17 +1,12 @@
-import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import './App.css';
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import MainLayout from './common/MainLayout';
-import Login from './pages/Login';
 import Home from './pages/Home';
+import AddContactDetails from './pages/Profile/AddContactDetails';
+import PaperlessPreferences from './pages/Profile/PaperlessPreferences';
+import EditPersonalDetails from './pages/Profile/EditPersonalDetails';
 import DigitalDocuments from './pages/Profile/DigitalDocuments';
 import Settings from './pages/Profile/Settings';
-
-/**
- * App Component
- *
- * Main application component that serves as the root wrapper.
- * Configures routing for all pages including Home and Vehicle Details.
- */
 function App() {
   const navigate = useNavigate();
 
@@ -21,17 +16,57 @@ function App() {
 
   return (
     <Routes>
-      <Route path='/' element={<Login />} />
-      <Route path='/home' element={<MainLayout onLogout={handleLogout}>{<Home />}</MainLayout>} />
-
       <Route
-        path='/profile/settings'
-        element={<MainLayout onLogout={handleLogout}>{<Settings />}</MainLayout>}
+        path='/'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <Home />
+          </MainLayout>
+        }
       />
 
       <Route
-        path='/profile/digital-documents'
-        element={<MainLayout onLogout={handleLogout}>{<DigitalDocuments />}</MainLayout>}
+        path='/cdetails'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <AddContactDetails />
+          </MainLayout>
+        }
+      />
+
+            <Route
+        path='/settings'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <Settings />
+          </MainLayout>
+        }
+      />
+
+      <Route
+        path='/digital-documents'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <DigitalDocuments />
+          </MainLayout>
+        }
+      />
+
+      <Route
+        path='/paperless'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <PaperlessPreferences />
+          </MainLayout>
+        }
+      />
+       <Route
+        path='/edit-personal-details'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <EditPersonalDetails />
+          </MainLayout>
+        }
       />
 
       <Route path='*' element={<Navigate to='/' replace />} />

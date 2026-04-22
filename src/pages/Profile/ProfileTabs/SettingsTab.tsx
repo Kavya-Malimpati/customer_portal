@@ -5,8 +5,8 @@ const SettingsTab = () => {
   return (
     <div>
       {/* Add Account Settings related features here */}
-      <PaperlessPreferences />
       <Settings />
+      <PaperlessPreferences />
     </div>
   );
 };

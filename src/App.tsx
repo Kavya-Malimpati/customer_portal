@@ -5,6 +5,8 @@ import Home from './pages/Home';
 import AddContactDetails from './pages/Profile/AddContactDetails';
 import PaperlessPreferences from './pages/Profile/PaperlessPreferences';
 import EditPersonalDetails from './pages/Profile/EditPersonalDetails';
+import DigitalDocuments from './pages/Profile/DigitalDocuments';
+import Settings from './pages/Profile/Settings';
 import AgentContactDetails from './pages/Profile/AgentContactDetails/';
 
 function App() {
@@ -30,6 +32,24 @@ function App() {
         element={
           <MainLayout onLogout={handleLogout}>
             <AddContactDetails />
+          </MainLayout>
+        }
+      />
+
+            <Route
+        path='/settings'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <Settings />
+          </MainLayout>
+        }
+      />
+
+      <Route
+        path='/digital-documents'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <DigitalDocuments />
           </MainLayout>
         }
       />

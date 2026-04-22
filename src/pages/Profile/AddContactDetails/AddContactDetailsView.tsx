@@ -1,7 +1,14 @@
-import { Button, Card, CardContent, Modal, Select, TextField } from '../../../common/components';
-import CardFooter from '../../../common/components/Card/CardFooter';
-import CardHeader from '../../../common/components/Card/CardHeader';
-import Checkbox from '../../../common/components/Checkbox/Checkbox';
+import {
+  Button,
+  Card,
+  CardContent,
+  CardFooter,
+  Checkbox,
+  Modal,
+  Select,
+  TextField,
+  Typography,
+} from '../../../common/components';
 
 import type { AddContactDetailsViewProps } from './interfaces';
 
@@ -19,7 +26,7 @@ function AddContactDetailsView({
   return (
     <div className='min-h-screen flex justify-center items-center bg-gray-100 p-4'>
       <Card className='w-[600px] bg-white shadow-xl'>
-        <CardHeader title='Add Contact Details' />
+        <Typography variant='h1'>Add Contact Details</Typography>
 
         <form onSubmit={handleSubmit}>
           <CardContent className='flex flex-col gap-4 p-6'>

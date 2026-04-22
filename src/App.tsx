@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import AddContactDetails from './pages/Profile/AddContactDetails';
 import PaperlessPreferences from './pages/Profile/PaperlessPreferences';
 import EditPersonalDetails from './pages/Profile/EditPersonalDetails';
+import AgentContactDetails from './pages/Profile/AgentContactDetails/';
 
 function App() {
   const navigate = useNavigate();
@@ -56,6 +57,14 @@ function App() {
         element={
           <MainLayout onLogout={handleLogout}>
             <PersonalDetailsPage />
+          </MainLayout>
+        }
+      />
+      <Route
+        path='/agent-contact-details'
+        element={
+          <MainLayout onLogout={handleLogout}>  
+            <AgentContactDetails />
           </MainLayout>
         }
       />

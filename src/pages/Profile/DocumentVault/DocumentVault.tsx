@@ -1,7 +1,5 @@
 import { useState } from 'react';
-import Card from '../../../common/components/Card/Card';
-import CardHeader from '../../../common/components/Card/CardHeader';
-import CardContent from '../../../common/components/Card/CardContent';
+import {Card, CardHeader, CardContent} from '../../../common/components/';
 import type { DocumentItem } from './interfaces';
 import DocumentVaultView from './DocumentVaultView';
 

@@ -1,8 +1,9 @@
-import Typography from '../../../common/components/Typography/Typography';
-import Button from '../../../common/components/Button/Button';
-import FileUpload from '../../../common/components/FileUpload/FileUpload';
 import type { DocumentVaultViewProps } from './interfaces';
-
+import {
+  Typography,
+  Button,
+  FileUpload
+} from '../../../common/components';
 const DocumentVaultView = ({
   documents,
   onUpload,

@@ -1,6 +1,7 @@
 
 import React from 'react';
 import '../../../styles/tokens.css';
+
 export type Variant =
   | 'h1'
   | 'h2'
@@ -16,17 +17,23 @@ export type Variant =
   | 'overline'
   | 'button'
   | 'inherit';
+
 export interface TypographyProps extends React.HTMLAttributes<HTMLElement> {
   id?: string;
   className?: string;
   children?: React.ReactNode;
   variant?: Variant;
+  startDecorator?: React.ReactNode;
+  endDecorator?: React.ReactNode;
+
   ariaLabel?: string;
   ariaLabelledby?: string;
   ariaDescribedby?: string;
   ariaHidden?: boolean;
   ariaLive?: 'off' | 'polite' | 'assertive';
 }
+
+
 const variantTagMap: Record<Variant, React.ElementType> = {
   h1: 'h1',
   h2: 'h2',
@@ -43,6 +50,7 @@ const variantTagMap: Record<Variant, React.ElementType> = {
   button: 'span',
   inherit: 'span',
 };
+
 const variantClassMap: Record<Variant, React.CSSProperties> = {
   h1: { fontSize: 'var(--font-size-2xl)', lineHeight: 'var(--line-height-tight)', fontWeight: 'var(--font-weight-bold)' },
   h2: { fontSize: '1.75rem', lineHeight: 'var(--line-height-tight)', fontWeight: 'var(--font-weight-bold)' },
@@ -59,11 +67,14 @@ const variantClassMap: Record<Variant, React.CSSProperties> = {
   button: { fontSize: 'var(--font-size-sm)', textTransform: 'uppercase', fontWeight: 'var(--font-weight-medium)', color: 'var(--color-primary)' },
   inherit: {},
 };
+
 const Typography: React.FC<TypographyProps> = ({
   id,
   className = '',
   children,
   variant = 'body1',
+  startDecorator,
+  endDecorator,
   ariaLabel,
   ariaLabelledby,
   ariaDescribedby,
@@ -73,10 +84,14 @@ const Typography: React.FC<TypographyProps> = ({
 }) => {
   const ComponentTag = variantTagMap[variant] || 'p';
   const variantStyle = variantClassMap[variant] || {};
+
   const baseStyle: React.CSSProperties = {
-    display: 'block',
+    display: startDecorator || endDecorator ? 'flex' : 'block',
+    alignItems: startDecorator || endDecorator ? 'center' : 'baseline',
+    gap: startDecorator || endDecorator ? '0.75rem' : undefined,
     ...variantStyle,
   };
+
   const props: React.HTMLAttributes<HTMLElement> = {
     id,
     className,
@@ -88,7 +103,16 @@ const Typography: React.FC<TypographyProps> = ({
     'aria-live': ariaLive,
     ...rest,
   };
-  return React.createElement(ComponentTag as React.ElementType, props, children);
-};
-export default Typography;
 
+  const content = (
+    <>
+      {startDecorator && <span style={{ display: 'flex', alignItems: 'center', flexShrink: 0 }}>{startDecorator}</span>}
+      {children}
+      {endDecorator && <span style={{ display: 'flex', alignItems: 'center', flexShrink: 0 }}>{endDecorator}</span>}
+    </>
+  );
+
+  return React.createElement(ComponentTag as React.ElementType, props, content);
+};
+
+export default Typography;

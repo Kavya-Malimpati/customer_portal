@@ -1,15 +1,9 @@
 import './App.css';
 import Home from './pages/Home';
-<<<<<<< Updated upstream
-=======
-import Contact from './pages/Profile/Contact';
-import DocumentVault from './pages/Profile/DocumentVault/DocumentVault';
->>>>>>> Stashed changes
 import MainLayout from './common/MainLayout';
-import Home from './pages/Home';
-import AddContactDetails from './pages/Profile/AddContactDetails';
-import PaperlessPreferences from './pages/Profile/PaperlessPreferences';
-import EditPersonalDetails from './pages/Profile/EditPersonalDetails';
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
+import ContactDetails from './pages/Profile/Contact';
+import DocumentVault from './pages/Profile/DocumentVault';
 
 function App() {
   const navigate = useNavigate();
@@ -28,13 +22,11 @@ function App() {
           </MainLayout>
         }
       />
-<<<<<<< Updated upstream
-=======
       <Route 
         path="/home/contact"
         element={
           <MainLayout onLogout={handleLogout}>
-            <Contact />
+            <ContactDetails />
           </MainLayout>
         }
       />
@@ -47,7 +39,6 @@ function App() {
           </MainLayout>
         }
       />
->>>>>>> Stashed changes
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );

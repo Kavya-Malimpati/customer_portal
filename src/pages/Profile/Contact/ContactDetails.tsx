@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import ViewContactDetailsView from './ContactDetailsView';
 
-const ViewContactDetails = () => {
+const ContactDetails = () => {
   const navigate = useNavigate();
 
   const contactData = {
@@ -30,4 +30,4 @@ const ViewContactDetails = () => {
   );
 };
 
-export default ViewContactDetails;
+export default ContactDetails;

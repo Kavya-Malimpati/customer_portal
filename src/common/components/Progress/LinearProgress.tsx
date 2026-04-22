@@ -1,7 +1,5 @@
-import '../../../styles/tokens.css';
-
 import React from 'react';
-
+import '../../../styles/tokens.css';
 export interface LinearProgressProps {
   id?: string;
   value?: number;

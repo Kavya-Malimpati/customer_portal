@@ -1,8 +1,6 @@
+import React from "react";
+import { NavLink } from "react-router-dom";
 import '../../../styles/tokens.css';
-
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-
 interface LinkProps {
   to: string;
   title?: string;

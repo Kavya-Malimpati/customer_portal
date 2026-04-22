@@ -1,8 +1,6 @@
-import '../../../styles/tokens.css';
-
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-
+import '../../../styles/tokens.css';
 export type SnackbarSize = 'sm' | 'md' | 'lg';
 export type SnackbarVariant = 'filled' | 'outlined' | 'standard';
 export type SnackbarPosition =

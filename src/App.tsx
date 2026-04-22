@@ -1,12 +1,14 @@
 import './App.css';
-
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
-
 import MainLayout from './common/MainLayout';
 import Home from './pages/Home';
 import AddContactDetails from './pages/Profile/AddContactDetails';
-import PaperlessPreferences from './pages/Profile/PaperlessPreferences';
 import UpdateContactDetails from './pages/Profile/UpdateContactDetails';
+import PaperlessPreferences from './pages/Profile/PaperlessPreferences';
+import EditPersonalDetails from './pages/Profile/EditPersonalDetails';
+import DigitalDocuments from './pages/Profile/DigitalDocuments';
+import Settings from './pages/Profile/Settings';
+import AgentContactDetails from './pages/Profile/AgentContactDetails/';
 
 function App() {
   const navigate = useNavigate();
@@ -34,6 +36,33 @@ function App() {
           </MainLayout>
         }
       />
+      
+      <Route
+        path='/update-contact'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <UpdateContactDetails />
+          </MainLayout>
+        }
+      />
+
+            <Route
+        path='/settings'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <Settings />
+          </MainLayout>
+        }
+      />
+
+      <Route
+        path='/digital-documents'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <DigitalDocuments />
+          </MainLayout>
+        }
+      />
 
       <Route
         path='/paperless'
@@ -43,12 +72,19 @@ function App() {
           </MainLayout>
         }
       />
-      
-      <Route
-        path='/update-contact'
+       <Route
+        path='/edit-personal-details'
         element={
           <MainLayout onLogout={handleLogout}>
-            <UpdateContactDetails />
+            <EditPersonalDetails />
+          </MainLayout>
+        }
+      />
+      <Route
+        path='/agent-contact-details'
+        element={
+          <MainLayout onLogout={handleLogout}>  
+            <AgentContactDetails />
           </MainLayout>
         }
       />

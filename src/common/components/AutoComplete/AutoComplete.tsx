@@ -1,5 +1,5 @@
 import React, { useState, useRef, useId, useMemo, useCallback } from 'react';
-import '../../styles/tokens.css';
+import '../../../styles/tokens.css';
 interface Option {
   label: string;
   value: string;

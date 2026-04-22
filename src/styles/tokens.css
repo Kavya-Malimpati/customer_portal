@@ -2,7 +2,6 @@
    Design Tokens – ValueMomentum (Strategy Consulting)
    Reverse Engineered & Normalized
    ===================================================== */
-
 :root {
   /* -------------------------------
      Brand & Semantic Colors
@@ -17,7 +16,6 @@
   --color-warning: #fbbc04; /* google yellow */
   --color-error: #ea4335; /* google red */
   --color-info: #4285f4; /* google blue */
-
   /* -------------------------------
      Neutral Palette
   -------------------------------- */

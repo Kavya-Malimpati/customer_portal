@@ -1,7 +1,6 @@
 import '../../../styles/tokens.css';
 
 import React, { useState } from 'react';
-
 export interface CheckboxProps {
   id?: string;
   name?: string;

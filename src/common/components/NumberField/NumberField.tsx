@@ -1,7 +1,5 @@
+import React, { forwardRef, useImperativeHandle, useRef, useEffect } from 'react';
 import '../../../styles/tokens.css';
-
-import React, { forwardRef, useEffect, useImperativeHandle, useRef } from 'react';
-
 export interface NumberFieldProps {
   id?: string;
   name?: string;

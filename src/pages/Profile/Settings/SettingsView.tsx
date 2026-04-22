@@ -1,9 +1,4 @@
-import Card from '../../../common/components/Card';
-import CardContent from '../../../common/components/Card/CardContent';
-import Typography from '../../../common/components/Typography/Typography';
-import Select from '../../../common/components/Select/Select';
-import Button from '../../../common/components/Button/Button';
-import Toggle from '../../../common/components/Toggle';
+import{Card, CardContent,Typography,Select,Button,Toggle }from '../../../common/components';
 import type { SettingsUIProps } from './Interface';
 
 const SettingsUI = ({

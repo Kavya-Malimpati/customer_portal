@@ -1,7 +1,4 @@
-import Card from '../../../common/components/Card';
-import CardContent from '../../../common/components/Card/CardContent';
-import Typography from '../../../common/components/Typography/Typography';
-import Button from '../../../common/components/Button/Button';
+import {Card , CardContent,Typography,Button }from '../../../common/components';
 import type { DigitalDocumentsViewProps } from './Interface';
 
 const DigitalDocumentsView = ({ documents, onView }: DigitalDocumentsViewProps) => {

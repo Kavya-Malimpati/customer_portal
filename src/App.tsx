@@ -1,4 +1,3 @@
-import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home';
 <<<<<<< Updated upstream
@@ -7,14 +6,11 @@ import Contact from './pages/Profile/Contact';
 import DocumentVault from './pages/Profile/DocumentVault/DocumentVault';
 >>>>>>> Stashed changes
 import MainLayout from './common/MainLayout';
-import Login from './pages/Login';
+import Home from './pages/Home';
+import AddContactDetails from './pages/Profile/AddContactDetails';
+import PaperlessPreferences from './pages/Profile/PaperlessPreferences';
+import EditPersonalDetails from './pages/Profile/EditPersonalDetails';
 
-/**
- * App Component
- *
- * Main application component that serves as the root wrapper.
- * Configures routing for all pages including Home (Login).
- */
 function App() {
   const navigate = useNavigate();
 
@@ -24,9 +20,8 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Login />} />
       <Route
-        path="/home"
+        path='/'
         element={
           <MainLayout onLogout={handleLogout}>
             <Home />

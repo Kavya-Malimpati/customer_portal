@@ -1,15 +1,15 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import '../../../src/styles/tokens.css';
+import '../../../styles/tokens.css';
 interface LinkProps {
   to: string;
   title?: string;
   id?: string;
   className?: string;
   target?: string;
-  color?: "primary" | "secondary" | "success" | "error" | "info" | "inherit";
-  size?: "sm" | "md" | "lg";
-  underline?: "none" | "hover" | "always";
+  color?: 'primary' | 'secondary' | 'success' | 'error' | 'info' | 'inherit';
+  size?: 'sm' | 'md' | 'lg';
+  underline?: 'none' | 'hover' | 'always';
   onFocus?: React.FocusEventHandler<HTMLAnchorElement>;
   onBlur?: React.FocusEventHandler<HTMLAnchorElement>;
   tabIndex?: number;
@@ -17,16 +17,16 @@ interface LinkProps {
   'aria-labelledby'?: string;
   'aria-describedby'?: string;
   'aria-label'?: string;
-  'aria-current'?: boolean | "page" | "step" | "location" | "date" | "time";
+  'aria-current'?: boolean | 'page' | 'step' | 'location' | 'date' | 'time';
 }
 const Link: React.FC<LinkProps> = ({
   to,
   title,
   id,
   className = '',
-  color = "primary",
-  size = "md",
-  underline = "hover",
+  color = 'primary',
+  size = 'md',
+  underline = 'hover',
   onFocus,
   tabIndex,
   'aria-labelledby': ariaLabelledby,
@@ -61,10 +61,7 @@ const Link: React.FC<LinkProps> = ({
   const linkStyles: React.CSSProperties = {
     color: colorConfig[color],
     fontSize: sizeConfig[size],
-    textDecoration:
-      underline === "always" ? "underline" : 
-      underline === "none" ? "none" : 
-      "none",
+    textDecoration: underline === 'always' ? 'underline' : underline === 'none' ? 'none' : 'none',
     transition: `all var(--transition-normal)`,
     fontWeight: 'var(--font-weight-regular)',
     cursor: 'pointer',
@@ -85,25 +82,25 @@ const Link: React.FC<LinkProps> = ({
       style={{
         ...linkStyles,
       }}
-      onMouseEnter={(e) => {
+      onMouseEnter={e => {
         (e.currentTarget as HTMLElement).style.color = hoverColorConfig[color];
-        if (underline === "hover") {
-          (e.currentTarget as HTMLElement).style.textDecoration = "underline";
+        if (underline === 'hover') {
+          (e.currentTarget as HTMLElement).style.textDecoration = 'underline';
         }
       }}
-      onMouseLeave={(e) => {
+      onMouseLeave={e => {
         (e.currentTarget as HTMLElement).style.color = colorConfig[color];
-        if (underline === "hover") {
-          (e.currentTarget as HTMLElement).style.textDecoration = "none";
+        if (underline === 'hover') {
+          (e.currentTarget as HTMLElement).style.textDecoration = 'none';
         }
       }}
-      onFocus={(e) => {
+      onFocus={e => {
         (e.currentTarget as HTMLElement).style.boxShadow = 'var(--focus-ring)';
         (e.currentTarget as HTMLElement).style.borderRadius = 'var(--radius-md)';
         (e.currentTarget as HTMLElement).style.outline = 'none';
         onFocus?.(e);
       }}
-      onBlur={(e) => {
+      onBlur={e => {
         (e.currentTarget as HTMLElement).style.boxShadow = 'none';
         onBlur?.(e);
       }}
@@ -113,4 +110,3 @@ const Link: React.FC<LinkProps> = ({
   );
 };
 export default Link;
-

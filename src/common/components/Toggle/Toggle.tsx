@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../../../styles/tokens.css';
-
+ 
 export interface ToggleProps {
   id?: string;
   name?: string;
@@ -28,7 +28,7 @@ export interface ToggleProps {
   'aria-invalid'?: boolean;
   'aria-required'?: boolean;
 }
-
+ 
 const Toggle = React.forwardRef<HTMLInputElement, ToggleProps>(
   (
     {
@@ -61,19 +61,19 @@ const Toggle = React.forwardRef<HTMLInputElement, ToggleProps>(
     ref,
   ) => {
     const [uncontrolledChecked, setUncontrolledChecked] = useState(defaultChecked || false);
-
+ 
     const isChecked = checked ?? uncontrolledChecked;
     const isErrorState = hasError || ariaInvalid;
     const errorId = errorMessage ? `${id || 'toggle'}-error` : undefined;
     const toggleId = id || 'toggle';
-
+ 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       if (checked === undefined) {
         setUncontrolledChecked(e.target.checked);
       }
       onChange?.(e);
     };
-
+ 
     const sizeConfig = {
       sm: {
         width: '52px',
@@ -97,9 +97,9 @@ const Toggle = React.forwardRef<HTMLInputElement, ToggleProps>(
         textSize: '11px',
       },
     };
-
+ 
     const currentSize = sizeConfig[size];
-
+ 
     const containerStyles: React.CSSProperties = {
       display: 'flex',
       alignItems: 'center',
@@ -108,7 +108,7 @@ const Toggle = React.forwardRef<HTMLInputElement, ToggleProps>(
       cursor: disabled ? 'not-allowed' : 'pointer',
       flexWrap: 'wrap',
     };
-
+ 
     const toggleTrackStyles: React.CSSProperties = {
       width: currentSize.width,
       height: currentSize.height,
@@ -128,7 +128,7 @@ const Toggle = React.forwardRef<HTMLInputElement, ToggleProps>(
       boxSizing: 'border-box',
       padding: '0 6px',
     };
-
+ 
     const knobStyles: React.CSSProperties = {
       width: currentSize.knob,
       height: currentSize.knob,
@@ -142,7 +142,7 @@ const Toggle = React.forwardRef<HTMLInputElement, ToggleProps>(
       boxShadow: 'var(--shadow-sm)',
       zIndex: 2,
     };
-
+ 
     const toggleTextStyles: React.CSSProperties = {
       position: 'absolute',
       top: '50%',
@@ -157,7 +157,7 @@ const Toggle = React.forwardRef<HTMLInputElement, ToggleProps>(
       left: isChecked ? '8px' : 'auto',
       right: isChecked ? 'auto' : '8px',
     };
-
+ 
     const labelStyles: React.CSSProperties = {
       fontSize: currentSize.fontSize,
       color: 'var(--text-primary)',
@@ -168,13 +168,13 @@ const Toggle = React.forwardRef<HTMLInputElement, ToggleProps>(
       alignItems: 'center',
       gap: 'var(--space-1)',
     };
-
+ 
     const requiredIndicatorStyles: React.CSSProperties = {
       color: 'var(--color-error)',
       marginLeft: 'var(--space-1)',
       fontWeight: 'var(--font-weight-medium)',
     };
-
+ 
     return (
       <div className={className}>
         <div style={containerStyles}>
@@ -203,7 +203,7 @@ const Toggle = React.forwardRef<HTMLInputElement, ToggleProps>(
             aria-required={ariaRequired ?? required}
             role="switch"
           />
-
+ 
           <label
             htmlFor={toggleId}
             style={toggleTrackStyles}
@@ -219,7 +219,7 @@ const Toggle = React.forwardRef<HTMLInputElement, ToggleProps>(
             <span style={toggleTextStyles}>{isChecked ? 'ON' : 'OFF'}</span>
             <span style={knobStyles} aria-hidden="true" />
           </label>
-
+ 
           {label && (
             <label htmlFor={toggleId} style={labelStyles}>
               {label}
@@ -227,7 +227,7 @@ const Toggle = React.forwardRef<HTMLInputElement, ToggleProps>(
             </label>
           )}
         </div>
-
+ 
         {hasError && errorMessage && (
           <div
             id={errorId}
@@ -246,5 +246,5 @@ const Toggle = React.forwardRef<HTMLInputElement, ToggleProps>(
     );
   },
 );
-
+ 
 export default Toggle;

@@ -2,6 +2,7 @@
 import React, { useMemo, useRef, useState } from 'react';
 import fileUploadImg from '../../../assets/fileUpload.png';
 import Button from '../Button/Button';
+import  FileUploadInput  from './FileUploadInput';
 import '../../../styles/tokens.css';
 export type Size = 'small' | 'medium' | 'large';
 export type Variant = 'contained' | 'outlined' | 'text';

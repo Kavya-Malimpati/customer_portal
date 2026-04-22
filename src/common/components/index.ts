@@ -21,12 +21,13 @@ export { default as Table } from './Table';
 //issue with index file
 //  export { default as Tooltip } from './Tooltip';
 //error
-
+export { default as Toggle } from './Toggle';
 export { default as Button } from './Button';
 export { default as Card } from './Card';
 export { default as CardContent } from './Card/CardContent';
+export { default as CardFooter } from './Card/CardFooter';
+export { default as CardHeader } from './Card/CardHeader';
 export { default as Modal } from './Modal';
 export { default as Select } from './Select';
 export { default as TextField } from './TextField';
 export { default as Typography } from './Typography';
-export { default as Toggle } from './Toggle';

@@ -24,6 +24,7 @@ export interface UpdateContactViewProps {
   showReverification: boolean;
   showSuccessMessage: boolean;
   pendingContact: ContactHistoryItem | null;
+  showClearHistoryModal: boolean;
 
   onInputChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
@@ -31,4 +32,6 @@ export interface UpdateContactViewProps {
   onClearHistory: () => void;
   onCancelVerification: () => void;
   onConfirmVerification: () => void;
+  onConfirmClearHistory: () => void;
+  onCancelClearHistory: () => void;
 }

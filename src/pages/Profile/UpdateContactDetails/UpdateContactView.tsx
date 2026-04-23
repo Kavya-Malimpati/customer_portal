@@ -1,18 +1,16 @@
-import Card from '../../../common/components/Card';
-import CardContent from '../../../common/components/Card/CardContent';
-import Typography from '../../../common/components/Typography/Typography';
-import TextField from '../../../common/components/TextField/TextField';
-import Select from '../../../common/components/Select';
-import Button from '../../../common/components/Button/Button';
+import {
+  Card,
+  CardContent,
+  Typography,
+  Button,
+  TextField,
+  Select,
+  Modal,
+} from '../../../common/components';
 
 import contactConfig from '../../../config/updatecontactdetails.json';
-import type { UpdateContactViewProps } from './interfaces';
 
-type ExtendedProps = UpdateContactViewProps & {
-  onUpdatePhone: () => void;
-  onUpdateEmail: () => void;
-  onUpdateAddress: () => void;
-};
+import type { UpdateContactViewProps } from './interfaces';
 
 const UpdateContactView = ({
   formData,
@@ -22,136 +20,99 @@ const UpdateContactView = ({
   showHistory,
   showReverification,
   showSuccessMessage,
+  showClearHistoryModal,
   onInputChange,
+  onSubmit,
   onToggleHistory,
   onClearHistory,
+  onConfirmClearHistory,
+  onCancelClearHistory,
   onCancelVerification,
   onConfirmVerification,
-  onUpdatePhone,
-  onUpdateEmail,
-  onUpdateAddress,
-}: ExtendedProps) => {
+}: UpdateContactViewProps) => {
   const getSelectLabel = (options: { value: string; label: string }[], value: string) =>
     options.find(o => o.value === value)?.label || value;
 
-  // Render
   return (
     <div className='min-h-screen w-full bg-(--bg-section-alt) text-(--text-primary) p-(--space-4)'>
       <div className='grid grid-cols-12 gap-(--space-6) w-full max-w-(--container-max-width) mx-auto items-start'>
         {/* LEFT COLUMN */}
         <div className='col-span-12 xl:col-span-8 flex flex-col gap-(--space-6)'>
-          <Card
-            className='bg-(--bg-surface) rounded-xl shadow-(--shadow-lg) overflow-hidden'
-            variant='outlined-raised'
-          >
-            <div className='px-(--space-6) py-(--space-4) bg-(--bg-muted)'>
-              <Typography variant='h2' className='text-(--text-heading) text-center'>
-                Update Contact Details
-              </Typography>
-            </div>
-
-            <CardContent className='p-(--space-6) grid grid-cols-12 gap-(--space-6)'>
-              {/* PHONE */}
-              <div className='col-span-12 md:col-span-6 flex flex-col gap-(--space-3)'>
-                <TextField {...formData.phone} onChange={onInputChange} />
-                <Button variant='contained' color='primary' fullWidth onClick={onUpdatePhone}>
-                  Update Phone
-                </Button>
+          <Card className='w-full max-w-5xl'>
+            <CardContent className='space-y-6'>
+              <div className='px-6 pt-6'>
+                <Typography variant='h1' className='text-left'>
+                  Update Contact Details
+                </Typography>
               </div>
 
-              {/* EMAIL */}
-              <div className='col-span-12 md:col-span-6 flex flex-col gap-(--space-3)'>
-                <TextField {...formData.email} onChange={onInputChange} />
-                <Button variant='contained' color='primary' fullWidth onClick={onUpdateEmail}>
-                  Update Email
-                </Button>
-              </div>
+              <form onSubmit={onSubmit} noValidate className='space-y-6'>
+                <Card>
+                  {/* PHONE */}
+                  <CardContent className='space-y-4'>
+                    <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+                      <TextField {...formData.phone} onChange={onInputChange} />
+                      <TextField {...formData.email} onChange={onInputChange} />
+                      <TextField {...formData.streetAddress} onChange={onInputChange} />
+                      <TextField {...formData.aptNumber} onChange={onInputChange} />
+                      <TextField {...formData.city} onChange={onInputChange} />
+                      <Select {...formData.state} onChange={onInputChange} />
+                      <TextField {...formData.zipcode} onChange={onInputChange} />
+                      <TextField {...formData.country} onChange={onInputChange} />
+                    </div>
+                  </CardContent>
+                </Card>
 
-              {/* ADDRESS */}
-              <div className='col-span-12 flex flex-col gap-(--space-4)'>
-                <div className='grid grid-cols-12 gap-(--space-4)'>
-                  <div className='col-span-12 md:col-span-6'>
-                    <TextField {...formData.streetAddress} onChange={onInputChange} />
-                  </div>
-                  <div className='col-span-12 md:col-span-6'>
-                    <TextField {...formData.aptNumber} onChange={onInputChange} />
-                  </div>
-                  <div className='col-span-12 md:col-span-6'>
-                    <TextField {...formData.city} onChange={onInputChange} />
-                  </div>
-                  <div className='col-span-12 md:col-span-6'>
-                    <Select {...formData.state} onChange={onInputChange} />
-                  </div>
-                  <div className='col-span-12 md:col-span-6'>
-                    <TextField {...formData.zipcode} onChange={onInputChange} />
-                  </div>
-                  <div className='col-span-12 md:col-span-6'>
-                    <TextField {...formData.country} onChange={onInputChange} />
-                  </div>
+                {/* ACTIONS */}
+                <div className='flex justify-between pt-4'>
+                  <Button type='submit' variant='contained' color='primary'>
+                    Save Changes
+                  </Button>
+
+                  <Button
+                    variant='contained'
+                    color='primary'
+                    type='button'
+                    onClick={onToggleHistory}
+                  >
+                    {showHistory ? 'Hide History' : 'Contact History'}
+                  </Button>
+
+                  <Button variant='outlined' color='primary' type='button' onClick={onClearHistory}>
+                    Clear History
+                  </Button>
                 </div>
-
-                <Button variant='contained' color='primary' fullWidth onClick={onUpdateAddress}>
-                  Update Address
-                </Button>
-              </div>
-            </CardContent>
-
-            {/* FOOTER */}
-            <CardContent className='border-t border-(--border-color) bg-(--bg-page) px-(--space-6) py-(--space-5)'>
-              <div className='grid grid-cols-1 gap-(--space-3) md:grid-cols-2'>
-                <Button variant='contained' color='primary' fullWidth onClick={onToggleHistory}>
-                  {showHistory ? 'Hide History' : 'Show History'}
-                </Button>
-
-                <Button variant='outlined' color='primary' fullWidth onClick={onClearHistory}>
-                  Clear History
-                </Button>
-              </div>
+              </form>
             </CardContent>
           </Card>
         </div>
 
         {/* RIGHT COLUMN */}
-        <div className='col-span-12 xl:col-span-4'>
+        <div className='col-span-12 xl:col-span-4 flex flex-col gap-(--space-6)'>
           {showHistory && contactHistory.length > 0 && (
-            <Card
-              className='bg-(--bg-surface) rounded-xl shadow-(--shadow-lg) overflow-hidden'
-              variant='outlined-raised'
-            >
-              <div className='px-(--space-6) py-(--space-4) bg-(--bg-muted)'>
-                <Typography variant='h2' className='text-(--text-heading) text-center'>
-                  Update History
-                </Typography>
+            <Card className='w-full max-w-5xl'>
+              <div className='px-6 py-4'>
+                <Typography variant='h1'>Contact History</Typography>
               </div>
 
-              <CardContent className='p-(--space-5) flex flex-col gap-(--space-4)'>
+              <CardContent className='space-y-6'>
                 {contactHistory.map((c, i) => (
-                  <div
-                    key={i}
-                    className='border border-(--border-color) rounded-md p-(--space-4) bg-(--bg-section-alt)'
-                  >
-                    {c.phone && (
-                      <Typography variant='body2' className='mb-(--space-2)'>
-                        <strong>Phone:</strong> {c.phone}
-                      </Typography>
-                    )}
-                    {c.email && (
-                      <Typography variant='body2' className='mb-(--space-2)'>
-                        <strong>Email:</strong> {c.email}
-                      </Typography>
-                    )}
-                    {c.streetAddress && (
-                      <>
-                        <Typography variant='body2' className='mb-(--space-2)'>
-                          <strong>Address:</strong> {c.streetAddress}
-                          {c.aptNumber && `, Apt ${c.aptNumber}`}
-                        </Typography>
-                        <Typography variant='body2'>
-                          {c.city}, {getSelectLabel(contactConfig.state.options, c.state)}{' '}
-                          {c.zipcode}
-                        </Typography>
-                      </>
-                    )}
+                  <div key={i} className='border rounded-md p-4'>
+                    <Typography variant='body2'>
+                      <strong>Phone:</strong> {c.phone}
+                    </Typography>
+                    <Typography variant='body2'>
+                      <strong>Email:</strong> {c.email}
+                    </Typography>
+                    <Typography variant='body2'>
+                      <strong>Address:</strong> {c.streetAddress}, Apt {c.aptNumber}
+                    </Typography>
+                    <Typography variant='body2'>
+                      {c.city}, {getSelectLabel(contactConfig.state.options, c.state)} {c.zipcode}
+                    </Typography>
+                    <Typography variant='body2'>
+                      <strong>Country:</strong> {c.country}
+                    </Typography>
                   </div>
                 ))}
               </CardContent>
@@ -160,64 +121,63 @@ const UpdateContactView = ({
         </div>
       </div>
 
-      {/* VERIFICATION */}
-      {showReverification && pendingContact && (
-        <div className='fixed inset-0 z-(--z-modal) flex items-center justify-center px-(--space-4)'>
-          <div
-            className='absolute inset-0'
-            style={{ backgroundColor: 'var(--overlay-backdrop)' }}
-            onClick={onCancelVerification}
+      <Modal
+        isOpen={showReverification && pendingContact !== null}
+        onClose={onCancelVerification}
+        title='Re-verify Contact Details'
+        maxWidth='500px'
+      >
+        <div className='space-y-4'>
+          <Select {...verificationData.verificationMethod} onChange={onInputChange} />
+          <TextField
+            {...verificationData.verificationCode}
+            onChange={onInputChange}
+            disabled={!verificationData.verificationMethod.value}
           />
 
-          <Card
-            className='relative z-(--z-modal) w-full max-w-md overflow-hidden'
-            variant='outlined-raised'
-          >
-            <CardContent className='p-(--space-6) flex flex-col gap-(--space-4)'>
-              <Typography variant='h3' className='text-(--text-heading) text-center'>
-                OTP Verification
-              </Typography>
-
-              <Typography variant='body2' className='text-(--text-secondary) text-center'>
-                Please select below to get OTP code.
-              </Typography>
-
-              <Select {...verificationData.verificationMethod} onChange={onInputChange} />
-
-              <TextField
-                {...verificationData.verificationCode}
-                onChange={onInputChange}
-                disabled={!verificationData.verificationMethod.value}
-              />
-
-              <div className='flex flex-col gap-(--space-3) sm:flex-row sm:justify-end'>
-                <Button
-                  variant='contained'
-                  color='primary'
-                  className='w-full sm:w-auto'
-                  onClick={onConfirmVerification}
-                >
-                  Continue Verification
-                </Button>
-
-                <Button
-                  variant='outlined'
-                  className='w-full sm:w-auto'
-                  onClick={onCancelVerification}
-                >
-                  Cancel
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+          <div className='flex justify-end gap-(--space-3)'>
+            <Button
+              variant='contained'
+              disabled={!verificationData.verificationCode}
+              onClick={onConfirmVerification}
+            >
+              Continue
+            </Button>
+            <Button variant='outlined' onClick={onCancelVerification}>
+              Cancel
+            </Button>
+          </div>
         </div>
-      )}
+      </Modal>
+
+      <Modal
+        isOpen={showClearHistoryModal}
+        onClose={onCancelClearHistory}
+        title='Clear Contact History'
+        maxWidth='400px'
+      >
+        <div className='space-y-4'>
+          <Typography className='text-(--text-secondary)'>
+            Are you sure you want to permanently delete all contact history? This action cannot be
+            undone.
+          </Typography>
+
+          <div className='flex justify-end gap-(--space-3)'>
+            <Button variant='outlined' onClick={onCancelClearHistory}>
+              Cancel
+            </Button>
+            <Button variant='contained' color='error' onClick={onConfirmClearHistory}>
+              Clear History
+            </Button>
+          </div>
+        </div>
+      </Modal>
 
       {/* SUCCESS TOAST */}
       {showSuccessMessage && (
-        <div className='fixed top-(--space-6) right-(--space-6) z-(--z-toast)'>
-          <div className='flex items-center gap-(--space-3) rounded-lg bg-(--color-success) px-(--space-5) py-(--space-3) text-(--text-inverse) shadow-(--shadow-lg)'>
-            <span>Contact details updated successfully.</span>
+        <div className='fixed top-6 right-6'>
+          <div className='bg-(--color-success) px-5 py-3 rounded-lg text-white'>
+            Contact details updated successfully.
           </div>
         </div>
       )}

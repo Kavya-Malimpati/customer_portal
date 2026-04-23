@@ -29,6 +29,7 @@ const UpdateContactView = ({
   onCancelClearHistory,
   onCancelVerification,
   onConfirmVerification,
+  onBack,
 }: UpdateContactViewProps) => {
   const getSelectLabel = (options: { value: string; label: string }[], value: string) =>
     options.find(o => o.value === value)?.label || value;
@@ -64,21 +65,37 @@ const UpdateContactView = ({
                 </Card>
 
                 {/* ACTIONS */}
-                <div className='flex justify-between pt-4'>
-                  <Button type='submit' variant='contained' color='primary'>
-                    Save Changes
+                <div className='grid grid-cols-4 gap-3 pt-6'>
+                  <Button
+                    type='button'
+                    variant='contained'
+                    color='primary'
+                    className='w-full'
+                    onClick={onBack}
+                  >
+                    Back
                   </Button>
 
+                  <Button type='submit' variant='contained' color='primary' className='w-full'>
+                    Save Changes
+                  </Button>
                   <Button
                     variant='contained'
                     color='primary'
                     type='button'
+                    className='w-full'
                     onClick={onToggleHistory}
                   >
                     {showHistory ? 'Hide History' : 'Contact History'}
                   </Button>
 
-                  <Button variant='outlined' color='primary' type='button' onClick={onClearHistory}>
+                  <Button
+                    variant='contained'
+                    color='secondary'
+                    type='button'
+                    className='w-full'
+                    onClick={onClearHistory}
+                  >
                     Clear History
                   </Button>
                 </div>

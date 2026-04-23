@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import contactConfig from '../../../config/updatecontactdetails.json';
 import verificationConfig from '../../../config/verificationmethod.json';
 
@@ -10,6 +12,8 @@ import { getContactDetailsApi } from './contactDetailsApi';
 import UpdateContactView from './UpdateContactView';
 
 const UpdateContact = () => {
+  const navigate = useNavigate();
+
   // Form state
   const [formData, setFormData] = useState<FormDataType>(() => deepClone(contactConfig));
 
@@ -176,6 +180,7 @@ const UpdateContact = () => {
       onClearHistory={() => setShowClearHistoryModal(true)}
       onCancelVerification={() => setShowReverification(false)}
       onConfirmVerification={handleConfirmVerification}
+      onBack={() => navigate(-1)}
     />
   );
 };

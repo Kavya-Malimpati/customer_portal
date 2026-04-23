@@ -34,4 +34,5 @@ export interface UpdateContactViewProps {
   onConfirmVerification: () => void;
   onConfirmClearHistory: () => void;
   onCancelClearHistory: () => void;
+  onBack: () => void;
 }

@@ -11,6 +11,7 @@ import EditPersonalDetails from './pages/Profile/EditPersonalDetails';
 import DigitalDocuments from './pages/Profile/DigitalDocuments';
 import Settings from './pages/Profile/Settings';
 import AgentContactDetails from './pages/Profile/AgentContactDetails/';
+import ProfilePage from './pages/Profile/ProfilePage';
 
 function App() {
   const navigate = useNavigate();
@@ -37,7 +38,7 @@ function App() {
           </MainLayout>
         }
       />
-      
+
       <Route
         path="/documents"
         element={
@@ -46,7 +47,16 @@ function App() {
           </MainLayout>
         }
       />
-      
+
+      <Route
+        path='/cdetails'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <AddContactDetails />
+          </MainLayout>
+        }
+      />
+
       <Route
         path='/update-contact'
         element={
@@ -55,9 +65,8 @@ function App() {
           </MainLayout>
         }
       />
-      <Route path="*" element={<Navigate to="/" replace />} />
 
-            <Route
+      <Route
         path='/settings'
         element={
           <MainLayout onLogout={handleLogout}>
@@ -102,8 +111,16 @@ function App() {
       <Route
         path='/agent-contact-details'
         element={
-          <MainLayout onLogout={handleLogout}>  
+          <MainLayout onLogout={handleLogout}>
             <AgentContactDetails />
+          </MainLayout>
+        }
+      />
+      <Route
+        path='/profile-page'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <ProfilePage />
           </MainLayout>
         }
       />

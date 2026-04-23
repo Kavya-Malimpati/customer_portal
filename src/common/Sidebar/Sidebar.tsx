@@ -1,9 +1,12 @@
 import '../../styles/tokens.css';
- 
+
 import { useState } from 'react';
 import { FiBarChart2, FiClipboard, FiCreditCard, FiFile, FiSettings } from 'react-icons/fi';
 import { useLocation, useNavigate } from 'react-router-dom';
- 
+import { useTranslation } from 'react-i18next';
+import Select from '../components/Select';
+import { changeLanguage } from '../../i18n';
+
 interface SidebarItem {
   id: string;
   label: string;
@@ -11,7 +14,7 @@ interface SidebarItem {
   icon: React.ReactNode;
   subItems?: SidebarItem[];
 }
- 
+
 const SIDEBAR_ITEMS: SidebarItem[] = [
   {
     id: 'dashboard',
@@ -44,35 +47,47 @@ const SIDEBAR_ITEMS: SidebarItem[] = [
     icon: <FiSettings />,
   },
 ];
- 
+
 interface SidebarProps {
   isOpen?: boolean;
   onClose?: () => void;
 }
- 
+
 function Sidebar({ isOpen = true, onClose }: SidebarProps) {
   const navigate = useNavigate();
   const location = useLocation();
+  const { i18n, t } = useTranslation();
+
   const [expandedItems, setExpandedItems] = useState<string[]>(['profile']);
- 
+
   const toggleExpand = (itemId: string) => {
     setExpandedItems(prev =>
       prev.includes(itemId) ? prev.filter(id => id !== itemId) : [...prev, itemId],
     );
   };
- 
+
   const handleNavigate = (path: string) => {
     navigate(path);
     onClose?.();
   };
- 
+
   const isActive = (path: string) => location.pathname === path;
- 
+
+  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    changeLanguage(e.target.value as 'en' | 'es');
+  };
+
+  const languageOptions = [
+    { label: 'English', value: 'en' },
+    { label: 'Español', value: 'es' },
+  ];
+
   const renderSidebarItem = (item: SidebarItem, level = 0) => {
     const hasSubItems = item.subItems && item.subItems.length > 0;
     const isExpanded = expandedItems.includes(item.id);
     const active = isActive(item.path);
- 
+    const translatedLabel = t(`sidebar.${item.id}`);
+
     return (
       <div key={item.id}>
         <button
@@ -99,9 +114,9 @@ function Sidebar({ isOpen = true, onClose }: SidebarProps) {
           }}
         >
           <span className='text-lg flex items-center'>{item.icon}</span>
-          <span className='flex-1 text-lg'>{item.label}</span>
+          <span className='flex-1 text-lg'>{translatedLabel}</span>
         </button>
- 
+
         {hasSubItems && isExpanded && (
           <div className='bg-gray-50'>
             {item.subItems?.map(subItem => renderSidebarItem(subItem, level + 1))}
@@ -110,7 +125,7 @@ function Sidebar({ isOpen = true, onClose }: SidebarProps) {
       </div>
     );
   };
- 
+
   return (
     <aside
       className={`
@@ -129,11 +144,10 @@ function Sidebar({ isOpen = true, onClose }: SidebarProps) {
         <div className='py-4'>
           <div className='space-y-1'>{SIDEBAR_ITEMS.map(item => renderSidebarItem(item))}</div>
         </div>
+
       </nav>
     </aside>
   );
 }
- 
+
 export default Sidebar;
- 
- 

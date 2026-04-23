@@ -2,7 +2,7 @@ import './App.css';
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import MainLayout from './common/MainLayout';
 import Login from './pages/Login';
-import PersonalDetailsPage from './pages/Profile/ViewPersonalDetails/PersonalDetailsPage';
+import PersonalDetailsPage from './pages/Profile/ViewPersonalDetails/PersonalDetailApi';
 import Home from './pages/Home';
 import AddContactDetails from './pages/Profile/AddContactDetails';
 import PaperlessPreferences from './pages/Profile/PaperlessPreferences';

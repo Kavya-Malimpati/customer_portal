@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import PersonalDetailsDisplay from './PersonalDetailsDisplay';
+import PersonalDetailsDisplay from './PersonalDetailsView';
 import type { PersonalDetailsProps } from './Interfaces';
 
 const PersonalDetails = ({ data }: PersonalDetailsProps) => {

@@ -18,8 +18,10 @@
   "dependencies": {
     "@storybook/react": "^10.1.11",
     "axios": "^1.13.2",
+    "i18next": "^26.0.6",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "react-i18next": "^17.0.4",
     "react-icons": "^5.6.0",
     "react-router-dom": "^7.12.0"
   },

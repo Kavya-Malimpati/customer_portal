@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import {Card, CardHeader, CardContent} from '../../../common/components/';
+import {Card, CardHeader, CardContent, Typography} from '../../../common/components/';
 import type { DocumentItem } from './interfaces';
 import DocumentVaultView from './DocumentVaultView';
+import DigitalDocuments from '../DigitalDocuments';
 
 const ACCEPTED_TYPES = [
   'application/pdf',
@@ -33,9 +34,14 @@ function DocumentVault() {
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-start bg-gray-100 p-6">
-      <Card className="w-[700px] bg-white shadow-xl">
-        <CardHeader title="Secure Document Vault" />
+    <div className="min-h-screen bg-gray-100 py-6">
+      <div className="max-w-7xl mx-auto space-y-8">
+      <Card className="w-full bg-white shadow-xl">
+        <CardHeader title={
+            <Typography variant="h3" className="text-left">
+              Secure Document Vault
+            </Typography>
+          } />
         <CardContent className="p-6">
           <DocumentVaultView
             documents={documents}
@@ -44,6 +50,8 @@ function DocumentVault() {
           />
         </CardContent>
       </Card>
+      <DigitalDocuments />
+    </div>
     </div>
   );
 }

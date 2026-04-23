@@ -5,8 +5,8 @@
  * Includes render function wrapper and custom matchers.
  */
 
-import { render as rtlRender, RenderOptions } from '@testing-library/react'
-import { ReactElement } from 'react'
+import { render as rtlRender, type RenderOptions } from '@testing-library/react'
+import type { ReactElement } from 'react'
 
 /**
  * Custom render function wrapper

@@ -12,6 +12,7 @@ import DigitalDocuments from './pages/Profile/DigitalDocuments';
 import Settings from './pages/Profile/Settings';
 import AgentContactDetails from './pages/Profile/AgentContactDetails/';
 import ProfilePage from './pages/Profile/ProfilePage';
+import AddContactDetails from './pages/Profile/AddContactDetails';
 
 function App() {
   const navigate = useNavigate();

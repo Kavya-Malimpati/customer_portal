@@ -26,7 +26,7 @@ function App() {
         }
       />
       <Route 
-        path="/home/contact"
+        path="/contact"
         element={
           <MainLayout onLogout={handleLogout}>
             <ContactDetails />
@@ -35,7 +35,7 @@ function App() {
       />
       
       <Route
-        path="/home/documents"
+        path="/documents"
         element={
           <MainLayout onLogout={handleLogout}>
             <DocumentVault />

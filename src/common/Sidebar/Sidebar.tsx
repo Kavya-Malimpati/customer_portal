@@ -4,8 +4,6 @@ import { useState } from 'react';
 import { FiBarChart2, FiClipboard, FiCreditCard, FiFile, FiSettings } from 'react-icons/fi';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import Select from '../components/Select';
-import { changeLanguage } from '../../i18n';
 
 interface SidebarItem {
   id: string;
@@ -73,15 +71,6 @@ function Sidebar({ isOpen = true, onClose }: SidebarProps) {
 
   const isActive = (path: string) => location.pathname === path;
 
-  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    changeLanguage(e.target.value as 'en' | 'es');
-  };
-
-  const languageOptions = [
-    { label: 'English', value: 'en' },
-    { label: 'Español', value: 'es' },
-  ];
-
   const renderSidebarItem = (item: SidebarItem, level = 0) => {
     const hasSubItems = item.subItems && item.subItems.length > 0;
     const isExpanded = expandedItems.includes(item.id);
@@ -144,7 +133,6 @@ function Sidebar({ isOpen = true, onClose }: SidebarProps) {
         <div className='py-4'>
           <div className='space-y-1'>{SIDEBAR_ITEMS.map(item => renderSidebarItem(item))}</div>
         </div>
-
       </nav>
     </aside>
   );

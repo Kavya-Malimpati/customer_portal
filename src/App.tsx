@@ -1,6 +1,4 @@
 import './App.css';
-import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
-import MainLayout from './common/MainLayout';
 import Login from './pages/Login';
 import PersonalDetailsPage from './pages/Profile/ViewPersonalDetails/PersonalDetailApi';
 import Home from './pages/Home';
@@ -33,24 +31,24 @@ function App() {
           </MainLayout>
         }
       />
-      <Route 
-        path="/home/contact"
+      <Route
+        path='/home/contact'
         element={
           <MainLayout onLogout={handleLogout}>
             <ContactDetails />
           </MainLayout>
         }
       />
-      
+
       <Route
-        path="/home/documents"
+        path='/home/documents'
         element={
           <MainLayout onLogout={handleLogout}>
             <DocumentVault />
           </MainLayout>
         }
       />
-      
+
       <Route
         path='/update-contact'
         element={
@@ -59,9 +57,9 @@ function App() {
           </MainLayout>
         }
       />
-      <Route path="*" element={<Navigate to="/" replace />} />
+      <Route path='*' element={<Navigate to='/' replace />} />
 
-            <Route
+      <Route
         path='/settings'
         element={
           <MainLayout onLogout={handleLogout}>
@@ -106,7 +104,7 @@ function App() {
       <Route
         path='/agent-contact-details'
         element={
-          <MainLayout onLogout={handleLogout}>  
+          <MainLayout onLogout={handleLogout}>
             <AgentContactDetails />
           </MainLayout>
         }

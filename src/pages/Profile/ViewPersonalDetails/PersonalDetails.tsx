@@ -1,21 +1,35 @@
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import PersonalDetailsDisplay from './PersonalDetailsDisplay';
+import EditPersonalDetails from '../EditPersonalDetails/EditPersonalDetails';
+import Modal from '../../../common/components/Modal'; 
 import type { PersonalDetailsProps } from './Interfaces';
 
 const PersonalDetails = ({ data }: PersonalDetailsProps) => {
-  const navigate = useNavigate();
+
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleEditClick = () => {
-    navigate('/edit-personal-details');
+    setIsOpen(true); 
   };
 
   return (
-    <PersonalDetailsDisplay
-      data={data}
-      onEditClick={handleEditClick}
-    />
+    <>
+      <PersonalDetailsDisplay
+        data={data}
+        onEditClick={handleEditClick}
+      />
+
+      <Modal
+        isOpen={isOpen}
+          onClose={() => setIsOpen(false)}
+         maxHeight="90%"
+         maxWidth="60%"
+         fullScreen
+      >
+        <EditPersonalDetails  />
+      </Modal>
+    </>
   );
 };
 
 export default PersonalDetails;
-

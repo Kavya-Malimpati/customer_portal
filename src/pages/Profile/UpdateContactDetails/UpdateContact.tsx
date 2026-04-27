@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import contactConfig from '../../../config/updatecontactdetails.json';
 import verificationConfig from '../../../config/verificationmethod.json';
 
@@ -6,25 +8,63 @@ import { deepClone } from '../../../scripts/utils';
 import { validateFormFields } from '../../../scripts/validationsService';
 
 import type { ContactHistoryItem, FormDataType, VerificationType } from './interfaces';
+import { getContactDetailsApi } from './contactDetailsApi';
 import UpdateContactView from './UpdateContactView';
 
 const UpdateContact = () => {
+  const navigate = useNavigate();
+
+  // Form state
   const [formData, setFormData] = useState<FormDataType>(() => deepClone(contactConfig));
 
+  // Verification state
   const [verificationData, setVerificationData] = useState<VerificationType>(
     deepClone(verificationConfig),
   );
 
+  // Contact history state
   const [contactHistory, setContactHistory] = useState<ContactHistoryItem[]>(() => {
     const stored = localStorage.getItem('contactHistory');
     return stored ? JSON.parse(stored) : [];
   });
 
+  // Pending contact awaiting verification
   const [pendingContact, setPendingContact] = useState<ContactHistoryItem | null>(null);
 
+  // UI state
   const [showHistory, setShowHistory] = useState(false);
   const [showReverification, setShowReverification] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [showClearHistoryModal, setShowClearHistoryModal] = useState(false);
+
+  const mapApiDataToFormData = (
+    baseConfig: FormDataType,
+    apiData: Partial<ContactHistoryItem>,
+  ): FormDataType => {
+    const updated = deepClone(baseConfig);
+
+    (Object.keys(apiData) as (keyof ContactHistoryItem)[]).forEach(key => {
+      if (updated[key]) {
+        updated[key].value = apiData[key] ?? '';
+        updated[key].hasError = false;
+        updated[key].errorMessage = '';
+      }
+    });
+
+    return updated;
+  };
+
+  useEffect(() => {
+    const loadContactDetails = async () => {
+      const apiData = await getContactDetailsApi();
+
+      setFormData(mapApiDataToFormData(contactConfig, apiData));
+
+      setContactHistory(prev => (prev.length ? prev : [apiData]));
+    };
+
+    loadContactDetails();
+  }, []);
 
   useEffect(() => {
     localStorage.setItem('contactHistory', JSON.stringify(contactHistory));
@@ -58,44 +98,40 @@ const UpdateContact = () => {
     }));
   };
 
-  const startUpdateFlow = (
-    fields: (keyof FormDataType)[],
-    buildContact: () => ContactHistoryItem,
-  ) => {
-    const subset = Object.fromEntries(fields.map(k => [k, formData[k]])) as FormDataType;
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-    const { data, status } = validateFormFields(subset);
+    const { data, status } = validateFormFields(formData);
 
     if (!status) {
-      setFormData(prevData =>
-        Object.entries(prevData).reduce((acc, [key, field]) => {
-          if (!(key in subset)) {
-            return {
-              ...acc,
-              [key]: field,
-            };
-          }
-
-          const index = Object.keys(subset).indexOf(key);
-          const validationResult = data[index] as
-            | { isValid: boolean; errorMessage?: string }
-            | undefined;
-
+      setFormData(prev =>
+        Object.entries(prev).reduce((acc, [key, field], index) => {
+          const validation = data[index] as { isValid: boolean; errorMessage?: string } | undefined;
           return {
             ...acc,
             [key]: {
               ...field,
-              hasError: !validationResult?.isValid,
-              errorMessage: validationResult?.errorMessage || '',
+              hasError: !validation?.isValid,
+              errorMessage: validation?.errorMessage || '',
             },
           };
         }, {} as FormDataType),
       );
-
       return;
     }
 
-    setPendingContact(buildContact());
+    const newContact: ContactHistoryItem = {
+      phone: formData.phone.value,
+      email: formData.email.value,
+      streetAddress: formData.streetAddress.value,
+      aptNumber: formData.aptNumber.value,
+      city: formData.city.value,
+      state: formData.state.value,
+      zipcode: formData.zipcode.value,
+      country: formData.country.value,
+    };
+
+    setPendingContact(newContact);
     setVerificationData(deepClone(verificationConfig));
     setShowReverification(true);
   };
@@ -103,44 +139,26 @@ const UpdateContact = () => {
   const handleConfirmVerification = () => {
     if (!pendingContact) return;
 
-    const { status, data } = validateFormFields(verificationData);
-
-    if (!status) {
-      setVerificationData(prevData =>
-        Object.entries(prevData).reduce((acc, [key, field], index) => {
-          const validationResult = data[index] as
-            | { isValid: boolean; errorMessage?: string }
-            | undefined;
-
-          return {
-            ...acc,
-            [key]: {
-              ...field,
-              hasError: !validationResult?.isValid,
-              errorMessage: validationResult?.errorMessage || '',
-            },
-          };
-        }, {} as VerificationType),
-      );
-      return;
-    }
-
-    setContactHistory(prev => [pendingContact, ...prev].slice(0, 5));
+    setContactHistory(prev => [pendingContact, ...prev].slice(0, 3));
     setPendingContact(null);
     setShowReverification(false);
     setShowSuccessMessage(true);
+    setFormData(deepClone(contactConfig));
 
     setTimeout(() => setShowSuccessMessage(false), 2000);
   };
 
-  const handleClearHistory = () => {
-    if (!window.confirm('Are you sure you want to clear contact history?')) return;
+  const handleConfirmClearHistory = () => {
     setContactHistory([]);
     localStorage.removeItem('contactHistory');
     setShowHistory(false);
+    setShowClearHistoryModal(false);
   };
 
-  // View
+  const handleCancelClearHistory = () => {
+    setShowClearHistoryModal(false);
+  };
+
   return (
     <UpdateContactView
       formData={formData}
@@ -150,51 +168,19 @@ const UpdateContact = () => {
       showHistory={showHistory}
       showReverification={showReverification}
       showSuccessMessage={showSuccessMessage}
+      showClearHistoryModal={showClearHistoryModal}
+      onConfirmClearHistory={handleConfirmClearHistory}
+      onCancelClearHistory={handleCancelClearHistory}
       onInputChange={handleInputChange}
-      onSubmit={e => e.preventDefault()}
-      onToggleHistory={() => setShowHistory(p => !p)}
-      onClearHistory={handleClearHistory}
+      onSubmit={handleSubmit}
+      onToggleHistory={() => {
+        setShowHistory(p => !p);
+        setShowReverification(false);
+      }}
+      onClearHistory={() => setShowClearHistoryModal(true)}
       onCancelVerification={() => setShowReverification(false)}
       onConfirmVerification={handleConfirmVerification}
-      onUpdatePhone={() =>
-        startUpdateFlow(['phone'], () => ({
-          phone: formData.phone.value,
-          email: '',
-          streetAddress: '',
-          aptNumber: '',
-          city: '',
-          state: '',
-          zipcode: '',
-          country: '',
-        }))
-      }
-      onUpdateEmail={() =>
-        startUpdateFlow(['email'], () => ({
-          phone: '',
-          email: formData.email.value,
-          streetAddress: '',
-          aptNumber: '',
-          city: '',
-          state: '',
-          zipcode: '',
-          country: '',
-        }))
-      }
-      onUpdateAddress={() =>
-        startUpdateFlow(
-          ['streetAddress', 'aptNumber', 'city', 'state', 'zipcode', 'country'],
-          () => ({
-            phone: '',
-            email: '',
-            streetAddress: formData.streetAddress.value,
-            aptNumber: formData.aptNumber.value,
-            city: formData.city.value,
-            state: formData.state.value,
-            zipcode: formData.zipcode.value,
-            country: formData.country.value,
-          }),
-        )
-      }
+      onBack={() => navigate(-1)}
     />
   );
 };

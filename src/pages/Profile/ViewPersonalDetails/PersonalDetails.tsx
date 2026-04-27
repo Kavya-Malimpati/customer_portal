@@ -20,13 +20,13 @@ const PersonalDetails = ({ data }: PersonalDetailsProps) => {
       />
 
       <Modal
-        isOpen={isOpen}
+          isOpen={isOpen}
           onClose={() => setIsOpen(false)}
-         maxHeight="90%"
-         maxWidth="60%"
-         fullScreen
-      >
-        <EditPersonalDetails  />
+          maxHeight="90%"
+          maxWidth="60%"
+          fullScreen
+        >
+        <EditPersonalDetails onClose={() => setIsOpen(false)} />
       </Modal>
     </>
   );

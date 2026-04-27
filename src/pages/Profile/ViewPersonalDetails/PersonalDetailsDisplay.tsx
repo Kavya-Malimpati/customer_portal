@@ -26,6 +26,7 @@ const PersonalDetailsDisplay = ({ data, onEditClick }: PersonalDetailsDisplayPro
           <div className="header">
             <Typography
               variant="h3"
+              color='primary'
               className='text-primary'
               startDecorator={<FiUser className='mainicon' size={28}  />}
             >

@@ -7,6 +7,10 @@ export interface ValidationResult {
   isValid: boolean;
   errorMessage: string;
 }
+export interface Props {
+  onClose: () => void;
+}
+
 
 export interface UpdateContactViewProps {
   formData: FormDataType;

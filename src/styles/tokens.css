@@ -6,41 +6,47 @@
   /* -------------------------------
      Brand & Semantic Colors
   -------------------------------- */
-  --color-primary: #4285f4; /* google blue */
-  --color-primary-hover: #357ae8;
-  --color-primary-active: #2e63d2;
+  --color-primary: #1d70bb; /* primary blue from design */
+  --color-primary-hover: #155a9a;
+  --color-primary-active: #0f4a82;
 
-  --color-secondary: #ea4335; /* google red */
+  --color-secondary: #5bb347; /* secondary green from design */
 
-  --color-success: #34a853; /* google green */
+  --color-success: #5bb347; /* green from design */
   --color-warning: #fbbc04; /* google yellow */
   --color-error: #ea4335; /* google red */
-  --color-info: #4285f4; /* google blue */
+  --color-info: #1d70bb; /* primary blue */
   /* -------------------------------
-     Neutral Palette
+     Neutral Palette (Updated to match design)
   -------------------------------- */
   --color-white: #ffffff;
   --color-black: #000000;
 
   --color-gray-50: #f8fafc;
-  --color-gray-100: #f1f5f9;
-  --color-gray-200: #e2e8f0;
-  --color-gray-300: #cbd5e1;
-  --color-gray-400: #94a3b8;
-  --color-gray-500: #64748b;
-  --color-gray-600: #475569;
-  --color-gray-700: #334155;
-  --color-gray-800: #1e293b;
-  --color-gray-900: #0f172a;
+  --color-gray-100: #f3f4f6; /* neutral from design */
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #53565a; /* tertiary from design */
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
 
   /* -------------------------------
-     Text Colors
+     Typography Colors (Design System Aligned)
   -------------------------------- */
-  --text-primary: #202124; /* dark gray */
-  --text-secondary: #5f6368;
-  --text-muted: #80868b;
+  --text-primary: #111827; /* primary text - dark */
+  --text-secondary: #53565a; /* secondary text - tertiary gray from design */
+  --text-muted: #6b7280; /* muted text - lighter gray */
   --text-inverse: #ffffff;
-  --text-heading: #4285f4; /* google blue headings */
+  --text-heading: #1d70bb; /* headings - primary blue from design */
+  --text-label: #53565a; /* labels - tertiary gray from design */
+  --text-body: #374151; /* body text - readable dark gray */
+  --text-caption: #6b7280; /* captions - muted gray */
+  --text-overline: #9ca3af; /* overline text - lighter gray */
+  --text-button: #1d70bb; /* button text - primary blue */
+  --text-subtitle: #1d70bb; /* subtitle text - primary blue */
 
   /* -------------------------------
      Backgrounds

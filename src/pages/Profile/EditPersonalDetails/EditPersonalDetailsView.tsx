@@ -46,7 +46,7 @@ const EditPersonalDetailsUi = ({
 
           
           <div className="profile-section">
-            <Typography variant="h2" className="profile-name">
+            <Typography variant="h2" color='primary' className="profile-name">
               {fullName || 'User Name'}
             </Typography>
 
@@ -109,7 +109,7 @@ const EditPersonalDetailsUi = ({
         </Typography>
 
         <div className="modal-actions">
-          <Button variant="outlined" onClick={onCloseModal}>
+          <Button variant="outlined" onClick={onBack}>
             Cancel
           </Button>
           <Button variant="contained" color="primary" onClick={onConfirm}>

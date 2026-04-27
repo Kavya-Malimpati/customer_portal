@@ -3,149 +3,147 @@ import { FiClock, FiShield, FiUser } from 'react-icons/fi';
 import { useTranslation } from 'react-i18next';
 import type { AccountData } from './account.api';
 
-interface AccountSecurityDisplayProps {
+import './Style.css';
+
+interface Props {
   data: AccountData;
   onChangePassword: () => void;
   onUpdate2FA: () => void;
 }
 
-const AccountSecurityDisplay = ({
-  data,
-  onChangePassword,
-  onUpdate2FA,
-}: AccountSecurityDisplayProps) => {
+const AccountSecurityDisplay = ({ data, onChangePassword, onUpdate2FA }: Props) => {
   const { t } = useTranslation();
 
   return (
-    <main className='min-h-screen w-full  py-3'>
+    <main className='account-security'>
+      <div className='account-security__container'>
+        {/* HEADER */}
+        <div className='account-security__header'>
+          <div className='account-security__banner'>
+            <div>
+              <Typography variant='h2' color='primary' className='heading'>
+                {t('accountSecurity.title')}
+              </Typography>
 
-      {/* FULL WIDTH CONTAINER */}
-      <div className='w-full space-y-4'>
-
-        {/* HEADER CARD */}
-        <Card variant='outlined' className='w-full'>
-          <CardContent>
-            <div className='flex flex-col md:flex-row md:items-center md:justify-between gap-3'>
-
-              <div>
-                <Typography variant='h2' style={{ color: 'var(--text-primary)' }}>
-                  {t('accountSecurity.title')}
-                </Typography>
-                <Typography variant='body2'>
-                  {t('accountSecurity.description')}
-                </Typography>
-              </div>
-
-              <div className='flex gap-2 flex-wrap'>
-                <Button variant='outlined' onClick={onChangePassword}>
-                  {t('accountSecurity.changePassword')}
-                </Button>
-                <Button variant='contained' onClick={onUpdate2FA}>
-                  {t('accountSecurity.update2FA')}
-                </Button>
-              </div>
-
+              <Typography variant='body2' className='text-muted'>
+                {t('accountSecurity.description')}
+              </Typography>
             </div>
-          </CardContent>
-        </Card>
 
-        {/* INFO CARDS */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '16px'
-          }}
-        >
+            <div className='account-security__actions'>
+              <Button variant='outlined' onClick={onChangePassword}>
+                {t('accountSecurity.changePassword')}
+              </Button>
 
-          <Card variant='outlined'>
-            <CardContent>
-              <div className='space-y-1'>
-                <Typography variant='overline' startDecorator={<FiClock />}>
-                  {t('accountSecurity.lastLoggedIn')}
+              <Button variant='contained' onClick={onUpdate2FA}>
+                {t('accountSecurity.update2FA')}
+              </Button>
+            </div>
+          </div>
+
+          {/* 3 CARDS */}
+          <div className='account-security__grid'>
+            {/* LAST LOGIN */}
+            <Card className='account-security__card'>
+              <CardContent className='account-security__card-content'>
+                <FiClock className='icon icon--muted' />
+
+                <Typography variant='body1' className='font-medium'>
+                  {data.lastLogin.title}
                 </Typography>
 
-                <Typography variant='body1'>{data.lastLogin}</Typography>
-                <Typography variant='body2'>{data.location}</Typography>
-              </div>
-            </CardContent>
-          </Card>
+                <Typography variant='body2' className='text-muted nowrap'>
+                  {`${data.lastLogin.time} from ${data.lastLogin.location}`}
+                </Typography>
+              </CardContent>
+            </Card>
 
-          <Card variant='outlined'>
-            <CardContent>
-              <div className='space-y-1'>
-                <Typography variant='overline' startDecorator={<FiShield />}>
-                  {t('accountSecurity.identityStatus')}
+            {/* IDENTITY STATUS */}
+            <Card className='account-security__card'>
+              <CardContent className='account-security__card-content'>
+                <FiShield className='icon icon--success' />
+
+                <Typography variant='body1' className='font-medium'>
+                  {data.identityStatus.title}
                 </Typography>
 
-                <Typography variant='body1'>{data.identityStatus}</Typography>
-              </div>
-            </CardContent>
-          </Card>
+                <Typography variant='body2' className='text-muted'>
+                  {data.identityStatus.status}
+                </Typography>
+              </CardContent>
+            </Card>
 
-          <Card variant='outlined'>
-            <CardContent>
-              <div className='space-y-1'>
-                <Typography variant='overline' startDecorator={<FiUser />}>
-                  {t('accountSecurity.legacyContact')}
+            {/* LEGACY CONTACT */}
+            <Card className='account-security__card'>
+              <CardContent className='account-security__card-content'>
+                <FiUser className='icon icon--danger' />
+
+                <Typography variant='body1' className='font-medium'>
+                  {data.legacyContact.title}
                 </Typography>
 
-                {data.legacyContact ? (
-                  <Typography variant='body1'>{data.legacyContact}</Typography>
-                ) : (
-                  <Typography>{t('accountSecurity.addNow')}</Typography>
-                )}
-              </div>
-            </CardContent>
-          </Card>
+                <div className='flex-row'>
+                  <Typography variant='body2' className='text-muted'>
+                    {data.legacyContact.info}
+                  </Typography>
 
+                  <Typography className='text-link'>Add now</Typography>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
         </div>
 
         {/* RECENT ACTIVITY */}
-        <Card variant='outlined'>
-          <CardContent>
-            <div className='space-y-3'>
+        <div className='account-security__activity'>
+          <Typography variant='h3'  color='primary' className='heading'>
+            {t('accountSecurity.recentActivity')}
+          </Typography>
 
-              <Typography variant='h3' style={{ color: 'var(--text-primary)' }}>
-                {t('accountSecurity.recentActivity')}
-              </Typography>
+          <Card className='account-security__header'>
+            <CardContent className='no-padding'>
+              {/* ITEM 1 */}
+              <div className='activity-item'>
+                <div className='activity-left'>
+                  <FiClock className='icon icon--muted' />
 
-              <div className='flex items-center justify-between border-b pb-2'>
-                <div className='flex items-center gap-2'>
-                  <FiClock className='mt-1' />
                   <div>
-                    <Typography variant='body1'>
-                      {t('accountSecurity.activity1Title')}
-                    </Typography>
-                    <Typography variant='caption'>
-                      {t('accountSecurity.activity1Time')}
+                    <Typography variant='body1'>Auto Policy Renewal Document Uploaded</Typography>
+
+                    <Typography variant='caption' className='text-muted'>
+                      Yesterday, 4:30 PM
                     </Typography>
                   </div>
                 </div>
 
-                <Link to='#'>{t('accountSecurity.view')}</Link>
+                <Link to='#' className='text-link'>
+                  View
+                </Link>
               </div>
 
-              <div className='flex items-center justify-between'>
-                <div className='flex items-center gap-2'>
-                  <FiShield className='mt-1' />
+              <div className='activity-divider' />
+
+              {/* ITEM 2 */}
+              <div className='activity-item'>
+                <div className='activity-left'>
+                  <FiShield className='icon icon--muted' />
+
                   <div>
-                    <Typography variant='body1'>
-                      {t('accountSecurity.activity2Title')}
-                    </Typography>
-                    <Typography variant='caption'>
-                      {t('accountSecurity.activity2Time')}
+                    <Typography variant='body1'>Home Security Discount Applied</Typography>
+
+                    <Typography variant='caption' className='text-muted'>
+                      Oct 12, 2023
                     </Typography>
                   </div>
                 </div>
 
-                <Link to='#'>{t('accountSecurity.details')}</Link>
+                <Link to='#' className='text-link'>
+                  Details
+                </Link>
               </div>
-
-            </div>
-          </CardContent>
-        </Card>
-
+            </CardContent>
+          </Card>
+        </div>
       </div>
     </main>
   );

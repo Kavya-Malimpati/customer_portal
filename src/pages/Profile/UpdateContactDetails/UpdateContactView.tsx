@@ -46,7 +46,8 @@ const UpdateContactView = ({
 
       
           <div className="profile-section">
-            <Typography variant="h2" className="profile-name">
+            <Typography variant="h2" color='primary' className="profile-name">
+             
               {fullName}
             </Typography>
 
@@ -81,7 +82,7 @@ const UpdateContactView = ({
 
   
       <div className="edit-footer">
-        <Button variant="outlined" onClick={onBack} fullWidth>
+        <Button variant="outlined" onClick={onBack}  fullWidth>
           Cancel
         </Button>
 

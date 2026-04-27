@@ -19,7 +19,7 @@ function ContactDetailsView({ contactData, onEditClick }: ViewContactDetailsProp
 
           <div className="header">
             <Typography
-              variant="h3"
+              variant="h3" color='primary'
               className="text-primary"
               startDecorator={<HiIdentification size={30} className='mainicon'/>}
             >

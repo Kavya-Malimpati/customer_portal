@@ -36,15 +36,15 @@ const contactData = {
       />
 
     
-      <Modal
-        isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
-         maxHeight="90%"
-        maxWidth="60%"
-        fullScreen
-      >
-        <UpdateContactDetails />
-      </Modal>
+          <Modal
+          isOpen={isOpen}
+          onClose={() => setIsOpen(false)}
+          maxHeight="90%"
+          maxWidth="60%"
+          fullScreen
+        >
+          <UpdateContactDetails onClose={() => setIsOpen(false)} />
+        </Modal>
     </>
   );
 };

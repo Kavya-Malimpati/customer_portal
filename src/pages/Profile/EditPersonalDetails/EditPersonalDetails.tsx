@@ -10,10 +10,11 @@ import { getPersonalDetailsApi } from './PersonalDetailsApi';
 
 import type { ChangeEvent, FormEvent } from 'react';
 import type { ValidationResult, FormDataType } from './Interfaces';
+import type { Props } from './Interfaces';
 
 const personalDetailsConfig = personalDetailsConfigJson as FormDataType;
 
-const EditPersonalDetails = () => {
+const EditPersonalDetails = ({ onClose }: Props) => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState<FormDataType>(deepClone(personalDetailsConfig));
@@ -90,7 +91,7 @@ const EditPersonalDetails = () => {
       onChange={handleInputChange}
       onSubmit={handleSubmit}
       isConfirmOpen={isConfirmOpen}
-      onBack={() => navigate(-1)}
+      onBack={onClose}
       onCloseModal={() => setIsConfirmOpen(false)}
       onConfirm={() => navigate('/home')}
     />

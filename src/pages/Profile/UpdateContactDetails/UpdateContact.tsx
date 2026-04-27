@@ -8,11 +8,11 @@ import UpdateContactView from './UpdateContactView';
 import { getContactDetailsApi } from './contactDetailApi';
 
 import type { ChangeEvent, FormEvent } from 'react';
-import type { ValidationResult, FormDataType } from './interfaces';
+import type { ValidationResult, FormDataType, Props } from './interfaces';
 
 const contactConfig = contactConfigJson as FormDataType;
 
-const UpdateContact = () => {
+const UpdateContact =  ({ onClose }: Props)=> {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState<FormDataType>(
@@ -93,14 +93,14 @@ const UpdateContact = () => {
 
   return (
     <UpdateContactView
-      formData={formData}
-      onChange={handleInputChange}
-      onSubmit={handleSubmit}
-      isConfirmOpen={isConfirmOpen}
-      onBack={() => navigate(-1)}
-      onCloseModal={() => setIsConfirmOpen(false)}
-      onConfirm={() => navigate('/home')}
-    />
+    formData={formData}
+    onChange={handleInputChange}
+    onSubmit={handleSubmit}
+    isConfirmOpen={isConfirmOpen}
+    onBack={onClose}                
+    onCloseModal={() => setIsConfirmOpen(false)}
+    onConfirm={onClose}             
+  />
   );
 };
 

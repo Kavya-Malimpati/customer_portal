@@ -1,91 +1,53 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import contactConfig from '../../../config/updatecontactdetails.json';
-import verificationConfig from '../../../config/verificationmethod.json';
-
+import contactConfigJson from '../../../config/updatecontactdetails.json';
 import { deepClone } from '../../../scripts/utils';
 import { validateFormFields } from '../../../scripts/validationsService';
-
-import type { ContactHistoryItem, FormDataType, VerificationType } from './interfaces';
-import { getContactDetailsApi } from './contactDetailsApi';
 import UpdateContactView from './UpdateContactView';
+import { getContactDetailsApi } from './contactDetailApi';
 
-const UpdateContact = () => {
+import type { ChangeEvent, FormEvent } from 'react';
+import type { ValidationResult, FormDataType, Props } from './interfaces';
+
+const contactConfig = contactConfigJson as FormDataType;
+
+const UpdateContact =  ({ onClose }: Props)=> {
   const navigate = useNavigate();
 
-  // Form state
-  const [formData, setFormData] = useState<FormDataType>(() => deepClone(contactConfig));
-
-  // Verification state
-  const [verificationData, setVerificationData] = useState<VerificationType>(
-    deepClone(verificationConfig),
+  const [formData, setFormData] = useState<FormDataType>(
+    deepClone(contactConfig)
   );
 
-  // Contact history state
-  const [contactHistory, setContactHistory] = useState<ContactHistoryItem[]>(() => {
-    const stored = localStorage.getItem('contactHistory');
-    return stored ? JSON.parse(stored) : [];
-  });
+  const [isConfirmOpen, setIsConfirmOpen] = useState(false);
 
-  // Pending contact awaiting verification
-  const [pendingContact, setPendingContact] = useState<ContactHistoryItem | null>(null);
-
-  // UI state
-  const [showHistory, setShowHistory] = useState(false);
-  const [showReverification, setShowReverification] = useState(false);
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  const [showClearHistoryModal, setShowClearHistoryModal] = useState(false);
-
-  const mapApiDataToFormData = (
-    baseConfig: FormDataType,
-    apiData: Partial<ContactHistoryItem>,
-  ): FormDataType => {
-    const updated = deepClone(baseConfig);
-
-    (Object.keys(apiData) as (keyof ContactHistoryItem)[]).forEach(key => {
-      if (updated[key]) {
-        updated[key].value = apiData[key] ?? '';
-        updated[key].hasError = false;
-        updated[key].errorMessage = '';
-      }
-    });
-
-    return updated;
-  };
-
+ 
   useEffect(() => {
-    const loadContactDetails = async () => {
-      const apiData = await getContactDetailsApi();
+    const fetchData = async () => {
+      const data = await getContactDetailsApi();
 
-      setFormData(mapApiDataToFormData(contactConfig, apiData));
+      const updated = Object.entries(contactConfig).reduce(
+        (acc, [key, field]) => ({
+          ...acc,
+          [key]: {
+            ...field,
+            value: data[key as keyof typeof data] || '',
+          },
+        }),
+        {} as FormDataType
+      );
 
-      setContactHistory(prev => (prev.length ? prev : [apiData]));
+      setFormData(updated);
     };
 
-    loadContactDetails();
+    fetchData();
   }, []);
 
-  useEffect(() => {
-    localStorage.setItem('contactHistory', JSON.stringify(contactHistory));
-  }, [contactHistory]);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleInputChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { id, value } = e.target;
-
-    // Verification fields
-    if (id in verificationData) {
-      setVerificationData(prev => ({
-        ...prev,
-        [id]: {
-          ...prev[id as keyof VerificationType],
-          value,
-          hasError: false,
-          errorMessage: '',
-        },
-      }));
-      return;
-    }
 
     setFormData(prev => ({
       ...prev,
@@ -98,90 +60,47 @@ const UpdateContact = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const { data, status } = validateFormFields(formData);
 
-    if (!status) {
-      setFormData(prev =>
-        Object.entries(prev).reduce((acc, [key, field], index) => {
-          const validation = data[index] as { isValid: boolean; errorMessage?: string } | undefined;
-          return {
-            ...acc,
-            [key]: {
-              ...field,
-              hasError: !validation?.isValid,
-              errorMessage: validation?.errorMessage || '',
-            },
-          };
-        }, {} as FormDataType),
-      );
+    if (status) {
+      setIsConfirmOpen(true);
       return;
     }
 
-    const newContact: ContactHistoryItem = {
-      phone: formData.phone.value,
-      email: formData.email.value,
-      streetAddress: formData.streetAddress.value,
-      aptNumber: formData.aptNumber.value,
-      city: formData.city.value,
-      state: formData.state.value,
-      zipcode: formData.zipcode.value,
-      country: formData.country.value,
-    };
+    const validationResults = data as ValidationResult[];
 
-    setPendingContact(newContact);
-    setVerificationData(deepClone(verificationConfig));
-    setShowReverification(true);
-  };
+   
+    setFormData(prev => {
+      const updated: FormDataType = { ...prev };
 
-  const handleConfirmVerification = () => {
-    if (!pendingContact) return;
+      (Object.keys(prev) as Array<keyof FormDataType>).forEach(key => {
+        const result = validationResults.find(i => i.id === key);
 
-    setContactHistory(prev => [pendingContact, ...prev].slice(0, 3));
-    setPendingContact(null);
-    setShowReverification(false);
-    setShowSuccessMessage(true);
-    setFormData(deepClone(contactConfig));
+        (updated as any)[key] = {
+  ...prev[key],
+  hasError: !result?.isValid,
+  errorMessage: result?.errorMessage || '',
+};
+      });
 
-    setTimeout(() => setShowSuccessMessage(false), 2000);
-  };
-
-  const handleConfirmClearHistory = () => {
-    setContactHistory([]);
-    localStorage.removeItem('contactHistory');
-    setShowHistory(false);
-    setShowClearHistoryModal(false);
-  };
-
-  const handleCancelClearHistory = () => {
-    setShowClearHistoryModal(false);
+      return updated;
+    });
   };
 
   return (
     <UpdateContactView
-      formData={formData}
-      verificationData={verificationData}
-      contactHistory={contactHistory}
-      pendingContact={pendingContact}
-      showHistory={showHistory}
-      showReverification={showReverification}
-      showSuccessMessage={showSuccessMessage}
-      showClearHistoryModal={showClearHistoryModal}
-      onConfirmClearHistory={handleConfirmClearHistory}
-      onCancelClearHistory={handleCancelClearHistory}
-      onInputChange={handleInputChange}
-      onSubmit={handleSubmit}
-      onToggleHistory={() => {
-        setShowHistory(p => !p);
-        setShowReverification(false);
-      }}
-      onClearHistory={() => setShowClearHistoryModal(true)}
-      onCancelVerification={() => setShowReverification(false)}
-      onConfirmVerification={handleConfirmVerification}
-      onBack={() => navigate(-1)}
-    />
+    formData={formData}
+    onChange={handleInputChange}
+    onSubmit={handleSubmit}
+    isConfirmOpen={isConfirmOpen}
+    onBack={onClose}                
+    onCloseModal={() => setIsConfirmOpen(false)}
+    onConfirm={onClose}             
+  />
   );
 };
 

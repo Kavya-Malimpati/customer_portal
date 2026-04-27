@@ -32,3 +32,6 @@ export interface EditPersonalDetailsUiProps {
   onCloseModal: () => void;
   onConfirm: () => void;
 }
+export interface Props {
+  onClose: () => void;
+}

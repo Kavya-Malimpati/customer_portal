@@ -3,7 +3,7 @@ export default {
     title: 'Personal Details',
     description: 'This profile view is read-only and only displays saved customer information.',
     editButton: 'Edit',
-    firstName: 'First Name',
+    firstName: ' Name',
     middleName: 'Middle Name (optional)',
     lastName: 'Last Name',
     dateOfBirth: 'Date of Birth',

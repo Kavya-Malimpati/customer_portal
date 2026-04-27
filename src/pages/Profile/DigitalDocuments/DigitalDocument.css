@@ -1,0 +1,128 @@
+.digital-documents-container {
+  background-color: var(--bg-page);
+}
+
+.digital-documents-card {
+  overflow: hidden;
+  width: 100%;
+}
+
+.digital-documents-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  background-color: #f7f8f9;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.digital-documents-title {
+  color: #000000;
+  font-weight: var(--font-weight-semibold);
+  font-size: 0.875rem;
+}
+
+.digital-documents-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.digital-documents-actions .button {
+  padding: 0.375rem 0.75rem;
+}
+
+.documents-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.document-row {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.icon-cell {
+  padding: 1.5rem 1rem;
+  width: 3rem;
+}
+
+.icon-container {
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #dbeafe;
+  color: #3b82f6;
+}
+
+.document-info-cell {
+  padding: 1.5rem 1rem;
+}
+
+.document-title {
+  color: var(--text-primary);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: 2px;
+}
+
+.document-meta {
+  color: var(--text-primary);
+  font-size: 0.75rem;
+}
+
+.date-cell {
+  padding: 1.5rem 1rem;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.date-text {
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+}
+
+.actions-cell {
+  padding: 1.5rem 1rem;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.actions-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.action-link {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  transition: color 0.2s;
+  color: var(--color-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.action-link:hover {
+  opacity: 0.8;
+}
+
+.archived-link-container {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.archived-link {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.archived-link:hover {
+  text-decoration: underline;
+}

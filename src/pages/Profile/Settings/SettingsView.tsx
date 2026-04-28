@@ -189,7 +189,7 @@ const SettingsUI = ({
           </div>
 
           <div className='settings-right'>
-            <Card variant='outlined-raised' size='lg'>
+            <Card variant='outlined-raised' size='sm'>
               <CardContent>
                 <div className='settings-card-section'>
                   <div className='section-title'>
@@ -322,7 +322,7 @@ const SettingsUI = ({
               </CardContent>
             </div>
 
-            <Card variant='outlined-raised' size='sm' className='sms-card'>
+            <Card variant='outlined-raised' size='md' className='sms-card'>
               <CardContent>
                 <div className='sms-content'>
                   <div className='sms-header'>

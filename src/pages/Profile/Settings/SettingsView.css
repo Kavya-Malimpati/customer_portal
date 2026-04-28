@@ -116,11 +116,11 @@
 .theme-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-3);
+  gap: var(--space-1);
 }
 
 .theme-btn {
-  height: 70px;
+  height: 60px;
   border: var(--border-width-sm) solid var(--border-color);
   border-radius: var(--radius-sm);
   background-color: var(--color-white);

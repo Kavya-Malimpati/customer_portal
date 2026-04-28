@@ -3,7 +3,6 @@ import '../../styles/tokens.css';
 import { useState } from 'react';
 import { FiBarChart2, FiClipboard, FiCreditCard, FiFile, FiSettings } from 'react-icons/fi';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 
 interface SidebarItem {
   id: string;
@@ -54,8 +53,6 @@ interface SidebarProps {
 function Sidebar({ isOpen = true, onClose }: SidebarProps) {
   const navigate = useNavigate();
   const location = useLocation();
-  const { i18n, t } = useTranslation();
-
   const [expandedItems, setExpandedItems] = useState<string[]>(['profile']);
 
   const toggleExpand = (itemId: string) => {
@@ -75,7 +72,6 @@ function Sidebar({ isOpen = true, onClose }: SidebarProps) {
     const hasSubItems = item.subItems && item.subItems.length > 0;
     const isExpanded = expandedItems.includes(item.id);
     const active = isActive(item.path);
-    const translatedLabel = t(`sidebar.${item.id}`);
 
     return (
       <div key={item.id}>
@@ -103,7 +99,7 @@ function Sidebar({ isOpen = true, onClose }: SidebarProps) {
           }}
         >
           <span className='text-lg flex items-center'>{item.icon}</span>
-          <span className='flex-1 text-lg'>{translatedLabel}</span>
+          <span className='flex-1 text-lg'>{item.label}</span>
         </button>
 
         {hasSubItems && isExpanded && (

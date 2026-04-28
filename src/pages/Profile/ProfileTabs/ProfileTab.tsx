@@ -1,4 +1,5 @@
-import PersonalDetailsPage from '../ViewPersonalDetails/PersonalDetailsPage';
+
+import PersonalDetailsPage from '../ViewPersonalDetails/PersonalDetailApi';
 import ContactDetails from '../Contact';
 
 const ProfileTab = () => {

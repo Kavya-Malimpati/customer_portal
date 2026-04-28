@@ -15,6 +15,7 @@ import Settings from './pages/Profile/Settings';
 import AgentContactDetails from './pages/Profile/AgentContactDetails/';
 import ProfilePage from './pages/Profile/ProfilePage';
 import AccountSecurity from './pages/Profile/AccountSecurity';
+import AccountSecurityView from './pages/Profile/AccountSecurity/AccountSecurityView';
 
 function App() {
   const navigate = useNavigate();

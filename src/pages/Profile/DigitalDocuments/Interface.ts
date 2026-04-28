@@ -7,7 +7,6 @@ export interface DigitalDocument {
   status: string;
   viewUrl: string;
   downloadUrl: string;
-  [key: string]: unknown;
 }
 
 export interface DigitalDocumentsViewProps {

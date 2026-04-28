@@ -50,7 +50,7 @@ const DigitalDocumentsView = ({ documents, onView }: DigitalDocumentsViewProps) 
         <Card variant='outlined' className='digital-documents-card'>
           {/* Header */}
           <div className='digital-documents-header'>
-            <Typography variant='h3' className='digital-documents-title'>
+            <Typography variant='h3' className='digital-documents-title !text-black'>
               Digital Documents
             </Typography>
 

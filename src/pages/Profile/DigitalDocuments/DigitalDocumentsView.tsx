@@ -1,104 +1,148 @@
-import {Card , CardContent,Typography,Button }from '../../../common/components';
-import type { DigitalDocumentsViewProps } from './Interface';
+import './DigitalDocument.css';
+
+import { useState } from 'react';
+import {
+  FiClipboard,
+  FiCreditCard,
+  FiDownload,
+  FiEye,
+  FiFileText,
+  FiFilter,
+  FiShield,
+} from 'react-icons/fi';
+
+import { Button, Card, CardContent, Typography } from '../../../common/components';
+
+import type { DigitalDocument, DigitalDocumentsViewProps } from './Interface';
 
 const DigitalDocumentsView = ({ documents, onView }: DigitalDocumentsViewProps) => {
+  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
+
+  const sortedDocuments = [...documents].sort((a, b) => {
+    const dateA = new Date(a.date).getTime();
+    const dateB = new Date(b.date).getTime();
+    return sortOrder === 'desc' ? dateB - dateA : dateA - dateB;
+  }) as DigitalDocument[];
+
+  const toggleSort = () => {
+    setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+  };
+
+  const getIcon = (category: string) => {
+    switch (category) {
+      case 'Policy Document':
+        return <FiShield size={24} />;
+      case 'Bill':
+        return <FiFileText size={24} />;
+      case 'Endorsement':
+        return <FiClipboard size={24} />;
+      case 'Card':
+        return <FiCreditCard size={24} />;
+      default:
+        return <FiFileText size={24} />;
+    }
+  };
+
   return (
-    <main
-      className='flex-1 w-full px-4 py-6 md:px-6 md:py-10 lg:px-8 lg:py-12'
-      style={{ backgroundColor: 'var(--bg-page)' }}
-    >
-      <div className='max-w-7xl mx-auto space-y-6'>
-        <section className='text-center mb-10'>
-          <Typography
-            variant='h1'
-            style={{
-              color: 'var(--text-heading)',
-            }}
-          >
-            Digital Documents
-          </Typography>
-        </section>
+    <main className='flex-1 w-full px-4 py-6 md:px-6 md:py-10 lg:px-8 lg:py-12 digital-documents-container'>
+      <div className='max-w-full mx-auto'>
+        {/* Documents Card */}
+        <Card variant='outlined' className='digital-documents-card'>
+          {/* Header */}
+          <div className='digital-documents-header'>
+            <Typography variant='h3' color='primary'>
+              Digital Documents
+            </Typography>
 
-        <section className='space-y-4 text-center mb-10'>
-          <Typography
-            variant='subtitle1'
-            style={{
-              color: 'var(--text-heading)'
-            }}
-          >
-            Your Documents
-          </Typography>
+            <div className='digital-documents-actions'>
+              <Button
+                variant='outlined'
+                size='small'
+                color='inherit'
+                startIcon={<FiFilter size={16} />}
+                aria-label='Filter documents'
+              >
+                Filter
+              </Button>
 
-          {documents.map(document => (
-            <Card key={document.id} variant='outlined-raised' size='lg'>
-              <CardContent>
-                <div className='flex flex-col gap-5'>
-                  <div className='flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3'>
-                    <div>
-                      <Typography
-                        variant='h4'
-                        style={{
-                          color: 'var(--text-heading)',
-                          fontWeight: 'var(--font-weight-semibold)',
-                        }}
-                      >
+              <Button
+                variant='outlined'
+                size='small'
+                color='inherit'
+                onClick={toggleSort}
+                startIcon={<span>↕</span>}
+                aria-label={`Sort documents by date: ${sortOrder === 'asc' ? 'oldest first' : 'newest first'}`}
+              >
+                Sort
+              </Button>
+            </div>
+          </div>
+
+          {/* Table Content */}
+          <CardContent className='p-0'>
+            <table className='documents-table'>
+              <tbody>
+                {sortedDocuments.map(document => (
+                  <tr key={document.id} className='document-row'>
+                    {/* Icon Cell */}
+                    <td className='icon-cell'>
+                      <div className='icon-container'>{getIcon(document.category)}</div>
+                    </td>
+
+                    {/* Title and Details Cell */}
+                    <td className='document-info-cell'>
+                      <Typography variant='body2' color='primary' className='document-title'>
                         {document.title}
                       </Typography>
-
-                      <Typography variant='subtitle2' style={{ color: 'var(--text-secondary)' }}>
-                        {document.category}
+                      <Typography variant='caption' color='muted' className='document-meta'>
+                        {document.category} • {document.size}
                       </Typography>
-                    </div>
+                    </td>
 
-                    <span
-                      className='inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold'
-                      style={{
-                        backgroundColor: 'var(--bg-muted)',
-                        color: 'var(--text-primary)',
-                      }}
-                    >
-                      {document.status}
-                    </span>
-                  </div>
-
-                  <div className='grid grid-cols-2 gap-3 md:grid-cols-4'>
-                    <div>
-                      <Typography variant='caption' style={{ color: 'var(--text-secondary)' }}>
-                        Date
+                    {/* Date Cell */}
+                    <td className='date-cell'>
+                      <Typography variant='caption' color='caption' className='date-text'>
+                        Modified {document.date}
                       </Typography>
+                    </td>
 
-                      <Typography variant='body2' style={{ color: 'var(--text-primary)' }}>
-                        {document.date}
-                      </Typography>
-                    </div>
-
-                    <div>
-                      <Typography variant='caption' style={{ color: 'var(--text-secondary)' }}>
-                        Size
-                      </Typography>
-
-                      <Typography variant='body2' style={{ color: 'var(--text-primary)' }}>
-                        {document.size}
-                      </Typography>
-                    </div>
-
-                    <div className='col-span-2 md:col-span-2 min-w-0'>
-                      <div className='mt-2 flex flex-col gap-2 sm:flex-row sm:flex-wrap'>
-                        <Button className='w-full sm:w-auto' onClick={() => onView(document.viewUrl)}>
+                    {/* Actions Cell */}
+                    <td className='actions-cell'>
+                      <div className='actions-container'>
+                        <Button
+                          variant='text'
+                          size='small'
+                          onClick={() => onView(document.viewUrl)}
+                          startIcon={<FiEye size={16} />}
+                          aria-label={`View ${document.title}`}
+                        >
                           View
                         </Button>
 
-                        <a href={document.downloadUrl} download style={{ textDecoration: 'none' }}>
-                          <Button variant='outlined'>Download</Button>
+                        <a
+                          href={document.downloadUrl}
+                          download
+                          className='action-link'
+                          aria-label={`Download ${document.title}`}
+                        >
+                          <FiDownload size={16} />
+                          <span>Download</span>
                         </a>
                       </div>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </section>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </CardContent>
+        </Card>
+
+        {/* Archived Documents Link */}
+        <div className='archived-link-container'>
+          <a href='#' className='archived-link' aria-label='View documents from prior to 2023'>
+            View Archived Documents (Prior to 2023)
+          </a>
+        </div>
       </div>
     </main>
   );

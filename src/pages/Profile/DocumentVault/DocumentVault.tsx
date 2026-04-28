@@ -1,51 +1,37 @@
 import { useState } from 'react';
-import {Card, CardHeader, CardContent} from '../../../common/components/';
-import type { DocumentItem } from './interfaces';
 import DocumentVaultView from './DocumentVaultView';
+import type { DocumentItem } from './interfaces';
 
-const ACCEPTED_TYPES = [
+const ACCEPTED_FILE_TYPES = [
   'application/pdf',
   'image/png',
   'image/jpeg',
 ];
 
-function DocumentVault() {
+const DocumentVault = () => {
   const [documents, setDocuments] = useState<DocumentItem[]>([]);
 
-  const handleUpload = (files: FileList | null) => {
+  // Handles file uploads and associates them with a category.
+
+  const handleUpload = (files: FileList | null, category: string) => {
     if (!files) return;
 
-    const uploadedDocs: DocumentItem[] = Array.from(files)
-      .filter(file => ACCEPTED_TYPES.includes(file.type))
-      .map(file => ({
-        id: `${file.name}-${Date.now()}`,
+    const newDocuments: DocumentItem[] = Array.from(files)
+      .filter((file) => ACCEPTED_FILE_TYPES.includes(file.type))
+      .map((file) => ({
         name: file.name,
-        type: file.type,
-        url: URL.createObjectURL(file),
-        uploadedAt: new Date().toLocaleString(),
+        category,
       }));
 
-    setDocuments(prev => [...prev, ...uploadedDocs]);
-  };
-
-  const handleView = (doc: DocumentItem) => {
-    window.open(doc.url, '_blank', 'noopener,noreferrer');
+    setDocuments((prevDocuments) => [...prevDocuments, ...newDocuments]);
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-start bg-gray-100 p-6">
-      <Card className="w-[700px] bg-white shadow-xl">
-        <CardHeader title="Secure Document Vault" />
-        <CardContent className="p-6">
-          <DocumentVaultView
-            documents={documents}
-            onUpload={handleUpload}
-            onView={handleView}
-          />
-        </CardContent>
-      </Card>
-    </div>
+    <DocumentVaultView
+      documents={documents}
+      onUpload={handleUpload}
+    />
   );
-}
+};
 
 export default DocumentVault;

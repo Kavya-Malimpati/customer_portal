@@ -1,11 +1,11 @@
 import './App.css';
-import Login from './pages/Login';
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
+import MainLayout from './common/MainLayout';
+// import Login from './pages/Login';
 import PersonalDetailsPage from './pages/Profile/ViewPersonalDetails/PersonalDetailApi';
 import Home from './pages/Home';
 import AddContactDetails from './pages/Profile/AddContactDetails';
 import UpdateContactDetails from './pages/Profile/UpdateContactDetails';
-import MainLayout from './common/MainLayout';
-import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import ContactDetails from './pages/Profile/Contact';
 import DocumentVault from './pages/Profile/DocumentVault';
 import PaperlessPreferences from './pages/Profile/PaperlessPreferences';
@@ -13,6 +13,8 @@ import EditPersonalDetails from './pages/Profile/EditPersonalDetails';
 import DigitalDocuments from './pages/Profile/DigitalDocuments';
 import Settings from './pages/Profile/Settings';
 import AgentContactDetails from './pages/Profile/AgentContactDetails/';
+import ProfilePage from './pages/Profile/ProfilePage';
+import AccountSecurity from './pages/Profile/AccountSecurity';
 
 function App() {
   const navigate = useNavigate();
@@ -50,6 +52,15 @@ function App() {
       />
 
       <Route
+        path='/cdetails'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <AddContactDetails />
+          </MainLayout>
+        }
+      />
+
+      <Route
         path='/update-contact'
         element={
           <MainLayout onLogout={handleLogout}>
@@ -57,7 +68,6 @@ function App() {
           </MainLayout>
         }
       />
-      <Route path='*' element={<Navigate to='/' replace />} />
 
       <Route
         path='/settings'
@@ -101,11 +111,28 @@ function App() {
           </MainLayout>
         }
       />
+
+      <Route
+        path='/view-account-security'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <AccountSecurity />
+          </MainLayout>
+        }
+      />
       <Route
         path='/agent-contact-details'
         element={
           <MainLayout onLogout={handleLogout}>
             <AgentContactDetails />
+          </MainLayout>
+        }
+      />
+      <Route
+        path='/profile-page'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <ProfilePage />
           </MainLayout>
         }
       />

@@ -7,9 +7,9 @@ interface HeaderProps {
 
 const Header = ({ onMenuClick }: HeaderProps) => {
   const navigate = useNavigate();
-  const handleProfileClick = () =>{
-    navigate('/view-personal-details')
-  }
+  const handleProfileClick = () => {
+    navigate('/profile-page');
+  };
 
   return (
     <header
@@ -84,7 +84,7 @@ const Header = ({ onMenuClick }: HeaderProps) => {
 
           {/* Profile Logo */}
           <button
-          onClick={handleProfileClick}
+            onClick={handleProfileClick}
             className='w-9 h-9 rounded-full flex items-center justify-center transition-colors hover:bg-gray-100'
             aria-label='Profile'
             style={{

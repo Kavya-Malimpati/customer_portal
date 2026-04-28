@@ -1,0 +1,26 @@
+[
+  {
+    "key": "profile",
+    "label": "Profile",
+    "heading": "Profile",
+    "subheading": "View and manage your personal information."
+  },
+  {
+    "key": "documents",
+    "label": "Documents",
+    "heading": "Documents",
+    "subheading": "Access and manage your uploaded documents."
+  },
+  {
+    "key": "agency",
+    "label": "Agency",
+    "heading": "Agency",
+    "subheading": "Access agent details and affiliations."
+  },
+  {
+    "key": "settings",
+    "label": "Settings",
+    "heading": "Settings",
+    "subheading": "Configure your account preferences."
+  }
+]

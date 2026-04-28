@@ -1,184 +1,211 @@
-import{Card, CardContent,Typography,Select,Button,Toggle }from '../../../common/components';
+import {Card,CardContent,Typography,Select,Button,Toggle,Checkbox} from '../../../common/components';
 import type { SettingsUIProps } from './Interface';
+import {FiSun,FiMoon,FiChevronRight,FiKey,FiSmartphone,FiShield,FiSettings,FiClipboard,FiLock} from 'react-icons/fi';
+import { MdOutlinePalette } from 'react-icons/md';
+import PaperlessPreferences from '../PaperlessPreferences';
+import './SettingsView.css';
 
 const SettingsUI = ({
   preferences,
   handleSavePreferences,
+  handleDiscardPreferences,
   handlePreferenceChange,
 }: SettingsUIProps) => {
   return (
-    <main className='flex-1 w-full px-4 py-6 md:px-6 md:py-10 lg:px-8 lg:py-12'>
-      <div className='mx-auto max-w-4xl space-y-6'>
-        <section className='mb-10 text-center'>
-          <Typography
-            variant='h1'
-            className='text-lg md:text-xl font-semibold mb-2'
-            style={{ color: 'var(--text-heading)' }}
-          >
-            Settings
-          </Typography>
-        </section>
+    <main className='settings-page'>
+      <div className='settings-container'>
+        <div className='settings-grid'>
+          <div className='settings-left'>
+            <PaperlessPreferences />
+            <Card variant='outlined-raised' size='lg'>
+              <CardContent>
+                <div className='settings-card-section'>
+                  <div className='notification-header'>
+                    <div>
+                      <Typography variant='h4' color='primary'>
+                        Notification Preferences
+                      </Typography>
+                      <Typography variant='body2' color='secondary'>
+                        How we should contact you for different updates.
+                      </Typography>
+                    </div>
+                    <FiSettings size={22} className='settings-muted-icon' />
+                  </div>
 
-        <Card variant='outlined-raised' size='lg'>
-          <CardContent>
-            <div className='space-y-4'>
-              <Typography variant='h2' style={{ color: 'var(--text-heading)' }}>
-                Notification Settings
-              </Typography>
+                  <div className='notification-list'>
+                    <div className='notification-row'>
+                      <div className='notification-info'>
+                        <FiShield size={20} className='settings-muted-icon notification-icon' />
 
-              <div className='grid gap-4'>
-                <Toggle
-                  id='notification-policies'
-                  checked={preferences.notifications.policies}
-                  onChange={e =>
-                    handlePreferenceChange({
-                      notifications: {
-                        ...preferences.notifications,
-                        policies: e.target.checked,
-                      },
-                    })
-                  }
-                  aria-label='Policy Updates'
-                  label='Policy Updates'
-                />
+                        <div>
+                          <Typography variant='h5' color='primary'>
+                            Policy Updates
+                          </Typography>
+                          <Typography
+                            variant='subtitle2'
+                            color='secondary'
+                          >
+                            Renewals, policy changes, and coverage alerts.
+                          </Typography>
+                        </div>
+                      </div>
 
-                <Toggle
-                  id='notification-billing'
-                  checked={preferences.notifications.billing}
-                  onChange={e =>
-                    handlePreferenceChange({
-                      notifications: {
-                        ...preferences.notifications,
-                        billing: e.target.checked,
-                      },
-                    })
-                  }
-                  aria-label='Billing Alerts'
-                  label='Billing Alerts'
-                />
+                      <div className='notification-actions'>
+                        <Checkbox
+                          id='policy-email'
+                          checked={preferences.alerts.policyEmail}
+                          onChange={e =>
+                            handlePreferenceChange({
+                              alerts: {
+                                ...preferences.alerts,
+                                policyEmail: e.target.checked,
+                              },
+                            })
+                          }
+                          label='Email'
+                        />
 
-                <Toggle
-                  id='notification-claims'
-                  checked={preferences.notifications.claims}
-                  onChange={e =>
-                    handlePreferenceChange({
-                      notifications: {
-                        ...preferences.notifications,
-                        claims: e.target.checked,
-                      },
-                    })
-                  }
-                  aria-label='Claims Updates'
-                  label='Claims Updates'
-                />
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+                        <Checkbox
+                          id='policy-sms'
+                          checked={preferences.alerts.policySms}
+                          onChange={e =>
+                            handlePreferenceChange({
+                              alerts: {
+                                ...preferences.alerts,
+                                policySms: e.target.checked,
+                              },
+                            })
+                          }
+                          label='SMS'
+                        />
+                      </div>
+                    </div>
 
-        <Card variant='outlined-raised' size='lg'>
-          <CardContent>
-            <div className='space-y-4'>
-              <Typography variant='h2' style={{ color: 'var(--text-heading)' }}>
-                Communication Channels
-              </Typography>
+                    <div className='notification-row'>
+                      <div className='notification-info'>
+                        <FiClipboard size={20} className='settings-muted-icon notification-icon' />
 
-              <div className='grid gap-4'>
-                <Toggle
-                  id='alert-email'
-                  checked={preferences.alerts.email}
-                  onChange={e =>
-                    handlePreferenceChange({
-                      alerts: {
-                        ...preferences.alerts,
-                        email: e.target.checked,
-                      },
-                    })
-                  }
-                  aria-label='Email Alerts'
-                  label='Email Alerts'
-                />
+                        <div>
+                          <Typography variant='h5' color='primary'>
+                            Claims Alerts
+                          </Typography>
+                          <Typography
+                            variant='body2'
+                            color='secondary'   
+                            style={{
+                              fontSize: 'var(--font-size-xs)',
+                            }}
+                          >
+                            Status changes, payment confirmations, and requests.
+                          </Typography>
+                        </div>
+                      </div>
 
-                <Toggle
-                  id='alert-sms'
-                  checked={preferences.alerts.sms}
-                  disabled={!preferences.smsEnrollment.textEnrollment}
-                  onChange={e =>
-                    handlePreferenceChange({
-                      alerts: {
-                        ...preferences.alerts,
-                        sms: e.target.checked,
-                      },
-                    })
-                  }
-                  aria-label='SMS Alerts'
-                  label='SMS Alerts'
-                />
+                      <div className='notification-actions'>
+                        <Checkbox
+                          id='claims-email'
+                          checked={preferences.alerts.claimsEmail}
+                          onChange={e =>
+                            handlePreferenceChange({
+                              alerts: {
+                                ...preferences.alerts,
+                                claimsEmail: e.target.checked,
+                              },
+                            })
+                          }
+                          label='Email'
+                        />
 
-                <Toggle
-                  id='alert-portal'
-                  checked={preferences.alerts.portal}
-                  onChange={e =>
-                    handlePreferenceChange({
-                      alerts: {
-                        ...preferences.alerts,
-                        portal: e.target.checked,
-                      },
-                    })
-                  }
-                  aria-label='Portal Notifications'
-                  label='Portal Notifications'
-                />
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+                        <Checkbox
+                          id='claims-sms'
+                          checked={preferences.alerts.claimsSms}
+                          onChange={e =>
+                            handlePreferenceChange({
+                              alerts: {
+                                ...preferences.alerts,
+                                claimsSms: e.target.checked,
+                              },
+                            })
+                          }
+                          label='SMS'
+                        />
+                      </div>
+                    </div>
 
-       <Card variant='outlined-raised' size='lg'>
-  <CardContent>
-    <div className='space-y-4'>
-      <Typography variant='h2' style={{ color: 'var(--text-heading)' }}>SMS Enrollment</Typography>
+                    <div className='notification-row'>
+                      <div className='notification-info'>
+                        <FiLock size={20} className='settings-muted-icon notification-icon' />
 
-      <Toggle
-        id='sms-enroll-main'
-        checked={preferences.smsEnrollment.textEnrollment}
-        onChange={e =>
-          handlePreferenceChange({
-            smsEnrollment: {
-              ...preferences.smsEnrollment,
-              textEnrollment: e.target.checked,
-            },
-          })
-        }
-        label='Enable Text Enrollment'
-      />
+                        <div>
+                          <Typography variant='h5' color='primary'>
+                            Security & Billing
+                          </Typography>
+                          <Typography
+                            variant='body2'
+                            color='secondary'
+                            style={{
+                              fontSize: 'var(--font-size-xs)',
+                            }}
+                          >
+                            Login alerts, password resets, and invoice reminders.
+                          </Typography>
+                        </div>
+                      </div>
 
+                      <div className='notification-actions'>
+                        <Checkbox
+                          id='billing-email'
+                          checked={preferences.alerts.billingEmail}
+                          onChange={e =>
+                            handlePreferenceChange({
+                              alerts: {
+                                ...preferences.alerts,
+                                billingEmail: e.target.checked,
+                              },
+                            })
+                          }
+                          label='Email'
+                        />
 
-      {!preferences.smsEnrollment.textEnrollment && (
-        <Typography variant='body2' style={{ color: 'gray' }}>
-          Enable Text Enrollment to configure SMS settings
-        </Typography>
-      )}
-    </div>
-  </CardContent>
-</Card>
+                        <Checkbox
+                          id='billing-sms'
+                          checked={preferences.alerts.billingSms}
+                          onChange={e =>
+                            handlePreferenceChange({
+                              alerts: {
+                                ...preferences.alerts,
+                                billingSms: e.target.checked,
+                              },
+                            })
+                          }
+                          label='SMS'
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
 
-        <Card variant='outlined-raised' size='lg'>
-          <CardContent>
-            <div className='space-y-6'>
-              <Typography variant='h2' style={{ color: 'var(--text-heading)' }}>
-                Display Settings
-              </Typography>
+          <div className='settings-right'>
+            <Card variant='outlined-raised' size='sm'>
+              <CardContent>
+                <div className='settings-card-section'>
+                  <div className='section-title'>
+                    <MdOutlinePalette size={20} />
+                    <Typography variant='h4' color='primary'>
+                      Display
+                    </Typography>
+                  </div>
 
-              <div className='space-y-6'>
-                <div className='w-full max-w-md'>
                   <Select
                     id='language-select'
-                    label='Language'
+                    label='Primary Language'
                     value={preferences.display.language}
                     options={[
-                      { label: 'English', value: 'english' },
-                      { label: 'Spanish', value: 'spanish' }
+                      { label: 'English (US)', value: 'english' },
+                      { label: 'Spanish', value: 'spanish' },
                     ]}
                     onChange={e =>
                       handlePreferenceChange({
@@ -189,51 +216,179 @@ const SettingsUI = ({
                       })
                     }
                   />
-                </div>
+                  <div className='theme-section'>
+                    <Typography variant='subtitle1' color='secondary'>
+                      Interface Theme
+                    </Typography>
 
-                <div>
-                  <Typography variant='subtitle1' style={{ color: 'var(--text-heading)' }}>
-                    Theme
-                  </Typography>
-
-                  <div className='mb-4 flex flex-wrap gap-3'>
-                    {(['light', 'dark', 'system'] as const).map(themeOption => (
+                    <div className='theme-grid'>
                       <Button
-                        key={themeOption}
-                        variant={
-                          preferences.display.theme === themeOption ? 'contained' : 'outlined'
-                        }
+                        fullWidth
+                        variant='outlined'
+                        color='primary'
+                        disableElevation
+                        className={`theme-btn ${preferences.display.theme === 'light' ? 'theme-btn-active' : ''}`}
                         onClick={() =>
                           handlePreferenceChange({
                             display: {
                               ...preferences.display,
-                              theme: themeOption,
+                              theme: 'light',
                             },
                           })
                         }
+                        style={{
+                          border:
+                            preferences.display.theme === 'light'
+                              ? '3px solid var(--color-primary)'
+                              : '1px solid var(--color-black)',
+                          color:
+                            preferences.display.theme === 'light'
+                              ? 'var(--text-primary)'
+                              : 'var(--color-primary)',
+                        }}
                       >
-                        {themeOption.charAt(0).toUpperCase() + themeOption.slice(1)}
+                        <div className='theme-btn-inner'>
+                          <FiSun size={18} />
+                          <span>Light</span>
+                        </div>
                       </Button>
-                    ))}
+
+                      <Button
+                        fullWidth
+                        variant='outlined'
+                        color='primary'
+                        disableElevation
+                        className={`theme-btn ${preferences.display.theme === 'dark' ? 'theme-btn-active' : ''}`}
+                        onClick={() =>
+                          handlePreferenceChange({
+                            display: {
+                              ...preferences.display,
+                              theme: 'dark',
+                            },
+                          })
+                        }
+                        style={{
+                          border:
+                            preferences.display.theme === 'dark'
+                              ? '3px solid var(--color-primary)'
+                              : '1px solid var(--color-black)',
+                          color:
+                            preferences.display.theme === 'dark'
+                              ? 'var(--text-primary)'
+                              : 'var(--color-primary)',
+                        }}
+                      >
+                        <div className='theme-btn-inner'>
+                          <FiMoon size={18} />
+                          <span>Dark</span>
+                        </div>
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <div className='account-card'>
+              <CardContent>
+                <div className='account-content'>
+                  <div className='account-header'>
+                    <FiShield size={20} className='account-icon' />
+                    <Typography
+                      variant='h4'
+                      color='inverse'
+                      className='account-title'
+                    >
+                      Account Security
+                    </Typography>
                   </div>
 
-                  <Button onClick={handleSavePreferences}>Save preferences</Button>
+                  <Button fullWidth className='account-btn'>
+                    <div className='account-btn-inner'>
+                      <FiKey size={16} />
+                      <span className='account-btn-text'>Change Password</span>
+                      <FiChevronRight size={16} />
+                    </div>
+                  </Button>
+
+                  <Button fullWidth className='account-btn'>
+                    <div className='account-btn-inner'>
+                      <FiSmartphone size={16} />
+                      <span className='account-btn-text'>Two-Factor Auth</span>
+                      <FiChevronRight size={16} />
+                    </div>
+                  </Button>
                 </div>
-              </div>
+              </CardContent>
             </div>
-          </CardContent>
-        </Card>
+
+            <Card variant='outlined-raised' size='md' className='sms-card'>
+              <CardContent>
+                <div className='sms-content'>
+                  <div className='sms-header'>
+                    <Typography
+                      variant='h4'
+                      color='primary'
+                      className='sms-title'
+                    >
+                      SMS Enrollment
+                    </Typography>
+
+                    <FiSettings size={20} className='sms-icon' />
+                  </div>
+
+                  <Toggle
+                    id='sms-enroll-main'
+                    checked={preferences.smsEnrollment.textEnrollment}
+                    onChange={e =>
+                      handlePreferenceChange({
+                        smsEnrollment: {
+                          ...preferences.smsEnrollment,
+                          textEnrollment: e.target.checked,
+                        },
+                      })
+                    }
+                    label='Enable Text Enrollment'
+                  />
+
+                  {!preferences.smsEnrollment.textEnrollment && (
+                    <Typography
+                      variant='body2'
+                      style={{
+                        fontSize: 'var(--font-size-xs)',
+                      }}
+                      className='sms-disabled-text'
+                    >
+                      Enable Text Enrollment to configure SMS settings
+                    </Typography>
+                  )}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
+        <div className='settings-footer'>
+          <Button variant='outlined' onClick={handleDiscardPreferences}>
+            Discard Changes
+          </Button>
+
+          <Button onClick={handleSavePreferences}>Save Preferences</Button>
+        </div>
 
         {preferences.saved && (
-          <div>
-            <Typography variant='body2' style={{ color: 'var(--success-color)' }}>
-              ✓ Your settings are saved
-            </Typography>
-          </div>
+          <Typography variant='body2' color='success'>
+            ✓ Your settings are saved
+          </Typography>
+        )}
+
+        {preferences.discarded && (
+          <Typography variant='body2' color='error'>
+            X Changes discarded
+          </Typography>
         )}
       </div>
     </main>
   );
 };
-
 export default SettingsUI;

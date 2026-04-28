@@ -5,8 +5,12 @@ export interface NotificationSettings {
 }
 
 export interface AlertPreferences {
-  email: boolean;
-  sms: boolean;
+  policyEmail: boolean;
+  policySms: boolean;
+  claimsEmail: boolean;
+  claimsSms: boolean;
+  billingEmail: boolean;
+  billingSms: boolean;
   portal: boolean;
 }
 
@@ -25,10 +29,12 @@ export interface PreferencesState {
   display: DisplaySettings;
   smsEnrollment: SmsEnrollment;
   saved: boolean;
+  discarded: boolean;
 }
 
 export interface SettingsUIProps {
   preferences: PreferencesState;
   handleSavePreferences: () => void;
+  handleDiscardPreferences: () => void;
   handlePreferenceChange: (update: Partial<PreferencesState>) => void;
 }

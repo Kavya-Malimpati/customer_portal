@@ -1,4 +1,4 @@
-import PaperlessPreferences from '../PaperlessPreferences';
+
 import Settings from '../Settings';
 
 const SettingsTab = () => {
@@ -6,7 +6,6 @@ const SettingsTab = () => {
     <div>
       {/* Add Account Settings related features here */}
       <Settings />
-      <PaperlessPreferences />
     </div>
   );
 };

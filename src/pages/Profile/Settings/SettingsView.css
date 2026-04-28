@@ -1,0 +1,285 @@
+.settings-page {
+  flex: 1;
+  width: 100%;
+  padding: var(--space-6) var(--space-4);
+  background: var(--bg-surface);
+}
+
+.settings-container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.settings-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+.settings-left,
+.settings-right,
+.settings-card-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.settings-left {
+  gap: var(--space-6);
+}
+
+.settings-right {
+  gap: var(--space-5);
+}
+
+.settings-card-section {
+  gap: var(--space-4);
+}
+
+/* Shared Flex */
+.section-title,
+.notification-header,
+.notification-info,
+.notification-actions,
+.notification-toggle,
+.account-header,
+.account-btn-inner,
+.sms-header {
+  display: flex;
+  align-items: center;
+}
+
+.section-title {
+  gap: var(--space-2);
+  color: var(--text-primary);
+}
+
+.notification-header {
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: var(--space-4);
+  border-bottom: var(--border-width-sm) solid var(--border-color);
+}
+
+.notification-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.notification-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  padding: var(--space-4) 0;
+  border-bottom: var(--border-width-sm) solid var(--border-color);
+}
+
+.notification-row:last-child {
+  border-bottom: none;
+}
+
+.notification-info {
+  align-items: flex-start;
+  gap: var(--space-4);
+  min-width: 0;
+}
+
+.notification-icon {
+  margin-top: var(--space-1);
+  flex-shrink: 0;
+}
+
+.notification-actions {
+  flex-wrap: wrap;
+  gap: var(--space-5);
+}
+
+.notification-toggle {
+  gap: var(--space-2);
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
+  white-space: nowrap;
+}
+
+.settings-muted-icon {
+  color: var(--text-secondary);
+}
+
+.theme-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.theme-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+}
+
+.theme-btn {
+  height: 70px;
+  border: var(--border-width-sm) solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-white);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
+}
+
+.theme-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.theme-btn:active {
+  background-color: var(--bg-hover);
+}
+
+.theme-btn-active {
+  border: var(--border-width-sm) solid var(--color-primary);
+  color: var(--color-primary);
+  background-color: var(--bg-section-alt);
+}
+
+.theme-btn-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  line-height: 1;
+}
+
+/* Account */
+.account-card {
+  background-color: var(--bg-dark);
+  padding: var(--space-5);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+}
+
+.account-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.account-header {
+  gap: var(--space-2);
+}
+
+.account-title,
+.account-icon {
+  color: var(--text-inverse);
+}
+
+.account-btn {
+  height: 46px;
+  width: 100%;
+  color: var(--text-inverse);
+  padding: 0 var(--space-4);
+  border: var(--border-width-sm) solid var(--color-primary);
+}
+
+.account-btn-inner {
+  gap: var(--space-3);
+  width: 100%;
+}
+
+.account-btn-text {
+  flex: 1;
+  text-align: left;
+}
+
+/* SMS */
+.sms-card {
+  padding: var(--space-6);
+}
+
+.sms-header {
+  justify-content: space-between;
+}
+
+.sms-title {
+  color: var(--text-primary);
+}
+
+.sms-icon {
+  color: var(--text-secondary);
+}
+
+.sms-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.sms-disabled-text {
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+/* Footer */
+.settings-footer {
+  display: flex;
+  justify-content: flex-end;
+  border-top: var(--border-width-sm) solid var(--border-color);
+  padding-top: var(--space-6);
+  gap: var(--space-3);
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  .settings-page {
+    padding: var(--space-10) var(--space-6);
+  }
+
+  .settings-grid {
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .notification-row {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+  }
+
+  .notification-actions {
+    justify-content: flex-end;
+  }
+}
+
+@media (min-width: 1024px) {
+  .settings-page {
+    padding: var(--space-12) var(--space-8);
+  }
+}
+
+@media (max-width: 767px) {
+  .notification-actions {
+    justify-content: flex-start;
+  }
+
+  .settings-footer {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  .account-card,
+  .sms-card {
+    padding: var(--space-4);
+  }
+
+  .account-btn {
+    height: 42px;
+  }
+
+  .sms-title {
+    font-size: var(--font-size-lg);
+  }
+}

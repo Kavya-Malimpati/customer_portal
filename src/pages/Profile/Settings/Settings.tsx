@@ -8,22 +8,23 @@ const getInitialPreferences = (): PreferencesState => {
 
     if (saved) {
       const parsed = JSON.parse(saved);
+
       return {
-        ...parsed,
         notifications: {
           policies: parsed.notifications?.policies ?? false,
           billing: parsed.notifications?.billing ?? false,
           claims: parsed.notifications?.claims ?? false,
         },
         alerts: {
-          email: parsed.alerts?.email ?? false,
-          sms: parsed.alerts?.sms ?? false,
+          policyEmail: parsed.alerts?.policyEmail ?? true,
+          policySms: parsed.alerts?.policySms ?? false,
+          claimsEmail: parsed.alerts?.claimsEmail ?? true,
+          claimsSms: parsed.alerts?.claimsSms ?? true,
+          billingEmail: parsed.alerts?.billingEmail ?? true,
+          billingSms: parsed.alerts?.billingSms ?? true,
           portal: parsed.alerts?.portal ?? false,
         },
         smsEnrollment: {
-          email: parsed.smsEnrollment?.email ?? false,
-          sms: parsed.smsEnrollment?.sms ?? false,
-          portal: parsed.smsEnrollment?.portal ?? false,
           textEnrollment: parsed.smsEnrollment?.textEnrollment ?? false,
         },
         display: {
@@ -31,6 +32,7 @@ const getInitialPreferences = (): PreferencesState => {
           theme: parsed.display?.theme ?? 'light',
         },
         saved: false,
+        discarded: false,
       };
     }
   } catch (e) {
@@ -44,8 +46,12 @@ const getInitialPreferences = (): PreferencesState => {
       claims: false,
     },
     alerts: {
-      email: false,
-      sms: false,
+      policyEmail: true,
+      policySms: false,
+      claimsEmail: true,
+      claimsSms: true,
+      billingEmail: true,
+      billingSms: true,
       portal: false,
     },
     smsEnrollment: {
@@ -56,6 +62,7 @@ const getInitialPreferences = (): PreferencesState => {
       theme: 'light',
     },
     saved: false,
+    discarded: false,
   };
 };
 
@@ -83,6 +90,15 @@ const Settings = () => {
     setPreferences(prev => ({
       ...prev,
       saved: true,
+      discarded: false,
+    }));
+  };
+
+  const handleDiscardPreferences = () => {
+    setPreferences(prev => ({
+      ...prev,
+      saved: false,
+      discarded: true,
     }));
   };
 
@@ -91,6 +107,7 @@ const Settings = () => {
       ...prev,
       ...update,
       saved: false,
+      discarded: false,
     }));
   };
 
@@ -98,6 +115,7 @@ const Settings = () => {
     <SettingsUI
       preferences={preferences}
       handleSavePreferences={handleSavePreferences}
+      handleDiscardPreferences={handleDiscardPreferences}
       handlePreferenceChange={handlePreferenceChange}
     />
   );

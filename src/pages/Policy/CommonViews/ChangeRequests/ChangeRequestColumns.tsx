@@ -1,6 +1,6 @@
 import type { TableColumn } from '../../../../common/components/Table';
 import { Typography } from '../../../../common/components';
-import type { ChangeRequestRow } from '../../Auto/Cards/interfaces';
+import type { ChangeRequestRow } from '../interfaces';
 
 export const changeRequestsColumns: TableColumn<ChangeRequestRow>[] = [
   {

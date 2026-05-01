@@ -1,9 +1,9 @@
 // homeowners-policy/api/homeownersPolicyApi.ts
-import type { HomeownersPolicy } from '../Cards/interfaces';
+import type { HomeownersPolicy } from '../interfaces';
 
 export const getHomeownersPolicyDetailsApi = async (): Promise<HomeownersPolicy> => {
   return Promise.resolve({
-    policyType: 'Homeowners Insurance Policy',
+    policyType: 'Homeowners Policy',
     policyHolder: 'John Smith',
     policyNumber: 'HPA-7749201-01',
     status: 'Active',

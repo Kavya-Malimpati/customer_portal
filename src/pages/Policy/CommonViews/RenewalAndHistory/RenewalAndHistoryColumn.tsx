@@ -1,6 +1,6 @@
 import type { TableColumn } from '../../../../common/components/Table';
 import { Typography, Button } from '../../../../common/components';
-import type { RenewalHistoryRow } from '../../Auto/Cards/interfaces';
+import type { RenewalHistoryRow } from '../interfaces';
 
 export const renewalHistoryColumns: TableColumn<RenewalHistoryRow>[] = [
   {

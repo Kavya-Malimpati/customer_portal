@@ -7,3 +7,4 @@ export interface PolicyPageViewProps {
   components: Record<PolicyTabKey, React.ComponentType>;
   onTabChange: (tab: PolicyTabKey) => void;
 }
+

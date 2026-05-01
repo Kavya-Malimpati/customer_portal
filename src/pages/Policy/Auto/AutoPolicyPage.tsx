@@ -1,9 +1,8 @@
-// AutoPolicyPage.tsx
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { getAutoPolicyDetailsApi } from './Api/autoPolicyApi';
-import type { AutoPolicy } from './Cards/interfaces';
+import type { AutoPolicy } from './interfaces';
 
 import AutoPolicyPageView from './AutoPolicyPageView';
 
@@ -13,6 +12,13 @@ const AutoPolicyPage = () => {
   const [policy, setPolicy] = useState<AutoPolicy | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
+
+  const mapAutoPolicyToHeader = (policy: AutoPolicy) => ({
+    policyType: policy.policyType,
+    policyNumber: policy.policyNumber,
+    status: policy.status,
+    endDate: policy.endDate,
+  });
 
   useEffect(() => {
     const loadPolicy = async () => {
@@ -33,7 +39,13 @@ const AutoPolicyPage = () => {
   if (isLoading) return null;
   if (hasError || !policy) return null;
 
-  return <AutoPolicyPageView policy={policy} onBack={() => navigate(-1)} />;
+  return (
+    <AutoPolicyPageView
+      policy={policy}
+      headerData={mapAutoPolicyToHeader(policy)}
+      onBack={() => navigate(-1)}
+    />
+  );
 };
 
 export default AutoPolicyPage;

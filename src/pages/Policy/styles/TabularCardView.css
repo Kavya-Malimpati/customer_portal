@@ -1,0 +1,23 @@
+.tabular-card-content {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.tabular-card-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--color-white);
+  border-bottom: var(--border-width-sm) solid var(--border-color);
+}
+
+.tabular-card-table-wrapper {
+  padding-top: var(--space-4);
+  background-color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}

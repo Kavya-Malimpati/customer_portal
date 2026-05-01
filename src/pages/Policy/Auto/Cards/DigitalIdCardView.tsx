@@ -1,6 +1,8 @@
 import { Button, Card, CardContent, Typography } from '../../../../common/components';
 import { FiDownload } from 'react-icons/fi';
-import type { AutoPolicy } from './interfaces';
+import type { AutoPolicy } from '../interfaces';
+import '../../styles/DigitalIdCardView.css';
+import { IoCarSportOutline } from 'react-icons/io5';
 
 interface Props {
   policy: AutoPolicy;
@@ -8,8 +10,8 @@ interface Props {
 
 const DigitalIdCardView = ({ policy }: Props) => (
   <Card>
-    <CardContent className='flex flex-col gap-(--space-4)'>
-      <div className='policy-card-header'>
+    <CardContent className='digital-id-card-content'>
+      <div className='digital-id-card-header'>
         <Typography variant='h3' color='secondary'>
           Digital ID Card
         </Typography>
@@ -18,21 +20,69 @@ const DigitalIdCardView = ({ policy }: Props) => (
         </Button>
       </div>
 
-      <div className='bg-(--color-gray-100) text-(--text-inverse) rounded-(--rounded-lg) p-(--space-5) flex flex-col gap-(--space-3)'>
-        <Typography variant='h6'>Auto Insurance ID</Typography>
-        <Typography variant='body2'>Policy Holder: {policy.policyHolder}</Typography>
-        <Typography variant='body2'>Policy #{policy.policyNumber}</Typography>
-        <Typography variant='body2'>
-          Vehicle: {policy.vehicle.year} {policy.vehicle.make} {policy.vehicle.model}
-        </Typography>
-        <Typography variant='body2'>
-          Valid {policy.startDate} – {policy.endDate}
-        </Typography>
-      </div>
+      <div className='digital-id-card-body-wrapper'>
+        <div className='digital-id-card-body'>
+          {/* Top Row */}
+          <div className='digital-id-card-top'>
+            <div className='digital-id-card-title'>
+              <Typography variant='h5' color='inverse'>
+                Auto Insurance ID
+              </Typography>
+            </div>
 
-      <Button variant='outlined' className='justify-center'>
-        Add to Apple Wallet
-      </Button>
+            {/* Optional icon/logo */}
+            <div>
+              <IoCarSportOutline />
+            </div>
+          </div>
+
+          {/* Divider */}
+          <div className='digital-id-card-divider' />
+
+          {/* Details */}
+          <div className='digital-id-card-details'>
+            <div>
+              <Typography variant='body2' color='inverse'>
+                Policy Holder
+              </Typography>
+              <Typography variant='body1' color='inverse'>
+                {policy.policyHolder}
+              </Typography>
+            </div>
+
+            <div>
+              <Typography variant='body2' color='inverse'>
+                Policy #
+              </Typography>
+              <Typography variant='body1' color='inverse'>
+                {policy.policyNumber}
+              </Typography>
+            </div>
+
+            <div>
+              <Typography variant='body2' color='inverse'>
+                Vehicle
+              </Typography>
+              <Typography variant='body1' color='inverse'>
+                {policy.vehicle.year} {policy.vehicle.make} {policy.vehicle.model}
+              </Typography>
+            </div>
+
+            <div>
+              <Typography variant='body2' color='inverse'>
+                Valid
+              </Typography>
+              <Typography variant='body1' color='inverse'>
+                {policy.startDate} – {policy.endDate}
+              </Typography>
+            </div>
+          </div>
+        </div>
+
+        <Button variant='outlined' className='digital-id-card-wallet'>
+          Add to Apple Wallet
+        </Button>
+      </div>
     </CardContent>
   </Card>
 );

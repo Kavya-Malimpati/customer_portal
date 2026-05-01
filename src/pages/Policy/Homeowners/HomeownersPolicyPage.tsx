@@ -1,9 +1,8 @@
-// AutoPolicyPage.tsx
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { getHomeownersPolicyDetailsApi } from './Api/homeownersPolicyApi';
-import type { HomeownersPolicy } from './Cards/interfaces';
+import type { HomeownersPolicy } from './interfaces';
 
 import HomeownersPolicyPageView from './HomeownersPolicyPageView';
 
@@ -13,6 +12,13 @@ const HomeownersPolicyPage = () => {
   const [policy, setPolicy] = useState<HomeownersPolicy | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
+
+  const mapHomeownersPolicyToHeader = (policy: HomeownersPolicy) => ({
+    policyType: policy.policyType,
+    policyNumber: policy.policyNumber,
+    status: policy.status,
+    endDate: policy.endDate,
+  });
 
   useEffect(() => {
     const loadPolicy = async () => {
@@ -33,7 +39,13 @@ const HomeownersPolicyPage = () => {
   if (isLoading) return null;
   if (hasError || !policy) return null;
 
-  return <HomeownersPolicyPageView policy={policy} onBack={() => navigate(-1)} />;
+  return (
+    <HomeownersPolicyPageView
+      policy={policy}
+      headerData={mapHomeownersPolicyToHeader(policy)}
+      onBack={() => navigate(-1)}
+    />
+  );
 };
 
 export default HomeownersPolicyPage;

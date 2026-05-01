@@ -1,61 +1,70 @@
 import { useState } from 'react';
-import type { HomeownersPolicy } from './Cards/interfaces';
+import type { HomeownersPolicy } from './interfaces';
+import type { PolicyHeaderData } from '../CommonViews/interfaces';
+
+import { DigitalIdCardView, HomeownersPolicySummaryCardView } from './Cards';
 
 import {
-  HomeownersHeaderCardView,
-  DigitalIdCardView,
   AwaitingSignatureCardView,
-  HomeownersPolicySummaryCardView,
+  PolicyHeaderCardView,
   ChangeRequestsCardView,
-  RenewalPackageCardView,
   PremiumInvoicesCardView,
   BinderLetterCardView,
+  RenewalPackageCardView,
   RenewalHistoryCardView,
-} from './Cards';
+} from '../CommonViews';
 
-import '../CommonViews/AutoPolicyView.css';
+import { getHomeownersPremiumInvoicesApi } from './Api/homeownersPremiumInvoicesApi';
+import { getHomeownersBinderLetterApi } from './Api/homeownersBinderLetterApi';
+import { getHomeownersRenewalPackageApi } from './Api/homeownersRenewalPackageApi';
+import { getHomeownersAwaitingSignatureApi } from './Api/homeownersAwaitingSignatureApi';
+import { getHomeownersChangeRequestsApi } from './Api/homeownersChangeRequestsApi';
+import { getHomeownersRenewalHistoryApi } from './Api/homeownersRenewalHistoryApi';
+
+import '../styles/PolicyPageView.css';
 
 interface Props {
   policy: HomeownersPolicy;
+  headerData: PolicyHeaderData;
   onBack: () => void;
 }
 
-const HomeownersPolicyPageView = ({ policy }: Props) => {
+const HomeownersPolicyPageView = ({ policy, headerData }: Props) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className='min-h-screen w-full bg-(--bg-section-alt) p-(--space-4)'>
-      <div className='max-w-(--container-max-width) mx-auto flex flex-col gap-(--space-6)'>
-        <HomeownersHeaderCardView policy={policy} />
+    <div className='policy-page'>
+      <div className='policy-container'>
+        <PolicyHeaderCardView policy={headerData} onRequestChange={() => {}} onRenew={() => {}} />
 
-        <div className='grid grid-cols-12 gap-(--space-6)'>
+        <div className='policy-grid'>
           {/* LEFT */}
-          <div className='col-span-12 xl:col-span-4 flex flex-col gap-(--space-6)'>
+          <div className='policy-left'>
             <DigitalIdCardView policy={policy} />
-            <AwaitingSignatureCardView />
+            <AwaitingSignatureCardView fetchAwaitingSignature={getHomeownersAwaitingSignatureApi} />
           </div>
 
           {/* RIGHT */}
-          <div className='col-span-12 xl:col-span-8 flex flex-col gap-(--space-6)'>
+          <div className='policy-right'>
             <HomeownersPolicySummaryCardView
               policy={policy}
               isExpanded={isExpanded}
               onToggleExpand={() => setIsExpanded(p => !p)}
             />
-            <ChangeRequestsCardView />
+            <ChangeRequestsCardView fetchChangeRequests={getHomeownersChangeRequestsApi} />
           </div>
 
           {/* DOCUMENTS ROW */}
-          <div className='col-span-12'>
-            <div className='grid grid-cols-12 gap-(--space-6)'>
-              <RenewalPackageCardView />
-              <PremiumInvoicesCardView />
-              <BinderLetterCardView />
+          <div className='policy-full-row'>
+            <div className='policy-documents-grid'>
+              <RenewalPackageCardView fetchRenewalPackage={getHomeownersRenewalPackageApi} />
+              <PremiumInvoicesCardView fetchInvoices={getHomeownersPremiumInvoicesApi} />
+              <BinderLetterCardView fetchBinderLetter={getHomeownersBinderLetterApi} />
             </div>
           </div>
 
-          <div className='col-span-12'>
-            <RenewalHistoryCardView />
+          <div className='policy-full-row'>
+            <RenewalHistoryCardView fetchRenewalHistory={getHomeownersRenewalHistoryApi} />
           </div>
         </div>
       </div>

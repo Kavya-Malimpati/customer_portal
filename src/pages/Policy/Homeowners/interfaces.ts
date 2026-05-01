@@ -43,22 +43,3 @@ export interface HomeownersPolicy {
   coverage: HomeCoverageItem[];
   property: HomePropertyDetails;
 }
-
-export type ChangeRequestStatus = 'PENDING' | 'IN_REVIEW' | 'COMPLETED';
-
-export interface ChangeRequestRow extends Record<string, unknown> {
-  requestDate: string;
-  type: string;
-  status: ChangeRequestStatus;
-  estimatedCompletion?: string;
-}
-
-export type RenewalStatus = 'ACTIVE' | 'EXPIRED';
-
-export interface RenewalHistoryRow extends Record<string, unknown> {
-  termPeriod: string;
-  policyType: string;
-  premium: string;
-  claims: string;
-  status: RenewalStatus;
-}

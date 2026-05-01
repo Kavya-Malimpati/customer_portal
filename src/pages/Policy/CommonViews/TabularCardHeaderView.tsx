@@ -1,5 +1,7 @@
 import { Typography } from '../../../common/components';
 
+import '../styles/TabularCardView.css';
+
 interface Props {
   title: string;
   rightSlot?: React.ReactNode;
@@ -7,7 +9,7 @@ interface Props {
 
 const CardHeaderView = ({ title, rightSlot }: Props) => {
   return (
-    <div className='flex items-center justify-between'>
+    <div className='tabular-card-header'>
       <Typography variant='h3' color='secondary'>
         {title}
       </Typography>

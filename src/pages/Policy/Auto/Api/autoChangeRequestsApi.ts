@@ -1,4 +1,4 @@
-import type { ChangeRequestRow } from '../Cards/interfaces';
+import type { ChangeRequestRow } from '../../CommonViews/interfaces';
 
 // 'Vehicle Change'              // Replace, add, or remove a vehicle
 // 'Driver Update'               // Add / remove driver
@@ -10,7 +10,7 @@ import type { ChangeRequestRow } from '../Cards/interfaces';
 // 'Lienholder Update'           // Add / update finance company
 // 'Payment Method Change'       // Billing-related changes
 
-export const getChangeRequestsApi = async (): Promise<ChangeRequestRow[]> => {
+export const getAutoChangeRequestsApi = async (): Promise<ChangeRequestRow[]> => {
   return Promise.resolve([
     {
       requestDate: 'Apr 12, 2025',

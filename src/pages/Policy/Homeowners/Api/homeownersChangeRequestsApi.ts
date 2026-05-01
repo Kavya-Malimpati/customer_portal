@@ -1,4 +1,4 @@
-import type { ChangeRequestRow } from '../Cards/interfaces';
+import type { ChangeRequestRow } from '../../CommonViews/interfaces';
 
 // 'Property Detail Update'      // Address, square footage, year built, etc.
 // 'Coverage Adjustment'         // Dwelling, personal property, liability limits
@@ -9,7 +9,7 @@ import type { ChangeRequestRow } from '../Cards/interfaces';
 // 'Policy Endorsement'          // Mid-term policy amendment
 // 'Property Value Update'       // Estimated value or replacement cost change
 
-export const getChangeRequestsApi = async (): Promise<ChangeRequestRow[]> => {
+export const getHomeownersChangeRequestsApi = async (): Promise<ChangeRequestRow[]> => {
   return Promise.resolve([
     {
       requestDate: 'Apr 12, 2025',

@@ -1,4 +1,4 @@
-import type { RenewalHistoryRow } from '../Cards/interfaces';
+import type { RenewalHistoryRow } from '../../CommonViews/interfaces';
 
 export const getAutoRenewalHistoryApi = async (): Promise<RenewalHistoryRow[]> => {
   return Promise.resolve([

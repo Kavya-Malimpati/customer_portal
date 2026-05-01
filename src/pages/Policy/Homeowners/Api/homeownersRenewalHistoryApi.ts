@@ -1,6 +1,6 @@
-import type { RenewalHistoryRow } from '../Cards/interfaces';
+import type { RenewalHistoryRow } from '../../CommonViews/interfaces';
 
-export const getHomeRenewalHistoryApi = async (): Promise<RenewalHistoryRow[]> => {
+export const getHomeownersRenewalHistoryApi = async (): Promise<RenewalHistoryRow[]> => {
   return Promise.resolve([
     {
       termPeriod: 'Jan 01, 2025 – Jan 01, 2026',

@@ -1,6 +1,8 @@
 import { Card, CardContent, Typography } from '../../../common/components';
 import { FiDownload } from 'react-icons/fi';
 
+import '../styles/DocumentCardView.css';
+
 interface Props {
   title: string;
   description: string;
@@ -11,38 +13,42 @@ interface Props {
 
 const DocumentCardView = ({ title, description, fileMeta, icon, onDownload }: Props) => {
   return (
-    <Card
-      className='rounded-(--rounded-lg) h-full cursor-pointer hover:shadow-sm transition-shadow'
-      onClick={onDownload}
-    >
-      <CardContent className='flex flex-col gap-(--space-4) h-full'>
+    <Card>
+      <CardContent className='document-card-content'>
         {/* Header (grid for correct alignment) */}
-        <div className='grid grid-cols-[auto_1fr] gap-x-(--space-3) gap-y-(--space-1)'>
-          {/* Icon */}
-          <div color='secondary'>{icon}</div>
+        <div className='document-card-header'>
+          <div className='document-card-header-left'>
+            {/* Icon */}
+            <div className='document-card-icon' color='secondary'>
+              {icon}
+            </div>
 
-          {/* Title */}
-          <Typography variant='h3' color='secondary' className='text-left w-full'>
-            {title}
-          </Typography>
-
-          {/* Description (starts under icon) */}
-          <div className='col-span-2'>
-            <Typography variant='h6' color='secondary' className='text-left w-full'>
-              {description}
+            {/* Title */}
+            <Typography variant='h3' color='secondary'>
+              {title}
             </Typography>
           </div>
         </div>
+        {/* Description (starts under icon) */}
 
-        {/* Footer */}
+        <div className='document-card-body'>
+          <Typography variant='body2' color='muted' className='text-left w-full line-clamp-2'>
+            {description}
+          </Typography>
 
-        <div className='mt-auto pt-(--space-3) border-t border-(--border-subtle)'>
-          <div className='mt-auto flex items-center justify-between'>
+          {/* Footer */}
+
+          <div className='document-card-footer'>
             <Typography variant='body2' color='muted'>
               {fileMeta}
             </Typography>
 
-            <FiDownload size={20} className='text-(--color-primary)' aria-label='Download' />
+            <FiDownload
+              size={20}
+              className='document-card-download'
+              aria-label='Download'
+              onClick={onDownload}
+            />
           </div>
         </div>
       </CardContent>

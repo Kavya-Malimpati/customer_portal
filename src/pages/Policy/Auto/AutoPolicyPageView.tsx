@@ -1,61 +1,69 @@
 import { useState } from 'react';
-import type { AutoPolicy } from './Cards/interfaces';
+import type { AutoPolicy } from './interfaces';
+import type { PolicyHeaderData } from '../CommonViews/interfaces';
+
+import { DigitalIdCardView, AutoPolicySummaryCardView } from './Cards';
 
 import {
-  AutoPolicyHeaderCardView,
-  DigitalIdCardView,
+  PolicyHeaderCardView,
   AwaitingSignatureCardView,
-  PolicySummaryCardView,
   ChangeRequestsCardView,
-  RenewalPackageCardView,
   PremiumInvoicesCardView,
   BinderLetterCardView,
+  RenewalPackageCardView,
   RenewalHistoryCardView,
-} from './Cards';
+} from '../CommonViews';
 
-import '../CommonViews/AutoPolicyView.css';
+import { getAutoPremiumInvoicesApi } from './Api/autoPremiumInvoicesApi';
+import { getAutoBinderLetterApi } from './Api/autoBinderLetterApi';
+import { getAutoRenewalPackageApi } from './Api/autoRenewalPackageApi';
+import { getAutoAwaitingSignatureApi } from './Api/autoAwaitingSignatureApi';
+import { getAutoChangeRequestsApi } from './Api/autoChangeRequestsApi';
+import { getAutoRenewalHistoryApi } from './Api/autoRenewalHistoryApi';
 
+import '../styles/PolicyPageView.css';
 interface Props {
   policy: AutoPolicy;
+  headerData: PolicyHeaderData;
   onBack: () => void;
 }
 
-const AutoPolicyPageView = ({ policy }: Props) => {
+const AutoPolicyPageView = ({ policy, headerData }: Props) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className='min-h-screen w-full bg-(--bg-section-alt) p-(--space-4)'>
-      <div className='max-w-(--container-max-width) mx-auto flex flex-col gap-(--space-6)'>
-        <AutoPolicyHeaderCardView policy={policy} />
+    <div className='policy-page'>
+      <div className='policy-container'>
+        <PolicyHeaderCardView policy={headerData} onRequestChange={() => {}} onRenew={() => {}} />
 
-        <div className='grid grid-cols-12 gap-(--space-6)'>
+        <div className='policy-grid'>
           {/* LEFT */}
-          <div className='col-span-12 xl:col-span-4 flex flex-col gap-(--space-6)'>
+          <div className='policy-left'>
             <DigitalIdCardView policy={policy} />
-            <AwaitingSignatureCardView />
+            <AwaitingSignatureCardView fetchAwaitingSignature={getAutoAwaitingSignatureApi} />
           </div>
 
           {/* RIGHT */}
-          <div className='col-span-12 xl:col-span-8 flex flex-col gap-(--space-6)'>
-            <PolicySummaryCardView
+          <div className='policy-right'>
+            <AutoPolicySummaryCardView
               policy={policy}
               isExpanded={isExpanded}
               onToggleExpand={() => setIsExpanded(p => !p)}
             />
-            <ChangeRequestsCardView />
+            <ChangeRequestsCardView fetchChangeRequests={getAutoChangeRequestsApi} />
           </div>
 
           {/* DOCUMENTS ROW */}
-          <div className='col-span-12'>
-            <div className='grid grid-cols-12 gap-(--space-6)'>
-              <RenewalPackageCardView />
-              <PremiumInvoicesCardView />
-              <BinderLetterCardView />
+          <div className='policy-full-row'>
+            <div className='policy-documents-grid'>
+              <RenewalPackageCardView fetchRenewalPackage={getAutoRenewalPackageApi} />
+              <PremiumInvoicesCardView fetchInvoices={getAutoPremiumInvoicesApi} />
+              <BinderLetterCardView fetchBinderLetter={getAutoBinderLetterApi} />
             </div>
           </div>
 
-          <div className='col-span-12'>
-            <RenewalHistoryCardView />
+          <div className='policy-full-row'>
+            <RenewalHistoryCardView fetchRenewalHistory={getAutoRenewalHistoryApi} />
           </div>
         </div>
       </div>

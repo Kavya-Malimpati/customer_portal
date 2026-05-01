@@ -1,5 +1,4 @@
-// auto-policy/api/autoPolicyApi.ts
-import type { AutoPolicy } from '../Cards/interfaces';
+import type { AutoPolicy } from '../interfaces';
 
 export const getAutoPolicyDetailsApi = async (): Promise<AutoPolicy> => {
   return Promise.resolve({

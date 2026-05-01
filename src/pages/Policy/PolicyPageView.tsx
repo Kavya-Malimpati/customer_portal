@@ -2,6 +2,7 @@ import { Tabs, Tab } from '../../common/components/Tabs';
 import Typography from '../../common/components/Typography/Typography';
 import type { PolicyTabKey } from './PolicyTabs/interfaces';
 import type { PolicyPageViewProps } from './interfaces';
+import '../Policy/styles/PolicyPageView.css';
 
 const PolicyPageView = ({
   tabs,
@@ -11,14 +12,14 @@ const PolicyPageView = ({
   onTabChange,
 }: PolicyPageViewProps) => {
   return (
-    <div style={{ padding: 'var(--space-6)', backgroundColor: 'var(--bg-page)' }}>
+    <div className='policy-page-tabs'>
       {/* Heading & Subheading */}
       {activeTabMeta && (
-        <div style={{ marginBottom: 'var(--space-6)' }}>
+        <div className='policy-page-tab-heading'>
           <Typography variant='h2' color='heading'>
             {activeTabMeta.heading}
           </Typography>
-          <Typography color='secondary' style={{ marginTop: 'var(--space-2)' }}>
+          <Typography color='secondary' className='policy-page-tab-subheading'>
             {activeTabMeta.subheading}
           </Typography>
         </div>

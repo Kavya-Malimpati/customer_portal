@@ -1,9 +1,2 @@
-export { default as BinderLetterCardView } from './BinderLetterCardView';
-export { default as PremiumInvoicesCardView } from './PremiumInvoicesCardView';
-export { default as RenewalHistoryCardView } from './RenewalHistoryCardView';
-export { default as RenewalPackageCardView } from './RenewalPackageCardView';
-export { default as AwaitingSignatureCardView } from './AwaitingSignatureCardView';
-export { default as PolicySummaryCardView } from './PolicySummaryCardView';
-export { default as ChangeRequestsCardView } from './ChangeRequestsCardView';
+export { default as AutoPolicySummaryCardView } from './AutoPolicySummaryCardView';
 export { default as DigitalIdCardView } from './DigitalIdCardView';
-export { default as AutoPolicyHeaderCardView } from './AutoPolicyHeaderCardView';

@@ -5,7 +5,7 @@ import Login from './pages/Login';
 import PersonalDetailsPage from './pages/Profile/ViewPersonalDetails/PersonalDetailsPage';
 import Home from './pages/Home';
 import AddContactDetails from './pages/Profile/AddContactDetails';
-import UpdateContactDetails from './pages/Profile/UpdateContactDetails';
+import RecentAlerts from './pages/Services/RecentAlerts/RecentAlerts';
 import ContactDetails from './pages/Profile/Contact';
 import DocumentVault from './pages/Profile/DocumentVault';
 import PaperlessPreferences from './pages/Profile/PaperlessPreferences';
@@ -14,6 +14,8 @@ import DigitalDocuments from './pages/Profile/DigitalDocuments';
 import Settings from './pages/Profile/Settings';
 import AgentContactDetails from './pages/Profile/AgentContactDetails/';
 import ProfilePage from './pages/Profile/ProfilePage';
+import FeedbackCard from './pages/Services/FeedbackCard/FeedbackCard';
+import ServicesPage from './pages/Services/ServicesPage';
 
 function App() {
   const navigate = useNavigate();
@@ -59,14 +61,7 @@ function App() {
         }
       />
 
-      <Route
-        path='/update-contact'
-        element={
-          <MainLayout onLogout={handleLogout}>
-            <UpdateContactDetails />
-          </MainLayout>
-        }
-      />
+     
 
       <Route
         path='/settings'
@@ -95,13 +90,15 @@ function App() {
         }
       />
       <Route
-        path='/edit-personal-details'
+        path='/ServicesPage'
         element={
           <MainLayout onLogout={handleLogout}>
-            <EditPersonalDetails />
+            <ServicesPage/>
           </MainLayout>
         }
       />
+      
+
       <Route
         path='/view-personal-details'
         element={

@@ -204,6 +204,109 @@
   margin-top: var(--space-3);
 }
 
+.fnol-header-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-4);
+  align-items: start;
+  width: 100%;
+  margin-bottom: var(--space-5);
+}
+
+.fnol-title {
+  margin: 0;
+  color: var(--text-heading);
+  font-weight: var(--font-weight-bold);
+}
+
+.fnol-subtitle {
+  margin-top: var(--space-1);
+  color: var(--text-secondary);
+}
+
+.fnol-selected-claim {
+  grid-column: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: fit-content;
+  padding: var(--space-2) var(--space-4);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+}
+
+.fnol-selected-claim > span:first-child,
+.fnol-selected-claim p:first-child {
+  color: var(--text-secondary);
+  font-weight: var(--font-weight-bold);
+}
+
+.fnol-selected-text {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-bold);
+}
+
+.fnol-selected-claim button {
+  color: var(--color-primary);
+  padding: 0;
+}
+
+.fnol-alert {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 420px;
+  padding: var(--space-3) var(--space-4);
+  background: #ffe3df;
+  border: 1px solid #ffaaa0;
+  border-radius: var(--radius-sm);
+}
+
+.fnol-alert-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background: var(--color-error);
+  color: var(--text-inverse);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--font-weight-bold);
+  flex-shrink: 0;
+}
+
+.fnol-alert-title {
+  color: var(--color-error);
+  font-weight: var(--font-weight-bold);
+}
+
+.fnol-alert-text {
+  color: var(--text-secondary);
+}
+
+.fnol-alert button {
+  color: var(--color-error);
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .fnol-header-row {
+    grid-template-columns: 1fr;
+  }
+
+  .fnol-selected-claim,
+  .fnol-alert {
+    grid-column: auto;
+    grid-row: auto;
+    width: 100%;
+    min-width: 0;
+  }
+}
+
 @media (max-width: 900px) {
   .register-fnol-grid {
     grid-template-columns: 1fr;

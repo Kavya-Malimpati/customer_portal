@@ -6,12 +6,54 @@ import { Typography, Button, CardContent } from '../../../common/components';
 
 const RegisterFNOLView = ({
   steps,
+  repairInfo,
+  selectedClaim,
   onStartReporting,
   onRequestRepair,
-  repairInfo,
 }: RegisterFNOLViewProps) => {
   return (
     <section className='register-fnol-page'>
+      <section className='fnol-header-row'>
+        <div>
+          <Typography variant='h1' color='primary' className='fnol-title'>
+            Good Morning, Alexander
+          </Typography>
+
+          <Typography variant='body2' className='fnol-subtitle'>
+            Welcome back. You have 2 active claims needing attention.
+          </Typography>
+        </div>
+
+        <section className='fnol-selected-claim'>
+          <Typography variant='caption'>SELECTED CONTEXT:</Typography>
+
+          <Typography variant='body2' className='fnol-selected-text'>
+            {selectedClaim.claimNumber} | {selectedClaim.vehicle}
+          </Typography>
+
+          <Button variant='text'>
+            Change
+          </Button>
+        </section>
+
+        <div className='fnol-alert'>
+          <div className='fnol-alert-icon'>△</div>
+
+          <div>
+            <Typography variant='body2' className='fnol-alert-title'>
+              ATTENTION REQUIRED
+            </Typography>
+
+            <Typography variant='caption' className='fnol-alert-text'>
+              Evidence requested for Claim #PC-9902
+            </Typography>
+          </div>
+
+          <Button color='error' variant='text'>
+            Resolve Now
+          </Button>
+        </div>
+      </section>
       <div className='register-fnol-grid'>
         <div className='fnol-card'>
           <div className='fnol-header'>

@@ -1,0 +1,79 @@
+import { FiClock } from 'react-icons/fi';
+import './RegisterFNOL.css';
+import type { RegisterFNOLViewProps } from './Interface';
+
+import { Typography, Button, CardContent } from '../../../common/components';
+
+const RegisterFNOLView = ({
+  steps,
+  onStartReporting,
+  onRequestRepair,
+  repairInfo,
+}: RegisterFNOLViewProps) => {
+  return (
+    <section className='register-fnol-page'>
+      <div className='register-fnol-grid'>
+        <div className='fnol-card'>
+          <div className='fnol-header'>
+            <div>
+              <h2>Report New Claim (FNOL)</h2>
+              <p>Initiate a formal claim for vehicle collision or theft.</p>
+            </div>
+
+            <span className='fnol-badge'>Standard Process</span>
+          </div>
+
+          <div className='fnol-stepper'>
+            <div className='fnol-stepper-line'></div>
+            <div className='fnol-stepper-active-line'></div>
+
+            {steps.map((step, index) => (
+              <div className='fnol-step-item' key={step.id}>
+                <div className={`fnol-step-number ${index === 0 ? 'active' : ''}`}>{step.id}</div>
+
+                <p className={`fnol-step-label ${index === 0 ? 'active' : ''}`}>{step.title}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className='fnol-footer-box'>
+            <div className='fnol-time'>
+              <FiClock />
+              <span>Estimated time to complete: 10 mins</span>
+            </div>
+
+            <Button className='primary-btn' onClick={onStartReporting}>
+              Start Reporting
+            </Button>
+          </div>
+        </div>
+
+        <div className='repair-card'>
+          <CardContent>
+            <div className='fnol-card-header'>
+              <Typography variant='h3' color='primary' className='fnol-title'>
+                {repairInfo.title}
+              </Typography>
+
+              <span className='fast-badge'>{repairInfo.badge}</span>
+            </div>
+
+            <Typography variant='body2' className='fnol-subtitle'>
+              {repairInfo.description}
+            </Typography>
+
+            <div className='repair-benefit'>
+              🛡 <span>{repairInfo.benefit}</span>
+            </div>
+
+            <Button variant='outlined' className='request' fullWidth onClick={onRequestRepair}>
+              Request Repair
+            </Button>
+          </CardContent>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default RegisterFNOLView;

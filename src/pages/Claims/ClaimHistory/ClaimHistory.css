@@ -1,0 +1,51 @@
+.history-card {
+  padding: var(--space-5);
+}
+
+.history-title {
+  margin-bottom: var(--space-4);
+  color: var(--text-heading);
+}
+
+.status-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 7vh;
+}
+
+.status {
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  min-width: 100px;
+}
+
+.status.paid {
+  background: var(--text-inverse);
+  color: var(--color-success);
+}
+
+.status.archived {
+  background: var(--text-inverse);
+  color: var(--text-secondary);
+}
+
+.action {
+  cursor: pointer;
+  color: var(--color-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.action:hover {
+  text-decoration: underline;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}

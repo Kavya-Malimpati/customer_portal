@@ -1,9 +1,12 @@
 import './App.css';
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
+
 import MainLayout from './common/MainLayout';
-import Login from './pages/Login';
-import PersonalDetailsPage from './pages/Profile/ViewPersonalDetails/PersonalDetailsPage';
+// import Login from './pages/Login';
 import Home from './pages/Home';
+
+// Profile
+import PersonalDetailsPage from './pages/Profile/ViewPersonalDetails/PersonalDetailsPage';
 import AddContactDetails from './pages/Profile/AddContactDetails';
 import UpdateContactDetails from './pages/Profile/UpdateContactDetails';
 import ContactDetails from './pages/Profile/Contact';
@@ -12,8 +15,9 @@ import PaperlessPreferences from './pages/Profile/PaperlessPreferences';
 import EditPersonalDetails from './pages/Profile/EditPersonalDetails';
 import DigitalDocuments from './pages/Profile/DigitalDocuments';
 import Settings from './pages/Profile/Settings';
-import AgentContactDetails from './pages/Profile/AgentContactDetails/';
+import AgentContactDetails from './pages/Profile/AgentContactDetails';
 import ProfilePage from './pages/Profile/ProfilePage';
+import Claims from './pages/Claims';
 
 function App() {
   const navigate = useNavigate();
@@ -24,6 +28,7 @@ function App() {
 
   return (
     <Routes>
+      {/* Home */}
       <Route
         path='/'
         element={
@@ -32,6 +37,8 @@ function App() {
           </MainLayout>
         }
       />
+
+      {/* Profile Routes */}
       <Route
         path='/home/contact'
         element={
@@ -94,6 +101,7 @@ function App() {
           </MainLayout>
         }
       />
+
       <Route
         path='/edit-personal-details'
         element={
@@ -102,6 +110,7 @@ function App() {
           </MainLayout>
         }
       />
+
       <Route
         path='/view-personal-details'
         element={
@@ -110,6 +119,7 @@ function App() {
           </MainLayout>
         }
       />
+
       <Route
         path='/agent-contact-details'
         element={
@@ -118,6 +128,7 @@ function App() {
           </MainLayout>
         }
       />
+
       <Route
         path='/profile-page'
         element={
@@ -127,6 +138,16 @@ function App() {
         }
       />
 
+      <Route
+        path='/claims/all'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <Claims />
+          </MainLayout>
+        }
+      />
+
+      {/* Redirect */}
       <Route path='*' element={<Navigate to='/' replace />} />
     </Routes>
   );

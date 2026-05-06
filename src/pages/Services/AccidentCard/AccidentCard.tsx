@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
-
+import React from 'react';
 import AccidentCardView from './AccidentCardView';
-
 import type { AccidentCardProps, StepItem } from './interfaces';
 
 const AccidentCard: React.FC<AccidentCardProps> = ({ steps }) => {
@@ -28,7 +26,7 @@ const AccidentCard: React.FC<AccidentCardProps> = ({ steps }) => {
     },
   ];
 
-  const [stepList] = useState<StepItem[]>(steps?.length ? steps : defaultSteps);
+  const stepList = steps?.length ? steps : defaultSteps;
 
   return <AccidentCardView steps={stepList} />;
 };

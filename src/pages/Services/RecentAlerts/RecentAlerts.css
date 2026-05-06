@@ -73,6 +73,6 @@
 
 .alerts-footer {
   border-top: var(--border-width-sm) solid var(--border-color);
-  padding: var(--space-3);
+
   text-align: center;
 }

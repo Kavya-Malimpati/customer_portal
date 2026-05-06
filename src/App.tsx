@@ -90,7 +90,7 @@ function App() {
         }
       />
       <Route
-        path='/ServicesPage'
+        path='/services'
         element={
           <MainLayout onLogout={handleLogout}>
             <ServicesPage/>

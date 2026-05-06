@@ -1,10 +1,20 @@
-
-
 /* MAIN GRID */
 .services-grid {
   display: grid;
   grid-template-columns: 5fr 2fr;
   gap: var(--space-4);
+}
+
+.support-guidance-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+ 
+}
+
+.support-guidance-subtitle {
+  font-size: 0.95rem;
+  margin: 0;
 }
 
 /* LEFT */
@@ -26,4 +36,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-4);
+}
+.support-guidance-section {
+  margin-bottom: 30px;
 }

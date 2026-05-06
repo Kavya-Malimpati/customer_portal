@@ -1,11 +1,13 @@
 import React from 'react';
 import '../../../styles/tokens.css';
+
 export interface CardProps {
   id?: string;
   className?: string;
   tabIndex?: number;
   size?: 'sm' | 'md' | 'lg';
   variant?: 'elevation' | 'outlined' | 'outlined-raised';
+  fullScreen?: boolean;
   onClick?: (e: React.MouseEvent<HTMLElement>) => void;
   onFocus?: (e: React.FocusEvent<HTMLElement>) => void;
   onBlur?: (e: React.FocusEvent<HTMLElement>) => void;
@@ -19,6 +21,7 @@ export interface CardProps {
   'aria-live'?: 'off' | 'polite' | 'assertive';
   'aria-haspopup'?: boolean | 'menu' | 'listbox' | 'tree' | 'grid' | 'dialog';
 }
+
 const sizeConfig = {
   sm: {
     padding: 'var(--space-3)',
@@ -33,6 +36,7 @@ const sizeConfig = {
     minHeight: '200px',
   },
 };
+
 const variantConfig = {
   elevation: {
     backgroundColor: 'var(--bg-surface)',
@@ -50,12 +54,14 @@ const variantConfig = {
     boxShadow: 'var(--shadow-sm)',
   },
 };
+
 const Card: React.FC<CardProps> = ({
   id,
   className = '',
   tabIndex,
   size = 'md',
   variant = 'elevation',
+  fullScreen = false,
   onClick,
   onFocus,
   onBlur,
@@ -71,25 +77,34 @@ const Card: React.FC<CardProps> = ({
 }) => {
   const currentSize = sizeConfig[size];
   const currentVariant = variantConfig[variant];
+
   const baseStyles: React.CSSProperties = {
     display: 'flex',
     flexDirection: 'column',
     borderRadius: 'var(--radius-lg)',
     transition: `all var(--transition-normal)`,
     color: 'var(--text-primary)',
+    overflow: 'hidden',
+    width: '100%',
   };
+
   const cardStyles: React.CSSProperties = {
     ...baseStyles,
     ...currentVariant,
-    padding: currentSize.padding,
+    padding: fullScreen ? '0' : currentSize.padding,
     minHeight: currentSize.minHeight,
   };
+
   const isInteractive = Boolean(onClick || tabIndex !== undefined);
+
   const interactiveStyles: React.CSSProperties = {
     ...cardStyles,
     cursor: 'pointer',
   };
-  const getInteractiveStateStyles = (state: 'hover' | 'focus'): React.CSSProperties => {
+
+  const getInteractiveStateStyles = (
+    state: 'hover' | 'focus'
+  ): React.CSSProperties => {
     switch (state) {
       case 'hover':
         return {
@@ -99,33 +114,40 @@ const Card: React.FC<CardProps> = ({
               ? 'var(--shadow-lg)'
               : undefined,
         };
+
       case 'focus':
         return {
           outline: 'none',
           boxShadow: `var(--focus-ring)`,
         };
+
       default:
         return {};
     }
   };
+
   const handleMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
     if (!isInteractive) return;
     Object.assign(e.currentTarget.style, getInteractiveStateStyles('hover'));
   };
+
   const handleMouseLeave = (e: React.MouseEvent<HTMLElement>) => {
     if (!isInteractive) return;
     Object.assign(e.currentTarget.style, interactiveStyles);
   };
+
   const handleFocus = (e: React.FocusEvent<HTMLElement>) => {
     if (!isInteractive) return;
     Object.assign(e.currentTarget.style, getInteractiveStateStyles('focus'));
     onFocus?.(e);
   };
+
   const handleBlur = (e: React.FocusEvent<HTMLElement>) => {
     if (!isInteractive) return;
     Object.assign(e.currentTarget.style, interactiveStyles);
     onBlur?.(e);
   };
+
   const commonProps = {
     id,
     style: isInteractive ? interactiveStyles : cardStyles,
@@ -137,12 +159,13 @@ const Card: React.FC<CardProps> = ({
     'aria-live': ariaLive,
     'aria-haspopup': ariaHaspopup,
   };
+
   return (
     <>
       {isInteractive ? (
         <button
           {...commonProps}
-          className={`${className}`}
+          className={className}
           tabIndex={tabIndex ?? 0}
           onClick={onClick}
           onFocus={handleFocus}
@@ -164,5 +187,5 @@ const Card: React.FC<CardProps> = ({
     </>
   );
 };
-export default Card;
 
+export default Card;

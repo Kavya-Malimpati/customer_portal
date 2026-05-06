@@ -12,3 +12,7 @@ export interface RecentAlertsProps {
   alerts?: AlertItem[];   
   newCount?: number;
 }
+export interface RecentAlertsViewProps {
+  alerts: AlertItem[];
+  newCount: number;
+}

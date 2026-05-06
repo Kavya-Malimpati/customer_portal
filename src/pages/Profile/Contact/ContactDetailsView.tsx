@@ -41,7 +41,7 @@ function ContactDetailsView({ contactData, onEditClick }: ViewContactDetailsProp
                 Email
               </Typography>
 
-              <Typography variant="body1">
+              <Typography variant="body2">
                 { contactData.email}
               </Typography>
             </div>
@@ -51,7 +51,7 @@ function ContactDetailsView({ contactData, onEditClick }: ViewContactDetailsProp
                 Primary Phone
               </Typography>
 
-              <Typography variant="body1">
+              <Typography variant="body2">
                 {contactData.primaryPhone}
               </Typography>
             </div>
@@ -61,7 +61,7 @@ function ContactDetailsView({ contactData, onEditClick }: ViewContactDetailsProp
                 Address
               </Typography>
 
-              <Typography variant="body1">
+              <Typography variant="body2">
                 {contactData.street}, {contactData.city}, {contactData.state}, {contactData.zipCode}
               </Typography>
             </div>
@@ -71,7 +71,7 @@ function ContactDetailsView({ contactData, onEditClick }: ViewContactDetailsProp
                 Preferred Communication
               </Typography>
 
-              <Typography variant="body1">
+              <Typography variant="body2">
                 {contactData.preferredCommunication}
               </Typography>
             </div>

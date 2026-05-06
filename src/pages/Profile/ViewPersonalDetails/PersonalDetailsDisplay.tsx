@@ -47,7 +47,7 @@ const PersonalDetailsDisplay = ({ data, onEditClick }: PersonalDetailsDisplayPro
                 Full Name
               </Typography>
 
-              <Typography variant="body1">
+              <Typography variant="body2">
                 {data.firstName} {data.middleName} {data.lastName}
               </Typography>
             </div>
@@ -57,7 +57,7 @@ const PersonalDetailsDisplay = ({ data, onEditClick }: PersonalDetailsDisplayPro
                 Date of Birth
               </Typography>
 
-              <Typography variant="body1">
+              <Typography variant="body2">
                 {data.dateOfBirth}
               </Typography>
             </div>
@@ -67,7 +67,7 @@ const PersonalDetailsDisplay = ({ data, onEditClick }: PersonalDetailsDisplayPro
                 Gender
               </Typography>
 
-              <Typography variant="body1">
+              <Typography variant="body2">
                 {data.gender}
               </Typography>
             </div>
@@ -77,7 +77,7 @@ const PersonalDetailsDisplay = ({ data, onEditClick }: PersonalDetailsDisplayPro
                 Marital Status
               </Typography>
 
-              <Typography variant="body1">
+              <Typography variant="body2">
                 {data.maritalStatus}
               </Typography>
             </div>

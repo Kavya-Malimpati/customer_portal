@@ -1,17 +1,15 @@
 import React from 'react';
 import './RecentAlerts.css';
 import {Card,Typography,Button} from '../../../common/components';
-import { FiAlertTriangle, FiRefreshCw, FiCheckSquare } from 'react-icons/fi';
-import type { AlertItem } from './IRecentAlerts';
+import { FiAlertTriangle, FiRefreshCw, FiCheckSquare, } from 'react-icons/fi';
+import type { RecentAlertsViewProps } from './IRecentAlerts';
 
-interface RecentAlertsViewProps {
-  alerts: AlertItem[];
-  newCount: number;
-}
+
+
 
 const RecentAlertsView: React.FC<RecentAlertsViewProps> = ({ alerts, newCount }) => {
   return (
-    <Card variant="outlined-raised" className="alerts-card">
+    <Card variant="outlined-raised" className="alerts-card" fullScreen>
       <div className="alerts-header">
         <Typography variant="h2" color="primary">Recent Alerts</Typography>
         {newCount > 0 && (

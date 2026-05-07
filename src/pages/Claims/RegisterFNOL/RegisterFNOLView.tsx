@@ -40,11 +40,11 @@ const RegisterFNOLView = ({
           <div className='fnol-alert-icon'>△</div>
 
           <div>
-            <Typography variant='body2' className='fnol-alert-title'>
+            <Typography variant='body2' color='error' className='fnol-alert-title'>
               ATTENTION REQUIRED
             </Typography>
 
-            <Typography variant='caption' className='fnol-alert-text'>
+            <Typography variant='caption' color='error' className='fnol-alert-text'>
               Evidence requested for Claim #PC-9902
             </Typography>
           </div>

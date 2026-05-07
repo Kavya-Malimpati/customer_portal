@@ -2,6 +2,7 @@ import { Button, Card, CardContent, Typography } from '../../../common/component
 import type { PolicyHeaderData } from './interfaces';
 import '../styles/PolicyHeaderCardView.css';
 import { FaCheckCircle } from 'react-icons/fa';
+import { FiEdit2 } from 'react-icons/fi';
 
 interface Props {
   policy: PolicyHeaderData;
@@ -38,7 +39,10 @@ const PolicyHeaderCardView = ({ policy, onRequestChange, onRenew }: Props) => (
         <div className='policy-header-right'>
           {onRequestChange && (
             <Button variant='outlined' onClick={onRequestChange}>
-              Request Change
+              <span className='button-content'>
+                <FiEdit2 />
+                Request Change
+              </span>
             </Button>
           )}
           {onRenew && (

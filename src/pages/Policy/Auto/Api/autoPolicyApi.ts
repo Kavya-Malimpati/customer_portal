@@ -8,6 +8,7 @@ export const getAutoPolicyDetailsApi = async (): Promise<AutoPolicy> => {
     status: 'Active',
     startDate: 'Dec 31, 2025',
     endDate: 'Dec 31, 2026',
+    lastUpdated: 'Jan 19, 2026',
 
     coverage: [
       { type: 'Bodily Injury Liability', value: '$250,000 / $500,000' },

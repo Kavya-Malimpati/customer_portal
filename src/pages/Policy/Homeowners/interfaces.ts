@@ -39,6 +39,7 @@ export interface HomeownersPolicy {
   status: 'Active' | 'Expired' | 'Pending';
   startDate: string;
   endDate: string;
+  lastUpdated: string;
 
   coverage: HomeCoverageItem[];
   property: HomePropertyDetails;

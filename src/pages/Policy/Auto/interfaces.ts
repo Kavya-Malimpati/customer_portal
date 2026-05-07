@@ -1,5 +1,3 @@
-// auto-policy/interfaces.ts
-
 export interface CoverageItem {
   type: string;
   value: string;
@@ -29,6 +27,7 @@ export interface AutoPolicy {
   status: 'Active' | 'Expired' | 'Pending';
   startDate: string;
   endDate: string;
+  lastUpdated: string;
 
   coverage: CoverageItem[];
   vehicle: VehicleInformation;

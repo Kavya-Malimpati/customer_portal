@@ -12,22 +12,22 @@ import type { ChangeRequestRow } from '../../CommonViews/interfaces';
 export const getHomeownersChangeRequestsApi = async (): Promise<ChangeRequestRow[]> => {
   return Promise.resolve([
     {
-      requestDate: 'Apr 12, 2025',
+      requestDate: 'Apr 12, 2026',
       type: 'Property Detail Update',
       status: 'PENDING',
-      estimatedCompletion: 'Apr 20, 2025',
+      estimatedCompletion: 'Apr 20, 2026',
     },
     {
-      requestDate: 'Apr 03, 2025',
+      requestDate: 'Apr 03, 2026',
       type: 'Coverage Adjustment',
       status: 'IN_REVIEW',
-      estimatedCompletion: 'Apr 05, 2025',
+      estimatedCompletion: 'Apr 05, 2026',
     },
     {
-      requestDate: 'Aug 18, 2024',
+      requestDate: 'Jan 18, 2026',
       type: 'Policy Endorsement',
       status: 'COMPLETED',
-      estimatedCompletion: 'Aug 19, 2024',
+      estimatedCompletion: 'Jan 19, 2026',
     },
   ]);
 };

@@ -3,6 +3,7 @@ import type { HomeownersPolicy } from '../interfaces';
 import '../../styles/PolicySummaryCardView.css';
 import { BsPerson } from 'react-icons/bs';
 import { TbHomePlus } from 'react-icons/tb';
+import { IoIosInformationCircleOutline } from 'react-icons/io';
 
 interface Props {
   policy: HomeownersPolicy;
@@ -185,6 +186,10 @@ const HomeownersPolicySummaryCardView = ({ policy, isExpanded, onToggleExpand }:
 
       {/* EXPAND / COLLAPSE CTA */}
       <div className='policy-summary-footer'>
+        <div className='policy-summary-update'>
+          {<IoIosInformationCircleOutline />}
+          <Typography>Coverage last updated {policy.lastUpdated}</Typography>
+        </div>
         <Button variant='text' className='policy-summary-toggle' onClick={onToggleExpand}>
           {isExpanded ? 'Hide Policy Terms' : 'Show Full Policy Terms'}
         </Button>

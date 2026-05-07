@@ -7,8 +7,9 @@ export const getHomeownersPolicyDetailsApi = async (): Promise<HomeownersPolicy>
     policyHolder: 'John Smith',
     policyNumber: 'HPA-7749201-01',
     status: 'Active',
-    startDate: 'Jan 01, 2025',
-    endDate: 'Jan 01, 2026',
+    startDate: 'Jan 01, 2026',
+    endDate: 'Jan 01, 2027',
+    lastUpdated: 'Jan 19, 2026',
 
     coverage: [
       { type: 'Dwelling Coverage', value: '$450,000' },

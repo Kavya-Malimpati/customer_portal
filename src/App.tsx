@@ -15,8 +15,6 @@ import Settings from './pages/Profile/Settings';
 import AgentContactDetails from './pages/Profile/AgentContactDetails/';
 import ProfilePage from './pages/Profile/ProfilePage';
 import PolicyPage from './pages/Policy/PolicyPage';
-import AutoPolicyPage from './pages/Policy/Auto/AutoPolicyPage';
-import HomeownersPolicyPage from './pages/Policy/Homeowners/HomeownersPolicyPage';
 
 function App() {
   const navigate = useNavigate();
@@ -126,23 +124,6 @@ function App() {
         element={
           <MainLayout onLogout={handleLogout}>
             <ProfilePage />
-          </MainLayout>
-        }
-      />
-      <Route
-        path='/auto-policy'
-        element={
-          <MainLayout onLogout={handleLogout}>
-            <AutoPolicyPage />
-          </MainLayout>
-        }
-      />
-
-      <Route
-        path='/homeowners-policy'
-        element={
-          <MainLayout onLogout={handleLogout}>
-            <HomeownersPolicyPage />
           </MainLayout>
         }
       />

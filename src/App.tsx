@@ -15,7 +15,7 @@ import Settings from './pages/Profile/Settings';
 import AgentContactDetails from './pages/Profile/AgentContactDetails/';
 import ProfilePage from './pages/Profile/ProfilePage';
 import AccountSecurity from './pages/Profile/AccountSecurity';
-import AccountSecurityView from './pages/Profile/AccountSecurity/AccountSecurityView';
+import PremiumPayment from './pages/Billing/OnlinePremiumPayments/PaymentPayments';
 
 function App() {
   const navigate = useNavigate();
@@ -70,6 +70,14 @@ function App() {
         }
       />
 
+      <Route
+        path='/account-security'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <AccountSecurity />
+          </MainLayout>
+        }
+      />
       <Route
         path='/settings'
         element={
@@ -138,6 +146,15 @@ function App() {
         }
       />
 
+      {/*  */}
+      <Route
+        path='/payment-page'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <PremiumPayment />
+          </MainLayout>
+        }
+      />
       <Route path='*' element={<Navigate to='/' replace />} />
     </Routes>
   );

@@ -1,0 +1,60 @@
+.payment-wrapper {
+  background: var(--bg-section-alt);
+}
+
+.payment-card {
+  width: 350px;
+  min-height: 300px;
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  color: var(--text-inverse);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-hover));
+  box-shadow: var(--shadow-md);
+}
+
+.payment-amount {
+  margin-top: var(--space-2);
+}
+
+.payment-due {
+  margin-top: var(--space-1);
+}
+
+.payment-due-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.payment-button-wrapper {
+  margin-top: var(--space-4);
+}
+
+.payment-button {
+  margin-top: 2rem;
+  width: 100%;
+  height: var(--control-height-md);
+  background: var(--color-white);
+  color: var(--color-primary);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  cursor: pointer;
+}
+
+.payment-methods {
+  margin-top: var(--space-4);
+  display: flex;
+  justify-content: center;
+  gap: var(--space-4);
+}
+
+.payment-status {
+  margin-top: var(--space-3);
+  text-align: center;
+}

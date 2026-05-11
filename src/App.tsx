@@ -15,7 +15,7 @@ import Settings from './pages/Profile/Settings';
 import AgentContactDetails from './pages/Profile/AgentContactDetails/';
 import ProfilePage from './pages/Profile/ProfilePage';
 import AccountSecurity from './pages/Profile/AccountSecurity';
-import PremiumPayment from './pages/Billing/OnlinePremiumPayments/PaymentPayments';
+import BillingPage from './pages/Billing/BillingPage';
 
 function App() {
   const navigate = useNavigate();
@@ -148,13 +148,14 @@ function App() {
 
       {/*  */}
       <Route
-        path='/payment-page'
+        path='/billing'
         element={
           <MainLayout onLogout={handleLogout}>
-            <PremiumPayment />
+            <BillingPage /> 
           </MainLayout>
         }
       />
+      
       <Route path='*' element={<Navigate to='/' replace />} />
     </Routes>
   );

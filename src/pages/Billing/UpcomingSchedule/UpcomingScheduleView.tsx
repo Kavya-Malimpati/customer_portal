@@ -6,39 +6,39 @@ import type { UpcomingScheduleUiProps } from './Interfaces';
 
 const UpcomingScheduleView = ({ installments }: UpcomingScheduleUiProps) => {
   return (
-    <div className="schedule-wrapper">
-      <div className="schedule-card">
-        <div className="schedule-header">
-          <Typography variant="h3">Upcoming Schedule</Typography>
+    <div className='schedule-wrapper'>
+      <div className='schedule-card'>
+        <div className='schedule-header'>
+          <Typography variant='h3' color='primary'>
+            Upcoming Schedule
+          </Typography>
         </div>
-        <div className="schedule-divider"></div>
+        <div className='schedule-divider'></div>
 
         {installments.map((item, idx) => (
           <div key={idx}>
-            <div className="schedule-row">
-              <div className="schedule-left">
+            <div className='schedule-row'>
+              <div className='schedule-left'>
                 <FiCalendar size={18} />
-                <div className="schedule-text">
-                  <Typography variant="body2" className="schedule-name">
+                <div className='schedule-text'>
+                  <Typography variant='body2' className='schedule-name'>
                     {item.name}
                   </Typography>
-                  <Typography variant="caption" className="schedule-policy">
+                  <Typography variant='caption' className='schedule-policy'>
                     {item.policyNumber}
                   </Typography>
                 </div>
               </div>
 
-              <div className="schedule-right">
-                <Typography variant="body2" className="schedule-amount">
+              <div className='schedule-right'>
+                <Typography variant='body2' className='schedule-amount'>
                   {item.amount}
                 </Typography>
-                <div className="schedule-status">
-                  {item.status.toUpperCase()}
-                </div>
+                <div className='schedule-status'>{item.status.toUpperCase()}</div>
               </div>
             </div>
 
-            {idx < installments.length - 1 && <div className="schedule-divider"></div>}
+            {idx < installments.length - 1 && <div className='schedule-divider'></div>}
           </div>
         ))}
       </div>

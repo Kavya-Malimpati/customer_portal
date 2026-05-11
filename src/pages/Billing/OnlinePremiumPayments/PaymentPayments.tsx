@@ -1,10 +1,7 @@
 import { useEffect, useState } from 'react';
 import PremiumPaymentView from './PremiumPaymentView';
 import { getPremiumPaymentsApi } from './PremiumPaymentsApi';
-
 import type { PremiumPaymentData, PaymentStatus } from './Interfaces';
-import ClaimPayout from '../ClaimPayment/ClaimPayout';
-import UpcomingSchedule from '../UpcomingSchedule/UpcomingSchedule';
 
 const PremiumPayment = () => {
   const [data, setData] = useState<PremiumPaymentData | null>(null);
@@ -43,8 +40,6 @@ const PremiumPayment = () => {
         status={status}
         onPayClick={handlePayClick}
       />
-      <ClaimPayout />
-      <UpcomingSchedule />
     </div>
   );
 };

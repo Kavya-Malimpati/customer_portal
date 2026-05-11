@@ -1,5 +1,5 @@
-import { Typography, Button } from '../../../common/components';
 import { FaUniversity } from 'react-icons/fa';
+import { Card, CardContent, Typography, Button } from '../../../common/components';
 import './ClaimPayoutUi.css';
 
 import type { ClaimPayoutUiProps } from './Interfaces';
@@ -12,57 +12,68 @@ const ClaimPayoutView = ({
   onChangeClick,
 }: ClaimPayoutUiProps) => {
   return (
-    <div className='claim-wrapper'>
-      <div className='claim-card'>
-        <div className='claim-header'>
-          <FaUniversity size={20} color='green' />
-          <Typography variant='h3'>Claim Payouts</Typography>
-        </div>
-
-        <div className='claim-id'>
-          <Typography variant='subtitle1'>Claim #{claimId}</Typography>
-        </div>
-
-        <div className='claim-status'>
-          <Typography variant='body2' color='body'>
-            {status.toUpperCase()}
-          </Typography>
-        </div>
-
-        <div className='claim-progress'>
-          <div className='claim-progress-bar'>
-            <div
-              className='claim-progress-fill'
-              style={{
-                width: status === 'approved' ? '25%' : status === 'processing' ? '50%' : '100%',
-                background:
-                  status === 'processing'
-                    ? 'var(--color-warning)'
-                    : status === 'approved'
-                      ? 'var(--color-info)'
-                      : 'var(--color-success)',
-              }}
-            />
+    <div className='w-full md:max-w-sm'>
+      <Card variant='outlined' className='border border-gray-200 rounded-xl shadow-sm bg-white'>
+        <CardContent className='p-6'>
+          {/* HEADER */}
+          <div className='claim-header flex items-center gap-2 mb-3'>
+            <FaUniversity size={18} color='green' />
+            <Typography variant='h5' className='font-bold text-black'>
+              Claim Payouts
+            </Typography>
           </div>
-        </div>
 
-        <div className='claim-arrival'>
-          <Typography variant='body2' color='body'>
-            Expected arrival: {expectedArrival}
-          </Typography>
-        </div>
+          {/* CLAIM ID */}
+          <div className='claim-id mb-2'>
+            <Typography variant='subtitle1' color='primary'>
+              Claim #{claimId}
+            </Typography>
+          </div>
 
-        <div className='claim-divider'></div>
+          {/* STATUS */}
+          <div className='claim-status mb-2'>
+            <span className={status === 'processing' ? 'status-processing' : ''}>
+              {status.toUpperCase()}
+            </span>
+          </div>
 
-        <div className='claim-method-row'>
-          <Typography variant='body2' color='body'>
-            Method: {method}
-          </Typography>
-          <Button variant='text' color='primary' onClick={onChangeClick} ariaLabel='Change Method'>
-            Change
-          </Button>
-        </div>
-      </div>
+          {/* PROGRESS BAR */}
+          <div className='claim-progress mb-2'>
+            <div className='claim-progress-bar h-2 w-full bg-gray-200 rounded'>
+              <div
+                className='claim-progress-fill h-2 rounded bg-green-500'
+                style={{
+                  width: status === 'approved' ? '25%' : status === 'processing' ? '50%' : '100%',
+                }}
+              />
+            </div>
+          </div>
+
+          {/* EXPECTED ARRIVAL */}
+          <div className='claim-arrival mb-2'>
+            <Typography variant='body2' color='body'>
+              Expected arrival: {expectedArrival}
+            </Typography>
+          </div>
+
+          <div className='claim-divider border-t border-gray-300 my-2' />
+
+          {/* METHOD + CHANGE BUTTON */}
+          <div className='claim-method-row flex items-center justify-between'>
+            <Typography variant='body2' color='body'>
+              Method: {method}
+            </Typography>
+            <Button
+              variant='text'
+              color='primary'
+              onClick={onChangeClick}
+              ariaLabel='Change Method'
+            >
+              Change
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 };

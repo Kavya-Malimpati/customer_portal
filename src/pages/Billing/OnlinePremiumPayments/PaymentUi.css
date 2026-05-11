@@ -1,15 +1,14 @@
 .payment-wrapper {
-  background: var(--bg-section-alt);
+  background: var(--color-white);
 }
 
 .payment-card {
   width: 350px;
-  min-height: 300px;
+  min-height: 270px;
   border-radius: var(--radius-lg);
   padding: var(--space-5);
   color: var(--text-inverse);
-  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-hover));
-  box-shadow: var(--shadow-md);
+  background: var(--color-primary);
 }
 
 .payment-amount {

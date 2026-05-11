@@ -18,7 +18,11 @@ const ClaimPayoutView = ({
           {/* HEADER */}
           <div className='claim-header flex items-center gap-2 mb-3'>
             <FaUniversity size={18} color='green' />
-            <Typography variant='h5' className='font-bold text-black'>
+            <Typography
+              variant='h5'
+              className='font-bold text-black'
+              style={{ color: 'var(--text-primary)' }}
+            >
               Claim Payouts
             </Typography>
           </div>

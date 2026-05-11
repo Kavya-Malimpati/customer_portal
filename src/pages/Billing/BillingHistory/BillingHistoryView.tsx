@@ -12,7 +12,7 @@ const BillingHistoryView = ({ transactions }: BillingHistoryViewProps) => {
   return (
     <div className='billing-history-content'>
       <div className='billing-history-header'>
-        <Typography variant='h5'>Billing History & Statements</Typography>
+        <Typography variant='h5' style={{ color: 'var(--text-primary)' }}>Billing History & Statements</Typography>
 
         <div className='search-bar'>
           <FormInput

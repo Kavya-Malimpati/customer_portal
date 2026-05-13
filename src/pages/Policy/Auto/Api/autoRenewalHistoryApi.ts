@@ -13,7 +13,7 @@ export const getAutoRenewalHistoryApi = async (): Promise<RenewalHistoryRow[]> =
       termPeriod: 'Dec 31, 2024 – Dec 31, 2025',
       policyType: 'Personal Auto',
       premium: '$1,380.00',
-      claims: '1',
+      claims: '1 Claim',
       status: 'EXPIRED',
     },
     {

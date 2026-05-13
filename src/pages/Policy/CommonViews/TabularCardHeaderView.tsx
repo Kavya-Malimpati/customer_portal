@@ -7,7 +7,7 @@ interface Props {
   rightSlot?: React.ReactNode;
 }
 
-const CardHeaderView = ({ title, rightSlot }: Props) => {
+const TabularCardHeaderView = ({ title, rightSlot }: Props) => {
   return (
     <div className='tabular-card-header'>
       <Typography variant='h3' color='secondary'>
@@ -19,4 +19,4 @@ const CardHeaderView = ({ title, rightSlot }: Props) => {
   );
 };
 
-export default CardHeaderView;
+export default TabularCardHeaderView;

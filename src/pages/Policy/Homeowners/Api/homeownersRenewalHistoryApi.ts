@@ -13,7 +13,7 @@ export const getHomeownersRenewalHistoryApi = async (): Promise<RenewalHistoryRo
       termPeriod: 'Jan 01, 2025 – Jan 01, 2026',
       policyType: 'Homeowners',
       premium: '$1,920.00',
-      claims: '1',
+      claims: '1 Claim',
       status: 'EXPIRED',
     },
     {

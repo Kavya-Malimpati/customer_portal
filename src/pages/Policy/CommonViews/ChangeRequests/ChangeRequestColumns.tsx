@@ -6,25 +6,24 @@ export const changeRequestsColumns: TableColumn<ChangeRequestRow>[] = [
   {
     field: 'requestDate',
     headerName: 'REQUEST DATE',
-    sortable: true,
+    sortable: false,
+    renderCell: (row: ChangeRequestRow) => (
+      <Typography className='request-date-text'>{row.requestDate}</Typography>
+    ),
   },
   {
     field: 'type',
     headerName: 'TYPE',
-    sortable: true,
+    sortable: false,
+    renderCell: (row: ChangeRequestRow) => (
+      <Typography className='change-type-text'>{row.type}</Typography>
+    ),
   },
   {
     field: 'status',
     headerName: 'STATUS',
     renderCell: (row: ChangeRequestRow) => (
-      <span
-        className={`
-          px-(--space-2) py-(--space-1)
-          rounded-(--rounded-sm)
-          text-(--font-size-xs)
-          font-medium
-        `}
-      >
+      <span className={`status-badge ${row.status.toLowerCase().replace(/_/g, '-')}`}>
         {row.status.replace('_', ' ')}
       </span>
     ),
@@ -33,7 +32,7 @@ export const changeRequestsColumns: TableColumn<ChangeRequestRow>[] = [
     field: 'estimatedCompletion',
     headerName: 'EST. COMPLETION',
     renderCell: (row: ChangeRequestRow) => (
-      <Typography variant='body2' color='body2'>
+      <Typography className='estimated-completion-text'>
         {row.estimatedCompletion ?? '—'}
       </Typography>
     ),

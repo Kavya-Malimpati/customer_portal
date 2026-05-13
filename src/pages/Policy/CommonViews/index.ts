@@ -6,6 +6,7 @@ export { default as PolicyHeaderCardView } from './PolicyHeaderCardView';
 export { default as AwaitingSignatureCardView } from './AwaitingSignatureCardView';
 export { default as ChangeRequestsCardView } from './ChangeRequestsCardView';
 export { default as RenewalHistoryCardView } from './RenewalHistoryCardView';
+export { default as TabularCardHeaderView } from './TabularCardHeaderView';
 export type {
   PolicyDocument,
   PolicyHeaderData,

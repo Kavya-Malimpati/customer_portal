@@ -12,12 +12,13 @@ const RenewalHistoryTable = ({ rows }: Props) => {
   return (
     <div className='tabular-card-table-wrapper'>
       <Table<RenewalHistoryRow>
+        className='tabular-card-table'
         columns={renewalHistoryColumns}
         rows={rows}
         size='sm'
         variant='outlined'
         dense
-        sortable
+        sortable={false}
         aria-label='Renewal and History'
       />
     </div>

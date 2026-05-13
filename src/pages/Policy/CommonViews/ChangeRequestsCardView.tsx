@@ -22,7 +22,12 @@ const ChangeRequestsCardView = ({ fetchChangeRequests }: Props) => {
   return (
     <Card>
       <CardContent className='tabular-card-content'>
-        <TabularCardHeaderView title='Change Requests' rightSlot={`${rows.length} Records`} />
+        <TabularCardHeaderView
+          title='Change Requests'
+          rightSlot={
+            rows.length > 0 && <span className='record-count-pill'>{rows.length} Records</span>
+          }
+        />
         <ChangeRequestsTable rows={rows} />
       </CardContent>
     </Card>

@@ -117,7 +117,7 @@
   color: var(--text-secondary);
 }
 .claim-box {
-  background: linear-gradient(135deg, var(--color-primary), #2e63d2);
+  background: linear-gradient(135deg, var(--color-primary));
   border-radius: var(--radius-lg);
   padding: var(--space-6);
   color: var(--text-inverse);
@@ -163,4 +163,92 @@
   align-items: center;
   gap: 14px;
   padding: 3px 0;
+}
+.office-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 22px 14px;
+}
+
+.office-title {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.office-subtitle {
+  color: #4b5563;
+  margin-top: 2px;
+  font-size: 14px;
+}
+
+.office-status {
+  background: #8BE85F;
+  color: #1f3d12;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 999px;
+  letter-spacing: 0.3px;
+  line-height: 1;
+}
+
+.address-strip {
+  background: #f5f7fa;
+  border-top: 1px solid #eceff3;
+  padding: 18px 22px;
+}
+
+.address-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.address-left {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.location-icon {
+  font-size: 18px;
+  color: #1473e6;
+  margin-top: 2px;
+}
+
+.address-line1 {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.address-line2 {
+  font-size: 14px;
+  color: #6b7280;
+  margin-top: 2px;
+}
+
+.direction-btn {
+  min-width: 150px;
+  height: 40px;
+  border-radius: 4px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  padding: 0 18px !important;
+}
+
+@media (max-width: 768px) {
+  .address-flex {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .direction-btn {
+    width: 100%;
+  }
 }

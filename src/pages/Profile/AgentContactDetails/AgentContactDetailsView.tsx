@@ -10,8 +10,7 @@ import {
 import type { Agent, AgentOfficeDetails } from './Interface';
 import './AgentContactView.css';
 import { MdLocationOn } from "react-icons/md";
-import { FiTruck, FiGlobe } from "react-icons/fi";
-import { FiMail, FiPhone } from "react-icons/fi";
+import { FiTruck, FiGlobe, FiMail, FiPhone, FiPhoneCall } from "react-icons/fi";
 interface Props {
   agent: Agent | null;
   office: AgentOfficeDetails | null;
@@ -98,40 +97,49 @@ const AgentContactView = ({
           <div className="office-section flex flex-col gap-4">
             <Card variant="outlined-raised">
               <CardContent>
-                <div className="office-header">
+               <div className="office-header">
+  <div>
+  <Typography
+  variant="h2"
+  className="office-title"
+  color="primary"
+>
+  {office.officeName}
+</Typography>
 
-                  <div>
-                    <Typography variant="h2" color="primary">
-                      {office.officeName}
-                    </Typography>
-                    <Typography variant="body2">
-                      Headquarters & Client Success Center
-                    </Typography>
-                  </div>
-                 
+    <Typography variant="body2" className="office-subtitle">
+      Headquarters & Client Success Center
+    </Typography>
+  </div>
 
-                </div>
+  <div className="office-status">
+    OPEN NOW
+  </div>
+</div>
               </CardContent>
             <div className="address-strip address-flex">
   <div className="address-left">
     <MdLocationOn className="location-icon" />
 
     <div>
- <Typography variant="body2" className="address-line2">
-       {office.addressLine1}, {office.addressLine2}, {office.city}, {office.state} {office.zip}
+      <Typography variant="body1" className="address-line1">
+        {office.addressLine1}
+      </Typography>
+
+      <Typography variant="body2" className="address-line2">
+        {office.addressLine2}, {office.city}, {office.state} {office.zip}
       </Typography>
     </div>
   </div>
 
- 
-  <Button variant="outlined" onClick={onDirections}>
+  <Button
+    variant="outlined"
+    onClick={onDirections}
+    className="direction-btn"
+  >
     Get Directions
   </Button>
-
-</div>
-             
-
-              
+</div>    
             </Card>
             <div className="grid md:grid-cols-2 gap-4">
 
@@ -190,7 +198,10 @@ const AgentContactView = ({
   onClick={onCallClaim}
   className="claim-primary-btn"
 >
-  Direct Claim Line
+  <div className="flex items-center gap-2">
+    <FiPhoneCall size={18} />
+    <span>Direct Claim Line</span>
+  </div>
 </Button>
 
 <Button

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { GoShieldCheck } from 'react-icons/go';
 import DocumentCardView from './DocumentCardView';
 import type { PolicyDocument } from './interfaces';
+import '../styles/DocumentCardView.css';
 
 interface Props {
   fetchBinderLetter: () => Promise<PolicyDocument | null>;
@@ -22,7 +23,7 @@ const BinderLetterCardView = ({ fetchBinderLetter }: Props) => {
   if (!doc) return null;
 
   return (
-    <div key={doc.id} className='col-span-12 md:col-span-4'>
+    <div key={doc.id} className='document-card-container'>
       <DocumentCardView
         title={doc.title}
         description={doc.description}

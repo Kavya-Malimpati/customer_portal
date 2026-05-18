@@ -1,11 +1,8 @@
 import './App.css';
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import MainLayout from './common/MainLayout';
-// import Login from './pages/Login';
-import PersonalDetailsPage from './pages/Profile/ViewPersonalDetails/PersonalDetailApi';
 import Home from './pages/Home';
 import AddContactDetails from './pages/Profile/AddContactDetails';
-import UpdateContactDetails from './pages/Profile/UpdateContactDetails';
 import ContactDetails from './pages/Profile/Contact';
 import DocumentVault from './pages/Profile/DocumentVault';
 import PaperlessPreferences from './pages/Profile/PaperlessPreferences';
@@ -14,7 +11,6 @@ import DigitalDocuments from './pages/Profile/DigitalDocuments';
 import Settings from './pages/Profile/Settings';
 import AgentContactDetails from './pages/Profile/AgentContactDetails/';
 import ProfilePage from './pages/Profile/ProfilePage';
-import AccountSecurity from './pages/Profile/AccountSecurity';
 import BillingPage from './pages/Billing/BillingPage';
 
 function App() {
@@ -62,23 +58,6 @@ function App() {
       />
 
       <Route
-        path='/update-contact'
-        element={
-          <MainLayout onLogout={handleLogout}>
-            <UpdateContactDetails />
-          </MainLayout>
-        }
-      />
-
-      <Route
-        path='/account-security'
-        element={
-          <MainLayout onLogout={handleLogout}>
-            <AccountSecurity />
-          </MainLayout>
-        }
-      />
-      <Route
         path='/settings'
         element={
           <MainLayout onLogout={handleLogout}>
@@ -104,31 +83,7 @@ function App() {
           </MainLayout>
         }
       />
-      <Route
-        path='/edit-personal-details'
-        element={
-          <MainLayout onLogout={handleLogout}>
-            <EditPersonalDetails />
-          </MainLayout>
-        }
-      />
-      <Route
-        path='/view-personal-details'
-        element={
-          <MainLayout onLogout={handleLogout}>
-            <PersonalDetailsPage />
-          </MainLayout>
-        }
-      />
 
-      <Route
-        path='/view-account-security'
-        element={
-          <MainLayout onLogout={handleLogout}>
-            <AccountSecurity />
-          </MainLayout>
-        }
-      />
       <Route
         path='/agent-contact-details'
         element={
@@ -146,16 +101,15 @@ function App() {
         }
       />
 
-      {/*  */}
       <Route
         path='/billing'
         element={
           <MainLayout onLogout={handleLogout}>
-            <BillingPage /> 
+            <BillingPage />
           </MainLayout>
         }
       />
-      
+
       <Route path='*' element={<Navigate to='/' replace />} />
     </Routes>
   );

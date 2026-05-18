@@ -4,15 +4,17 @@ import { useNavigate } from 'react-router-dom';
 import personalDetailsConfigJson from '../../../config/personalDetailsConfig.json';
 import { deepClone } from '../../../scripts/utils';
 import { validateFormFields } from '../../../scripts/validationsService';
-import EditPersonalDetailsUi from './EditPersonalDetailsView';
-import { getPersonalDetailsApi } from './personalDetailsApi';
+import EditPersonalDetailsView from './EditPersonalDetailsView';
+import { getPersonalDetailsApi } from './PersonalDetailsApi';
+
 
 import type { ChangeEvent, FormEvent } from 'react';
 import type { ValidationResult, FormDataType } from './Interfaces';
+import type { Props } from './Interfaces';
 
 const personalDetailsConfig = personalDetailsConfigJson as FormDataType;
 
-const EditPersonalDetails = () => {
+const EditPersonalDetails = ({ onClose }: Props) => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState<FormDataType>(deepClone(personalDetailsConfig));
@@ -84,12 +86,12 @@ const EditPersonalDetails = () => {
   };
 
   return (
-    <EditPersonalDetailsUi
+    <EditPersonalDetailsView
       formData={formData}
       onChange={handleInputChange}
       onSubmit={handleSubmit}
-      onBack={() => navigate(-1)}
       isConfirmOpen={isConfirmOpen}
+      onBack={onClose}
       onCloseModal={() => setIsConfirmOpen(false)}
       onConfirm={() => navigate('/home')}
     />

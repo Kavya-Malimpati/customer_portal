@@ -15,7 +15,6 @@ const ClaimPayoutView = ({
     <div className='w-full md:max-w-sm'>
       <Card variant='outlined' className='border border-gray-200 rounded-xl shadow-sm bg-white'>
         <CardContent className='p-6'>
-          {/* HEADER */}
           <div className='claim-header flex items-center gap-2 mb-3'>
             <FaUniversity size={18} color='green' />
             <Typography
@@ -27,21 +26,18 @@ const ClaimPayoutView = ({
             </Typography>
           </div>
 
-          {/* CLAIM ID */}
           <div className='claim-id mb-2'>
             <Typography variant='subtitle1' color='primary'>
               Claim #{claimId}
             </Typography>
           </div>
 
-          {/* STATUS */}
           <div className='claim-status mb-2'>
             <span className={status === 'processing' ? 'status-processing' : ''}>
               {status.toUpperCase()}
             </span>
           </div>
 
-          {/* PROGRESS BAR */}
           <div className='claim-progress mb-2'>
             <div className='claim-progress-bar h-2 w-full bg-gray-200 rounded'>
               <div
@@ -53,7 +49,6 @@ const ClaimPayoutView = ({
             </div>
           </div>
 
-          {/* EXPECTED ARRIVAL */}
           <div className='claim-arrival mb-2'>
             <Typography variant='body2' color='body'>
               Expected arrival: {expectedArrival}
@@ -62,7 +57,6 @@ const ClaimPayoutView = ({
 
           <div className='claim-divider border-t border-gray-300 my-2' />
 
-          {/* METHOD + CHANGE BUTTON */}
           <div className='claim-method-row flex items-center justify-between'>
             <Typography variant='body2' color='body'>
               Method: {method}

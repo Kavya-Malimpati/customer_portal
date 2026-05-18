@@ -1,164 +1,146 @@
-/* ROOT */
 .account-security {
-  min-height: 100vh;
-  width: 100%;
-  background: var(--color-gray-100);
-  display: flex;
-  justify-content: center;
-  padding: var(--space-6) 0;
+  padding: 24px 0 0 0;
 }
 
-/* CONTAINER */
 .account-security__container {
-  width: 100%;
-  max-width: 1024px;
-  padding: 0 var(--space-4);
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
+  gap: 24px;
 }
 
-/* HEADER */
 .account-security__header {
-  background: var(--bg-surface);
-  border: var(--border-width-sm) solid var(--color-gray-300);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
-  padding: var(--space-6);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
+  border-radius: 12px;
 }
 
-/* TOP BANNER */
 .account-security__banner {
-  background: var(--color-gray-100);
-  border: var(--border-width-sm) solid var(--color-gray-300);
-  border-radius: var(--radius-lg);
-  padding: var(--space-6);
   display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-  min-height: 140px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  border: 1px solid #d6dee8;
+  border-radius: 12px;
+  background: #f5f7fa;
 }
 
-@media (min-width: 768px) {
-  .account-security__banner {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
+.banner-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
-/* BUTTONS */
+.security-icon-box {
+  width: 48px;
+  height: 48px;
+  border: 2px solid #d6dee8;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+}
+
+.security-icon {
+  font-size: 22px;
+  color: #005ea6;
+}
+
 .account-security__actions {
   display: flex;
-  gap: var(--space-2);
+  gap: 12px;
 }
 
-/* GRID (3 CARDS) */
 .account-security__grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-4);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 24px;
 }
 
-@media (min-width: 768px) {
-  .account-security__grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-/* CARD (COMPACT FIX) */
 .account-security__card {
-  background: var(--color-gray-50);
-  border: var(--border-width-sm) solid var(--color-gray-300);
-  border-radius: var(--radius-md);
-  min-height: 120px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #ffffff;
+  padding: 16px;
 }
 
 .account-security__card-content {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
-  padding: var(--space-4);
+  gap: 8px;
 }
 
-/* ICONS */
 .icon {
-  font-size: 18px;
+  font-size: 24px;
 }
 
 .icon--muted {
-  color: var(--color-gray-600);
+  color: #6b7280;
 }
 
 .icon--success {
-  color: var(--color-success);
+  color: #16a34a;
 }
 
 .icon--danger {
-  color: var(--color-error);
+  color: #dc2626;
 }
 
-/* TEXT */
 .heading {
-  color: var(--color-gray-900);
-  font-weight: var(--font-weight-bold);
-}
-
-.font-medium {
-  font-weight: var(--font-weight-medium);
+  margin-bottom: 4px;
 }
 
 .text-muted {
-  color: var(--color-gray-500);
+  color: #6b7280;
 }
 
-.text-link {
-  color: var(--color-primary);
-  font-weight: var(--font-weight-medium);
-  font-size: var(--font-size-sm);
-  cursor: pointer;
-  white-space: nowrap;
+.font-medium {
+  font-weight: 500;
 }
 
-/* FORCE NO WRAP (FIX FOR TIME + LOCATION ISSUE) */
 .nowrap {
   white-space: nowrap;
 }
 
-/* FLEX */
 .flex-row {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: 6px;
 }
 
-/* ACTIVITY */
+.text-link {
+  color: #005ea6;
+  cursor: pointer;
+}
+
 .account-security__activity {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: 16px;
+}
+
+.no-padding {
+  padding: 0;
 }
 
 .activity-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--space-4) var(--space-6);
+  padding: 16px;
 }
 
 .activity-left {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
+  gap: 12px;
 }
 
 .activity-divider {
-  border-top: 1px solid var(--color-gray-300);
+  height: 1px;
+  background: #e5e7eb;
 }
 
-.no-padding {
-  padding: 0 !important;
+.headingunbold {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-regular);
 }

@@ -1,4 +1,4 @@
-import { Card, CardContent, Typography, Button, Link } from '../../../common/components';
+import { Card, Typography, Button, Link } from '../../../common/components';
 import { FiClock, FiShield, FiUser } from 'react-icons/fi';
 import { useTranslation } from 'react-i18next';
 import type { AccountData } from './account.api';
@@ -17,17 +17,22 @@ const AccountSecurityDisplay = ({ data, onChangePassword, onUpdate2FA }: Props) 
   return (
     <main className='account-security'>
       <div className='account-security__container'>
-        {/* HEADER */}
-        <div className='account-security__header'>
+        <Card className='account-security__header'>
           <div className='account-security__banner'>
-            <div>
-              <Typography variant='h2' className='heading'>
-                {t('accountSecurity.title')}
-              </Typography>
+            <div className='banner-left'>
+              <div className='security-icon-box'>
+                <FiShield className='security-icon' />
+              </div>
 
-              <Typography variant='body2' className='text-muted'>
-                {t('accountSecurity.description')}
-              </Typography>
+              <div>
+                <Typography variant='body1' className=' headingunbold heading'>
+                  {t('accountSecurity.title')}
+                </Typography>
+
+                <Typography variant='body2' className='text-muted'>
+                  {t('accountSecurity.description')}
+                </Typography>
+              </div>
             </div>
 
             <div className='account-security__actions'>
@@ -41,11 +46,9 @@ const AccountSecurityDisplay = ({ data, onChangePassword, onUpdate2FA }: Props) 
             </div>
           </div>
 
-          {/* 3 CARDS */}
           <div className='account-security__grid'>
-            {/* LAST LOGIN */}
-            <Card className='account-security__card'>
-              <CardContent className='account-security__card-content'>
+            <div className='account-security__card'>
+              <div className='account-security__card-content'>
                 <FiClock className='icon icon--muted' />
 
                 <Typography variant='body1' className='font-medium'>
@@ -55,12 +58,11 @@ const AccountSecurityDisplay = ({ data, onChangePassword, onUpdate2FA }: Props) 
                 <Typography variant='body2' className='text-muted nowrap'>
                   {`${data.lastLogin.time} from ${data.lastLogin.location}`}
                 </Typography>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
 
-            {/* IDENTITY STATUS */}
-            <Card className='account-security__card'>
-              <CardContent className='account-security__card-content'>
+            <div className='account-security__card'>
+              <div className='account-security__card-content'>
                 <FiShield className='icon icon--success' />
 
                 <Typography variant='body1' className='font-medium'>
@@ -70,12 +72,11 @@ const AccountSecurityDisplay = ({ data, onChangePassword, onUpdate2FA }: Props) 
                 <Typography variant='body2' className='text-muted'>
                   {data.identityStatus.status}
                 </Typography>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
 
-            {/* LEGACY CONTACT */}
-            <Card className='account-security__card'>
-              <CardContent className='account-security__card-content'>
+            <div className='account-security__card'>
+              <div className='account-security__card-content'>
                 <FiUser className='icon icon--danger' />
 
                 <Typography variant='body1' className='font-medium'>
@@ -89,20 +90,18 @@ const AccountSecurityDisplay = ({ data, onChangePassword, onUpdate2FA }: Props) 
 
                   <Typography className='text-link'>Add now</Typography>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </div>
-        </div>
+        </Card>
 
-        {/* RECENT ACTIVITY */}
         <div className='account-security__activity'>
-          <Typography variant='h3' className='heading'>
+          <Typography variant='body1' className='headingunbold heading'>
             {t('accountSecurity.recentActivity')}
           </Typography>
 
           <Card className='account-security__header'>
-            <CardContent className='no-padding'>
-              {/* ITEM 1 */}
+            <div className='no-padding'>
               <div className='activity-item'>
                 <div className='activity-left'>
                   <FiClock className='icon icon--muted' />
@@ -123,7 +122,6 @@ const AccountSecurityDisplay = ({ data, onChangePassword, onUpdate2FA }: Props) 
 
               <div className='activity-divider' />
 
-              {/* ITEM 2 */}
               <div className='activity-item'>
                 <div className='activity-left'>
                   <FiShield className='icon icon--muted' />
@@ -141,7 +139,7 @@ const AccountSecurityDisplay = ({ data, onChangePassword, onUpdate2FA }: Props) 
                   Details
                 </Link>
               </div>
-            </CardContent>
+            </div>
           </Card>
         </div>
       </div>

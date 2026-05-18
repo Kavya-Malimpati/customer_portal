@@ -1,4 +1,4 @@
-import { Typography } from '../../../common/components';
+import { Button, Typography } from '../../../common/components';
 import { MdPhoneIphone } from 'react-icons/md';
 import './PaymentUi.css';
 import { FaUniversity } from 'react-icons/fa';
@@ -30,10 +30,10 @@ const PremiumPaymentView = ({ amount, dueDate, status, onPayClick }: PremiumPaym
         </div>
 
         <div className='payment-button-wrapper'>
-          <button className='payment-button' onClick={onPayClick}>
+          <Button variant='contained' className='payment-button' onClick={onPayClick}>
             <FiCreditCard size={16} />
             Pay Now
-          </button>
+          </Button>
         </div>
 
         <div className='payment-methods'>

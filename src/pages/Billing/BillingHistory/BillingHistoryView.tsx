@@ -1,4 +1,5 @@
 import { Typography, Button } from '../../../common/components';
+import Table from '../../../common/components/Table';
 import { FiSearch } from 'react-icons/fi';
 import FormInput from '../../../common/components/FormInput';
 import type { Transaction } from './Interfaces';
@@ -9,10 +10,70 @@ interface BillingHistoryViewProps {
 }
 
 const BillingHistoryView = ({ transactions }: BillingHistoryViewProps) => {
+  const columns = [
+    {
+      field: 'date',
+      headerName: 'Date',
+      sortable: false,
+    },
+    {
+      field: 'description',
+      headerName: 'Policy/Description',
+      sortable: false,
+      renderCell: (row: Transaction) => (
+        <>
+          {row.description}
+          <br />
+          <span className='method-ref'>{row.method || row.reference || '-'}</span>
+        </>
+      ),
+    },
+    {
+      field: 'amount',
+      headerName: 'Amount',
+      sortable: false,
+      className: 'amount',
+    },
+    {
+      field: 'status',
+      headerName: 'Status',
+      sortable: false,
+      renderCell: (row: Transaction) => (
+        <span className={`status ${row.status.toLowerCase()}`}>{row.status}</span>
+      ),
+    },
+    {
+      field: 'actions',
+      headerName: 'Actions',
+      sortable: false,
+      align: 'right' as const,
+      className: 'actions-header',
+      renderCell: (row: Transaction) => (
+        <div className='actions'>
+          <Button variant='text' size='small'>
+            View
+          </Button>
+
+          {row.status === 'SUCCESS' ? (
+            <Button variant='text' size='small'>
+              Receipt
+            </Button>
+          ) : (
+            <Button variant='text' size='small'>
+              Retry
+            </Button>
+          )}
+        </div>
+      ),
+    },
+  ];
+
   return (
     <div className='billing-history-content'>
       <div className='billing-history-header'>
-        <Typography variant='h5' style={{ color: 'var(--text-primary)' }}>Billing History & Statements</Typography>
+        <Typography variant='h5' style={{ color: 'var(--text-primary)' }}>
+          Billing History & Statements
+        </Typography>
 
         <div className='search-bar'>
           <FormInput
@@ -30,45 +91,14 @@ const BillingHistoryView = ({ transactions }: BillingHistoryViewProps) => {
       </div>
 
       <div className='billing-history-table'>
-        <div className='table-header'>
-          <span>Date</span>
-          <span>Policy/Description</span>
-          <span>Amount</span>
-          <span>Status</span>
-          <span className='actions-header'>Actions</span>
-        </div>
-
-        {transactions.map(tx => (
-          <div key={tx.id} className='table-row'>
-            <span>{tx.date}</span>
-
-            <span>
-              {tx.description}
-              <br />
-              <span className='method-ref'>{tx.method || tx.reference || '-'}</span>
-            </span>
-
-            <span className='amount'>{tx.amount}</span>
-
-            <span className={`status ${tx.status.toLowerCase()}`}>{tx.status}</span>
-
-            <span className='actions'>
-              <Button variant='text' size='small'>
-                View
-              </Button>
-
-              {tx.status === 'SUCCESS' ? (
-                <Button variant='text' size='small'>
-                  Receipt
-                </Button>
-              ) : (
-                <Button variant='text' size='small'>
-                  Retry
-                </Button>
-              )}
-            </span>
-          </div>
-        ))}
+        <Table
+          columns={columns}
+          rows={transactions as never[]}
+          sortable={false}
+          className='custom-billing-table'
+          variant='outlined'
+          size='md'
+        />
       </div>
 
       <div className='billing-history-footer'>

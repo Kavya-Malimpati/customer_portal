@@ -15,7 +15,7 @@ const ProfilePageView = ({
       {/* Heading & Subheading */}
       {activeTabMeta && (
         <div style={{ marginBottom: 'var(--space-6)' }}>
-          <Typography variant='h2' color='heading'>
+          <Typography variant='h2' color='primary'>
             {activeTabMeta.heading}
           </Typography>
           <Typography 

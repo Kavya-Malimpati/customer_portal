@@ -20,17 +20,17 @@
  */
 
 import { useState } from 'react';
-
+ 
 import { Footer } from '../Footer';
 import Header from '../Header';
 import { Sidebar } from '../Sidebar';
-
+ 
 import type { ReactNode } from 'react';
 interface MainLayoutProps {
   children: ReactNode;
   onLogout?: () => void;
 }
-
+ 
 const MainLayout = ({ children }: MainLayoutProps) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(true); // Start collapsed
@@ -67,5 +67,5 @@ const MainLayout = ({ children }: MainLayoutProps) => {
     </div>
   );
 };
-
+ 
 export default MainLayout;

@@ -19,10 +19,10 @@ const HelpCardView = ({ items, onSearch }: HelpCardViewProps) => {
     <>
 
       <div className='help-card-container'>
-        <Card variant='outlined' className='help-card-wrapper'>
+        <Card variant='outlined' className='help-card-wrapper' fullScreen>
           {/* Header */}
           <div className='help-card-header'>
-            <Typography variant='h3' color='primary' className='help-card-title'>
+            <Typography variant='h2' color='primary' className='help-card-title'>
               Help & Support
             </Typography>
 

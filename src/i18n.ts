@@ -5,6 +5,8 @@ import EnSidebar from './common/Sidebar/EnSidebar';
 import EsSidebar from './common/Sidebar/EsSidebar';
 import EnPersonalDetails from './pages/Profile/ViewPersonalDetails/EnPersonalDetails';
 import EsPersonalDetails from './pages/Profile/ViewPersonalDetails/EsPersonalDetails';
+import EsAccountSecurity from './pages/Profile/AccountSecurity/EsAccountSecurity';
+import EnAccountSecurity from './pages/Profile/AccountSecurity/EnAccountSecurity';
 
 type Lang = 'en' | 'es';
 
@@ -16,12 +18,17 @@ i18n.use(initReactI18next).init({
       translation: {
         sidebar: EnSidebar.sidebar,
         personalDetails: EnPersonalDetails.personalDetails,
+        accountSecurity: EnAccountSecurity.accountSecurity,
+
+
+
       },
     },
     es: {
       translation: {
         sidebar: EsSidebar.sidebar,
         personalDetails: EsPersonalDetails.personalDetails,
+        accountSecurity: EsAccountSecurity.accountSecurity,
       },
     },
   },

@@ -1,17 +1,21 @@
 import './AccidentCard.css';
 import React from 'react';
-import { FiPlusCircle } from 'react-icons/fi';
-import { Button, Typography } from '../../../common/components';
-import type { StepItem } from './interfaces';
 
-interface Props {
-  steps: StepItem[];
-}
+import { FiPlusCircle } from 'react-icons/fi';
+
+import { Button, Typography, Card } from '../../../common/components';
+
+import type { Props } from './interfaces';
+
+
 
 const AccidentCardView: React.FC<Props> = ({ steps }) => {
   return (
-    <div className="accident-card">
-
+    <Card
+      variant="outlined-raised"
+      fullScreen
+      className="accident-card"
+    >
       <div className="accident-header">
         <Typography variant="h3" color="primary">
           <span className="required">*</span>
@@ -29,11 +33,19 @@ const AccidentCardView: React.FC<Props> = ({ steps }) => {
               </Typography>
             </div>
 
-            <Typography variant="body1" color="primary" className="step-title">
+            <Typography
+              variant="body1"
+              color="primary"
+              className="step-title"
+            >
               {step.title}
             </Typography>
 
-            <Typography variant="caption" color="muted" className="step-desc">
+            <Typography
+              variant="caption"
+              color="muted"
+              className="step-desc"
+            >
               {step.description}
             </Typography>
 
@@ -51,8 +63,7 @@ const AccidentCardView: React.FC<Props> = ({ steps }) => {
           Start a New Claim Now
         </Button>
       </div>
-
-    </div>
+    </Card>
   );
 };
 

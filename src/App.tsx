@@ -5,14 +5,15 @@ import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import MainLayout from './common/MainLayout';
 import Home from './pages/Home';
 import AddContactDetails from './pages/Profile/AddContactDetails';
-import AgentContactDetails from './pages/Profile/AgentContactDetails/';
+import RecentAlerts from './pages/Services/RecentAlerts/RecentAlerts';
 import ContactDetails from './pages/Profile/Contact';
 import DigitalDocuments from './pages/Profile/DocumentsTab/DigitalDocuments';
 import DocumentVault from './pages/Profile/DocumentsTab/DocumentVault';
 import EditPersonalDetails from './pages/Profile/EditPersonalDetails';
 import PaperlessPreferences from './pages/Profile/PaperlessPreferences';
 import ProfilePage from './pages/Profile/ProfilePage';
-import PolicyPage from './pages/Policy/PolicyPage';
+import FeedbackCard from './pages/Services/FeedbackCard/FeedbackCard';
+import ServicesPage from './pages/Services/ServicesPage';
 
 function App() {
   const navigate = useNavigate();
@@ -58,14 +59,7 @@ function App() {
         }
       />
 
-      <Route
-        path='/update-contact'
-        element={
-          <MainLayout onLogout={handleLogout}>
-            <UpdateContactDetails />
-          </MainLayout>
-        }
-      />
+     
 
       <Route
         path='/settings'
@@ -94,13 +88,15 @@ function App() {
         }
       />
       <Route
-        path='/edit-personal-details'
+        path='/services'
         element={
           <MainLayout onLogout={handleLogout}>
-            <EditPersonalDetails />
+            <ServicesPage/>
           </MainLayout>
         }
       />
+      
+
       <Route
         path='/view-personal-details'
         element={

@@ -1,13 +1,9 @@
 import React from 'react';
 import './Offers.css';
 import {Card,Typography} from '../../../common/components';
-import { FiPlus, FiTool, FiPackage } from 'react-icons/fi';
+import { FiPlus, FiTool, FiPackage, } from 'react-icons/fi';
 import { FaCarCrash } from 'react-icons/fa';
-import type { OfferItem } from './IOffers';
-
-interface OffersViewProps {
-  offers: OfferItem[];
-}
+import type { OffersViewProps } from './IOffers';
 
 const OffersView: React.FC<OffersViewProps> = ({ offers }) => {
   return (

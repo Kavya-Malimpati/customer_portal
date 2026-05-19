@@ -13,3 +13,7 @@ export interface PersonalDetailsData {
 export interface PersonalDetailsProps {
   data: PersonalDetailsData;
 }
+export interface PersonalDetailsDisplayProps {
+  data: PersonalDetailsData;
+  onEditClick: () => void;
+}

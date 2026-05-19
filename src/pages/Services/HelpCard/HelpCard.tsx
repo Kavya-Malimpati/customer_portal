@@ -1,4 +1,4 @@
-import { FaBook, FaComments, FaLightbulb } from 'react-icons/fa';
+import { FaComments, FaBook, FaLightbulb } from 'react-icons/fa';
 
 import HelpCardView from './HelpCardView';
 

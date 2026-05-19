@@ -12,11 +12,7 @@ import DocumentVault from './pages/Profile/DocumentsTab/DocumentVault';
 import EditPersonalDetails from './pages/Profile/EditPersonalDetails';
 import PaperlessPreferences from './pages/Profile/PaperlessPreferences';
 import ProfilePage from './pages/Profile/ProfilePage';
-import Settings from './pages/Profile/Settings';
-import UpdateContactDetails from './pages/Profile/UpdateContactDetails';
-import PersonalDetailsPage from './pages/Profile/ViewPersonalDetails/PersonalDetailsPage';
-import PaymentMethods from './pages/Services/PaymentMethods';
-import ServicesPage from './pages/Services/ServicesPage';
+import PolicyPage from './pages/Policy/PolicyPage';
 
 function App() {
   const navigate = useNavigate();
@@ -151,6 +147,15 @@ function App() {
         element={
           <MainLayout onLogout={handleLogout}>
             <PaymentMethods />
+          </MainLayout>
+        }
+      />
+
+      <Route
+        path='/policy-page'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <PolicyPage />
           </MainLayout>
         }
       />

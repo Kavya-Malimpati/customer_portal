@@ -1,0 +1,47 @@
+.claims-page {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: var(--space-5);
+  background: var(--bg-surface);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.claims-row {
+  width: 100%;
+}
+
+.claims-row-single {
+  display: block;
+}
+
+.claims-two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+  align-items: stretch;
+}
+
+.claims-two-column > * {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 900px) {
+  .claims-page {
+    padding: var(--space-4);
+  }
+
+  .claims-two-column {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .claims-page {
+    padding: var(--space-3);
+    gap: var(--space-4);
+  }
+}

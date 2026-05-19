@@ -128,6 +128,13 @@ function App() {
             <ProfilePage />
           </MainLayout>
         }
+      /> <Route
+        path='/claims'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <Claims />
+          </MainLayout>
+        }
       />
 
       <Route

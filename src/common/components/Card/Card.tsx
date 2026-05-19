@@ -28,7 +28,7 @@ const sizeConfig = {
     minHeight: '120px',
   },
   md: {
-    padding: 'var(--space-4)',
+    padding: '0',
     minHeight: '160px',
   },
   lg: {

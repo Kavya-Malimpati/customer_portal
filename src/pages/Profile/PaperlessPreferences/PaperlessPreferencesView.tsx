@@ -1,112 +1,115 @@
-import { Button, Card, CardContent, Modal } from '../../../common/components';
-import CardFooter from '../../../common/components/Card/CardFooter';
-import CardHeader from '../../../common/components/Card/CardHeader';
-import Checkbox from '../../../common/components/Checkbox/Checkbox';
-import paperlessConfig from '../../../config/paperlesspreferences.json';
+import { Card, CardContent, Typography, Toggle } from '../../../common/components';
+import { FiCheckCircle, FiMail } from 'react-icons/fi';
+import type { PaperlessPreferencesViewProps } from './interfaces';
 
-import type { PaperlessOptions } from './interfaces';
-
-interface PaperlessPreferencesViewProps {
-  enabled: boolean;
-  options: PaperlessOptions;
-  showSuccessModal: boolean;
-  onToggle: () => void;
-  onOptionChange: (key: keyof PaperlessOptions) => void;
-  onSave: () => void;
-  onCancel: () => void;
-  onSuccessModalClose: () => void;
-}
-
-function PaperlessPreferencesView({
-  enabled,
-  options,
-  showSuccessModal,
-  onToggle,
-  onOptionChange,
-  onSave,
-  onCancel,
-  onSuccessModalClose,
-}: PaperlessPreferencesViewProps) {
+const PaperlessPreferencesView = ({
+  paperless,
+  onPaperlessChange,
+}: PaperlessPreferencesViewProps) => {
   return (
-    <div className='min-h-screen bg-gray-50 flex items-center justify-center p-4'>
-      <Card className='w-full max-w-md bg-white shadow-lg rounded-lg'>
-        <CardHeader title={paperlessConfig.title} subheader={paperlessConfig.description} />
-
-        <CardContent className='p-6'>
-          {/* Main Toggle */}
-          <div className='flex items-center justify-between border p-4 rounded-lg mb-4'>
-            <div>
-              <p className='font-medium'>{paperlessConfig.mainToggle.label}</p>
-              <p className='text-xs text-gray-500'>{paperlessConfig.mainToggle.hint}</p>
-            </div>
-            <button
-              onClick={onToggle}
-              className={`w-12 h-6 flex items-center rounded-full p-1 transition ${
-                enabled ? 'bg-[#23a50a]' : 'bg-gray-300'
-              }`}
-            >
+    <Card variant='outlined-raised' size='md'>
+      <CardContent>
+        <div className='flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4'>
+          <div className='flex-1 space-y-8'>
+            <div className='flex items-center gap-3'>
               <div
-                className={`bg-white w-4 h-4 rounded-full shadow transform transition ${
-                  enabled ? 'translate-x-6' : ''
-                }`}
-              />
-            </button>
-          </div>
+                style={{
+                  backgroundColor: 'var(--color-success)',
+                  padding: '8px',
+                  borderRadius: '8px',
+                }}
+              >
+                <FiMail size={18} style={{ color: 'var(--color-white)' }} />
+              </div>
 
-          {/* Conditional Options */}
-          {enabled && (
-            <div className='space-y-3'>
-              {paperlessConfig.options.map(option => (
-                <div key={option.id} className='p-2'>
-                  <Checkbox
-                    id={option.id}
-                    label={option.label}
-                    checked={options[option.id as keyof PaperlessOptions]}
-                    onChange={() => onOptionChange(option.id as keyof PaperlessOptions)}
-                  />
-                </div>
-              ))}
+              <Typography variant='h4' style={{ color: 'var(--text-primary)' }}>
+                Paperless Enrollment
+              </Typography>
+            </div>
 
-              {/* Info Box */}
-              <div className='bg-yellow-50 border border-yellow-200 text-yellow-800 text-sm p-3 rounded'>
-                {paperlessConfig.warning}
+            <Typography
+              variant='body2'
+              className='max-w-lg leading-6'
+           color='secondary'
+            >
+              Receive your policy documents, billing notices, and updates electronically.
+              Reduce waste and access everything instantly.
+            </Typography>
+
+            <div className='rounded-md border border-green-200 bg-green-50 p-4'>
+              <div className='flex items-center gap-3'>
+                <FiCheckCircle size={18} style={{ color: 'var(--color-success)' }} />
+
+                <Typography
+                  variant='body2'
+                  className='font-medium'
+                  color='success'
+                >
+                  Currently receiving digital communications at {paperless.emailAddress}
+                </Typography>
               </div>
             </div>
-          )}
-        </CardContent>
+          </div>
 
-        {/* Buttons */}
-        <CardFooter className='flex justify-end gap-3 p-6 border-t'>
-          <Button type='button' onClick={onCancel} variant='contained' color='primary'>
-            Cancel
-          </Button>
-          <Button type='button' onClick={onSave} variant='contained' color='primary'>
-            Save Preferences
-          </Button>
-        </CardFooter>
-      </Card>
+          <Toggle
+            id='paperless-main-toggle'
+            checked={paperless.enabled}
+            onChange={e =>
+              onPaperlessChange({
+                ...paperless,
+                enabled: e.target.checked,
+              })
+            }
+            aria-label='Paperless Enrollment'
+            label=''
+          />
+        </div>
 
-      <Modal
-        isOpen={showSuccessModal}
-        onClose={onSuccessModalClose}
-        title='Success'
-        maxWidth='400px'
-      >
-        <CardContent className='p-6'>
-          <p>Preferences saved successfully! ✅</p>
-        </CardContent>
-        <CardFooter className='flex justify-end p-6 border-t'>
-          <Button
-            type='button'
-            onClick={onSuccessModalClose}
-            className='bg-[#23a50a] text-white hover:bg-[#1a7a08]'
-          >
-            OK
-          </Button>
-        </CardFooter>
-      </Modal>
-    </div>
+        {paperless.enabled && (
+          <div className='mt-5 grid gap-3 sm:grid-cols-3'>
+            <Toggle
+              id='paperless-email'
+              checked={paperless.email}
+              onChange={e =>
+                onPaperlessChange({
+                  ...paperless,
+                  email: e.target.checked,
+                })
+              }
+              aria-label='Paperless Email'
+              label='Email'
+            />
+
+            <Toggle
+              id='paperless-sms'
+              checked={paperless.sms}
+              onChange={e =>
+                onPaperlessChange({
+                  ...paperless,
+                  sms: e.target.checked,
+                })
+              }
+              aria-label='Paperless SMS'
+              label='SMS'
+            />
+
+            <Toggle
+              id='paperless-documents'
+              checked={paperless.documents}
+              onChange={e =>
+                onPaperlessChange({
+                  ...paperless,
+                  documents: e.target.checked,
+                })
+              }
+              aria-label='Paperless Documents'
+              label='Documents'
+            />
+          </div>
+        )}
+      </CardContent>
+    </Card>
   );
-}
+};
 
 export default PaperlessPreferencesView;

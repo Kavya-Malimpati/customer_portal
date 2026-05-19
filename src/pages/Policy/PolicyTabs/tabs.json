@@ -1,0 +1,14 @@
+[
+  {
+    "key": "personalAuto",
+    "label": "Personal Auto",
+    "heading": "Personal Auto",
+    "subheading": "View and manage your Personal Auto Policy."
+  },
+  {
+    "key": "homeowners",
+    "label": "Homeowners",
+    "heading": "Homeowners",
+    "subheading": "View and manage your Homeowners Policy."
+  }
+]

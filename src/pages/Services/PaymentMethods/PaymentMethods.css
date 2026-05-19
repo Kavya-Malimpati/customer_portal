@@ -1,0 +1,110 @@
+.payment-methods-card {
+  width: 100%;
+  padding: 0 !important;
+
+  background: var(--bg-surface);
+
+  border-color: var(--color-gray-300);
+}
+
+/* HEADER */
+.payment-methods-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: var(--space-5);
+
+  border-bottom: var(--border-width-sm) solid var(--border-color);
+}
+
+/* TITLE */
+.payment-methods-title {
+  color: var(--text-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* ADD METHOD */
+.payment-methods-add {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+
+  cursor: pointer;
+}
+
+.add-icon {
+  font-size: 18px;
+  color: var(--color-primary);
+}
+
+.add-method-text {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-medium);
+}
+/* LIST */
+.payment-methods-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: var(--space-3);
+  padding: var(--space-6);
+  padding-bottom: var(--space-20);
+}
+/* ITEM */
+.payment-method-item {
+  display: flex;
+  align-items: center;
+
+  gap: var(--space-3);
+
+  padding: var(--space-3);
+
+  border: var(--border-width-sm) solid var(--border-color);
+
+  background: var(--bg-surface);
+}
+/* LOGO BOX */
+.payment-method-logo {
+  width: 59px;
+  height: 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: var(--radius-sm);
+
+  background: var(--bg-muted);
+
+  flex-shrink: 0;
+}
+
+/* LOGO TEXT */
+.logo-text {
+  font-size: 16px !important;
+  letter-spacing: 1.5px;
+  font-weight: var(--font-weight-bold);
+  font-style: italic;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* VISA */
+.logo-text.visa {
+  color: var(--color-primary);
+  opacity: 0.6;
+}
+
+/* CHASE */
+.logo-text.chase {
+  color: var(--color-primary);
+  opacity: 0.6;
+}
+.payment-method-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.payment-title {
+  font-weight: var(--font-weight-semibold);
+}

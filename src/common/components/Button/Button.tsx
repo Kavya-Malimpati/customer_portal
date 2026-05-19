@@ -1,4 +1,5 @@
 import React from 'react';
+
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'contained' | 'outlined' | 'text';
   color?: 'primary' | 'secondary' | 'success' | 'error' | 'info' | 'warning' | 'inherit';
@@ -30,9 +31,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       onBlur,
       ...rest
     },
-    ref
+    ref,
   ) => {
-    const getColorTokens = (color: string, variant: string) => {
+    const getColorTokens = (color: string) => {
       const colorMap: Record<string, { base: string; hover: string; light: string }> = {
         primary: {
           base: 'var(--color-primary)',
@@ -92,10 +93,14 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       };
       return sizeMap[size] || sizeMap.medium;
     };
-    const getVariantStyles = (variant: string, colorTokens: ReturnType<typeof getColorTokens>, disabled: boolean) => {
+    const getVariantStyles = (
+      variant: string,
+      colorTokens: ReturnType<typeof getColorTokens>,
+      disabled: boolean,
+    ) => {
       const baseStyles: React.CSSProperties = {
         fontWeight: 'var(--font-weight-medium)',
-        borderRadius: 'var(--radius-md)',
+        borderRadius: color === 'inherit' && variant === 'outlined' ? '0px' : 'var(--radius-md)',
         transition: `all var(--transition-normal)`,
         cursor: disabled ? 'var(--cursor-disabled)' : 'pointer',
         opacity: disabled ? 'var(--opacity-disabled)' : 1,
@@ -112,9 +117,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       } else if (variant === 'outlined') {
         return {
           ...baseStyles,
-          backgroundColor: 'transparent',
+          backgroundColor: 'white',
           color: disabled ? 'var(--text-muted)' : colorTokens.base,
-          border: `var(--border-width-sm) solid ${disabled ? 'var(--border-color)' : colorTokens.base}`,
+          border: `var(--border-width-sm) solid ${disabled ? 'var(--border-color)' : color === 'inherit' ? '#000000' : colorTokens.base}`,
           boxShadow: 'none',
         };
       } else {
@@ -127,7 +132,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         };
       }
     };
-    const colorTokens = getColorTokens(color, variant);
+    const colorTokens = getColorTokens(color);
     const sizeTokens = getSizeTokens(size);
     const variantStyles = getVariantStyles(variant, colorTokens, disabled);
     const buttonStyle: React.CSSProperties = {
@@ -182,14 +187,15 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const handleBlur = (e: React.FocusEvent<HTMLButtonElement>) => {
       if (!disabled) {
         const el = e.currentTarget as HTMLButtonElement;
-        el.style.boxShadow = variant === 'contained' && !disableElevation ? 'var(--shadow-sm)' : 'none';
+        el.style.boxShadow =
+          variant === 'contained' && !disableElevation ? 'var(--shadow-sm)' : 'none';
       }
       onBlur?.(e);
     };
     return (
       <button
         ref={ref}
-        type="button"
+        type='button'
         disabled={disabled}
         aria-label={ariaLabel}
         style={buttonStyle}
@@ -201,21 +207,12 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         onBlur={handleBlur}
         {...rest}
       >
-        {startIcon && (
-          <span style={iconStyle}>
-            {startIcon}
-          </span>
-        )}
+        {startIcon && <span style={iconStyle}>{startIcon}</span>}
         <span>{children}</span>
-        {endIcon && (
-          <span style={iconStyle}>
-            {endIcon}
-          </span>
-        )}
+        {endIcon && <span style={iconStyle}>{endIcon}</span>}
       </button>
     );
-  }
+  },
 );
 Button.displayName = 'Button';
 export default Button;
-

@@ -1,18 +1,16 @@
 import './App.css';
+
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
+
 import MainLayout from './common/MainLayout';
-import Login from './pages/Login';
-import PersonalDetailsPage from './pages/Profile/ViewPersonalDetails/PersonalDetailsPage';
 import Home from './pages/Home';
 import AddContactDetails from './pages/Profile/AddContactDetails';
-import UpdateContactDetails from './pages/Profile/UpdateContactDetails';
-import ContactDetails from './pages/Profile/Contact';
-import DocumentVault from './pages/Profile/DocumentVault';
-import PaperlessPreferences from './pages/Profile/PaperlessPreferences';
-import EditPersonalDetails from './pages/Profile/EditPersonalDetails';
-import DigitalDocuments from './pages/Profile/DigitalDocuments';
-import Settings from './pages/Profile/Settings';
 import AgentContactDetails from './pages/Profile/AgentContactDetails/';
+import ContactDetails from './pages/Profile/Contact';
+import DigitalDocuments from './pages/Profile/DocumentsTab/DigitalDocuments';
+import DocumentVault from './pages/Profile/DocumentsTab/DocumentVault';
+import EditPersonalDetails from './pages/Profile/EditPersonalDetails';
+import PaperlessPreferences from './pages/Profile/PaperlessPreferences';
 import ProfilePage from './pages/Profile/ProfilePage';
 import PolicyPage from './pages/Policy/PolicyPage';
 
@@ -124,6 +122,31 @@ function App() {
         element={
           <MainLayout onLogout={handleLogout}>
             <ProfilePage />
+          </MainLayout>
+        }
+      /> <Route
+        path='/claims'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <Claims />
+          </MainLayout>
+        }
+      />
+
+      <Route
+        path='/services'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <ServicesPage />
+          </MainLayout>
+        }
+      />
+
+      <Route
+        path='/payment-methods'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <PaymentMethods />
           </MainLayout>
         }
       />

@@ -1,0 +1,164 @@
+.claim-documents-card {
+  width: 100%;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-primary);
+}
+
+.claim-documents-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.claim-documents-title {
+  color: var(--text-heading);
+  font-weight: 700;
+}
+
+.claim-documents-subtitle {
+  color: var(--text-secondary);
+}
+
+.claim-documents-hidden-input {
+  display: none;
+}
+
+.claim-documents-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.claim-documents-empty {
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  color: var(--text-secondary);
+}
+
+.claim-documents-empty-icon {
+  font-size: 32px;
+}
+
+.claim-document-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.claim-document-row:last-child {
+  border-bottom: none;
+}
+
+.claim-document-info {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.claim-document-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: var(--text-inverse);
+  color: var(--color-error);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.doc-icon {
+  font-size: 20px;
+}
+
+.claim-document-text {
+  min-width: 0;
+}
+
+.claim-document-name {
+  color: var(--text-heading);
+  font-weight: 600;
+  word-break: break-word;
+}
+
+.claim-document-meta {
+  color: var(--text-secondary);
+}
+
+.claim-document-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-shrink: 0;
+}
+
+
+.icon-only-button {
+  all: unset;
+  cursor: pointer;
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-only-button:hover {
+  color: var(--color-primary-hover);
+  transform: scale(1.08);
+}
+
+.icon-only-button.delete:hover {
+  color: var(--color-error);
+}
+
+@media (max-width: 768px) {
+  .claim-documents-header,
+  .claim-document-row {
+    align-items: flex-start;
+  }
+
+  .claim-document-row {
+    flex-direction: column;
+  }
+
+  .claim-document-actions {
+    align-self: flex-end;
+  }
+}
+
+.claim-documents-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.upload-button-box {
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--color-primary);
+  border-radius: 8px;
+  background: var(--bg-muted); 
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  min-width: auto;
+}
+
+.upload-button-box:hover {
+  background: var(--bg-muted);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}

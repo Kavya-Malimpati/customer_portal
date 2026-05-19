@@ -1,0 +1,163 @@
+.roadside-card {
+  background: var(--bg-surface);
+  border: var(--border-width-md) solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  box-shadow: var(--shadow-xs);
+}
+
+
+.roadside-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-4);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.roadside-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.roadside-header-icon {
+  color: var(--color-primary);
+}
+
+.roadside-status-badge {
+  background: var(--color-success);
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.roadside-content {
+  display: flex;
+  background:var(--bg-muted);
+}
+
+.roadside-map-section {
+  flex: 2.5;
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.roadside-location {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+}
+
+.roadside-location-label {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  padding: 8px 18px;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.roadside-location-icon {
+  font-size: 42px;
+  color: var(--color-primary);
+}
+
+
+.roadside-tracking-card {
+  background: var(--bg-surface);
+  padding: var(--space-6);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-radius: var(--radius-md);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.roadside-truck-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.roadside-arrival{
+  color: var(--text-primary);
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.roadside-provider-section {
+  flex: 1;
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.roadside-provider-box {
+  display: flex;
+  gap: 10px;
+}
+
+.roadside-provider-logo {
+  width: 40px;
+  height: 40px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+}
+.roadside-detail-label{
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 500;
+}
+.roadside-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.roadside-detail-value {
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.roadside-detail-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.call-link {
+  text-decoration: none;
+}
+
+.roadside-call-btn {
+  height: 46px;
+}
+
+.call-btn-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.call-icon {
+  font-size: 16px;
+}

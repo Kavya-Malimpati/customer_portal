@@ -2,15 +2,25 @@ import { FiClock } from 'react-icons/fi';
 import './RegisterFNOL.css';
 import type { RegisterFNOLViewProps } from './Interface';
 
-import { Typography, Button, CardContent } from '../../../common/components';
+import {
+  Typography,
+  Button,
+  CardContent,
+  Stepper,
+} from '../../../common/components';
 
 const RegisterFNOLView = ({
   steps,
+  currentStep,
   repairInfo,
   selectedClaim,
   onStartReporting,
   onRequestRepair,
 }: RegisterFNOLViewProps) => {
+  const stepperSteps = steps.map(step => ({
+    label: step.title,
+  }));
+
   return (
     <section className='register-fnol-page'>
       <section className='fnol-header-row'>
@@ -25,9 +35,14 @@ const RegisterFNOLView = ({
         </div>
 
         <section className='fnol-selected-claim'>
-          <Typography variant='caption'>SELECTED CONTEXT:</Typography>
+          <Typography variant='caption'>
+            SELECTED CONTEXT:
+          </Typography>
 
-          <Typography variant='body2' className='fnol-selected-text'>
+          <Typography
+            variant='body2'
+            className='fnol-selected-text'
+          >
             {selectedClaim.claimNumber} | {selectedClaim.vehicle}
           </Typography>
 
@@ -40,11 +55,19 @@ const RegisterFNOLView = ({
           <div className='fnol-alert-icon'>△</div>
 
           <div>
-            <Typography variant='body2' color='error' className='fnol-alert-title'>
+            <Typography
+              variant='body2'
+              color='error'
+              className='fnol-alert-title'
+            >
               ATTENTION REQUIRED
             </Typography>
 
-            <Typography variant='caption' color='error' className='fnol-alert-text'>
+            <Typography
+              variant='caption'
+              color='error'
+              className='fnol-alert-text'
+            >
               Evidence requested for Claim #PC-9902
             </Typography>
           </div>
@@ -59,32 +82,44 @@ const RegisterFNOLView = ({
           <div className='fnol-header'>
             <div>
               <h2>Report New Claim (FNOL)</h2>
-              <p>Initiate a formal claim for vehicle collision or theft.</p>
+
+              <p>
+                Initiate a formal claim for vehicle collision or theft.
+              </p>
             </div>
 
-            <span className='fnol-badge'>Standard Process</span>
+            <span className='fnol-badge'>
+              Standard Process
+            </span>
           </div>
 
-          <div className='fnol-stepper'>
-            <div className='fnol-stepper-line'></div>
-            <div className='fnol-stepper-active-line'></div>
-
-            {steps.map((step, index) => (
-              <div className='fnol-step-item' key={step.id}>
-                <div className={`fnol-step-number ${index === 0 ? 'active' : ''}`}>{step.id}</div>
-
-                <p className={`fnol-step-label ${index === 0 ? 'active' : ''}`}>{step.title}</p>
-              </div>
-            ))}
+          <div className='fnol-stepper-wrapper'>
+            <Stepper
+              id='register-fnol-stepper'
+              steps={stepperSteps}
+              value={currentStep}
+              type='non-linear'
+              orientation='horizontal'
+              alternativeLabel
+              color='primary'
+              size='sm'
+            />
           </div>
 
           <div className='fnol-footer-box'>
             <div className='fnol-time'>
               <FiClock />
-              <span>Estimated time to complete: 10 mins</span>
+
+              <span>
+                Estimated time to complete: 10 mins
+              </span>
             </div>
 
-            <Button className='primary-btn' onClick={onStartReporting}>
+            <Button
+             variant='contained'
+              className='primary-btn'
+              onClick={onStartReporting}
+            >
               Start Reporting
             </Button>
           </div>
@@ -93,14 +128,23 @@ const RegisterFNOLView = ({
         <div className='repair-card'>
           <CardContent>
             <div className='fnol-card-header'>
-              <Typography variant='h3' color='primary' className='fnol-title'>
+              <Typography
+                variant='h3'
+                color='primary'
+                className='fnol-title'
+              >
                 {repairInfo.title}
               </Typography>
 
-              <span className='fast-badge'>{repairInfo.badge}</span>
+              <span className='fast-badge'>
+                {repairInfo.badge}
+              </span>
             </div>
 
-            <Typography variant='body2' className='fnol-subtitle'>
+            <Typography
+              variant='body2'
+              className='fnol-subtitle'
+            >
               {repairInfo.description}
             </Typography>
 
@@ -108,7 +152,12 @@ const RegisterFNOLView = ({
               🛡 <span>{repairInfo.benefit}</span>
             </div>
 
-            <Button variant='outlined' className='request' fullWidth onClick={onRequestRepair}>
+            <Button
+              variant='outlined'
+              className='request'
+              fullWidth
+              onClick={onRequestRepair}
+            >
               Request Repair
             </Button>
           </CardContent>

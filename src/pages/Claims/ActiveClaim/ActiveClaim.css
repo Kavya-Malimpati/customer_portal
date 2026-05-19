@@ -10,7 +10,7 @@ hr {
   border-top: 1px solid var(--color-gray-200);
 }
  
-.claim-box {
+.claim-box-claim {
   background: var(--color-gray-100);
   padding: var(--space-5);
   border-radius: var(--radius-xl);
@@ -179,4 +179,86 @@ hr {
   height: 40px;
   font-weight: var(--font-weight-medium);
 }
- 
+ #claim-stepper {
+  margin-top: 36px;
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+#claim-stepper > div {
+  flex: 1;
+}
+
+#claim-stepper button {
+  width: 56px !important;
+  height: 56px !important;
+  min-width: 56px !important;
+  border-radius: 999px !important;
+  border: none !important;
+  background: #dbeafe !important;
+  color: #1565c0 !important;
+  font-size: 20px !important;
+  position: relative;
+  z-index: 2;
+  transition: all 0.2s ease;
+}
+
+#claim-stepper button[aria-current='step'] {
+  background: #1565c0 !important;
+  color: white !important;
+  box-shadow: 0 0 0 6px rgba(21, 101, 192, 0.15);
+}
+
+#claim-stepper button[aria-selected='false'] {
+  background: white !important;
+  border: 3px solid #dbeafe !important;
+  color: #c0cad5 !important;
+}
+
+#claim-stepper svg {
+  font-size: 20px;
+}
+
+#claim-stepper p {
+  margin: 0 !important;
+}
+
+#claim-stepper p:first-child {
+  margin-top: 12px !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: #1f2937 !important;
+}
+
+#claim-stepper p:last-child {
+  margin-top: 4px !important;
+  font-size: 13px !important;
+  color: #6b7280 !important;
+}
+
+#claim-stepper div[style*='height: 2px'] {
+  height: 4px !important;
+  background: #dbeafe !important;
+  top: 28px !important;
+  left: calc(50% + 36px) !important;
+  width: calc(100% - 72px) !important;
+  z-index: 1;
+  border-radius: 999px;
+}
+
+#claim-stepper
+  div[style*='height: 2px'][style*='background-color: var(--color-success)'] {
+  background: #1565c0 !important;
+}
+
+@media (max-width: 768px) {
+  #claim-stepper {
+    overflow-x: auto;
+    padding-bottom: 12px;
+  }
+
+  #claim-stepper > div {
+    min-width: 120px;
+  }
+}

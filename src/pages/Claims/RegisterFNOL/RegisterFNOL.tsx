@@ -39,7 +39,7 @@ const RegisterFNOL = () => {
       activeClaimsCount={2}
       selectedClaim={selectedClaim}
       steps={steps}
-      currentStep={1}
+      currentStep={0}
       repairInfo={repairInfo}
       onChangeClaim={handleChangeClaim}
       onStartReporting={handleStartReporting}

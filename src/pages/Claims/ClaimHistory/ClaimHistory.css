@@ -5,6 +5,7 @@
 .history-title {
   margin-bottom: var(--space-4);
   color: var(--text-heading);
+  justify-content: space-between;
 }
 
 .status-wrapper {
@@ -48,4 +49,25 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+}
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 72px;
+  padding: 4px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.status-paid {
+  background: #8BE85F;
+  color: #1f3d12;
+}
+
+.status-archived {
+  background: #eef2f7;
+  color: #667085;
 }

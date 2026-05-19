@@ -139,7 +139,7 @@ function App() {
       />
 
       <Route
-        path='/claims/all'
+        path='/claims'
         element={
           <MainLayout onLogout={handleLogout}>
             <Claims />

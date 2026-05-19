@@ -95,26 +95,23 @@ const ClaimHistoryView = ({ data }: Props) => {
         );
       },
     },
-
-    {
-      field: 'status',
-      headerName: 'STATUS',
-      align: 'center' as const,
-      width: 300,
-
-      renderCell: (row: Record<string, unknown>) => {
-        const claim = getClaimRow(row);
-
-        return (
-          <div className="status-wrapper">
-            <span className={`status ${claim.status.toLowerCase()}`}>
-              {claim.status}
-            </span>
-          </div>
-        );
-      },
-    },
-
+{
+  field: 'status',
+  headerName: 'STATUS',
+  align: 'left',
+  width: '160px',
+  renderCell: (row: ClaimHistoryItem) => (
+    <span
+      className={`status-badge ${
+        row.status.toLowerCase() === 'paid'
+          ? 'status-paid'
+          : 'status-archived'
+      }`}
+    >
+      {row.status}
+    </span>
+  ),
+},
     {
       field: 'action',
       headerName: 'ACTION',

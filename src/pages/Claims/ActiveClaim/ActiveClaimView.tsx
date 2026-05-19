@@ -7,7 +7,16 @@ import {
 import CardHeader from '../../../common/components/Card/CardHeader';
 import CardContent from '../../../common/components/Card/CardContent';
 import CardFooter from '../../../common/components/Card/CardFooter';
+import Stepper from '../../../common/components/Stepper/Stepper';
+
+import {
+  FiFileText,
+  FiSearch,
+  FiClipboard,
+  FiCheckCircle,
+} from 'react-icons/fi';
 import { FiCalendar } from 'react-icons/fi';
+
  
 import type { ActiveClaim } from './Interface';
 import './ActiveClaim.css';
@@ -46,7 +55,7 @@ const ActiveClaimView = ({
         />
         <hr />
         <CardContent>
-          <div className="claim-box">
+          <div className="claim-box-claim">
             <div className="claim-top">
               <div>
                 <Typography variant="h3" color="primary">
@@ -60,38 +69,36 @@ const ActiveClaimView = ({
                 {data ? formatStatus(data.status) : '--'}
               </div>
             </div>
-            <div className="progress">
-              <div className="line" />
-              <div
-                className="line-active"
-                style={{
-                  width:
-                    currentIndex >= 0 && steps.length > 1
-                      ? `${(currentIndex / (steps.length - 1)) * 100}%`
-                      : '0%',
-                }}
-              />
-              {steps.map((step, i) => (
-                <div
-                  key={step}
-                  className={`step ${i > currentIndex ? 'inactive' : ''}`}
-                >
-                  <div
-                    className={`dot ${
-                      i <= currentIndex ? 'active' : ''
-                    } ${i === currentIndex ? 'current' : ''}`}
-                  />
-                  <div className="step-label">
-                    <span className="step-title">{stepLabels[i]}</span>
-                    <span className="step-date">
-                      {i === 0 && 'May 05'}
-                      {i === 1 && 'May 12'}
-                      {i === 2 && 'Pending'}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
+          <Stepper
+  id="claim-stepper"
+  value={currentIndex}
+  orientation="horizontal"
+  alternativeLabel
+  color="primary"
+  size="md"
+  steps={[
+    {
+      label: 'Reported',
+      description: 'May 05',
+      icon: <FiFileText />,
+    },
+    {
+      label: 'Assessed',
+      description: 'May 12',
+      icon: <FiSearch />,
+    },
+    {
+      label: 'In Review',
+      description: 'Pending',
+      icon: <FiClipboard />,
+    },
+    {
+      label: 'Paid Out',
+      description: '',
+      icon: <FiCheckCircle />,
+    },
+  ]}
+/>
           </div>
         </CardContent>
         <CardFooter className="claim-footer">

@@ -11,7 +11,7 @@ import {
   FiShield,
 } from 'react-icons/fi';
 
-import { Button, Card, CardContent, Typography } from '../../../common/components';
+import { Button, Card, CardContent, Typography } from '../../../../common/components';
 
 import type { DigitalDocument, DigitalDocumentsViewProps } from './Interface';
 

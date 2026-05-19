@@ -1,6 +1,6 @@
 import { FiChevronRight, FiHeart, FiHome, FiLock, FiUpload, FiUser } from 'react-icons/fi';
 
-import { Button, Card, CardContent, Typography } from '../../../common/components';
+import { Button, Card, CardContent, Typography } from '../../../../common/components';
 
 import type { DocumentVaultViewProps } from './interfaces';
 

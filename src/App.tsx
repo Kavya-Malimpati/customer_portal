@@ -1,7 +1,6 @@
 import './App.css';
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import MainLayout from './common/MainLayout';
-import Login from './pages/Login';
 import PersonalDetailsPage from './pages/Profile/ViewPersonalDetails/PersonalDetailsPage';
 import Home from './pages/Home';
 import AddContactDetails from './pages/Profile/AddContactDetails';
@@ -14,6 +13,8 @@ import DigitalDocuments from './pages/Profile/DigitalDocuments';
 import Settings from './pages/Profile/Settings';
 import AgentContactDetails from './pages/Profile/AgentContactDetails/';
 import ProfilePage from './pages/Profile/ProfilePage';
+import Claims from './pages/Claims';
+
 
 function App() {
   const navigate = useNavigate();
@@ -123,6 +124,13 @@ function App() {
         element={
           <MainLayout onLogout={handleLogout}>
             <ProfilePage />
+          </MainLayout>
+        }
+      /> <Route
+        path='/claims'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <Claims />
           </MainLayout>
         }
       />

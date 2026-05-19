@@ -31,8 +31,6 @@ interface Props {
  
 const ActiveClaimView = ({
   data,
-  steps,
-  stepLabels,
   currentIndex,
   formatStatus,
 }: Props) => {

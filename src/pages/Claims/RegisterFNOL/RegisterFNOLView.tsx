@@ -77,6 +77,7 @@ const RegisterFNOLView = ({
           </Button>
         </div>
       </section>
+
       <div className='register-fnol-grid'>
         <div className='fnol-card'>
           <div className='fnol-header'>
@@ -116,7 +117,6 @@ const RegisterFNOLView = ({
             </div>
 
             <Button
-             variant='contained'
               className='primary-btn'
               onClick={onStartReporting}
             >

@@ -117,7 +117,6 @@ const RegisterFNOLView = ({
             </div>
 
             <Button
-             variant='contained'
               className='primary-btn'
               onClick={onStartReporting}
             >

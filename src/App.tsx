@@ -1,19 +1,19 @@
 import './App.css';
-
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
-
 import MainLayout from './common/MainLayout';
+import PersonalDetailsPage from './pages/Profile/ViewPersonalDetails/PersonalDetailsPage';
 import Home from './pages/Home';
 import AddContactDetails from './pages/Profile/AddContactDetails';
-import RecentAlerts from './pages/Services/RecentAlerts/RecentAlerts';
+import UpdateContactDetails from './pages/Profile/UpdateContactDetails';
 import ContactDetails from './pages/Profile/Contact';
-import DigitalDocuments from './pages/Profile/DocumentsTab/DigitalDocuments';
-import DocumentVault from './pages/Profile/DocumentsTab/DocumentVault';
-import EditPersonalDetails from './pages/Profile/EditPersonalDetails';
+import DocumentVault from './pages/Profile/DocumentVault';
 import PaperlessPreferences from './pages/Profile/PaperlessPreferences';
+import EditPersonalDetails from './pages/Profile/EditPersonalDetails';
+import DigitalDocuments from './pages/Profile/DigitalDocuments';
+import Settings from './pages/Profile/Settings';
+import AgentContactDetails from './pages/Profile/AgentContactDetails/';
 import ProfilePage from './pages/Profile/ProfilePage';
-import FeedbackCard from './pages/Services/FeedbackCard/FeedbackCard';
-import ServicesPage from './pages/Services/ServicesPage';
+import Claims from './pages/Claims';
 
 function App() {
   const navigate = useNavigate();
@@ -59,7 +59,14 @@ function App() {
         }
       />
 
-     
+      <Route
+        path='/update-contact'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <UpdateContactDetails />
+          </MainLayout>
+        }
+      />
 
       <Route
         path='/settings'
@@ -88,15 +95,13 @@ function App() {
         }
       />
       <Route
-        path='/services'
+        path='/edit-personal-details'
         element={
           <MainLayout onLogout={handleLogout}>
-            <ServicesPage/>
+            <EditPersonalDetails />
           </MainLayout>
         }
       />
-      
-
       <Route
         path='/view-personal-details'
         element={
@@ -120,38 +125,13 @@ function App() {
             <ProfilePage />
           </MainLayout>
         }
-      /> <Route
+      />
+
+           <Route
         path='/claims'
         element={
           <MainLayout onLogout={handleLogout}>
             <Claims />
-          </MainLayout>
-        }
-      />
-
-      <Route
-        path='/services'
-        element={
-          <MainLayout onLogout={handleLogout}>
-            <ServicesPage />
-          </MainLayout>
-        }
-      />
-
-      <Route
-        path='/payment-methods'
-        element={
-          <MainLayout onLogout={handleLogout}>
-            <PaymentMethods />
-          </MainLayout>
-        }
-      />
-
-      <Route
-        path='/policy-page'
-        element={
-          <MainLayout onLogout={handleLogout}>
-            <PolicyPage />
           </MainLayout>
         }
       />

@@ -1,48 +1,47 @@
-import { useEffect, useState } from 'react';
-import { fetchAgent, fetchOfficeDetails } from './AgentApi';
-import type { Agent, AgentOfficeDetails } from './Interface';
-import AgentContactView from './AgentContactDetailsView';
+import { useState, useEffect } from 'react';
+import type { Agent } from './Interface';
+import { fetchAgentDetails } from './AgentApi';
+import AgentContactDetailsView from './AgentContactDetailsView';
 
-const AgentContactContainer = () => {
+const AgentContactDetails = () => {
   const [agent, setAgent] = useState<Agent | null>(null);
-  const [office, setOffice] = useState<AgentOfficeDetails | null>(null);
-
-  const [loading, setLoading] = useState(true);
-
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [message, setMessage] = useState('');
+  const [sent, setSent] = useState(false);
+
   useEffect(() => {
-    Promise.all([fetchAgent(), fetchOfficeDetails()])
-      .then(([agentData, officeData]) => {
-        setAgent(agentData);
-        setOffice(officeData);
-      })
-      .finally(() => setLoading(false));
+    fetchAgentDetails().then(setAgent);
   }, []);
 
-  const handleDirections = () => {
-    if (!office) return;
-    const query = encodeURIComponent(
-      `${office.addressLine1} ${office.city} ${office.state}`
-    );
-    window.open(`https://www.google.com/maps/search/?api=1&query=${query}`);
+  const handleMessageButton = () => {
+    setIsModalOpen(true);
   };
 
-  const handleCallClaim = () => {
-    if (office) window.open(`tel:${office.claimSupport.phone}`);
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleSendMessage = () => {
+    setSent(true);
+    setTimeout(() => {
+      setSent(false);
+      setIsModalOpen(false);
+    }, 1500);
+    setMessage('');
   };
 
   return (
-    <AgentContactView
+    <AgentContactDetailsView
       agent={agent}
-      office={office}
-      loading={loading}
       isModalOpen={isModalOpen}
-      onOpenModal={() => setIsModalOpen(true)}
-      onCloseModal={() => setIsModalOpen(false)}
-      onDirections={handleDirections}
-      onCallClaim={handleCallClaim}
+      message={message}
+      sent={sent}
+      onMessageClick={handleMessageButton}
+      onCloseModal={handleCloseModal}
+      onSendMessage={handleSendMessage}
+      setMessage={setMessage}
     />
   );
 };
 
-export default AgentContactContainer;
+export default AgentContactDetails;

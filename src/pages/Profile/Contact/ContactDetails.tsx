@@ -1,51 +1,32 @@
-import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ViewContactDetailsView from './ContactDetailsView';
-import Modal from '../../../common/components/Modal';
-import UpdateContactDetails from '../UpdateContactDetails'; // adjust path
 
 const ContactDetails = () => {
+  const navigate = useNavigate();
 
-  const [isOpen, setIsOpen] = useState(false);
+  const contactData = {
+    primaryPhone: '+91 9876543210',
+    secondaryPhone: '+91 9123456780',
+    email: 'joe@example.com',
+    street: '123 Main Street',
+    city: 'Hyderabad',
+    state: 'Telangana',
+    zipCode: '500032',
+    preferredCommunication: 'Email',
+    mailingSame: true,
 
-const contactData = {
-  primaryPhone: '+1 (212) 555-7890',
-  secondaryPhone: '+1 (646) 555-1234',
-  email: 'John.smith@gmail.com',
-  street: '1600 Broadway',
-  city: 'New York',
-  state: 'NY',
-  zipCode: '10019',
-  preferredCommunication: 'Email',
-  mailingSame: true,
-  verification: {
-    email: true,
-    primaryPhone: true,
-    secondaryPhone: false
-  }
-};
-
-  const handleEditClick = () => {
-    setIsOpen(true);
+    verification: {
+      email: true,
+      primaryPhone: true,
+      secondaryPhone: false
+    }
   };
 
   return (
-    <>
-      <ViewContactDetailsView
-        contactData={contactData}
-        onEditClick={handleEditClick}  
-      />
-
-    
-          <Modal
-          isOpen={isOpen}
-          onClose={() => setIsOpen(false)}
-          maxHeight="90%"
-          maxWidth="60%"
-          fullScreen
-        >
-          <UpdateContactDetails onClose={() => setIsOpen(false)} />
-        </Modal>
-    </>
+    <ViewContactDetailsView
+      contactData={contactData}
+      navigate={navigate}
+    />
   );
 };
 

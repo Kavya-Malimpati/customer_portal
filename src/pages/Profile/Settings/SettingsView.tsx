@@ -303,7 +303,7 @@ const SettingsUI = ({
                     </Typography>
                   </div>
 
-                  <Button variant='contained' fullWidth className='account-btn'>
+                  <Button fullWidth className='account-btn'>
                     <div className='account-btn-inner'>
                       <FiKey size={16} />
                       <span className='account-btn-text'>Change Password</span>
@@ -311,7 +311,7 @@ const SettingsUI = ({
                     </div>
                   </Button>
 
-                  <Button variant='contained' fullWidth className='account-btn'>
+                  <Button fullWidth className='account-btn'>
                     <div className='account-btn-inner'>
                       <FiSmartphone size={16} />
                       <span className='account-btn-text'>Two-Factor Auth</span>

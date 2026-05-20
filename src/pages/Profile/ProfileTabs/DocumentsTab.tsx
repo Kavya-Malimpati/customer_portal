@@ -1,5 +1,5 @@
-import DigitalDocuments from '../DocumentsTab/DigitalDocuments';
-import DocumentVault from '../DocumentsTab/DocumentVault';
+import DocumentVault from '../DocumentVault';
+import DigitalDocuments from '../DigitalDocuments';
 
 const DocumentsTab = () => {
   return (

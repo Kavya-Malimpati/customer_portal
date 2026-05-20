@@ -1,6 +1,5 @@
-import { Tab, Tabs } from '../../common/components/Tabs';
+import { Tabs, Tab } from '../../common/components/Tabs';
 import Typography from '../../common/components/Typography/Typography';
-
 import type { ProfileTabKey } from './ProfileTabs/interface';
 import type { ProfilePageViewProps } from './interfaces';
 
@@ -19,7 +18,12 @@ const ProfilePageView = ({
           <Typography variant='h2' color='primary'>
             {activeTabMeta.heading}
           </Typography>
-          <Typography color='secondary'>{activeTabMeta.subheading}</Typography>
+          <Typography 
+            color='secondary' 
+            style={{ marginTop: 'var(--space-2)' }}
+          >
+            {activeTabMeta.subheading}
+          </Typography>
         </div>
       )}
 

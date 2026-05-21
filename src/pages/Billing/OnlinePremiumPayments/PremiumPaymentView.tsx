@@ -31,8 +31,10 @@ const PremiumPaymentView = ({ amount, dueDate, status, onPayClick }: PremiumPaym
 
         <div className='payment-button-wrapper'>
           <Button variant='contained' className='payment-button' onClick={onPayClick}>
-            <FiCreditCard size={16} />
-            Pay Now
+            <span className='payment-button-content'>
+              <FiCreditCard size={16} />
+              <span>Pay Now</span>
+            </span>
           </Button>
         </div>
 

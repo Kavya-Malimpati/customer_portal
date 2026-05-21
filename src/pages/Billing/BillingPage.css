@@ -73,25 +73,26 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  width: 100%;
 }
 
 .grid-row {
   display: flex;
   gap: 24px;
+  width: 100%;
+}
+
+.grid-row > * {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.grid-row:first-child {
+  align-items: stretch;
 }
 
 .grid-row:first-child > * {
-  width: 350px;
   min-height: 270px;
-  flex-shrink: 0;
-}
-
-.grid-row:nth-child(2) > * {
-  flex: 1;
-}
-
-.grid-row:nth-child(3) > * {
-  flex: 1;
 }
 
 .billing-page-wrapper {
@@ -110,11 +111,7 @@
     margin-top: 0;
   }
 
-  .grid-row:first-child {
-    flex-direction: column;
-  }
-
-  .grid-row:nth-child(2) {
+  .grid-row {
     flex-direction: column;
   }
 }

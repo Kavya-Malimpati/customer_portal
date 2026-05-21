@@ -11,17 +11,19 @@ const ProfilePageView = ({
   onTabChange,
 }: ProfilePageViewProps) => {
   return (
-    <div style={{ padding: 'var(--space-6)', backgroundColor: 'var(--bg-page)' }}>
+    <div
+      style={{
+        padding: 'var(--space-6)',
+        backgroundColor: 'rgb(239 246 255 / 36%)',
+      }}
+    >
       {/* Heading & Subheading */}
       {activeTabMeta && (
         <div style={{ marginBottom: 'var(--space-6)' }}>
           <Typography variant='h2' color='primary'>
             {activeTabMeta.heading}
           </Typography>
-          <Typography 
-            color='secondary' 
-            style={{ marginTop: 'var(--space-2)' }}
-          >
+          <Typography color='secondary' style={{ marginTop: 'var(--space-2)' }}>
             {activeTabMeta.subheading}
           </Typography>
         </div>

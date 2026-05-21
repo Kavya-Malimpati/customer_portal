@@ -1,6 +1,6 @@
 import { Typography, Button } from '../../../common/components';
 import Table from '../../../common/components/Table';
-import { FiSearch } from 'react-icons/fi';
+import { FiSearch, FiEye, FiFileText, FiRefreshCw } from 'react-icons/fi';
 import FormInput from '../../../common/components/FormInput';
 import type { Transaction } from './Interfaces';
 import './BillingHistory.css';
@@ -24,7 +24,9 @@ const BillingHistoryView = ({ transactions }: BillingHistoryViewProps) => {
         <>
           {row.description}
           <br />
-          <span className='method-ref'>{row.method || row.reference || '-'}</span>
+          <span className='method-ref'>
+            {row.method || row.reference || '-'}
+          </span>
         </>
       ),
     },
@@ -39,7 +41,9 @@ const BillingHistoryView = ({ transactions }: BillingHistoryViewProps) => {
       headerName: 'Status',
       sortable: false,
       renderCell: (row: Transaction) => (
-        <span className={`status ${row.status.toLowerCase()}`}>{row.status}</span>
+        <span className={`status ${row.status.toLowerCase()}`}>
+          {row.status}
+        </span>
       ),
     },
     {
@@ -48,19 +52,29 @@ const BillingHistoryView = ({ transactions }: BillingHistoryViewProps) => {
       sortable: false,
       align: 'right' as const,
       className: 'actions-header',
+
       renderCell: (row: Transaction) => (
         <div className='actions'>
           <Button variant='text' size='small'>
-            View
+            <span className='action-content'>
+              <FiEye size={12} />
+              View
+            </span>
           </Button>
 
           {row.status === 'SUCCESS' ? (
             <Button variant='text' size='small'>
-              Receipt
+              <span className='action-content'>
+                <FiFileText size={12} />
+                Receipt
+              </span>
             </Button>
           ) : (
             <Button variant='text' size='small'>
-              Retry
+              <span className='action-content'>
+                <FiRefreshCw size={12} />
+                Retry
+              </span>
             </Button>
           )}
         </div>
@@ -71,7 +85,10 @@ const BillingHistoryView = ({ transactions }: BillingHistoryViewProps) => {
   return (
     <div className='billing-history-content'>
       <div className='billing-history-header'>
-        <Typography variant='h5' style={{ color: 'var(--text-primary)' }}>
+        <Typography
+          variant='h5'
+          style={{ color: 'var(--text-primary)' }}
+        >
           Billing History & Statements
         </Typography>
 
@@ -84,7 +101,10 @@ const BillingHistoryView = ({ transactions }: BillingHistoryViewProps) => {
             className='search-input'
           />
 
-          <Button size='small' className='search-btn'>
+          <Button
+            size='small'
+            className='search-btn'
+          >
             <FiSearch size={16} />
           </Button>
         </div>
@@ -102,7 +122,9 @@ const BillingHistoryView = ({ transactions }: BillingHistoryViewProps) => {
       </div>
 
       <div className='billing-history-footer'>
-        <Typography variant='caption'>Showing 1–10 of 24 transactions</Typography>
+        <Typography variant='caption'>
+          Showing 1–10 of 24 transactions
+        </Typography>
 
         <div className='pagination'>
           <Button variant='text' size='small'>

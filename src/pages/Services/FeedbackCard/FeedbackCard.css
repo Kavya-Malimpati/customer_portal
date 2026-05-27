@@ -1,0 +1,60 @@
+.feedback-card {
+      background: linear-gradient(135deg, var(--color-primary), #2e63d2);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  color: var(--text-inverse);
+  
+
+}
+
+
+.feedback-container {
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+
+.feedback-title {
+  color: var(--text-inverse);
+}
+
+
+.feedback-subtext {
+  color: var(--color-gray-200);
+}
+
+
+.feedback-stars {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.star {
+  font-size: 20px;
+  cursor: pointer;
+  color: gold;
+}
+
+.star.filled {
+  color: var(--color-warning);
+}
+
+
+.feedback-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  cursor: pointer;
+  margin-top: var(--space-2);
+}
+
+.feedback-link-text {
+  color: var(--text-inverse);
+  text-decoration: underline;
+}
+.feedback-arrow{
+    color: var(--text-inverse);
+}

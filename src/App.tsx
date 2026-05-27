@@ -13,6 +13,7 @@ import AgentContactDetails from './pages/Profile/AgentContactDetails/';
 import ProfilePage from './pages/Profile/ProfilePage';
 import Claims from './pages/Claims';
 import BillingPage from './pages/Billing/BillingPage';
+import ServicesPage from './pages/Services/ServicesPage';
 
 function App() {
   const navigate = useNavigate();
@@ -116,6 +117,14 @@ function App() {
         element={
           <MainLayout onLogout={handleLogout}>
             <Claims />
+          </MainLayout>
+        }
+      />
+            <Route
+        path='/services'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <ServicesPage />
           </MainLayout>
         }
       />

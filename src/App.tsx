@@ -6,7 +6,6 @@ import AddContactDetails from './pages/Profile/AddContactDetails';
 import ContactDetails from './pages/Profile/Contact';
 import DocumentVault from './pages/Profile/DocumentVault';
 import PaperlessPreferences from './pages/Profile/PaperlessPreferences';
-import EditPersonalDetails from './pages/Profile/EditPersonalDetails';
 import DigitalDocuments from './pages/Profile/DigitalDocuments';
 import Settings from './pages/Profile/Settings';
 import AgentContactDetails from './pages/Profile/AgentContactDetails/';

@@ -1,0 +1,72 @@
+/* .payment-wrapper {
+  background: var(--color-white);
+} */
+
+.payment-card {
+  width: 350px;
+  min-height: 270px;
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  color: var(--text-inverse);
+  background: var(--color-primary);
+}
+
+.payment-amount {
+  margin-top: var(--space-2);
+}
+
+.payment-due {
+  margin-top: var(--space-1);
+}
+
+.payment-due-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.payment-button-wrapper {
+  margin-top: var(--space-4);
+}
+
+.payment-button {
+  width: 100% !important;
+  height: 56px !important;
+
+  background: var(--color-white) !important;
+  color: var(--color-primary) !important;
+
+  border: none !important;
+  border-radius: var(--radius-md) !important;
+
+  cursor: pointer !important;
+}
+
+.payment-button-content {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+
+  width: 100%;
+  white-space: nowrap;
+
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+}
+
+.payment-button-content svg {
+  flex-shrink: 0;
+}
+
+.payment-methods {
+  margin-top: var(--space-4);
+  display: flex;
+  justify-content: center;
+  gap: var(--space-4);
+}
+
+.payment-status {
+  margin-top: var(--space-3);
+  text-align: center;
+}

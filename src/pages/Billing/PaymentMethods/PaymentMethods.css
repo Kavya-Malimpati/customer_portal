@@ -1,0 +1,90 @@
+.payment-methods-card {
+  flex: 1;
+  min-height: 350px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  background: var(--bg-surface);
+  padding: 0 !important;
+  border-color: var(--color-gray-300);
+}
+
+.payment-methods-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-5);
+  border-bottom: var(--border-width-sm) solid var(--border-color);
+}
+
+.payment-methods-title {
+  color: var(--text-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.payment-methods-add {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  cursor: pointer;
+}
+
+.add-icon {
+  font-size: 18px;
+  color: var(--color-primary);
+}
+
+.add-method-text {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.payment-methods-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-6);
+  padding-bottom: var(--space-20);
+}
+
+.payment-method-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border: var(--border-width-sm) solid var(--border-color);
+  background: var(--bg-surface);
+}
+
+.payment-method-logo {
+  width: 59px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  background: var(--bg-muted);
+  flex-shrink: 0;
+}
+
+.logo-text {
+  font-size: 16px !important;
+  letter-spacing: 1.5px;
+  font-weight: var(--font-weight-bold);
+  font-style: italic;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.logo-text.visa,
+.logo-text.chase {
+  color: var(--color-primary);
+  opacity: 0.6;
+}
+
+.payment-method-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.payment-title {
+  font-weight: var(--font-weight-semibold);
+}

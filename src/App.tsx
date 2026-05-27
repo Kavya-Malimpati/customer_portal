@@ -4,11 +4,9 @@ import MainLayout from './common/MainLayout';
 import PersonalDetailsPage from './pages/Profile/ViewPersonalDetails/PersonalDetailsPage';
 import Home from './pages/Home';
 import AddContactDetails from './pages/Profile/AddContactDetails';
-import UpdateContactDetails from './pages/Profile/UpdateContactDetails';
 import ContactDetails from './pages/Profile/Contact';
 import DocumentVault from './pages/Profile/DocumentVault';
 import PaperlessPreferences from './pages/Profile/PaperlessPreferences';
-import EditPersonalDetails from './pages/Profile/EditPersonalDetails';
 import DigitalDocuments from './pages/Profile/DigitalDocuments';
 import Settings from './pages/Profile/Settings';
 import AgentContactDetails from './pages/Profile/AgentContactDetails/';
@@ -60,15 +58,6 @@ function App() {
       />
 
       <Route
-        path='/update-contact'
-        element={
-          <MainLayout onLogout={handleLogout}>
-            <UpdateContactDetails />
-          </MainLayout>
-        }
-      />
-
-      <Route
         path='/settings'
         element={
           <MainLayout onLogout={handleLogout}>
@@ -94,22 +83,7 @@ function App() {
           </MainLayout>
         }
       />
-      <Route
-        path='/edit-personal-details'
-        element={
-          <MainLayout onLogout={handleLogout}>
-            <EditPersonalDetails />
-          </MainLayout>
-        }
-      />
-      <Route
-        path='/view-personal-details'
-        element={
-          <MainLayout onLogout={handleLogout}>
-            <PersonalDetailsPage />
-          </MainLayout>
-        }
-      />
+
       <Route
         path='/agent-contact-details'
         element={
@@ -123,6 +97,15 @@ function App() {
         element={
           <MainLayout onLogout={handleLogout}>
             <ProfilePage />
+          </MainLayout>
+        }
+      />
+
+      <Route
+        path='/billing'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <BillingPage />
           </MainLayout>
         }
       />

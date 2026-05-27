@@ -1,0 +1,146 @@
+.account-security {
+  padding: 24px 0 0 0;
+}
+
+.account-security__container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.account-security__header {
+  border-radius: 12px;
+}
+
+.account-security__banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  border: 1px solid #d6dee8;
+  border-radius: 12px;
+  background: #f5f7fa;
+}
+
+.banner-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.security-icon-box {
+  width: 48px;
+  height: 48px;
+  border: 2px solid #d6dee8;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+}
+
+.security-icon {
+  font-size: 22px;
+  color: #005ea6;
+}
+
+.account-security__actions {
+  display: flex;
+  gap: 12px;
+}
+
+.account-security__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.account-security__card {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #ffffff;
+  padding: 16px;
+}
+
+.account-security__card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.icon {
+  font-size: 24px;
+}
+
+.icon--muted {
+  color: #6b7280;
+}
+
+.icon--success {
+  color: #16a34a;
+}
+
+.icon--danger {
+  color: #dc2626;
+}
+
+.heading {
+  margin-bottom: 4px;
+}
+
+.text-muted {
+  color: #6b7280;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.flex-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.text-link {
+  color: #005ea6;
+  cursor: pointer;
+}
+
+.account-security__activity {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.no-padding {
+  padding: 0;
+}
+
+.activity-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+}
+
+.activity-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.activity-divider {
+  height: 1px;
+  background: #e5e7eb;
+}
+
+.headingunbold {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-regular);
+}

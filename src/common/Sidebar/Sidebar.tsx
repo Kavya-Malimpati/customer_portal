@@ -1,9 +1,9 @@
 import '../../styles/tokens.css';
- 
+
 import { useState } from 'react';
 import { FiBarChart2, FiClipboard, FiCreditCard, FiFile, FiSettings } from 'react-icons/fi';
 import { useLocation, useNavigate } from 'react-router-dom';
- 
+
 interface SidebarItem {
   id: string;
   label: string;
@@ -11,7 +11,7 @@ interface SidebarItem {
   icon: React.ReactNode;
   subItems?: SidebarItem[];
 }
- 
+
 const SIDEBAR_ITEMS: SidebarItem[] = [
   {
     id: 'dashboard',
@@ -44,7 +44,7 @@ const SIDEBAR_ITEMS: SidebarItem[] = [
     icon: <FiSettings />,
   },
 ];
- 
+
 interface SidebarProps {
   isOpen?: boolean;
   onClose?: () => void;
@@ -56,25 +56,25 @@ function Sidebar({ isOpen = true, onClose, isCollapsed = false, onToggleCollapse
   const navigate = useNavigate();
   const location = useLocation();
   const [expandedItems, setExpandedItems] = useState<string[]>(['profile']);
- 
+
   const toggleExpand = (itemId: string) => {
     setExpandedItems(prev =>
       prev.includes(itemId) ? prev.filter(id => id !== itemId) : [...prev, itemId],
     );
   };
- 
+
   const handleNavigate = (path: string) => {
     navigate(path);
     onClose?.();
   };
- 
+
   const isActive = (path: string) => location.pathname === path;
- 
+
   const renderSidebarItem = (item: SidebarItem, level = 0) => {
     const hasSubItems = item.subItems && item.subItems.length > 0;
     const isExpanded = expandedItems.includes(item.id);
     const active = isActive(item.path);
- 
+
     return (
       <div key={item.id}>
         <button
@@ -161,7 +161,5 @@ function Sidebar({ isOpen = true, onClose, isCollapsed = false, onToggleCollapse
     </aside>
   );
 }
- 
+
 export default Sidebar;
- 
- 

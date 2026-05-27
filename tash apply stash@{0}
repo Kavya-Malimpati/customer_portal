@@ -1,0 +1,170 @@
+[1mdiff --git a/src/pages/Profile/AccountSecurity/AccountSecurity.tsx b/src/pages/Profile/AccountSecurity/AccountSecurity.tsx[m
+[1mnew file mode 100644[m
+[1mindex 0000000..6b543a6[m
+[1m--- /dev/null[m
+[1m+++ b/src/pages/Profile/AccountSecurity/AccountSecurity.tsx[m
+[36m@@ -0,0 +1,34 @@[m
+[32m+[m[32mimport { useEffect, useState } from 'react';[m
+[32m+[m[32mimport { useNavigate } from 'react-router-dom';[m
+[32m+[m[32mimport AccountSecurityView from './AccountSecurityView';[m
+[32m+[m[32mimport { getAccountData } from './account.api';[m
+[32m+[m[32mimport type { AccountData } from './account.api';[m
+[32m+[m
+[32m+[m[32mconst AccountSecurity = () => {[m
+[32m+[m[32m  const [data, setData] = useState<AccountData | null>(null);[m
+[32m+[m[32m  const navigate = useNavigate();[m
+[32m+[m
+[32m+[m[32m  useEffect(() => {[m
+[32m+[m[32m    getAccountData().then(setData);[m
+[32m+[m[32m  }, []);[m
+[32m+[m
+[32m+[m[32m  const handleChangePassword = () => {[m
+[32m+[m[32m    navigate('/profile-page');[m
+[32m+[m[32m  };[m
+[32m+[m
+[32m+[m[32m  const handleUpdate2FA = () => {[m
+[32m+[m[32m    navigate('/update-2fa');[m
+[32m+[m[32m  };[m
+[32m+[m
+[32m+[m[32m  if (!data) return null;[m
+[32m+[m
+[32m+[m[32m  return ([m
+[32m+[m[32m    <AccountSecurityView[m
+[32m+[m[32m      data={data}[m
+[32m+[m[32m      onChangePassword={handleChangePassword}[m
+[32m+[m[32m      onUpdate2FA={handleUpdate2FA}[m
+[32m+[m[32m    />[m
+[32m+[m[32m  );[m
+[32m+[m[32m};[m
+[32m+[m
+[32m+[m[32mexport default AccountSecurity;[m
+\ No newline at end of file[m
+[1mdiff --git a/src/pages/Profile/AccountSecurity/AccountSecurityView.tsx b/src/pages/Profile/AccountSecurity/AccountSecurityView.tsx[m
+[1mnew file mode 100644[m
+[1mindex 0000000..f2e91e5[m
+[1m--- /dev/null[m
+[1m+++ b/src/pages/Profile/AccountSecurity/AccountSecurityView.tsx[m
+[36m@@ -0,0 +1,152 @@[m
+[32m+[m[32mimport { Card, CardContent, Typography, Button, Link } from '../../../common/components';[m
+[32m+[m[32mimport { FiClock, FiShield, FiUser } from 'react-icons/fi';[m
+[32m+[m[32mimport { useTranslation } from 'react-i18next';[m
+[32m+[m[32mimport type { AccountData } from './account.api';[m
+[32m+[m
+[32m+[m[32mimport './Style.css';[m
+[32m+[m
+[32m+[m[32minterface Props {[m
+[32m+[m[32m  data: AccountData;[m
+[32m+[m[32m  onChangePassword: () => void;[m
+[32m+[m[32m  onUpdate2FA: () => void;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mconst AccountSecurityDisplay = ({ data, onChangePassword, onUpdate2FA }: Props) => {[m
+[32m+[m[32m  const { t } = useTranslation();[m
+[32m+[m
+[32m+[m[32m  return ([m
+[32m+[m[32m    <main className='account-security'>[m
+[32m+[m[32m      <div className='account-security__container'>[m
+[32m+[m[32m        {/* HEADER */}[m
+[32m+[m[32m        <div className='account-security__header'>[m
+[32m+[m[32m          <div className='account-security__banner'>[m
+[32m+[m[32m            <div>[m
+[32m+[m[32m              <Typography variant='h2' className='heading'>[m
+[32m+[m[32m                {t('accountSecurity.title')}[m
+[32m+[m[32m              </Typography>[m
+[32m+[m
+[32m+[m[32m              <Typography variant='body2' className='text-muted'>[m
+[32m+[m[32m                {t('accountSecurity.description')}[m
+[32m+[m[32m              </Typography>[m
+[32m+[m[32m            </div>[m
+[32m+[m
+[32m+[m[32m            <div className='account-security__actions'>[m
+[32m+[m[32m              <Button variant='outlined' onClick={onChangePassword}>[m
+[32m+[m[32m                {t('accountSecurity.changePassword')}[m
+[32m+[m[32m              </Button>[m
+[32m+[m
+[32m+[m[32m              <Button variant='contained' onClick={onUpdate2FA}>[m
+[32m+[m[32m                {t('accountSecurity.update2FA')}[m
+[32m+[m[32m              </Button>[m
+[32m+[m[32m            </div>[m
+[32m+[m[32m          </div>[m
+[32m+[m
+[32m+[m[32m          {/* 3 CARDS */}[m
+[32m+[m[32m          <div className='account-security__grid'>[m
+[32m+[m[32m            {/* LAST LOGIN */}[m
+[32m+[m[32m            <Card className='account-security__card'>[m
+[32m+[m[32m              <CardContent className='account-security__card-content'>[m
+[32m+[m[32m                <FiClock className='icon icon--muted' />[m
+[32m+[m
+[32m+[m[32m                <Typography variant='body1' className='font-medium'>[m
+[32m+[m[32m                  {data.lastLogin.title}[m
+[32m+[m[32m                </Typography>[m
+[32m+[m
+[32m+[m[32m                <Typography variant='body2' className='text-muted nowrap'>[m
+[32m+[m[32m                  {`${data.lastLogin.time} from ${data.lastLogin.location}`}[m
+[32m+[m[32m                </Typography>[m
+[32m+[m[32m              </CardContent>[m
+[32m+[m[32m            </Card>[m
+[32m+[m
+[32m+[m[32m            {/* IDENTITY STATUS */}[m
+[32m+[m[32m            <Card className='account-security__card'>[m
+[32m+[m[32m              <CardContent className='account-security__card-content'>[m
+[32m+[m[32m                <FiShield className='icon icon--success' />[m
+[32m+[m
+[32m+[m[32m                <Typography variant='body1' className='font-medium'>[m
+[32m+[m[32m                  {data.identityStatus.title}[m
+[32m+[m[32m                </Typography>[m
+[32m+[m
+[32m+[m[32m                <Typography variant='body2' className='text-muted'>[m
+[32m+[m[32m                  {data.identityStatus.status}[m
+[32m+[m[32m                </Typography>[m
+[32m+[m[32m              </CardContent>[m
+[32m+[m[32m            </Card>[m
+[32m+[m
+[32m+[m[32m            {/* LEGACY CONTACT */}[m
+[32m+[m[32m            <Card className='account-security__card'>[m
+[32m+[m[32m              <CardContent className='account-security__card-content'>[m
+[32m+[m[32m                <FiUser className='icon icon--danger' />[m
+[32m+[m
+[32m+[m[32m                <Typography variant='body1' className='font-medium'>[m
+[32m+[m[32m                  {data.legacyContact.title}[m
+[32m+[m[32m                </Typography>[m
+[32m+[m
+[32m+[m[32m                <div className='flex-row'>[m
+[32m+[m[32m                  <Typography variant='body2' className='text-muted'>[m
+[32m+[m[32m                    {data.legacyContact.info}[m
+[32m+[m[32m                  </Typography>[m
+[32m+[m
+[32m+[m[32m                  <Typography className='text-link'>Add now</Typography>[m
+[32m+[m[32m                </div>[m
+[32m+[m[32m              </CardContent>[m
+[32m+[m[32m            </Card>[m
+[32m+[m[32m          </div>[m
+[32m+[m[32m        </div>[m
+[32m+[m
+[32m+[m[32m        {/* RECENT ACTIVITY */}[m
+[32m+[m[32m        <div className='account-security__activity'>[m
+[32m+[m[32m          <Typography variant='h3' className='heading'>[m
+[32m+[m[32m            {t('accountSecurity.recentActivity')}[m
+[32m+[m[32m          </Typography>[m
+[32m+[m
+[32m+[m[32m          <Card className='account-security__header'>[m
+[32m+[m[32m            <CardContent className='no-padding'>[m
+[32m+[m[32m              {/* ITEM 1 */}[m
+[32m+[m[32m              <div className='activity-item'>[m
+[32m+[m[32m                <div className='activity-left'>[m
+[32m+[m[32m                  <FiClock className='icon icon--muted' />[m
+[32m+[m
+[32m+[m[32m                  <div>[m
+[32m+[m[32m                    <Typography variant='body1'>Auto Policy Renewal Document Uploaded</Typography>[m
+[32m+[m
+[32m+[m[32m                    <Typography variant='caption' className='text-muted'>[m
+[32m+[m[32m                      Yesterday, 4:30 PM[m
+[32m+[m[32m                    </Typography>[m
+[32m+[m[32m                  </div>[m
+[32m+[m[32m                </div>[m
+[32m+[m
+[32m+[m[32m                <Link to='#' className='text-link'>[m
+[32m+[m[32m                  View[m
+[32m+[m[32m                </Link>[m
+[32m+[m[32m              </div>[m
+[

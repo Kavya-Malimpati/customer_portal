@@ -12,6 +12,7 @@ import Settings from './pages/Profile/Settings';
 import AgentContactDetails from './pages/Profile/AgentContactDetails/';
 import ProfilePage from './pages/Profile/ProfilePage';
 import Claims from './pages/Claims';
+import BillingPage from './pages/Billing/BillingPage';
 
 function App() {
   const navigate = useNavigate();

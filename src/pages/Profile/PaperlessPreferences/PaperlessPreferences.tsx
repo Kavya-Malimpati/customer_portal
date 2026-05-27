@@ -1,65 +1,45 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-
-import paperlessConfig from '../../../config/paperlesspreferences.json';
+import { useEffect, useState } from 'react';
 import PaperlessPreferencesView from './PaperlessPreferencesView';
+import type { PaperlessPreferencesState } from './interfaces';
 
-import type { PaperlessOptions } from './interfaces';
-
-const defaultState = {
-  enabled: paperlessConfig.enabledState,
-  options: {
-    email: paperlessConfig.options[0].value,
-    sms: paperlessConfig.options[1].value,
-    documents: paperlessConfig.options[2].value,
-  },
+const defaultPaperlessPreferences: PaperlessPreferencesState = {
+  enabled: true,
+  email: true,
+  sms: false,
+  documents: true,
+  emailAddress: 'alex.walker@gmail.com',
 };
 
-const PaperlessPreferences: React.FC = () => {
-  const navigate = useNavigate();
+const getInitialPaperlessPreferences = (): PaperlessPreferencesState => {
+  try {
+    const saved = localStorage.getItem('paperlessPreferences');
 
-  const [enabled, setEnabled] = useState<boolean>(defaultState.enabled);
-  const [options, setOptions] = useState<PaperlessOptions>(defaultState.options);
-  const [showSuccessModal, setShowSuccessModal] = useState(false);
+    if (saved) {
+      return {
+        ...defaultPaperlessPreferences,
+        ...JSON.parse(saved),
+      };
+    }
+  } catch (error) {
+    console.error('Failed to parse paperless preferences', error);
+  }
 
-  const handleToggle = (): void => {
-    setEnabled(prev => !prev);
-  };
+  return defaultPaperlessPreferences;
+};
 
-  const handleOptionChange = (key: keyof PaperlessOptions): void => {
-    setOptions(prev => ({ ...prev, [key]: !prev[key] }));
-  };
+const PaperlessPreferences = () => {
+  const [paperless, setPaperless] = useState<PaperlessPreferencesState>(
+    getInitialPaperlessPreferences,
+  );
 
-  const resetToDefault = (): void => {
-    setEnabled(defaultState.enabled);
-    setOptions(defaultState.options);
-  };
-
-  const handleSave = (): void => {
-    console.log('Preferences saved:', { enabled, options });
-    setShowSuccessModal(true);
-  };
-
-  const handleSuccessModalClose = (): void => {
-    setShowSuccessModal(false);
-    resetToDefault();
-    navigate(-1);
-  };
-
-  const handleCancel = (): void => {
-    resetToDefault();
-  };
+  useEffect(() => {
+    localStorage.setItem('paperlessPreferences', JSON.stringify(paperless));
+  }, [paperless]);
 
   return (
     <PaperlessPreferencesView
-      enabled={enabled}
-      options={options}
-      showSuccessModal={showSuccessModal}
-      onToggle={handleToggle}
-      onOptionChange={handleOptionChange}
-      onSave={handleSave}
-      onCancel={handleCancel}
-      onSuccessModalClose={handleSuccessModalClose}
+      paperless={paperless}
+      onPaperlessChange={setPaperless}
     />
   );
 };

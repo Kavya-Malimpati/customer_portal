@@ -7,7 +7,7 @@
 
 }
 
-
+/* INNER CONTAINER */
 .feedback-container {
   padding: var(--space-5);
   display: flex;
@@ -15,17 +15,17 @@
   gap: var(--space-3);
 }
 
-
+/* TITLE */
 .feedback-title {
   color: var(--text-inverse);
 }
 
-
+/* SUBTEXT */
 .feedback-subtext {
   color: var(--color-gray-200);
 }
 
-
+/* STARS */
 .feedback-stars {
   display: flex;
   gap: var(--space-2);
@@ -42,7 +42,7 @@
   color: var(--color-warning);
 }
 
-
+/* CTA (Typography style) */
 .feedback-link {
   display: flex;
   align-items: center;

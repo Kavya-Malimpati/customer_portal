@@ -8,8 +8,3 @@ export interface OfferItem {
 export interface OffersProps {
   offers?: OfferItem[];
 }
-
-export
-interface OffersViewProps {
-  offers: OfferItem[];
-}

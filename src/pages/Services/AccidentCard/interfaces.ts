@@ -7,6 +7,3 @@ export interface StepItem {
 export interface AccidentCardProps {
   steps?: StepItem[];
 }
-export interface Props {
-  steps: StepItem[];
-}

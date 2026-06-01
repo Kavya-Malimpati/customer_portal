@@ -8,7 +8,7 @@ const ContactDetails = () => {
   const [isOpen, setIsOpen] = useState(false);
 
 const contactData = {
-  primaryPhone: '+1 (212) 555-7890',
+  primaryPhone: '+1 (212) 5557890',
   secondaryPhone: '+1 (646) 555-1234',
   email: 'John.smith@gmail.com',
   street: '1600 Broadway',

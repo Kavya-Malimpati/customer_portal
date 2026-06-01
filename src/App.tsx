@@ -7,6 +7,7 @@ import ProfilePage from './pages/Profile/ProfilePage';
 import Claims from './pages/Claims';
 import BillingPage from './pages/Billing/BillingPage';
 import ServicesPage from './pages/Services/ServicesPage';
+import PolicyPage from './pages/Policy/PolicyPage';
 
 function App() {
   const navigate = useNavigate();
@@ -51,7 +52,7 @@ function App() {
         }
       />
 
-           <Route
+      <Route
         path='/claims'
         element={
           <MainLayout onLogout={handleLogout}>
@@ -59,7 +60,7 @@ function App() {
           </MainLayout>
         }
       />
-            <Route
+      <Route
         path='/services'
         element={
           <MainLayout onLogout={handleLogout}>
@@ -67,7 +68,14 @@ function App() {
           </MainLayout>
         }
       />
-
+      <Route
+        path='/policy'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <PolicyPage />
+          </MainLayout>
+        }
+      />
       <Route path='*' element={<Navigate to='/' replace />} />
     </Routes>
   );

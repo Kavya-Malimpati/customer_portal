@@ -32,5 +32,15 @@ export const getDigitalDocuments = async (): Promise<DigitalDocument[]> => {
       viewUrl: '/documents/view/endorsement-notice.pdf',
       downloadUrl: '/documents/download/endorsement-notice.pdf',
     },
+    {
+      id: 4,
+      title: 'Proof of Insurance Card - Digital Copy',
+      category: 'Card',
+      date: '2025-01-15',
+      size: '512 KB',
+      status: 'Available',
+      viewUrl: '/documents/view/proof-of-insurance-card.pdf',
+      downloadUrl: '/documents/download/proof-of-insurance-card.pdf',
+    },
   ];
 };

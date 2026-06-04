@@ -12,8 +12,8 @@ const SettingsUI = ({
   handlePreferenceChange,
 }: SettingsUIProps) => {
   return (
-    <main className='settings-page'>
-      <div className='settings-container'>
+    <main className= 'settings-pages'>
+
         <div className='settings-grid'>
           <div className='settings-left'>
             <PaperlessPreferences />
@@ -189,7 +189,7 @@ const SettingsUI = ({
           </div>
 
           <div className='settings-right'>
-            <Card variant='outlined-raised' size='sm'>
+            <Card variant='outlined-raised' size='lg'>
               <CardContent>
                 <div className='settings-card-section'>
                   <div className='section-title'>
@@ -303,7 +303,7 @@ const SettingsUI = ({
                     </Typography>
                   </div>
 
-                  <Button fullWidth className='account-btn'>
+                  <Button variant='contained' fullWidth className='account-btn'>
                     <div className='account-btn-inner'>
                       <FiKey size={16} />
                       <span className='account-btn-text'>Change Password</span>
@@ -311,7 +311,7 @@ const SettingsUI = ({
                     </div>
                   </Button>
 
-                  <Button fullWidth className='account-btn'>
+                  <Button variant='contained' fullWidth className='account-btn'>
                     <div className='account-btn-inner'>
                       <FiSmartphone size={16} />
                       <span className='account-btn-text'>Two-Factor Auth</span>
@@ -387,7 +387,6 @@ const SettingsUI = ({
             X Changes discarded
           </Typography>
         )}
-      </div>
     </main>
   );
 };

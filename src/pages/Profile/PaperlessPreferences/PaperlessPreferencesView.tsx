@@ -27,24 +27,16 @@ const PaperlessPreferencesView = ({
               </Typography>
             </div>
 
-            <Typography
-              variant='body2'
-              className='max-w-lg leading-6'
-           color='secondary'
-            >
-              Receive your policy documents, billing notices, and updates electronically.
-              Reduce waste and access everything instantly.
+            <Typography variant='body2' className='max-w-lg leading-6' color='secondary'>
+              Receive your policy documents, billing notices, and updates electronically. Reduce
+              waste and access everything instantly.
             </Typography>
 
             <div className='rounded-md border border-green-200 bg-green-50 p-4'>
               <div className='flex items-center gap-3'>
                 <FiCheckCircle size={18} style={{ color: 'var(--color-success)' }} />
 
-                <Typography
-                  variant='body2'
-                  className='font-medium'
-                  color='success'
-                >
+                <Typography variant='body2' className='font-medium' color='success'>
                   Currently receiving digital communications at {paperless.emailAddress}
                 </Typography>
               </div>
@@ -66,7 +58,14 @@ const PaperlessPreferencesView = ({
         </div>
 
         {paperless.enabled && (
-          <div className='mt-5 grid gap-3 sm:grid-cols-3'>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr 1fr',
+              gap: '12px',
+              marginTop: '16px',
+            }}
+          >
             <Toggle
               id='paperless-email'
               checked={paperless.email}

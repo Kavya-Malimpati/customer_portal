@@ -56,7 +56,7 @@ const ActiveClaimView = ({
           <div className="claim-box-claim">
             <div className="claim-top">
               <div>
-                <Typography variant="h3" color="primary">
+                <Typography variant="body1" color="primary">
                   {data?.title ?? '--'}
                 </Typography>
                 <Typography variant="body2" color="muted">
@@ -118,17 +118,17 @@ const ActiveClaimView = ({
         <Card variant="outlined-raised">
           <div className="icon-text">
             <FiCalendar className="icon" />
-            <Typography variant="h4" color="primary">
+            <Typography variant="body1" color="primary">
               Inspection Scheduled
             </Typography>
           </div>
           <CardContent>
             <div className="row">
-              <span>Date & Time</span>
+              <span className="label">Date & Time</span>
               May 02, 10:30 AM
             </div>
             <div className="row">
-              <span>Location</span>
+              <span className="label">Location</span>
               Service King, Oakland
             </div>
           </CardContent>
@@ -141,7 +141,7 @@ const ActiveClaimView = ({
         <Card variant="outlined-raised">
           <CardHeader
             title={
-              <Typography variant="h4" color="primary">
+              <Typography variant="body1" color="primary">
                 Expenses & Reimbursement
               </Typography>
             }

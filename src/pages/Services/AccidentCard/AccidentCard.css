@@ -2,8 +2,8 @@
 
 .accident-card {
   border: 1px solid var(--border-color);
-  border-radius: 12px;
-  background: #ffffff;
+  border-radius: 9px;
+  background-color: var(--bg-surface);
   overflow: hidden;
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }

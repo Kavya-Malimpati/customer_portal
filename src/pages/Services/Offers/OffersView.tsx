@@ -14,7 +14,7 @@ const OffersView: React.FC<OffersViewProps> = ({ offers }) => {
     <Card variant="outlined" className="offers-card">
 
       
-      <Typography variant="h2" color="primary" className="offers-title">
+      <Typography variant="h3" color="primary" className="offers-title">
         Offers for You
       </Typography>
 

@@ -11,7 +11,7 @@ const FeedbackCardView: React.FC<FeedbackCardViewProps> = ({ rating, onRate }) =
     <Card variant="elevation" className="feedback-card">
       <div className="feedback-container">
 
-        <Typography variant="h2" color="inverse" className="feedback-title">
+        <Typography variant="h3" color="inverse" className="feedback-title">
           How are we doing?
         </Typography>
 

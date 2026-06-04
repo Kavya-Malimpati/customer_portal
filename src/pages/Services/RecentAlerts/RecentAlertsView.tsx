@@ -11,9 +11,9 @@ interface RecentAlertsViewProps {
 
 const RecentAlertsView: React.FC<RecentAlertsViewProps> = ({ alerts, newCount }) => {
   return (
-    <Card variant="outlined-raised" className="alerts-card">
+    <div className="alerts-card">
       <div className="alerts-header">
-        <Typography variant="h2" color="primary">Recent Alerts</Typography>
+        <Typography variant="h3" color="primary">Recent Alerts</Typography>
         {newCount > 0 && (
           <span className="alerts-badge">{newCount} NEW</span>
         )}
@@ -48,7 +48,7 @@ const RecentAlertsView: React.FC<RecentAlertsViewProps> = ({ alerts, newCount })
       <div className="alerts-footer">
         <Button variant="text">View All History</Button>
       </div>
-    </Card>
+    </div>
   );
 };
 

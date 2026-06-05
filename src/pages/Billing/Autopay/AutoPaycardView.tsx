@@ -7,13 +7,13 @@ const AutoPayCardView = ({ state, onToggle, onUpdatePaymentMethod }: AutoPayCard
   const { enabled, paymentMethod, nextChargeAmount, nextChargeDate } = state;
 
   return (
-    <div className="w-[350px] min-h-[270px]">
+    <div className="w-full min-h-[270px] flex flex-col">
       <Card
         variant="outlined"
-        className="border border-gray-200 rounded-xl shadow-sm bg-white h-full"
+        className="border border-gray-200 rounded-xl shadow-sm bg-white h-full flex flex-col"
       >
-        <CardContent className="p-6 h-full">
-          <div className="flex items-start justify-between">
+        <CardContent className="p-6 h-full flex flex-col">
+          <div className="flex items-start justify-between flex-shrink-0">
             <div>
               <Typography variant="h5" className="font-bold text-black !text-black">
                 Auto-Pay
@@ -39,10 +39,10 @@ const AutoPayCardView = ({ state, onToggle, onUpdatePaymentMethod }: AutoPayCard
             />
           </div>
 
-          <div className="mt-6">
+          <div className="mt-6 flex-grow">
             <div className="flex items-center justify-between bg-gray-100 rounded-lg px-4 py-3">
               <div className="flex items-center gap-3">
-                <FiCreditCard className="text-gray-400" size={20} />
+                <FiCreditCard className="text-gray-400 flex-shrink-0" size={20} />
                 <div>
                   <Typography variant="body2" className="font-semibold text-gray-900">
                     {paymentMethod.brand} ending in {paymentMethod.lastFour}
@@ -56,14 +56,14 @@ const AutoPayCardView = ({ state, onToggle, onUpdatePaymentMethod }: AutoPayCard
                 variant="text"
                 size="small"
                 onClick={onUpdatePaymentMethod}
-                className="text-blue-600 font-semibold"
+                className="text-blue-600 font-semibold flex-shrink-0"
               >
                 Update
               </Button>
             </div>
           </div>
 
-          <div className="mt-4 flex items-center text-xs italic text-gray-400">
+          <div className="mt-4 flex items-center text-xs italic text-gray-400 flex-shrink-0">
             <span>Next auto-charge:&nbsp;</span>
             <span className="not-italic font-bold text-black">
               {nextChargeAmount} on {nextChargeDate}

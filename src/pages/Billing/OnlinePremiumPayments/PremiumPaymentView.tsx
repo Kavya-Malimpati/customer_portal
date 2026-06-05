@@ -8,7 +8,7 @@ import type { PremiumPaymentUiProps } from './Interfaces';
 
 const PremiumPaymentView = ({ amount, dueDate, status, onPayClick }: PremiumPaymentUiProps) => {
   return (
-    <div className='payment-wrapper'>
+    <div className='payment-wrapper w-full h-full'>
       <div className='payment-card'>
         <Typography variant='overline' color='inverse'>
           TOTAL BALANCE DUE

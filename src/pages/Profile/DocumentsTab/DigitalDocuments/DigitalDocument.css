@@ -1,23 +1,20 @@
-.digital-documents-container {
-  background-color: var(--bg-page);
-}
-
 .digital-documents-card {
   overflow: hidden;
   width: 100%;
- border: 1px solid var(--border-color);
- border-radius: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  background-color: #ffffff;
 }
 
 .digital-documents-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem 1rem;
+  padding: 1rem 1rem;
   background-color: #f7f8f9;
   border-bottom: 1px solid var(--border-color);
 }
-.buttonborder{
+.buttonborder {
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -30,6 +27,11 @@
 .digital-documents-actions {
   display: flex;
   gap: 0.5rem;
+}
+
+.digital-documents-actions button {
+  outline: 1.5px solid var(--border-color) !important;
+  border-radius: 0 !important;
 }
 
 .digital-documents-actions .button {

@@ -1,4 +1,5 @@
 
+
 .support-guidance-section {
   margin-bottom: var(--space-6);
 }
@@ -15,78 +16,105 @@
   margin: 0;
 }
 
-
+/* ==========================================
+   PAGE CONTAINER
+========================================== */
 
 .services-page {
   width: 100%;
+  min-width: 0;
 }
 
-
+/* ==========================================
+   MAIN LAYOUT
+========================================== */
 
 .services-grid {
   display: grid;
-
-  
-  grid-template-columns: minmax(0, 2fr) minmax(300px, 380px);
-
+  grid-template-columns: 75% 25%;
   gap: var(--space-4);
-
   align-items: start;
 }
-
 
 .left-section {
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
-
   min-width: 0;
 }
-
-
 
 .right-section {
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
-
   min-width: 0;
 }
 
+/* Prevent overflow */
+.left-section > *,
+.right-section > * {
+  min-width: 0;
+  width: 100%;
+}
 
+/* ==========================================
+   SAFETY + FEEDBACK
+========================================== */
 
 .bottom-left {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-
   gap: var(--space-4);
 }
 
+/* ==========================================
+   FORCE ALL CARDS TO SHRINK TOGETHER
+========================================== */
 
+.help-card-wrapper,
+.accident-card,
+.safety-tips-card,
+.feedback-card,
+.alerts-card,
+.offers-card {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
 
-@media (max-width: 1400px) {
+/* ==========================================
+   LARGE DESKTOP
+========================================== */
+
+@media (max-width: 1500px) {
   .services-grid {
-    grid-template-columns:
-      minmax(0, 1fr)
-      minmax(280px, 340px);
+    grid-template-columns: 73% 27%;
   }
 }
 
-/* ==========================
-   LAPTOP
-========================== */
+/* ==========================================
+   SIDEBAR OPEN RANGE
+========================================== */
 
-@media (max-width: 1200px) {
+@media (max-width: 1300px) {
   .services-grid {
-    grid-template-columns:
-      minmax(0, 1fr)
-      300px;
+    grid-template-columns: 70% 30%;
   }
 }
 
-/* ==========================
+/* ==========================================
+   SMALL DESKTOP
+========================================== */
+
+@media (max-width: 1150px) {
+  .services-grid {
+    grid-template-columns: 68% 32%;
+  }
+}
+
+/* ==========================================
    TABLET
-========================== */
+========================================== */
 
 @media (max-width: 992px) {
   .services-grid {
@@ -95,16 +123,14 @@
 
   .right-section {
     display: grid;
-
     grid-template-columns: repeat(2, minmax(0, 1fr));
-
     gap: var(--space-4);
   }
 }
 
-/* ==========================
+/* ==========================================
    MOBILE
-========================== */
+========================================== */
 
 @media (max-width: 768px) {
   .bottom-left {
@@ -125,5 +151,25 @@
 
   .support-guidance-section {
     margin-bottom: var(--space-4);
+  }
+}
+
+/* ==========================================
+   SMALL MOBILE
+========================================== */
+
+@media (max-width: 576px) {
+  .services-grid,
+  .bottom-left,
+  .right-section {
+    gap: var(--space-3);
+  }
+
+  .support-guidance-title {
+    font-size: var(--font-size-lg);
+  }
+
+  .support-guidance-subtitle {
+    font-size: var(--font-size-xs);
   }
 }

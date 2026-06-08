@@ -15,7 +15,7 @@ const FeedbackCardView: React.FC<FeedbackCardViewProps> = ({ rating, onRate }) =
           How are we doing?
         </Typography>
 
-        <Typography variant="body2" color="inverse" className="feedback-subtext">
+        <Typography variant="body1" color="inverse" className="feedback-subtext">
           Your feedback helps us improve your experience.
         </Typography>
 
@@ -38,7 +38,7 @@ const FeedbackCardView: React.FC<FeedbackCardViewProps> = ({ rating, onRate }) =
       </div>
 
         <div className="feedback-link">
-          <Typography variant="body2" color="inverse" className="feedback-link-text">
+          <Typography variant="body1" color="inverse" className="feedback-link-text">
             Tell us more
           </Typography>
           <FiArrowRight className="feedback-arrow" />

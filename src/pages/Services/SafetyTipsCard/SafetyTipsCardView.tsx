@@ -26,7 +26,7 @@ const SafetyTipsView = ({ tips }: SafetyTipsViewProps) => {
 
             <div className='safety-tip-content'>
               <Typography
-                variant='body2'
+                variant='body1'
                 color='primary'
                 className='safety-tip-title'
               >
@@ -34,7 +34,7 @@ const SafetyTipsView = ({ tips }: SafetyTipsViewProps) => {
               </Typography>
 
               <Typography
-                variant='caption'
+                variant='body2'
                 color='muted'
                 className='safety-tip-description'
               >

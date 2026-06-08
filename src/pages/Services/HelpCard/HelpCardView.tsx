@@ -51,10 +51,10 @@ const HelpCardView = ({ items, onSearch }: HelpCardViewProps) => {
                   aria-label={item.title}
                 >
                   <div className='help-card-icon'>{item.icon}</div>
-                  <Typography variant='body2' color='primary' className='help-card-item-title'>
+                  <Typography variant='body1' color='primary' className='help-card-item-title'>
                     {item.title}
                   </Typography>
-                  <Typography variant='caption' color='muted' className='help-card-item-subtitle'>
+                  <Typography variant='body2' color='muted' className='help-card-item-subtitle'>
                     {item.subtitle}
                   </Typography>
                 </button>

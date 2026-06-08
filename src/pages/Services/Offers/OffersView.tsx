@@ -48,7 +48,7 @@ const OffersView: React.FC<OffersViewProps> = ({ offers }) => {
                 {item.title}
               </Typography>
 
-              <Typography variant="caption" color="muted">
+              <Typography variant="body2" color="muted">
                 {item.subtitle}
               </Typography>
             </div>

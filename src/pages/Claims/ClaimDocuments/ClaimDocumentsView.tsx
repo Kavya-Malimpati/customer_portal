@@ -26,7 +26,7 @@ const ClaimDocumentsView = ({
               Claim Documents
             </Typography>
 
-            <Typography variant='caption' className='claim-documents-subtitle'>
+            <Typography variant='body2' className='claim-documents-subtitle'>
               RELATED TO {claimNumber}
             </Typography>
           </div>
@@ -69,7 +69,7 @@ const ClaimDocumentsView = ({
                       {document.name}
                     </Typography>
 
-                    <Typography variant='caption' className='claim-document-meta'>
+                    <Typography variant='body2' className='claim-document-meta'>
                       {document.uploadedDate} • {document.size}
                     </Typography>
                   </div>

@@ -39,13 +39,13 @@ const RoadsideAssistanceView = ({
                   {roadsideStatus.arrivalTime}
                 </Typography>
 
-                <Typography variant='caption'>{roadsideStatus.trackingText}</Typography>
+                <Typography variant='body2'>{roadsideStatus.trackingText}</Typography>
               </div>
             </div>
           </div>
 
           <div className='roadside-provider-section'>
-            <Typography variant='caption' className='roadside-provider-label'>
+            <Typography variant='body2' className='roadside-provider-label'>
               SERVICE PROVIDER
             </Typography>
 
@@ -53,11 +53,11 @@ const RoadsideAssistanceView = ({
               <div className='roadside-provider-logo'>S</div>
 
               <div>
-                <Typography variant='h5' color='primary' className='roadside-provider-name'>
+                <Typography variant='body1' color='primary' className='roadside-provider-name'>
                   {provider.name}
                 </Typography>
 
-                <Typography variant='caption' className='roadside-provider-partner'>
+                <Typography variant='body2' className='roadside-provider-partner'>
                   {provider.partner}
                 </Typography>
               </div>

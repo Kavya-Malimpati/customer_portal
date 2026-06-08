@@ -164,6 +164,14 @@ hr {
   overflow: hidden;
   margin: var(--space-2) 0;
 }
+
+.resolution{
+  font-weight: var(--font-weight-semibold);
+}
+
+.text{
+  font-weight: var(--font-weight-semibold);
+}
  
 .fill {
   width: 75%;

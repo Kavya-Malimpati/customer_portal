@@ -148,10 +148,10 @@
 /* Account */
 .account-card {
   background-color: var(--bg-dark);
-  padding: var(--space-5);
+  padding: var(--space-6);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
-  margin-top: var(--space-1);
+  margin-top: var(--space-2);
 }
 
 .account-content {
@@ -161,7 +161,7 @@
 }
 
 .account-header {
-  gap: var(--space-2);
+  gap: var(--space-3);
 }
 
 .account-title,
@@ -173,12 +173,12 @@
   height: 46px;
   width: 100%;
   color: var(--text-inverse);
-  padding: 0 var(--space-4);
+  padding: 0 var(--space-6);
   border: var(--border-width-sm) solid var(--color-primary);
 }
 
 .account-btn-inner {
-  gap: var(--space-3);
+  gap: var(--space-4);
   width: 100%;
 }
 
@@ -189,8 +189,8 @@
 
 /* SMS */
 .sms-card {
-  padding: var(--space-6);
-  margin-top: var(--space-1);
+  padding: var(--space-8);
+  margin-top: var(--space-2);
 }
 
 .sms-header {
@@ -214,6 +214,17 @@
 .sms-disabled-text {
   color: var(--text-secondary);
   font-size: var(--font-size-sm);
+}
+
+.sms-toggle-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.sms-toggle-row p,
+.sms-toggle-row span {
+  white-space: nowrap;
 }
 
 /* Footer */
@@ -268,3 +279,27 @@
     font-size: var(--font-size-lg);
   }
 }
+
+.notification-title{
+  font-weight: var(--font-weight-semibold);
+}
+
+
+ @media (min-width: 1040px) and (max-width: 1340px) {
+  .settings-grid {
+       grid-template-columns: 72% 28%;
+  }
+
+  .account-btn-text {
+    white-space: nowrap;
+    font-size: 14px;
+  }
+
+  .account-btn {
+    padding: 0 var(--space-2);
+  }
+
+  .account-btn-inner {
+    gap: var(--space-2);
+  }
+} 

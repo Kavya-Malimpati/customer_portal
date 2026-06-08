@@ -20,7 +20,7 @@ const RegisterFNOLView = ({
     <section className='register-fnol-page'>
       <section className='fnol-header-row'>
         <div>
-          <Typography variant='h4' color='primary'>
+          <Typography variant='h3' color='primary'>
             Good Morning, Alexander
           </Typography>
 
@@ -51,7 +51,7 @@ const RegisterFNOLView = ({
               ATTENTION REQUIRED
             </Typography>
 
-            <Typography variant='caption' color='error' className='fnol-alert-text'>
+            <Typography variant='body2' color='error' className='fnol-alert-text'>
               Evidence requested for Claim #PC-9902
             </Typography>
           </div>
@@ -66,7 +66,7 @@ const RegisterFNOLView = ({
         <Card variant='outlined-raised' size='lg'>
           <div className='fnol-header'>
             <div>
-              <Typography variant='h5' color='primary'>
+              <Typography variant='h3' color='primary'>
                 Report New Claim (FNOL)
               </Typography>
 
@@ -85,7 +85,7 @@ const RegisterFNOLView = ({
               orientation='horizontal'
               alternativeLabel
               color='primary'
-              size='sm'
+              size='md'
             />
           </div>
 
@@ -105,7 +105,7 @@ const RegisterFNOLView = ({
         <Card variant='outlined-raised' size='lg'>
           <CardContent>
             <div className='fnol-card-header'>
-              <Typography variant='h4' color='primary' className='fnol-title'>
+              <Typography variant='h3' color='primary' className='fnol-title'>
                 {repairInfo.title}
               </Typography>
 

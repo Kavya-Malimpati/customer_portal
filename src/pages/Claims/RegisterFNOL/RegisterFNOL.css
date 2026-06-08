@@ -98,13 +98,11 @@
   box-shadow: 0 0 0 6px rgba(29, 112, 187, 0.15);
 }
 
-
 #register-fnol-stepper p:first-child {
   margin-top: var(--space-3) !important;
   line-height: var(--line-height-tight);
   text-align: center;
 }
-
 
 #register-fnol-stepper div[style*='height: 2px'] {
   height: 4px !important;
@@ -187,7 +185,6 @@
   margin-bottom: var(--space-5);
 }
 
-
 .fnol-selected-claim {
   display: inline-flex;
   align-items: center;
@@ -200,7 +197,7 @@
 }
 
 .fnol-selected-label {
-  font-size: 10px;
+  font-size: 13px;
   font-weight: var(--font-weight-semibold);
   text-transform: uppercase;
   white-space: nowrap;
@@ -208,12 +205,21 @@
 
 .fnol-selected-text {
   font-weight: 500;
- color: var(--color-primary);
+  color: var(--color-primary);
+  display: flex;
+  white-space: nowrap;
 }
 
 .fnol-selected-texts {
   font-weight: 500;
   color: var(--text-primary);
+  display: flex;
+  white-space: nowrap;
+}
+
+.fnol-title{
+  display: flex;
+  white-space: nowrap;
 }
 
 .fnol-alert {
@@ -250,6 +256,7 @@
 .fnol-alert-text {
   color: var(--text-secondary);
 }
+
 
 .fnol-alert button {
   color: var(--color-error);

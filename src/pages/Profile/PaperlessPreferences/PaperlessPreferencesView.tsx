@@ -22,7 +22,7 @@ const PaperlessPreferencesView = ({
                 <FiMail size={18} style={{ color: 'var(--color-white)' }} />
               </div>
 
-              <Typography variant='h4' style={{ color: 'var(--text-primary)' }}>
+              <Typography variant='h3' style={{ color: 'var(--text-primary)' }}>
                 Paperless Enrollment
               </Typography>
             </div>

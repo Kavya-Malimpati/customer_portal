@@ -6,7 +6,9 @@
   box-shadow: var(--shadow-xs);
 }
 
-
+.roadside-provider-name{
+  font-weight: var(--font-weight-semibold);
+}
 .roadside-header {
   display: flex;
   justify-content: space-between;

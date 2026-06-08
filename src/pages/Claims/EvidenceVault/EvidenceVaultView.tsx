@@ -25,7 +25,7 @@ const EvidenceVaultView = ({
               Evidence Vault
             </Typography>
 
-            <Typography variant='caption' className='evidence-vault-subtitle'>
+            <Typography variant='body2' className='evidence-vault-subtitle'>
               RELATED TO {claimNumber}
             </Typography>
           </div>
@@ -67,7 +67,7 @@ const EvidenceVaultView = ({
                 <FiTrash2 size={16} />
               </Button>
 
-              <Typography variant='caption' className='evidence-file-name'>
+              <Typography variant='body2' className='evidence-file-name'>
                 {file.name}
               </Typography>
             </div>
@@ -76,7 +76,7 @@ const EvidenceVaultView = ({
           <div className='evidence-add-card' onClick={handleUploadClick}>
             <FiCamera className='evidence-add-icon' />
 
-            <Typography variant='caption' className='evidence-add-text'>
+            <Typography variant='body2' className='evidence-add-text'>
               Add Photos / Videos
             </Typography>
           </div>

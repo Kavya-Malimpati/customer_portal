@@ -1,4 +1,4 @@
-@import '../../../styles/tokens.css';
+
 
 .safety-tips-card {
   border: 1px solid var(--border-color);
@@ -12,20 +12,38 @@
   padding: var(--space-4);
 }
 
-.safety-tips-title {
-  margin-bottom: var(--space-4);
-
+/* Header */
+.safety-tips-heading {
   display: flex;
   align-items: center;
   gap: var(--space-2);
+  margin-bottom: var(--space-4);
 }
 
+.shield-icon {
+  color: var(--color-primary);
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.safety-tips-heading h1,
+.safety-tips-heading h2,
+.safety-tips-heading h3,
+.safety-tips-heading h4,
+.safety-tips-heading h5,
+.safety-tips-heading h6,
+.safety-tips-heading p,
+.safety-tips-heading span {
+  margin: 0;
+  width: auto;
+  white-space: nowrap;
+}
+
+/* Safety Tip Items */
 .safety-tip-item {
   display: flex;
   align-items: flex-start;
-
   gap: var(--space-3);
-
   margin-bottom: var(--space-4);
 }
 
@@ -36,9 +54,7 @@
 .safety-tip-image {
   width: 60px;
   height: 60px;
-
   border-radius: var(--radius-md);
-
   object-fit: cover;
   flex-shrink: 0;
 }
@@ -106,5 +122,9 @@
 
   .safety-tip-content {
     width: 100%;
+  }
+
+  .safety-tips-heading {
+    justify-content: center;
   }
 }

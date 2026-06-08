@@ -1,61 +1,147 @@
+@import '../../styles/tokens.css';
 
-.services-grid {
-  display: grid;
-  grid-template-columns: 5fr 2fr;
-  gap: var(--space-4);
+/* ==========================
+   PAGE HEADER
+========================== */
+
+.support-guidance-section {
+  margin-bottom: var(--space-6);
 }
 
 .support-guidance-title {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
   color: var(--color-primary);
- 
+  margin-bottom: var(--space-2);
 }
 
 .support-guidance-subtitle {
-  font-size: 0.95rem;
+  font-size: var(--font-size-md);
   margin: 0;
 }
+
+/* ==========================
+   PAGE WRAPPER
+========================== */
+
+.services-page {
+  width: 100%;
+}
+
+/* ==========================
+   MAIN LAYOUT
+========================== */
+
+.services-grid {
+  display: grid;
+
+  /* Better than 5fr 2fr */
+  grid-template-columns: minmax(0, 2fr) minmax(300px, 380px);
+
+  gap: var(--space-4);
+
+  align-items: start;
+}
+
+/* ==========================
+   LEFT COLUMN
+========================== */
 
 .left-section {
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
+
+  min-width: 0;
 }
+
+/* ==========================
+   RIGHT COLUMN
+========================== */
 
 .right-section {
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
+
+  min-width: 0;
 }
+
+/* ==========================
+   SAFETY + FEEDBACK
+========================== */
 
 .bottom-left {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
   gap: var(--space-4);
 }
-.support-guidance-section {
-  margin-bottom: 30px;
+
+/* ==========================
+   LARGE LAPTOP
+========================== */
+
+@media (max-width: 1400px) {
+  .services-grid {
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(280px, 340px);
+  }
 }
 
-@media (max-width: 768px) {
+/* ==========================
+   LAPTOP
+========================== */
+
+@media (max-width: 1200px) {
+  .services-grid {
+    grid-template-columns:
+      minmax(0, 1fr)
+      300px;
+  }
+}
+
+/* ==========================
+   TABLET
+========================== */
+
+@media (max-width: 992px) {
   .services-grid {
     grid-template-columns: 1fr;
   }
 
+  .right-section {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: var(--space-4);
+  }
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width: 768px) {
   .bottom-left {
     grid-template-columns: 1fr;
   }
 
+  .right-section {
+    grid-template-columns: 1fr;
+  }
+
   .support-guidance-title {
-    font-size: 1.25rem;
+    font-size: var(--font-size-xl);
   }
 
   .support-guidance-subtitle {
-    font-size: 0.875rem;
+    font-size: var(--font-size-sm);
   }
 
   .support-guidance-section {
-    margin-bottom: 20px;
+    margin-bottom: var(--space-4);
   }
 }

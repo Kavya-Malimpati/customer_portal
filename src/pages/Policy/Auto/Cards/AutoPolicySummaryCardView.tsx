@@ -12,7 +12,7 @@ interface Props {
 }
 
 const PolicySummaryCardView = ({ policy, isExpanded, onToggleExpand }: Props) => (
-  <Card>
+  <Card variant='outlined'>
     <CardContent className='policy-summary-card-content'>
       <div className='policy-summary-header'>
         <Typography variant='h3' color='secondary'>

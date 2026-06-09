@@ -2,16 +2,16 @@ import './DigitalDocument.css';
 
 import { useState } from 'react';
 import {
-  FiClipboard,
-  FiCreditCard,
-  FiDownload,
-  FiEye,
-  FiFileText,
-  FiFilter,
-  FiShield,
+	FiClipboard,
+	FiCreditCard,
+	FiDownload,
+	FiEye,
+	FiFileText,
+	FiFilter,
+	FiShield,
 } from 'react-icons/fi';
 
-import { Button, Card, CardContent, Typography } from '../../../../common/components';
+import { Button, CardContent, Typography } from '../../../../common/components';
 
 import type { DigitalDocument, DigitalDocumentsViewProps } from './Interface';
 
@@ -44,8 +44,8 @@ const DigitalDocumentsView = ({ documents, onView }: DigitalDocumentsViewProps) 
   };
 
   return (
-    <main className='flex-1 w-full px-4 py-6 md:px-6 md:py-10 lg:px-8 lg:py-12 digital-documents-container'>
-      <div className='max-w-full mx-auto'>
+    <main className='mt-14'>
+      <div className='w-full'>
         {/* Documents Card */}
         <div className='digital-documents-card'>
           {/* Header */}
@@ -59,17 +59,9 @@ const DigitalDocumentsView = ({ documents, onView }: DigitalDocumentsViewProps) 
                 variant='outlined'
                 size='small'
                 color='inherit'
-                startIcon={<FiFilter size={16}  style={{  
-                  marginRight:'0.6rem'
-                }}/>}
+                startIcon={<FiFilter size={16} />}
                 aria-label='Filter documents'
-                className='buttonborder'
-                style={{
-                  border: '1px solid black',
-                  color: 'black',
-                  display: 'flex',
-                  padding: '0.4rem'
-                }}
+                className='border border-gray-300'
               >
                 Filter
               </Button>
@@ -79,16 +71,9 @@ const DigitalDocumentsView = ({ documents, onView }: DigitalDocumentsViewProps) 
                 size='small'
                 color='inherit'
                 onClick={toggleSort}
-                startIcon={<span style={{  
-                  marginRight:'0.6rem'
-                }}>↕</span>}
+                startIcon={<span>↕</span>}
                 aria-label={`Sort documents by date: ${sortOrder === 'asc' ? 'oldest first' : 'newest first'}`}
-                style={{
-                  border: '1px solid black',
-                  color: 'black',
-                  display: 'flex',
-                   padding: '0.4rem'
-                }}
+                className='border border-gray-300'
               >
                 Sort
               </Button>
@@ -111,14 +96,14 @@ const DigitalDocumentsView = ({ documents, onView }: DigitalDocumentsViewProps) 
                       <Typography variant='body2' color='primary' className='document-title'>
                         {document.title}
                       </Typography>
-                      <Typography variant='caption' color='muted' className='document-meta'>
+                      <Typography variant='body2' color='muted' className='document-meta'>
                         {document.category} • {document.size}
                       </Typography>
                     </td>
 
                     {/* Date Cell */}
                     <td className='date-cell'>
-                      <Typography variant='caption' color='caption' className='date-text'>
+                      <Typography variant='body2' color='caption' className='date-text'>
                         Modified {document.date}
                       </Typography>
                     </td>

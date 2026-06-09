@@ -21,17 +21,17 @@ const UpcomingScheduleView = ({ installments }: UpcomingScheduleUiProps) => {
               <div className='schedule-left'>
                 <FiCalendar size={18} />
                 <div className='schedule-text'>
-                  <Typography variant='body2' className='schedule-name'>
+                  <Typography variant='body1' className='schedule-name'>
                     {item.name}
                   </Typography>
-                  <Typography variant='caption' className='schedule-policy'>
+                  <Typography variant='body2' className='schedule-policy'>
                     {item.policyNumber}
                   </Typography>
                 </div>
               </div>
 
               <div className='schedule-right'>
-                <Typography variant='body2' className='schedule-amount'>
+                <Typography variant='body1' className='schedule-amount'>
                   {item.amount}
                 </Typography>
                 <div className='schedule-status'>{item.status.toUpperCase()}</div>

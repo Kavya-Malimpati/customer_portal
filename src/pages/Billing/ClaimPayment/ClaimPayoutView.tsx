@@ -12,13 +12,13 @@ const ClaimPayoutView = ({
   onChangeClick,
 }: ClaimPayoutUiProps) => {
   return (
-    <div className='w-full md:max-w-sm'>
-      <Card variant='outlined' className='border border-gray-200 rounded-xl shadow-sm bg-white'>
-        <CardContent className='p-6'>
+    <div className="w-full">
+      <Card variant="outlined" className="border border-gray-200 rounded-xl shadow-sm bg-white h-full">
+        <CardContent className="p-6 h-full flex flex-col">
           <div className='claim-header flex items-center gap-2 mb-3'>
             <FaUniversity size={18} color='green' />
             <Typography
-              variant='h5'
+              variant='h3'
               className='font-bold text-black'
               style={{ color: 'var(--text-primary)' }}
             >
@@ -27,7 +27,7 @@ const ClaimPayoutView = ({
           </div>
 
           <div className='claim-id mb-2'>
-            <Typography variant='subtitle1' color='primary'>
+            <Typography variant='body1' color='primary'>
               Claim #{claimId}
             </Typography>
           </div>
@@ -57,7 +57,7 @@ const ClaimPayoutView = ({
 
           <div className='claim-divider border-t border-gray-300 my-2' />
 
-          <div className='claim-method-row flex items-center justify-between'>
+          <div className='claim-method-row flex items-center justify-between pt-3 mt-auto'>
             <Typography variant='body2' color='body'>
               Method: {method}
             </Typography>

@@ -8,14 +8,14 @@ import type { PremiumPaymentUiProps } from './Interfaces';
 
 const PremiumPaymentView = ({ amount, dueDate, status, onPayClick }: PremiumPaymentUiProps) => {
   return (
-    <div className='payment-wrapper'>
+    <div className='payment-wrapper w-full h-full'>
       <div className='payment-card'>
-        <Typography variant='overline' color='inverse'>
+        <Typography variant='body2' color='inverse'>
           TOTAL BALANCE DUE
         </Typography>
 
         <div className='payment-amount'>
-          <Typography variant='h2' color='inverse'>
+          <Typography variant='h3' color='inverse'>
             {amount}
           </Typography>
         </div>
@@ -46,7 +46,7 @@ const PremiumPaymentView = ({ amount, dueDate, status, onPayClick }: PremiumPaym
 
         {status !== 'pending' && (
           <div className='payment-status'>
-            <Typography variant='caption' color={status === 'success' ? 'success' : 'error'}>
+            <Typography variant='body2' color={status === 'success' ? 'success' : 'error'}>
               {status === 'success' ? 'Payment Successful' : 'Payment Failed'}
             </Typography>
           </div>

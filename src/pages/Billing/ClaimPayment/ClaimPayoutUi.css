@@ -1,5 +1,5 @@
 .claim-card {
-  width: 350px;
+  width: 100%;
   min-height: 270px;
   border-radius: var(--radius-lg);
   padding: var(--space-5);
@@ -7,6 +7,7 @@
   box-shadow: var(--shadow-md);
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .claim-header {
@@ -66,4 +67,24 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 0 15px 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .claim-card {
+    min-height: auto;
+    padding: var(--space-4);
+  }
+
+  .claim-header {
+    margin-bottom: var(--space-2);
+  }
+
+  .claim-id {
+    margin-bottom: 0.5rem;
+  }
+
+  .claim-divider {
+    margin: 0.75rem 0;
+  }
 }

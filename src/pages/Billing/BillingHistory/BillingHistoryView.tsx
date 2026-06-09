@@ -86,7 +86,7 @@ const BillingHistoryView = ({ transactions }: BillingHistoryViewProps) => {
     <div className='billing-history-content'>
       <div className='billing-history-header'>
         <Typography
-          variant='h5'
+          variant='h3'
           style={{ color: 'var(--text-primary)' }}
         >
           Billing History & Statements
@@ -122,7 +122,7 @@ const BillingHistoryView = ({ transactions }: BillingHistoryViewProps) => {
       </div>
 
       <div className='billing-history-footer'>
-        <Typography variant='caption'>
+        <Typography variant='body2'>
           Showing 1–10 of 24 transactions
         </Typography>
 

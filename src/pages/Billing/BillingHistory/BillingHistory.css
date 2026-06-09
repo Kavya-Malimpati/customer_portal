@@ -54,15 +54,25 @@
 .custom-billing-table th:last-child,
 .custom-billing-table td:last-child {
   text-align: right;
-  width: 180px;
+  width: 220px;
 }
 
 .custom-billing-table td:last-child > div {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: var(--space-2);
   width: 100%;
+}
+
+.custom-billing-table th:last-child {
+  text-align: right !important;
+  padding-right: var(--space-4);
+}
+
+.custom-billing-table th:last-child > div {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .method-ref {
@@ -87,7 +97,23 @@
 .actions {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   gap: var(--space-2);
+  width: 100%;
+}
+
+.actions > * {
+  width: 90px;
+  min-width: 90px;
+}
+
+.action-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: 100%;
+  white-space: nowrap;
 }
 
 .billing-history-footer {
@@ -105,22 +131,4 @@
 .pagination {
   display: flex;
   gap: var(--space-2);
-}
-
-.custom-billing-table th:last-child {
-  text-align: right !important;
-  padding-right: var(--space-4);
-}
-
-.custom-billing-table th:last-child > div {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.action-content {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  white-space: nowrap;
 }

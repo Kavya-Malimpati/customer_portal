@@ -27,24 +27,21 @@ const PaymentMethodsView: React.FC<PaymentMethodsViewProps> = ({ methods }) => {
         </div>
       </div>
 
-      {/* LIST */}
       <div className='payment-methods-list'>
         {methods.map(method => (
           <div key={method.id} className='payment-method-item'>
-            {/* LOGO */}
             <div className='payment-method-logo'>
               <Typography variant='body2' className={`logo-text ${method.cardType}`}>
                 {method.cardType.toUpperCase()}
               </Typography>
             </div>
 
-            {/* CONTENT */}
             <div className='payment-method-content'>
               <Typography variant='body1' className='payment-title'>
                 {method.title}
               </Typography>
 
-              <Typography variant='caption' className='payment-subtitle'>
+              <Typography variant='body2' className='payment-subtitle'>
                 {method.subtitle}
               </Typography>
             </div>

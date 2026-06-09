@@ -1,6 +1,6 @@
 import React from 'react';
 import './RecentAlerts.css';
-import {Card,Typography,Button} from '../../../common/components';
+import {Typography,Button} from '../../../common/components';
 import { FiAlertTriangle, FiRefreshCw, FiCheckSquare } from 'react-icons/fi';
 import type { AlertItem } from './IRecentAlerts';
 

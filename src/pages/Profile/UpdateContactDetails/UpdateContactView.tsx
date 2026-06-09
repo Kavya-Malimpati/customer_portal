@@ -46,7 +46,7 @@ const UpdateContactView = ({
 
       
           <div className="profile-section">
-            <Typography variant="h2" color='primary' className="profile-name">
+            <Typography variant="h3" color='primary' className="profile-name">
              
               {fullName}
             </Typography>

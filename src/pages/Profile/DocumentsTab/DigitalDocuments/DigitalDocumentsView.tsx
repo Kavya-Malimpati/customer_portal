@@ -96,14 +96,14 @@ const DigitalDocumentsView = ({ documents, onView }: DigitalDocumentsViewProps) 
                       <Typography variant='body2' color='primary' className='document-title'>
                         {document.title}
                       </Typography>
-                      <Typography variant='caption' color='muted' className='document-meta'>
+                      <Typography variant='body2' color='muted' className='document-meta'>
                         {document.category} • {document.size}
                       </Typography>
                     </td>
 
                     {/* Date Cell */}
                     <td className='date-cell'>
-                      <Typography variant='caption' color='caption' className='date-text'>
+                      <Typography variant='body2' color='caption' className='date-text'>
                         Modified {document.date}
                       </Typography>
                     </td>

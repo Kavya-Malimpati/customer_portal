@@ -82,11 +82,12 @@ const DocumentVaultView = ({ documents, onUpload }: DocumentVaultViewProps) => {
         </header>
 
         {/* Section Title */}
-        <div className='mb-4'>
+        <div className='mb-4 flex items-center gap-2'>
+          <FiLock className='text-[var(--color-primary)]' size={20} />
           <Typography
-            variant='subtitle1'
+            variant='body1'
             color='primary'
-            startDecorator={<FiLock className='text-[var(--color-primary)]' />}
+            style={{ fontWeight: 'var(--font-weight-semibold)' }}
           >
             Secure Document Vault
           </Typography>
@@ -111,7 +112,11 @@ const DocumentVaultView = ({ documents, onUpload }: DocumentVaultViewProps) => {
                       </div>
 
                       {/* Title */}
-                      <Typography variant='subtitle2' className='mt-4 font-semibold !text-black'>
+                      <Typography
+                        variant='body1'
+                        className='mt-4 !text-black'
+                        style={{ fontWeight: 'var(--font-weight-semibold)' }}
+                      >
                         {category.title}
                       </Typography>
 
@@ -123,7 +128,7 @@ const DocumentVaultView = ({ documents, onUpload }: DocumentVaultViewProps) => {
                       {/* Footer */}
                       <div className='mt-auto pt-6 flex items-center justify-between'>
                         <Typography
-                          variant='caption'
+                          variant='body2'
                           className={`font-medium ${category.countColor}`}
                         >
                           {fileCount} Files

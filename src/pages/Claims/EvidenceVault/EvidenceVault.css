@@ -74,6 +74,7 @@
   gap: var(--space-2);
   cursor: pointer;
   height: 160px;
+  width: 200px;
   border-radius: var(--radius-sm);
 }
 
@@ -104,4 +105,8 @@
 
 .evidence-upload-button:hover {
   border-color: var(--color-primary);
+}
+
+.evidence-add-text{
+  padding: 0 var(--space-2);
 }

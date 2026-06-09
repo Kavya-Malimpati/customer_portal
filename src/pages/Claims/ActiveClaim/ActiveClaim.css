@@ -88,10 +88,13 @@ hr {
   flex-direction: column;
   align-items: center;
 }
- 
+.label{
+  font-size: var(--font-size-sm);
+  color: var(--color-gray-500);
+}
 .step-title {
   font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-semibold);
+  /* font-weight: var(--font-weight-semibold); */
   color: var(--color-gray-700);
 }
 .step.inactive .step-title {
@@ -135,6 +138,7 @@ hr {
   display: flex;
   justify-content: space-between;
   margin: var(--space-2) 0;
+  font-weight: var(--font-weight-semibold);
 }
 .expense-header {
   display: flex;
@@ -144,13 +148,13 @@ hr {
  
 .expense-title {
   font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-semibold);
+  /* font-weight: var(--font-weight-semibold); */
   color: var(--color-gray-500);
 }
  
 .expense-amount {
   font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-semibold);
+  /* font-weight: var(--font-weight-semibold); */
   color: var(--color-primary);
 }
 .bar {
@@ -159,6 +163,14 @@ hr {
   border-radius: var(--radius-full);
   overflow: hidden;
   margin: var(--space-2) 0;
+}
+
+.resolution{
+  font-weight: var(--font-weight-semibold);
+}
+
+.text{
+  font-weight: var(--font-weight-semibold);
 }
  
 .fill {

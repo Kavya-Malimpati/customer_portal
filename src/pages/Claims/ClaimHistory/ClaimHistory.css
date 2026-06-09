@@ -64,11 +64,11 @@
 }
 
 .status-paid {
-  background: #8BE85F;
-  color: #1f3d12;
+  background: var(--color-success);
+  color: var(--color-success-contrast);
 }
 
 .status-archived {
-  background: #eef2f7;
-  color: #667085;
+  background: var(--color-gray-200);
+  color: var(--color-gray-700);
 }

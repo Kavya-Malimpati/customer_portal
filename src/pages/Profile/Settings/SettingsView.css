@@ -1,22 +1,12 @@
-.settings-page {
-  flex: 1;
-  width: 100%;
-  padding: var(--space-6) var(--space-4);
-  background: var(--bg-surface);
-}
-
-.settings-container {
-  max-width: var(--container-max-width);
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-6);
-}
+.settings-pages {
+ margin-top: var(--space-6); 
+ width: 100%;
+} 
 
 .settings-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-6);
+  gap: var(--space-3);
 }
 
 .settings-left,
@@ -110,7 +100,7 @@
 .theme-section {
   display: flex;
   flex-direction: column;
-  gap: var(--space-1);
+  gap: var(--space-6);
 }
 
 .theme-grid {
@@ -158,9 +148,10 @@
 /* Account */
 .account-card {
   background-color: var(--bg-dark);
-  padding: var(--space-5);
-  border-radius: var(--radius-sm);
+  padding: var(--space-6);
+  border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
+  margin-top: var(--space-2);
 }
 
 .account-content {
@@ -170,7 +161,7 @@
 }
 
 .account-header {
-  gap: var(--space-2);
+  gap: var(--space-3);
 }
 
 .account-title,
@@ -182,12 +173,12 @@
   height: 46px;
   width: 100%;
   color: var(--text-inverse);
-  padding: 0 var(--space-4);
+  padding: 0 var(--space-6);
   border: var(--border-width-sm) solid var(--color-primary);
 }
 
 .account-btn-inner {
-  gap: var(--space-3);
+  gap: var(--space-4);
   width: 100%;
 }
 
@@ -198,7 +189,8 @@
 
 /* SMS */
 .sms-card {
-  padding: var(--space-6);
+  padding: var(--space-8);
+  margin-top: var(--space-2);
 }
 
 .sms-header {
@@ -224,10 +216,22 @@
   font-size: var(--font-size-sm);
 }
 
+.sms-toggle-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.sms-toggle-row p,
+.sms-toggle-row span {
+  white-space: nowrap;
+}
+
 /* Footer */
 .settings-footer {
   display: flex;
   justify-content: flex-end;
+  margin-top: var(--space-6);
   border-top: var(--border-width-sm) solid var(--border-color);
   padding-top: var(--space-6);
   gap: var(--space-3);
@@ -235,9 +239,6 @@
 
 /* Responsive */
 @media (min-width: 768px) {
-  .settings-page {
-    padding: var(--space-10) var(--space-6);
-  }
 
   .settings-grid {
     grid-template-columns: 2fr 1fr;
@@ -253,11 +254,6 @@
   }
 }
 
-@media (min-width: 1024px) {
-  .settings-page {
-    padding: var(--space-12) var(--space-8);
-  }
-}
 
 @media (max-width: 767px) {
   .notification-actions {
@@ -283,3 +279,27 @@
     font-size: var(--font-size-lg);
   }
 }
+
+.notification-title{
+  font-weight: var(--font-weight-semibold);
+}
+
+
+ @media (min-width: 1040px) and (max-width: 1340px) {
+  .settings-grid {
+       grid-template-columns: 72% 28%;
+  }
+
+  .account-btn-text {
+    white-space: nowrap;
+    font-size: 14px;
+  }
+
+  .account-btn {
+    padding: 0 var(--space-2);
+  }
+
+  .account-btn-inner {
+    gap: var(--space-2);
+  }
+} 

@@ -36,13 +36,6 @@
   gap: var(--space-4);
 }
 
-.fnol-header h2 {
-  margin: 0;
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-bold);
-  color: var(--text-primary);
-}
-
 .fnol-header p,
 .fnol-subtitle {
   margin-top: var(--space-1);
@@ -94,11 +87,8 @@
   border: 3px solid var(--color-gray-200) !important;
   background: var(--color-white) !important;
   color: var(--color-gray-400) !important;
-  font-size: var(--font-size-lg) !important;
-  font-weight: var(--font-weight-bold) !important;
   position: relative;
   z-index: 2;
-  transition: var(--transition-fast);
 }
 
 #register-fnol-stepper button[aria-current='step'] {
@@ -108,21 +98,10 @@
   box-shadow: 0 0 0 6px rgba(29, 112, 187, 0.15);
 }
 
-#register-fnol-stepper p {
-  margin: 0 !important;
-}
-
 #register-fnol-stepper p:first-child {
   margin-top: var(--space-3) !important;
-  font-size: var(--font-size-sm) !important;
-  font-weight: var(--font-weight-bold) !important;
-  color: var(--text-primary) !important;
   line-height: var(--line-height-tight);
   text-align: center;
-}
-
-#register-fnol-stepper button[aria-current='step'] + div p:first-child {
-  color: var(--color-primary) !important;
 }
 
 #register-fnol-stepper div[style*='height: 2px'] {
@@ -206,32 +185,41 @@
   margin-bottom: var(--space-5);
 }
 
-.fnol-title {
-  margin: 0;
-  color: var(--text-heading);
-  font-weight: var(--font-weight-bold);
-}
-
 .fnol-selected-claim {
-  grid-column: 1;
   display: inline-flex;
   align-items: center;
-  gap: var(--space-3);
+  gap: 8px;
+
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: var(--radius-md);
   width: fit-content;
-  padding: var(--space-2) var(--space-4);
-  background: var(--bg-surface);
-  border: var(--border-width-md) solid var(--border-color);
-  border-radius: var(--radius-sm);
+}
+
+.fnol-selected-label {
+  font-size: 13px;
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .fnol-selected-text {
+  font-weight: 500;
   color: var(--color-primary);
-  font-weight: var(--font-weight-bold);
+  display: flex;
+  white-space: nowrap;
 }
 
-.fnol-selected-claim button {
-  color: var(--color-primary);
-  padding: 0;
+.fnol-selected-texts {
+  font-weight: 500;
+  color: var(--text-primary);
+  display: flex;
+  white-space: nowrap;
+}
+
+.fnol-title{
+  display: flex;
+  white-space: nowrap;
 }
 
 .fnol-alert {
@@ -268,6 +256,7 @@
 .fnol-alert-text {
   color: var(--text-secondary);
 }
+
 
 .fnol-alert button {
   color: var(--color-error);

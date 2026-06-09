@@ -139,7 +139,7 @@ const ClaimHistoryView = ({ data }: Props) => {
       className="history-card"
     >
       <Typography
-        variant="h2"
+        variant="h3"
         color="primary"
         className="history-title"
       >

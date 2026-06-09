@@ -1,47 +1,49 @@
-@import '../../../styles/tokens.css';
 
 .accident-card {
   border: 1px solid var(--border-color);
-  border-radius: 12px;
-  background: #ffffff;
+  border-radius: var(--radius-lg);
+  background-color: var(--bg-surface);
   overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  box-shadow: var(--shadow-sm);
+  width: 100%;
 }
 
 .accident-header {
-  padding: 16px 20px;
+  padding: var(--space-4) var(--space-5);
   border-bottom: 1px solid var(--border-color);
-  background: #f7f8f9;
+  background-color: var(--color-gray-100);
 }
 
 .required {
   color: var(--color-error);
-  margin-right: 6px;
-  font-size: 18px;
-  font-weight: bold;
+  margin-right: var(--space-2);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
 }
 
 .accident-steps {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 30px 60px;
+  gap: var(--space-4);
+  padding: var(--space-8) var(--space-12);
   position: relative;
 }
 
 .accident-steps::before {
   content: '';
   position: absolute;
-  top:20%;
-  left: 15%;
-  right: 15%;
+  top: 20%;
+  left: 17%;
+  right: 17%;
   height: 1px;
-  background-color: #d1d5db;
+  background-color: var(--color-gray-300);
   z-index: 0;
 }
 
 .step-item {
   flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -52,35 +54,118 @@
 .step-circle {
   width: 36px;
   height: 36px;
-  background: var(--color-primary);
-  border-radius: 8px;
+  background-color: var(--color-primary);
+  border-radius: var(--radius-lg);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 12px;
+  margin-bottom: var(--space-3);
+  flex-shrink: 0;
 }
 
 .step-title {
-  font-weight: 600;
-  margin-bottom: 6px;
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-2);
 }
 
 .step-desc {
   max-width: 170px;
-  font-size: 13px;
+  font-size: var(--font-size-sm);
   line-height: 1.4;
-  color: var(--text-muted, #6b7280);
+  color: var(--text-muted);
 }
 
 .accident-footer {
-  padding: 16px 20px;
-  background-color: #f7f8f9;
+  padding: var(--space-4) var(--space-5);
+  background-color: var(--color-gray-100);
   border-top: 1px solid var(--border-color);
 }
 
 .claim-btn {
   width: 100%;
-  height: 44px;
-  font-weight: 600;
-  border-radius: 6px;
+  height: var(--control-height-md);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--radius-md);
+}
+
+/* ==========================================
+   LARGE TABLETS
+========================================== */
+
+@media (max-width: 1024px) {
+  .accident-steps {
+    padding: var(--space-6);
+    gap: var(--space-3);
+  }
+
+  .accident-steps::before {
+    left: 14%;
+    right: 14%;
+  }
+
+  .step-desc {
+    max-width: 140px;
+  }
+}
+
+/* ==========================================
+   TABLETS
+========================================== */
+
+@media (max-width: 768px) {
+  .accident-steps {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: var(--space-6) var(--space-4);
+    gap: var(--space-6);
+  }
+
+  .accident-steps::before {
+    display: none;
+  }
+
+  .step-item {
+    flex: 0 0 calc(50% - 12px);
+    max-width: calc(50% - 12px);
+  }
+
+  .step-desc {
+    max-width: 100%;
+  }
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 576px) {
+  .accident-header {
+    padding: var(--space-4);
+  }
+
+  .accident-footer {
+    padding: var(--space-4);
+  }
+
+  .accident-steps {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-6);
+    padding: var(--space-5);
+  }
+
+  .step-item {
+    width: 100%;
+    max-width: 280px;
+    flex: none;
+  }
+
+  .step-circle {
+    width: 32px;
+    height: 32px;
+  }
+
+  .claim-btn {
+    height: 40px;
+  }
 }

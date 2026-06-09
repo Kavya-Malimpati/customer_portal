@@ -24,7 +24,7 @@ const AccidentCardView: React.FC<Props> = ({ steps }) => {
           <div key={step.id} className="step-item">
 
             <div className="step-circle">
-              <Typography variant="body2" color="inverse">
+              <Typography variant="body1" color="inverse">
                 {step.id}
               </Typography>
             </div>
@@ -33,7 +33,7 @@ const AccidentCardView: React.FC<Props> = ({ steps }) => {
               {step.title}
             </Typography>
 
-            <Typography variant="caption" color="muted" className="step-desc">
+            <Typography variant="body2" color="muted" className="step-desc">
               {step.description}
             </Typography>
 

@@ -11,34 +11,34 @@ const FeedbackCardView: React.FC<FeedbackCardViewProps> = ({ rating, onRate }) =
     <Card variant="elevation" className="feedback-card">
       <div className="feedback-container">
 
-        <Typography variant="h2" color="inverse" className="feedback-title">
+        <Typography variant="h3" color="inverse" className="feedback-title">
           How are we doing?
         </Typography>
 
-        <Typography variant="body2" color="inverse" className="feedback-subtext">
+        <Typography variant="body1" color="inverse" className="feedback-subtext">
           Your feedback helps us improve your experience.
         </Typography>
 
-        <div className="feedback-stars">
-          {[1, 2, 3, 4, 5].map((star) =>
-            star <= rating ? (
-              <FaStar
-                key={star}
-                className="star filled"
-                onClick={() => onRate(star)}
-              />
-            ) : (
-              <FiStar
-                key={star}
-                className="star"
-                onClick={() => onRate(star)}
-              />
-            )
-          )}
-        </div>
+              <div className="feedback-stars">
+        {[1, 2, 3, 4, 5].map((star) =>
+          star <= rating ? (
+            <FaStar
+              key={star}
+              className="star filled"
+              onClick={() => onRate(star)}
+            />
+          ) : (
+            <FiStar
+              key={star}
+              className="star"
+              onClick={() => onRate(star)}
+            />
+          )
+        )}
+      </div>
 
         <div className="feedback-link">
-          <Typography variant="body2" color="inverse" className="feedback-link-text">
+          <Typography variant="body1" color="inverse" className="feedback-link-text">
             Tell us more
           </Typography>
           <FiArrowRight className="feedback-arrow" />

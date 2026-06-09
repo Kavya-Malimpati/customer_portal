@@ -15,7 +15,7 @@ const AutoPayCardView = ({ state, onToggle, onUpdatePaymentMethod }: AutoPayCard
         <CardContent className="p-6 h-full flex flex-col">
           <div className="flex items-start justify-between flex-shrink-0">
             <div>
-              <Typography variant="h5" className="font-bold text-black !text-black">
+              <Typography variant="h3" className="font-bold text-black !text-black">
                 Auto-Pay
               </Typography>
               <div
@@ -47,7 +47,7 @@ const AutoPayCardView = ({ state, onToggle, onUpdatePaymentMethod }: AutoPayCard
                   <Typography variant="body2" className="font-semibold text-gray-900">
                     {paymentMethod.brand} ending in {paymentMethod.lastFour}
                   </Typography>
-                  <Typography variant="caption" className="text-gray-400 tracking-wide">
+                  <Typography variant="body2" className="text-gray-400 tracking-wide">
                     EXPIRES {paymentMethod.expiry}
                   </Typography>
                 </div>

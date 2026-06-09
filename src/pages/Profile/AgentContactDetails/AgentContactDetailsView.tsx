@@ -49,11 +49,11 @@ const AgentContactView = ({
                 {agent.name.charAt(0)}
               </div>
 
-              <Typography variant="h3" className="text-center" color="primary" >
+              <Typography variant="h3" className="agent-name text-center" color="primary">
                 {agent.name}
               </Typography>
 
-              <Typography variant="body2" className="mt-1 text-center text-gray-600">
+              <Typography variant="body2" className="agent-role text-center">
                 Senior Principal Agent
               </Typography>
               <div className="flex gap-2 mt-3 mb-4">
@@ -67,14 +67,14 @@ const AgentContactView = ({
               <div className="flex flex-col gap-3 py-6 w-full max-w-xs">
                 <div className="contact-box">
                   <FiMail />
-                  <Typography variant="body1" className="text-sm truncate">
+                  <Typography variant="body1" className="contact-text text-sm truncate">
                     {agent.email}
                   </Typography>
                 </div>
 
                 <div className="contact-box">
                   <FiPhone />
-                  <Typography variant="body1" className="text-sm truncate">
+                  <Typography variant="body1" className="contact-text text-sm truncate">
                     {agent.phone}
                   </Typography>
                 </div>
@@ -94,13 +94,13 @@ const AgentContactView = ({
           </Card>
         )}
         {office && (
-          <div className="office-section flex flex-col gap-4">
-            <Card variant="outlined-raised">
+          <div className="office-section flex flex-col gap-3">
+            <Card variant="outlined-raised" className="office-card">
               <CardContent>
                <div className="office-header">
   <div>
   <Typography
-  variant="h2"
+  variant="h3"
   className="office-title"
   color="primary"
 >
@@ -143,7 +143,7 @@ const AgentContactView = ({
             </Card>
             <div className="grid md:grid-cols-2 gap-4">
 
-              <Card variant="outlined-raised" className="p-4">
+              <Card variant="outlined-raised" className="p-4 feature-panel">
                 <CardContent>
                   <div className="feature-card">
                     <div className="feature-icon icon-info">
@@ -151,7 +151,7 @@ const AgentContactView = ({
 </div>
 
                     <div>
-                      <Typography variant="h2" className="feature-title" color="primary"> 
+                      <Typography variant="h3" className="feature-title" color="primary"> 
                         On-Site Inspections
                       </Typography>
 
@@ -163,7 +163,7 @@ const AgentContactView = ({
                 </CardContent>
               </Card>
 
-              <Card variant="outlined-raised" className="p-4">
+              <Card variant="outlined-raised" className="p-4 feature-panel">
                 <CardContent>
                   <div className="feature-card">
                     <div className="feature-icon icon-success">
@@ -171,7 +171,7 @@ const AgentContactView = ({
                         </div>
 
                     <div>
-                      <Typography variant="h2" className="feature-title" color="primary">
+                      <Typography variant="h3" className="feature-title" color="primary">
                         Multilingual Support
                       </Typography>
 
@@ -185,9 +185,11 @@ const AgentContactView = ({
 
             </div>
             <div className="claim-box">
-              <Typography variant='h2'color="inverse"> Claim Support Center</Typography>
+              <Typography variant="h3" className="claim-title" color="inverse">
+                Claim Support Center
+              </Typography>
 
-              <Typography variant="body1" className="feature-desc" style={{ color: 'var(--text-invers)' }}>
+              <Typography variant="body1" className="claim-text" color="inverse">
                 Need immediate assistance with an existing claim? Our agency team is dedicated to fast-tracking your resolution.
               </Typography>
 
@@ -213,7 +215,7 @@ const AgentContactView = ({
 </Button>
               </div>
             </div>
-
+ 
           </div>
         )}
         {office && (
@@ -224,19 +226,21 @@ const AgentContactView = ({
               <div className="mt-4 space-y-1">
 
                 <div className="hours-row">
-                  <Typography>Monday - Friday</Typography>
-                  <Typography>{office.officeHours.mondayToFriday}</Typography>
+                  <Typography className="hours-label">Monday - Friday</Typography>
+                  <Typography className="hours-value">{office.officeHours.mondayToFriday}</Typography>
                 </div>
 
                 <div className="hours-row">
-                  <Typography>Saturday</Typography>
-                  <Typography>{office.officeHours.saturday}</Typography>
+                  <Typography className="hours-label">Saturday</Typography>
+                  <Typography className="hours-value">{office.officeHours.saturday}</Typography>
                 </div>
 
                 <div className="hours-row">
-                  <Typography>Sunday</Typography>
+                  <Typography className="hours-label">Sunday</Typography>
                   <Typography
-                     variant="body2" style={{color:office.officeHours.sunday.toLowerCase() === 'closed'? 'var(--color-error)': 'var(--text-primary)',}} >
+                     variant="body2"
+                     className="hours-value"
+                     style={{ color: office.officeHours.sunday.toLowerCase() === 'closed' ? 'var(--color-error)' : 'var(--text-primary)' }}>
                     {office.officeHours.sunday}
                   </Typography>
                 </div>

@@ -9,7 +9,7 @@ interface Props {
 }
 
 const DigitalIdCardView = ({ policy }: Props) => (
-  <Card>
+  <Card variant='outlined'>
     <CardContent className='digital-id-card-content'>
       <div className='digital-id-card-header'>
         <Typography variant='h3' color='secondary'>

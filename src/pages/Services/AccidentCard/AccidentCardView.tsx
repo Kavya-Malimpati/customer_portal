@@ -18,7 +18,7 @@ const AccidentCardView: React.FC<Props> = ({ steps }) => {
           What to do after an accident
         </Typography>
       </div>
-
+{/* we already have a stepper component use that  */}
       <div className="accident-steps">
         {steps.map(step => (
           <div key={step.id} className="step-item">

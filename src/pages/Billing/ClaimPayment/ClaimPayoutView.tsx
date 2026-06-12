@@ -12,6 +12,7 @@ const ClaimPayoutView = ({
   onChangeClick,
 }: ClaimPayoutUiProps) => {
   return (
+     // padding is not matching the total balance due it is not consitent.
     <div className="w-full">
       <Card variant="outlined" className="border border-gray-200 rounded-xl shadow-sm bg-white h-full">
         <CardContent className="p-6 h-full flex flex-col">
@@ -38,6 +39,7 @@ const ClaimPayoutView = ({
             </span>
           </div>
 
+{/* having this common component should be better  */}
           <div className='claim-progress mb-2'>
             <div className='claim-progress-bar h-2 w-full bg-gray-200 rounded'>
               <div

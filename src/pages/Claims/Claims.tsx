@@ -23,6 +23,7 @@ const Claims = () => {
           <ActiveClaim />
         </section>
 
+{/* you dont need to seperate components for this one is enough see how you can do it */}
         <section className='claims-row claims-two-column'>
           <EvidenceVault />
           <ClaimDocuments />

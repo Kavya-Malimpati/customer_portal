@@ -69,7 +69,7 @@ const RegisterFNOLView = ({
               <Typography variant='h3' color='primary'>
                 Report New Claim (FNOL)
               </Typography>
-
+             {/* Use Typography */}
               <p>Initiate a formal claim for vehicle collision or theft.</p>
             </div>
 
@@ -115,7 +115,7 @@ const RegisterFNOLView = ({
             <Typography variant='body2' className='fnol-subtitle'>
               {repairInfo.description}
             </Typography>
-
+              {/* Use Icon  */}
             <div className='repair-benefit'>
               🛡 <span>{repairInfo.benefit}</span>
             </div>

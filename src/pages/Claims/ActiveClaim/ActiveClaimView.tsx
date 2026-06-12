@@ -81,6 +81,7 @@ const ActiveClaimView = ({ data, currentIndex, formatStatus }: Props) => {
             />
           </div>
         </CardContent>
+        {/* Think of doing the common component of the roadside assitance to be used in multiple views and that can be reused here */}
         <CardFooter className='claim-footer'>
           <div className='box'>
             <Typography variant='body1'>ESTIMATED RESOLUTION</Typography>
@@ -96,6 +97,7 @@ const ActiveClaimView = ({ data, currentIndex, formatStatus }: Props) => {
           </div>
         </CardFooter>
       </Card>
+      {/* same use the common component which you will create for the roadside assistance and above */}
       <div className='right'>
         <Card variant='outlined-raised'>
           <div className='icon-text'>
@@ -129,6 +131,7 @@ const ActiveClaimView = ({ data, currentIndex, formatStatus }: Props) => {
             }
           />
           <CardContent>
+            {/* use the common component which will be made by vedant */}
             <div className='expense-header'>
               <span className='expense-title'>Status: Approved</span>
               <span className='expense-amount'>$330.00</span>

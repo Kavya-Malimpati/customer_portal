@@ -35,7 +35,7 @@ const ClaimDocumentsView = ({
             <Button variant='outlined' onClick={handleUploadClick} className='upload-button-box'>
               <FiUpload size={18} />
             </Button>
-
+{/* use common component */}
             <input
               ref={documentInputRef}
               type='file'

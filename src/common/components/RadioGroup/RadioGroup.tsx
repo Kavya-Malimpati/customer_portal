@@ -3,6 +3,7 @@ import '../../../styles/tokens.css';
 export interface RadioGroupProps {
   id?: string;
   className?: string;
+  style?: React.CSSProperties;
   label?: React.ReactNode;
   required?: boolean;
   disabled?: boolean;
@@ -29,6 +30,7 @@ const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
     {
       id,
       className,
+      style,
       label,
       required = false,
       disabled = false,
@@ -90,7 +92,7 @@ const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
       fontWeight: 'var(--font-weight-semibold)',
     };
     return (
-      <div style={containerStyle} className={className} ref={containerRef}>
+      <div style={{ ...containerStyle, ...style }} className={className} ref={containerRef}>
         {label && (
           <label style={labelStyle}>
             {label}

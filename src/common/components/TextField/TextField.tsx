@@ -1,6 +1,6 @@
 import React, { useMemo, useId } from 'react';
 import '../../../styles/tokens.css';
-type TextFieldSize = 'small' | 'medium' | 'large';
+type TextFieldSize = 'sm' | 'md' | 'lg';
 type TextFieldVariant = 'default' | 'outlined' | 'filled';
 export interface Props {
   id?: string;
@@ -54,7 +54,7 @@ const TextField = ({
   minLength,
   endDecorator,
   error,
-  size = 'medium',
+  size = 'md',
   startDecorator,
   variant = 'default',
   autoFocus = false,
@@ -84,9 +84,9 @@ const TextField = ({
   const errorId = fieldError ? `${fieldId}-error` : undefined;
   const sizeClasses = useMemo(() => {
     const sizes = {
-      small: 'px-2 py-1 text-sm h-8',
-      medium: 'px-3 py-2 text-base h-10',
-      large: 'px-4 py-3 text-lg h-12',
+      sm: 'px-2 py-1 text-sm h-8',
+      md: 'px-3 py-2 text-base h-10',
+      lg: 'px-4 py-3 text-lg h-12',
     };
     return sizes[size];
   }, [size]);
@@ -136,7 +136,7 @@ const TextField = ({
       <div className='flex items-center w-full'>
         {startDecorator && (
           <div
-            className={`flex items-center px-3 py-2 text-gray-600 ${size === 'small' ? 'text-sm' : 'text-base'}`}
+            className={`flex items-center px-3 py-2 text-gray-600 ${size === 'sm' ? 'text-sm' : 'text-base'}`}
           >
             {startDecorator}
           </div>
@@ -167,7 +167,7 @@ const TextField = ({
         />
         {endDecorator && (
           <div
-            className={`flex items-center px-3 py-2 text-gray-600 ${size === 'small' ? 'text-sm' : 'text-base'}`}
+            className={`flex items-center px-3 py-2 text-gray-600 ${size === 'sm' ? 'text-sm' : 'text-base'}`}
           >
             {endDecorator}
           </div>

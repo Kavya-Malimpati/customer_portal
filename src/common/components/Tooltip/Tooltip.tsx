@@ -51,11 +51,11 @@ const Tooltip: React.FC<TooltipProps> = ({
   }, []);
   const show = () => {
     if (leaveTimer.current) globalThis.clearTimeout(leaveTimer.current);
-    enterTimer.current = globalThis.setTimeout(() => setOpen(true), enterDelay);
+    enterTimer.current = globalThis.setTimeout(() => setOpen(true), enterDelay) as unknown as number;
   };
   const hide = () => {
     if (enterTimer.current) globalThis.clearTimeout(enterTimer.current);
-    leaveTimer.current = globalThis.setTimeout(() => setOpen(false), leaveDelay);
+    leaveTimer.current = globalThis.setTimeout(() => setOpen(false), leaveDelay) as unknown as number;
   };
   const handleTooltipKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Escape') {

@@ -62,7 +62,7 @@ const RoadsideAssistanceView = ({
                 </Typography>
               </div>
             </div>
-
+{/* Make a common component and resue it  */}
             <div className='roadside-details'>
               <div className='roadside-detail-row'>
                 <Typography variant='body2' color='secondary' className='roadside-detail-label'>

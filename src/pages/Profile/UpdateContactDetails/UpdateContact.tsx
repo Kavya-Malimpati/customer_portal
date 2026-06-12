@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import contactConfigJson from '../../../config/updatecontactdetails.json';
 import { deepClone } from '../../../scripts/utils';
@@ -13,7 +12,6 @@ import type { ValidationResult, FormDataType, Props } from './interfaces';
 const contactConfig = contactConfigJson as FormDataType;
 
 const UpdateContact =  ({ onClose }: Props)=> {
-  const navigate = useNavigate();
 
   const [formData, setFormData] = useState<FormDataType>(
     deepClone(contactConfig)

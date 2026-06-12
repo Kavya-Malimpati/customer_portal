@@ -5,7 +5,7 @@ import personalDetailsConfigJson from '../../../config/personalDetailsConfig.jso
 import { deepClone } from '../../../scripts/utils';
 import { validateFormFields } from '../../../scripts/validationsService';
 import EditPersonalDetailsView from './EditPersonalDetailsView';
-import { getPersonalDetailsApi } from './PersonalDetailsApi';
+import { getPersonalDetailsApi } from './personalDetailsApi';
 
 
 import type { ChangeEvent, FormEvent } from 'react';

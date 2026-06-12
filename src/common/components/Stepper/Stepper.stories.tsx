@@ -3,6 +3,8 @@ import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import type { StepperStep } from './Stepper';
 import Stepper from './Stepper';
+import Typography from '../Typography/Typography';
+import StepContent from './StepContent';
 const meta = {
   title: 'Components/Stepper',
   component: Stepper,
@@ -47,6 +49,16 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 export const HorizontalLinear: Story = {
+  args: {
+    steps: [
+      { label: 'Account', description: 'Create your account' },
+      { label: 'Profile', description: 'Complete your profile' },
+      { label: 'Confirmation', description: 'Confirm details' },
+    ],
+    value: 0,
+    type: 'linear',
+    orientation: 'horizontal',
+  },
   render: () => {
     const [active, setActive] = useState(0);
     const steps: StepperStep[] = [
@@ -90,6 +102,17 @@ export const HorizontalLinear: Story = {
   },
 };
 export const HorizontalNonLinear: Story = {
+  args: {
+    steps: [
+      { label: 'Step 1' },
+      { label: 'Step 2' },
+      { label: 'Step 3' },
+      { label: 'Step 4' },
+    ],
+    value: 0,
+    type: 'non-linear',
+    orientation: 'horizontal',
+  },
   render: () => {
     const [active, setActive] = useState(0);
     const steps: StepperStep[] = [
@@ -133,6 +156,16 @@ export const HorizontalNonLinear: Story = {
   },
 };
 export const VerticalStepper: Story = {
+  args: {
+    steps: [
+      { label: 'Select Campaign', description: 'Choose campaign settings' },
+      { label: 'Create Ad Group', description: 'Set up ad group' },
+      { label: 'Create Ads', description: 'Design your ads' },
+    ],
+    value: 0,
+    type: 'linear',
+    orientation: 'vertical',
+  },
   render: () => {
     const [active, setActive] = useState(0);
     const steps: StepperStep[] = [
@@ -175,6 +208,17 @@ export const VerticalStepper: Story = {
   },
 };
 export const AlternativeLabels: Story = {
+  args: {
+    steps: [
+      { label: 'Select master blaster campaign settings' },
+      { label: 'Create an ad group' },
+      { label: 'Create ads' },
+    ],
+    value: 0,
+    type: 'linear',
+    orientation: 'horizontal',
+    alternativeLabel: true,
+  },
   render: () => {
     const [active, setActive] = useState(0);
     const steps: StepperStep[] = [
@@ -220,6 +264,16 @@ export const AlternativeLabels: Story = {
   },
 };
 export const CompletedSteps: Story = {
+  args: {
+    steps: [
+      { label: 'Step 1', description: 'Completed', completed: true },
+      { label: 'Step 2', description: 'Completed', completed: true },
+      { label: 'Step 3', description: 'In Progress' },
+    ],
+    value: 2,
+    type: 'linear',
+    orientation: 'horizontal',
+  },
   render: () => {
     const [active, setActive] = useState(2);
     const steps: StepperStep[] = [
@@ -263,6 +317,12 @@ export const CompletedSteps: Story = {
   },
 };
 export const SizeVariants: Story = {
+  args: {
+    steps: [{ label: 'Step 1' }, { label: 'Step 2' }, { label: 'Step 3' }],
+    value: 1,
+    type: 'linear',
+    orientation: 'horizontal',
+  },
   render: () => {
     const [active, setActive] = useState(1);
     const steps: StepperStep[] = [{ label: 'Step 1' }, { label: 'Step 2' }, { label: 'Step 3' }];
@@ -310,6 +370,12 @@ export const SizeVariants: Story = {
   },
 };
 export const ColorVariants: Story = {
+  args: {
+    steps: [{ label: 'Step 1' }, { label: 'Step 2' }, { label: 'Step 3' }],
+    value: 1,
+    type: 'linear',
+    orientation: 'horizontal',
+  },
   render: () => {
     const [active, setActive] = useState(1);
     const steps: StepperStep[] = [{ label: 'Step 1' }, { label: 'Step 2' }, { label: 'Step 3' }];
@@ -357,6 +423,12 @@ export const ColorVariants: Story = {
   },
 };
 export const DisabledSteps: Story = {
+  args: {
+    steps: [{ label: 'Step 1' }, { label: 'Step 2', disabled: true }, { label: 'Step 3' }],
+    value: 0,
+    type: 'linear',
+    orientation: 'horizontal',
+  },
   render: () => {
     const [active, setActive] = useState(0);
     const steps: StepperStep[] = [
@@ -399,6 +471,16 @@ export const DisabledSteps: Story = {
   },
 };
 export const CustomIcons: Story = {
+  args: {
+    steps: [
+      { label: 'Login', description: 'Sign in', icon: '🔐' },
+      { label: 'Payment', description: 'Process payment', icon: '💳' },
+      { label: 'Confirmation', description: 'Confirm order', icon: '✅' },
+    ],
+    value: 1,
+    type: 'linear',
+    orientation: 'horizontal',
+  },
   render: () => {
     const [active, setActive] = useState(1);
     const steps: StepperStep[] = [
@@ -442,6 +524,17 @@ export const CustomIcons: Story = {
   },
 };
 export const KeyboardNavigation: Story = {
+  args: {
+    steps: [
+      { label: 'Step 1', description: 'Use arrow keys to navigate' },
+      { label: 'Step 2', description: 'Left/Right arrows move steps' },
+      { label: 'Step 3', description: 'Home/End go to first/last' },
+      { label: 'Step 4', description: 'All controls accessible' },
+    ],
+    value: 0,
+    type: 'linear',
+    orientation: 'horizontal',
+  },
   render: () => {
     const [active, setActive] = useState(0);
     const steps: StepperStep[] = [
@@ -486,6 +579,16 @@ export const KeyboardNavigation: Story = {
   },
 };
 export const ControlledStepper: Story = {
+  args: {
+    steps: [
+      { label: 'Personal Info' },
+      { label: 'Shipping' },
+      { label: 'Payment' },
+    ],
+    value: 0,
+    type: 'linear',
+    orientation: 'horizontal',
+  },
   render: () => {
     const [step, setStep] = useState(0);
     const steps: StepperStep[] = [
@@ -761,7 +864,7 @@ export const ColorVariantsDemo = () => {
 export const SizeVariantsDemo = () => {
   const [active, setActive] = useState(1);
   const steps: StepperStep[] = [{ label: 'Step 1' }, { label: 'Step 2' }, { label: 'Step 3' }];
-  const sizes: Array<'small' | 'medium' | 'large'> = ['small', 'medium', 'large'];
+  const sizes: Array<'sm' | 'md' | 'lg'> = ['sm', 'md', 'lg'];
   return (
     <div className='space-y-8 p-4'>
       <Typography variant='h6'>Stepper Size Variants</Typography>

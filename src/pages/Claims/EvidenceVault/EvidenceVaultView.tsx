@@ -1,6 +1,6 @@
 import { useRef } from 'react';
-import { FiCamera, FiTrash2, FiUpload } from 'react-icons/fi';
-import { Typography, Button, Card, CardContent } from '../../../common/components';
+import { FiCamera, FiTrash2 } from 'react-icons/fi';
+import { Typography, Button, Card, CardContent, FileUpload } from '../../../common/components';
 import type { EvidenceVaultViewProps } from './Interface';
 import './EvidenceVault.css';
 
@@ -17,7 +17,7 @@ const EvidenceVaultView = ({
   };
 
   return (
-    <Card variant="outlined-raised" className='evidence-vault-card'>
+    <Card variant='outlined-raised' className='evidence-vault-card'>
       <CardContent>
         <div className='evidence-vault-header'>
           <div>
@@ -31,21 +31,12 @@ const EvidenceVaultView = ({
           </div>
 
           <div className='evidence-upload-wrapper'>
-            <Button
-              variant='outlined'
-              onClick={handleUploadClick}
-              className='evidence-upload-button'
-            >
-              <FiUpload size={18} />
-            </Button>
-
-            <input
-              ref={evidenceInputRef}
-              type='file'
+            <FileUpload
+              id='evidence-upload'
               accept='image/*,video/*'
               multiple
+              showFileName={false}
               onChange={onUploadEvidence}
-              className='evidence-hidden-input'
             />
           </div>
         </div>

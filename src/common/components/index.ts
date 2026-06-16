@@ -13,6 +13,7 @@ export { default as Pagination } from './Pagination';
 export { default as RadioGroup } from './RadioGroup';
 export { default as Stepper } from './Stepper';
 export { default as Table } from './Table';
+export { default as LinearProgress } from './Progress/LinearProgress';
 export {default as CardFooter} from './Card/CardFooter';
 export {default as CardHeader} from './Card/CardHeader';
 // export { default as Progress } from './Progress/CircularProgress'; 
@@ -24,6 +25,7 @@ export {default as CardHeader} from './Card/CardHeader';
 //  export { default as Tooltip } from './Tooltip';
 //error
 export { default as Toggle } from './Toggle';
+export { default as LabelValue } from './LabelValue';
 export { default as Button } from './Button';
 export { default as Card } from './Card';
 export { default as CardContent } from './Card/CardContent';

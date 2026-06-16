@@ -55,7 +55,7 @@ const getInitialPreferences = (): PreferencesState => {
       portal: false,
     },
     smsEnrollment: {
-      textEnrollment: false,
+      textEnrollment: true,
     },
     display: {
       language: 'english',

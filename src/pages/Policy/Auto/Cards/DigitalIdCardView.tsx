@@ -1,4 +1,4 @@
-import { Button, Card, CardContent, Typography } from '../../../../common/components';
+import { Button, Card, CardContent, LabelValue, Typography } from '../../../../common/components';
 import { FiDownload } from 'react-icons/fi';
 import type { AutoPolicy } from '../interfaces';
 import '../../styles/DigitalIdCardView.css';
@@ -20,7 +20,6 @@ const DigitalIdCardView = ({ policy }: Props) => (
         </Button>
       </div>
 
-{/* you can use common component for displaying the key and value for this and Ashish/Aryshian is already doing it just coordinate with him and update here */}
       <div className='digital-id-card-body-wrapper'>
         <div className='digital-id-card-body'>
           {/* Top Row */}
@@ -42,41 +41,45 @@ const DigitalIdCardView = ({ policy }: Props) => (
 
           {/* Details */}
           <div className='digital-id-card-details'>
-            <div>
-              <Typography variant='body2' color='inverse'>
-                Policy Holder
-              </Typography>
-              <Typography variant='body1' color='inverse'>
-                {policy.policyHolder}
-              </Typography>
-            </div>
+            <LabelValue
+              orientation='vertical'
+              label='Policy Holder'
+              value={policy.policyHolder}
+              labelVariant='body2'
+              valueVariant='body1'
+              labelColor='inverse'
+              valueColor='inverse'
+            />
 
-            <div>
-              <Typography variant='body2' color='inverse'>
-                Policy #
-              </Typography>
-              <Typography variant='body1' color='inverse'>
-                {policy.policyNumber}
-              </Typography>
-            </div>
+            <LabelValue
+              orientation='vertical'
+              label='Policy #'
+              value={policy.policyNumber}
+              labelVariant='body2'
+              valueVariant='body1'
+              labelColor='inverse'
+              valueColor='inverse'
+            />
 
-            <div>
-              <Typography variant='body2' color='inverse'>
-                Vehicle
-              </Typography>
-              <Typography variant='body1' color='inverse'>
-                {policy.vehicle.year} {policy.vehicle.make} {policy.vehicle.model}
-              </Typography>
-            </div>
+            <LabelValue
+              orientation='vertical'
+              label='Vehicle'
+              value={`${policy.vehicle.year} ${policy.vehicle.make} ${policy.vehicle.model} `}
+              labelVariant='body2'
+              valueVariant='body1'
+              labelColor='inverse'
+              valueColor='inverse'
+            />
 
-            <div>
-              <Typography variant='body2' color='inverse'>
-                Valid
-              </Typography>
-              <Typography variant='body1' color='inverse'>
-                {policy.startDate} – {policy.endDate}
-              </Typography>
-            </div>
+            <LabelValue
+              orientation='vertical'
+              label='Valid'
+              value={`${policy.startDate} – ${policy.endDate}`}
+              labelVariant='body2'
+              valueVariant='body1'
+              labelColor='inverse'
+              valueColor='inverse'
+            />
           </div>
         </div>
 

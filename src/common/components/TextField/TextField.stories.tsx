@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import type { Meta } from '@storybook/react';
 import TextField from './TextField';
-import type { Props } from './TextField';
 const meta: Meta<typeof TextField> = {
   title: 'Components/TextField',
   component: TextField,
@@ -159,7 +158,7 @@ export const Interactive = () => {
         value={value}
         onChange={handleChange}
         error={error}
-        aria-invalid={error ? 'true' : 'false'}
+        aria-invalid={error ? true : false}
       />
       <p style={{ fontSize: 'var(--font-size-sm)', color: 'var(--text-secondary)' }}>
         Current value: <strong>{value || '(empty)'}</strong>

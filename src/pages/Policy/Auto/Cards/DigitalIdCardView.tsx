@@ -9,7 +9,7 @@ interface Props {
 }
 
 const DigitalIdCardView = ({ policy }: Props) => (
-  <Card>
+  <Card variant='outlined'>
     <CardContent className='digital-id-card-content'>
       <div className='digital-id-card-header'>
         <Typography variant='h3' color='secondary'>
@@ -20,6 +20,7 @@ const DigitalIdCardView = ({ policy }: Props) => (
         </Button>
       </div>
 
+{/* you can use common component for displaying the key and value for this and Ashish/Aryshian is already doing it just coordinate with him and update here */}
       <div className='digital-id-card-body-wrapper'>
         <div className='digital-id-card-body'>
           {/* Top Row */}

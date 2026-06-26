@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import type { Meta } from "@storybook/react";
 import { Tabs, Tab, TabPanel } from "./Tabs";
 const meta: Meta<typeof Tabs> = {
@@ -18,7 +18,7 @@ const sampleTabs = [
 export const Default = () => {
   const [value, setValue] = useState(0);
   return (
-    <Tabs value={value} onChange={setValue}>
+    <Tabs value={value} onChange={(v) => setValue(v as number)}>
       {sampleTabs.map((tab) => (
         <Tab key={tab.value} value={tab.value} label={tab.label} />
       ))}
@@ -33,7 +33,7 @@ export const Default = () => {
 export const SizeSmall = () => {
   const [value, setValue] = useState(0);
   return (
-    <Tabs value={value} onChange={setValue} size="sm">
+    <Tabs value={value} onChange={(v) => setValue(v as number)} size="sm">
       {sampleTabs.map((tab) => (
         <Tab key={tab.value} value={tab.value} label={tab.label} />
       ))}
@@ -48,7 +48,7 @@ export const SizeSmall = () => {
 export const SizeLarge = () => {
   const [value, setValue] = useState(0);
   return (
-    <Tabs value={value} onChange={setValue} size="lg">
+    <Tabs value={value} onChange={(v) => setValue(v as number)} size="lg">
       {sampleTabs.map((tab) => (
         <Tab key={tab.value} value={tab.value} label={tab.label} />
       ))}
@@ -69,7 +69,7 @@ export const VariantScrollable = () => {
   }));
   return (
     <div style={{ maxWidth: "400px" }}>
-      <Tabs value={value} onChange={setValue} variant="scrollable">
+      <Tabs value={value} onChange={(v) => setValue(v as number)} variant="scrollable">
         {manyTabs.map((tab) => (
           <Tab key={tab.value} value={tab.value} label={tab.label} />
         ))}
@@ -85,7 +85,7 @@ export const VariantScrollable = () => {
 export const VariantCentered = () => {
   const [value, setValue] = useState(0);
   return (
-    <Tabs value={value} onChange={setValue} variant="centered">
+    <Tabs value={value} onChange={(v) => setValue(v as number)} variant="centered">
       {sampleTabs.map((tab) => (
         <Tab key={tab.value} value={tab.value} label={tab.label} />
       ))}
@@ -100,7 +100,7 @@ export const VariantCentered = () => {
 export const VariantFullWidth = () => {
   const [value, setValue] = useState(0);
   return (
-    <Tabs value={value} onChange={setValue} variant="full-width">
+    <Tabs value={value} onChange={(v) => setValue(v as number)} variant="full-width">
       {sampleTabs.map((tab) => (
         <Tab key={tab.value} value={tab.value} label={tab.label} />
       ))}
@@ -116,7 +116,7 @@ export const VariantVertical = () => {
   const [value, setValue] = useState(0);
   return (
     <div style={{ display: "flex", gap: "var(--space-4)" }}>
-      <Tabs value={value} onChange={setValue} variant="vertical">
+      <Tabs value={value} onChange={(v) => setValue(v as number)} variant="vertical">
         {sampleTabs.map((tab) => (
           <Tab key={tab.value} value={tab.value} label={tab.label} />
         ))}
@@ -133,7 +133,7 @@ export const VariantVerticalCentered = () => {
   const [value, setValue] = useState(0);
   return (
     <div style={{ display: "flex", gap: "var(--space-4)", height: "300px" }}>
-      <Tabs value={value} onChange={setValue} variant="vertical-centered">
+      <Tabs value={value} onChange={(v) => setValue(v as number)} variant="vertical-centered">
         {sampleTabs.map((tab) => (
           <Tab key={tab.value} value={tab.value} label={tab.label} />
         ))}
@@ -154,7 +154,7 @@ export const WithIcons = () => {
     { value: 2, label: "Settings", icon: "⚙️", content: "Settings content" },
   ];
   return (
-    <Tabs value={value} onChange={setValue}>
+    <Tabs value={value} onChange={(v) => setValue(v as number)}>
       {tabsWithIcons.map((tab) => (
         <Tab key={tab.value} value={tab.value} label={tab.label} icon={tab.icon} />
       ))}
@@ -174,7 +174,7 @@ export const WithBadges = () => {
     { value: 2, label: "Trash", badge: 2, content: "2 items in trash" },
   ];
   return (
-    <Tabs value={value} onChange={setValue}>
+    <Tabs value={value} onChange={(v) => setValue(v as number)}>
       {tabsWithBadges.map((tab) => (
         <Tab key={tab.value} value={tab.value} label={tab.label} badge={tab.badge} />
       ))}
@@ -194,7 +194,7 @@ export const WithDisabledTabs = () => {
     { value: 2, label: "Tab 3", disabled: false, content: "Content 3" },
   ];
   return (
-    <Tabs value={value} onChange={setValue}>
+    <Tabs value={value} onChange={(v) => setValue(v as number)}>
       {tabsWithDisabled.map((tab) => (
         <Tab
           key={tab.value}
@@ -256,7 +256,7 @@ export const ControlledExternally = () => {
           Show Tab 3
         </button>
       </div>
-      <Tabs value={value} onChange={setValue}>
+      <Tabs value={value} onChange={(v) => setValue(v as number)}>
         {sampleTabs.map((tab) => (
           <Tab key={tab.value} value={tab.value} label={tab.label} />
         ))}
@@ -277,7 +277,7 @@ export const WithStringValues = () => {
     { value: "config", label: "Configuration", content: "Configuration section" },
   ];
   return (
-    <Tabs value={value} onChange={setValue}>
+    <Tabs value={value} onChange={(v) => setValue(v as string)}>
       {stringTabs.map((tab) => (
         <Tab key={tab.value} value={tab.value} label={tab.label} />
       ))}
@@ -320,7 +320,7 @@ export const Comprehensive = () => {
     },
   ];
   return (
-    <Tabs value={value} onChange={setValue} size="md" variant="centered">
+    <Tabs value={value} onChange={(v) => setValue(v as number)} size="md" variant="centered">
       {comprehensiveTabs.map((tab) => (
         <Tab
           key={tab.value}

@@ -1,10 +1,9 @@
 import '../../../styles/tokens.css';
 
 import { useState } from 'react';
-
-import { Table, TableColumn, TableSize, TableVariant, type } from './Table';
-
 import type { Meta } from '@storybook/react';
+import { Table } from './Table';
+import type { TableColumn, TableSize, TableVariant } from './Table';
 interface SampleRow extends Record<string, unknown> {
   id: number;
   name: string;

@@ -12,7 +12,7 @@ interface Props {
 }
 
 const PolicySummaryCardView = ({ policy, isExpanded, onToggleExpand }: Props) => (
-  <Card>
+  <Card variant='outlined'>
     <CardContent className='policy-summary-card-content'>
       <div className='policy-summary-header'>
         <Typography variant='h3' color='secondary'>
@@ -43,6 +43,7 @@ const PolicySummaryCardView = ({ policy, isExpanded, onToggleExpand }: Props) =>
               ))}
             </div>
           </div>
+          {/* same here as i told in digital id card view you can use common component for displaying the key and value for this and Ashish/Aryshian is already doing it just coordinate with him and update here */}
           {/* VEHICLE INFORMATION */}
           <div>
             <div className='policy-coverage-summary-section-header'>

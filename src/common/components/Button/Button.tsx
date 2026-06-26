@@ -32,7 +32,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref
   ) => {
-    const getColorTokens = (color: string, variant: string) => {
+    const getColorTokens = (color: string) => {
       const colorMap: Record<string, { base: string; hover: string; light: string }> = {
         primary: {
           base: 'var(--color-primary)',
@@ -127,7 +127,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         };
       }
     };
-    const colorTokens = getColorTokens(color, variant);
+    const colorTokens = getColorTokens(color);
     const sizeTokens = getSizeTokens(size);
     const variantStyles = getVariantStyles(variant, colorTokens, disabled);
     const buttonStyle: React.CSSProperties = {

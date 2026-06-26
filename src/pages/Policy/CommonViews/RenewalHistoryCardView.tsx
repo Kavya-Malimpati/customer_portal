@@ -20,7 +20,7 @@ const RenewalHistoryCardView = ({ fetchRenewalHistory }: Props) => {
   }, [fetchRenewalHistory]);
 
   return (
-    <Card>
+    <Card variant='outlined'>
       <CardContent className='tabular-card-content'>
         <TabularCardHeaderView title='Renewal & History' />
         <RenewalHistoryTable rows={rows} />

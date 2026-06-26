@@ -201,7 +201,6 @@ export const Empty: Story = {
 };
 export const Vertical: Story = {
   args: {
-    'aria-orientation': 'vertical',
     'aria-label': 'Vertical list',
     children: (
       <>
@@ -220,7 +219,6 @@ export const Vertical: Story = {
 };
 export const WithAriaLivePolite: Story = {
   args: {
-    tooltip: 'Updates',
     'aria-live': 'polite',
     'aria-label': 'Live update list',
     children: (
@@ -237,7 +235,6 @@ export const WithAriaLivePolite: Story = {
 };
 export const WithAriaLiveAssertive: Story = {
   args: {
-    tooltip: 'Alerts',
     'aria-live': 'assertive',
     'aria-label': 'Alert list',
     children: (
@@ -288,7 +285,6 @@ export const WithAriaDescribedby: Story = {
 };
 export const WithCustomClassName: Story = {
   args: {
-    tooltip: 'Custom Styled List',
     className:
       'bg-[var(--color-primary-light)] rounded-lg p-2 border border-[var(--color-primary)]',
     'aria-label': 'Custom styled list',
@@ -306,7 +302,6 @@ export const WithCustomClassName: Story = {
 };
 export const WithDividers: Story = {
   args: {
-    tooltip: 'Sectioned List',
     'aria-label': 'List with dividers',
     children: (
       <>

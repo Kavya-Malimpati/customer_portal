@@ -18,7 +18,7 @@ const RecentAlertsView: React.FC<RecentAlertsViewProps> = ({ alerts, newCount })
           <span className="alerts-badge">{newCount} NEW</span>
         )}
       </div>
-
+{/* have a switch case for icons instead of multiple if conditions */}
       <div className="alerts-list">
         {alerts.map((alert) => (
           <div key={alert.id} className="alert-item">

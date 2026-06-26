@@ -107,7 +107,7 @@ export const Snackbar: React.FC<SnackbarProps> = ({
     if (!open || isAnimatingOut) return;
     if (autoHideDuration && autoHideDuration > 0) {
       if (timerRef.current) globalThis.clearTimeout(timerRef.current);
-      timerRef.current = globalThis.setTimeout(handleClose, autoHideDuration);
+      timerRef.current = globalThis.setTimeout(handleClose, autoHideDuration) as unknown as number;
     }
     return () => {
       if (timerRef.current) {

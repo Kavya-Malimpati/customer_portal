@@ -39,7 +39,7 @@ const HelpCardView = ({ items, onSearch }: HelpCardViewProps) => {
               />
             </div>
           </div>
-
+{/* this are not buttons they are action cards */}
           {/* Cards Grid */}
           <CardContent className='help-card-content'>
             <div className='help-cards-grid'>

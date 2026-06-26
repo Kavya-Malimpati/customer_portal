@@ -20,6 +20,7 @@ const ClaimPayoutView = ({
         : 100;
 
   return (
+     // padding is not matching the total balance due it is not consitent.
     <div className="w-full">
       <Card
         variant="outlined"
@@ -50,16 +51,16 @@ const ClaimPayoutView = ({
             </span>
           </div>
 
-          <div className="claim-progress mb-2">
-            <LinearProgress
-              value={progressValue}
-              variant="determinate"
-              color="success"
-              size="md"
-              aria-label="Claim Progress"
-              aria-valuenow={progressValue}
-              aria-valuetext={`${progressValue}% complete`}
-            />
+{/* having this common component should be better  */}
+          <div className='claim-progress mb-2'>
+            <div className='claim-progress-bar h-2 w-full bg-gray-200 rounded'>
+              <div
+                className='claim-progress-fill h-2 rounded bg-green-500'
+                style={{
+                  width: status === 'approved' ? '25%' : status === 'processing' ? '50%' : '100%',
+                }}
+              />
+            </div>
           </div>
 
           <div className="claim-arrival mb-2">

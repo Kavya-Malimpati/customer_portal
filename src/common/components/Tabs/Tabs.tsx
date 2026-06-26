@@ -2,7 +2,6 @@ import '../../../styles/tokens.css';
 
 import React, {
   createContext,
-  type,
   useCallback,
   useContext,
   useEffect,

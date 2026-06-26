@@ -1,4 +1,4 @@
-import EvidenceVault from './EvidenceVault/index.ts';
+// import EvidenceVault from './EvidenceVault/index.ts';
 import ClaimDocuments from './ClaimDocuments/index.ts';
 import AdjusterChat from './Chat/ChatIcon.tsx';
 import './Claim.css';
@@ -23,8 +23,9 @@ const Claims = () => {
           <ActiveClaim />
         </section>
 
+{/* you dont need to seperate components for this one is enough see how you can do it */}
         <section className='claims-row claims-two-column'>
-          <EvidenceVault />
+          {/* <EvidenceVault /> */}
           <ClaimDocuments />
         </section>
 

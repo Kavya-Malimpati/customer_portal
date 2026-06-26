@@ -18,7 +18,7 @@ const OffersView: React.FC<OffersViewProps> = ({ offers }) => {
         Offers for You
       </Typography>
 
-   
+   {/* create a component and reuse it  */}
       <div className="offers-list">
         {offers.map((item) => (
           <div key={item.id} className="offer-item">

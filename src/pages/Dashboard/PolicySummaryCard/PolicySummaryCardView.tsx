@@ -1,17 +1,6 @@
-import {
-  FiShield,
-  FiHome,
-  FiUser,
-  FiMapPin,
-  FiChevronRight,
-} from 'react-icons/fi';
+import { FiShield, FiHome, FiUser, FiMapPin, FiChevronRight } from 'react-icons/fi';
 
-import {
-  Card,
-  CardContent,
-  Typography,
-  Button,
-} from '../../../common/components';
+import { Card, CardContent, Typography, Button, LabelValue } from '../../../common/components';
 
 import './PolicySummaryCardUi.css';
 
@@ -21,10 +10,7 @@ const PolicySummaryCardView = ({ policies }: PolicySummaryCardUiProps) => {
   return (
     <div className='policy-summary-grid'>
       {policies.map(policy => (
-        <Card
-          key={policy.policyNumber}
-          className='policy-summary-card'
-        >
+        <Card key={policy.policyNumber} className='policy-summary-card'>
           <CardContent className='policy-summary-content'>
             <div className='policy-header'>
               <div className='policy-header-left'>
@@ -37,56 +23,39 @@ const PolicySummaryCardView = ({ policies }: PolicySummaryCardUiProps) => {
                 </div>
 
                 <div className='policy-text-container'>
-                  <Typography
-                    variant='h3'
-                    color='primary'
-                    className='policy-title'
-                  >
+                  <Typography variant='h3' color='primary' className='policy-title'>
                     {policy.policyType}
                   </Typography>
 
-                  <Typography
-                    variant='body2'
-                    className='policy-subtitle'
-                  >
+                  <Typography variant='body2' className='policy-subtitle'>
                     {policy.propertyOrVehicle}
                   </Typography>
                 </div>
               </div>
 
-              <div className='policy-status'>
-                {policy.status}
-              </div>
+              <div className='policy-status'>{policy.status}</div>
             </div>
 
             <div className='policy-divider' />
 
             <div className='policy-details'>
-              <div>
-                <Typography
-                  variant='body2'
-                  className='policy-label'
-                >
-                  POLICY NUMBER
-                </Typography>
+              <LabelValue
+                label='POLICY NUMBER'
+                value={policy.policyNumber}
+                orientation='vertical'
+                labelVariant='body2'
+                valueVariant='body1'
+                className='policy-label-value'
+              />
 
-                <Typography variant='body1'>
-                  {policy.policyNumber}
-                </Typography>
-              </div>
-
-              <div>
-                <Typography
-                  variant='body2'
-                  className='policy-label'
-                >
-                  RENEWAL DATE
-                </Typography>
-
-                <Typography variant='body1'>
-                  {policy.renewalDate}
-                </Typography>
-              </div>
+              <LabelValue
+                label='RENEWAL DATE'
+                value={policy.renewalDate}
+                orientation='vertical'
+                labelVariant='body2'
+                valueVariant='body1'
+                className='policy-label-value'
+              />
             </div>
 
             <div className='policy-divider' />
@@ -102,10 +71,7 @@ const PolicySummaryCardView = ({ policies }: PolicySummaryCardUiProps) => {
                 </div>
               </div>
 
-              <Button
-                variant='text'
-                color='primary'
-              >
+              <Button variant='text' color='primary'>
                 <span className='manage-link'>
                   Manage Coverage
                   <FiChevronRight />

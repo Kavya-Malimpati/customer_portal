@@ -13,7 +13,7 @@ interface Props {
 
 const DocumentCardView = ({ title, description, fileMeta, icon, onDownload }: Props) => {
   return (
-    <Card>
+    <Card variant='outlined'>
       <CardContent className='document-card-content'>
         {/* Header (grid for correct alignment) */}
         <div className='document-card-header'>

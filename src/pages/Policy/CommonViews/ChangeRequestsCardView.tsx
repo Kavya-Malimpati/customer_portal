@@ -20,7 +20,7 @@ const ChangeRequestsCardView = ({ fetchChangeRequests }: Props) => {
   }, [fetchChangeRequests]);
 
   return (
-    <Card>
+    <Card variant='outlined'>
       <CardContent className='tabular-card-content'>
         <TabularCardHeaderView
           title='Change Requests'

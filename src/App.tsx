@@ -1,13 +1,14 @@
 import './App.css';
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import MainLayout from './common/MainLayout';
-import Home from './pages/Home';
+// import Home from './pages/Home';
 import Settings from './pages/Profile/Settings';
 import ProfilePage from './pages/Profile/ProfilePage';
 import Claims from './pages/Claims';
 import BillingPage from './pages/Billing/BillingPage';
 import ServicesPage from './pages/Services/ServicesPage';
 import PolicyPage from './pages/Policy/PolicyPage';
+import Dashboard from './pages/Dashboard/Dashboard';
 
 function App() {
   const navigate = useNavigate();
@@ -22,7 +23,8 @@ function App() {
         path='/'
         element={
           <MainLayout onLogout={handleLogout}>
-            <Home />
+            <Dashboard />
+            {/* <Home /> */}
           </MainLayout>
         }
       />

@@ -1,0 +1,74 @@
+.attention-banner {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 16px 20px;
+
+  background: #fde8e8;
+  border: 1px solid #f5c2c2;
+  border-radius: 16px;
+}
+
+.attention-banner-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.attention-icon {
+  color: #dc2626;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+
+.attention-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.attention-label {
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em;
+  color: #b91c1c !important;
+}
+
+.attention-message {
+  margin-top: 2px;
+  color: #991b1b !important;
+  font-weight: 500 !important;
+}
+
+.resolve-button {
+  min-width: 150px !important;
+  height: 44px !important;
+
+  background: #dc2626 !important;
+  border-color: #dc2626 !important;
+  color: white !important;
+
+  border-radius: 10px !important;
+}
+
+.resolve-button:hover {
+  background: #b91c1c !important;
+}
+
+@media (max-width: 768px) {
+  .attention-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .resolve-button {
+    width: 100%;
+  }
+}

@@ -1,4 +1,4 @@
-import { Button, Card, CardContent, Typography } from '../../../../common/components';
+import { Button, Card, CardContent, LabelValue, Typography } from '../../../../common/components';
 import type { HomeownersPolicy } from '../interfaces';
 import '../../styles/PolicySummaryCardView.css';
 import { BsPerson } from 'react-icons/bs';
@@ -35,14 +35,16 @@ const HomeownersPolicySummaryCardView = ({ policy, isExpanded, onToggleExpand }:
 
             <div className='policy-summary-coverage-list'>
               {(isExpanded ? policy.coverage : policy.coverage.slice(0, 2)).map((c, index) => (
-                <div key={index}>
-                  <Typography variant='body2' color='secondary'>
-                    {c.type}
-                  </Typography>
-                  <Typography variant='body1' color='primary'>
-                    {c.value}
-                  </Typography>
-                </div>
+                <LabelValue
+                  key={index}
+                  orientation='vertical'
+                  label={c.type}
+                  value={c.value}
+                  labelVariant='body2'
+                  valueVariant='body1'
+                  labelColor='secondary'
+                  valueColor='primary'
+                />
               ))}
             </div>
           </div>
@@ -57,126 +59,142 @@ const HomeownersPolicySummaryCardView = ({ policy, isExpanded, onToggleExpand }:
             </div>
 
             <div className='policy-summary-lob-grid'>
-              <div>
-                <Typography variant='body2' color='secondary'>
-                  Property Address
-                </Typography>
-                <Typography variant='body1' color='primary'>
-                  {policy.property.address.street}, {policy.property.address.city},{' '}
-                  {policy.property.address.state} {policy.property.address.zipCode}
-                </Typography>
-              </div>
+              <LabelValue
+                orientation='vertical'
+                label='Property Address'
+                value={`${policy.property.address.street}, ${policy.property.address.city}, 
+                ${policy.property.address.state} ${policy.property.address.zipCode}`}
+                labelVariant='body2'
+                valueVariant='body1'
+                labelColor='secondary'
+                valueColor='primary'
+              />
 
-              <div>
-                <Typography variant='body2' color='secondary'>
-                  Property Type
-                </Typography>
-                <Typography variant='body1' color='primary'>
-                  {policy.property.propertyType}
-                </Typography>
-              </div>
+              <LabelValue
+                orientation='vertical'
+                label='Property Type'
+                value={policy.property.propertyType}
+                labelVariant='body2'
+                valueVariant='body1'
+                labelColor='secondary'
+                valueColor='primary'
+              />
 
-              <div>
-                <Typography variant='body2' color='secondary'>
-                  Year Built
-                </Typography>
-                <Typography variant='body1' color='primary'>
-                  {policy.property.yearBuilt}
-                </Typography>
-              </div>
+              <LabelValue
+                orientation='vertical'
+                label='Year Built'
+                value={policy.property.yearBuilt}
+                labelVariant='body2'
+                valueVariant='body1'
+                labelColor='secondary'
+                valueColor='primary'
+              />
 
-              <div>
-                <Typography variant='body2' color='secondary'>
-                  Square Footage
-                </Typography>
-                <Typography variant='body1' color='primary'>
-                  {policy.property.squareFootage.toLocaleString()} sq ft
-                </Typography>
-              </div>
+              <LabelValue
+                orientation='vertical'
+                label='Square Footage'
+                value={`${policy.property.squareFootage.toLocaleString()} sq ft`}
+                labelVariant='body2'
+                valueVariant='body1'
+                labelColor='secondary'
+                valueColor='primary'
+              />
 
               {/* EXPANDED FIELDS */}
               {isExpanded && (
                 <>
-                  <div>
-                    <Typography variant='body2' color='secondary'>
-                      Construction Type
-                    </Typography>
-                    <Typography variant='body1' color='primary'>
-                      {policy.property.constructionType}
-                    </Typography>
-                  </div>
+                  <LabelValue
+                    orientation='vertical'
+                    label='Construction Type'
+                    value={policy.property.constructionType}
+                    labelVariant='body2'
+                    valueVariant='body1'
+                    labelColor='secondary'
+                    valueColor='primary'
+                  />
 
-                  <div>
-                    <Typography variant='body2' color='secondary'>
-                      Roof
-                    </Typography>
-                    <Typography variant='body1' color='primary'>
-                      {policy.property.roof.type} ({policy.property.roof.age} yrs)
-                    </Typography>
-                  </div>
+                  <LabelValue
+                    orientation='vertical'
+                    label='Roof'
+                    value={`${policy.property.roof.type} (${policy.property.roof.age} yrs)`}
+                    labelVariant='body2'
+                    valueVariant='body1'
+                    labelColor='secondary'
+                    valueColor='primary'
+                  />
 
-                  <div>
-                    <Typography variant='body2' color='secondary'>
-                      Ownership Status
-                    </Typography>
-                    <Typography variant='body1' color='primary'>
-                      {policy.property.ownershipStatus}
-                    </Typography>
-                  </div>
+                  <LabelValue
+                    orientation='vertical'
+                    label='Ownership Status'
+                    value={policy.property.ownershipStatus}
+                    labelVariant='body2'
+                    valueVariant='body1'
+                    labelColor='secondary'
+                    valueColor='primary'
+                  />
 
-                  <div>
-                    <Typography variant='body2' color='secondary'>
-                      Occupancy Type
-                    </Typography>
-                    <Typography variant='body1' color='primary'>
-                      {policy.property.occupancyType}
-                    </Typography>
-                  </div>
+                  <LabelValue
+                    orientation='vertical'
+                    label='Occupancy Type'
+                    value={policy.property.occupancyType}
+                    labelVariant='body2'
+                    valueVariant='body1'
+                    labelColor='secondary'
+                    valueColor='primary'
+                  />
 
-                  <div>
-                    <Typography variant='body2' color='secondary'>
-                      Estimated Property Value
-                    </Typography>
-                    <Typography variant='body1' color='primary'>
-                      {policy.property.estimatedPropertyValue}
-                    </Typography>
-                  </div>
+                  <LabelValue
+                    orientation='vertical'
+                    label='Estimated Property Value'
+                    value={policy.property.estimatedPropertyValue}
+                    labelVariant='body2'
+                    valueVariant='body1'
+                    labelColor='secondary'
+                    valueColor='primary'
+                  />
 
-                  <div>
-                    <Typography variant='body2' color='secondary'>
-                      Replacement Cost
-                    </Typography>
-                    <Typography variant='body1' color='primary'>
-                      {policy.property.replacementCost}
-                    </Typography>
-                  </div>
+                  <LabelValue
+                    orientation='vertical'
+                    label='Replacement Cost'
+                    value={policy.property.replacementCost}
+                    labelVariant='body2'
+                    valueVariant='body1'
+                    labelColor='secondary'
+                    valueColor='primary'
+                  />
 
-                  <div className='md:col-span-2'>
-                    <Typography variant='body2' color='secondary'>
-                      Safety Features
-                    </Typography>
-                    <Typography variant='body1' color='primary'>
-                      {policy.property.safetyFeatures.join(', ')}
-                    </Typography>
-                  </div>
+                  <LabelValue
+                    className='md:col-span-2'
+                    orientation='vertical'
+                    label='Safety Features'
+                    value={policy.property.safetyFeatures.join(', ')}
+                    labelVariant='body2'
+                    valueVariant='body1'
+                    labelColor='secondary'
+                    valueColor='primary'
+                  />
 
-                  <div className='md:col-span-2'>
-                    <Typography variant='body2' color='secondary'>
-                      Prior Claims History
-                    </Typography>
-                    <Typography variant='body1' color='primary'>
-                      {policy.property.priorClaimsHistory}
-                    </Typography>
-                  </div>
+                  <LabelValue
+                    className='md:col-span-2'
+                    orientation='vertical'
+                    label='Prior Claims History'
+                    value={policy.property.priorClaimsHistory}
+                    labelVariant='body2'
+                    valueVariant='body1'
+                    labelColor='secondary'
+                    valueColor='primary'
+                  />
 
-                  <div className='policy-summary-span-2'>
-                    <Typography variant='body2' color='secondary'>
-                      Mortgage / Lender
-                    </Typography>
-                    <Typography variant='body1' color='primary'>
-                      {policy.property.mortgageLender}
-                    </Typography>
-                  </div>
+                  <LabelValue
+                    className='policy-summary-span-2'
+                    orientation='vertical'
+                    label='Mortgage / Lender'
+                    value={policy.property.mortgageLender}
+                    labelVariant='body2'
+                    valueVariant='body1'
+                    labelColor='secondary'
+                    valueColor='primary'
+                  />
                 </>
               )}
             </div>

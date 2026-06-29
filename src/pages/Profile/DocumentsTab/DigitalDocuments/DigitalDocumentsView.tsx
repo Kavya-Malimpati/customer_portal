@@ -44,17 +44,17 @@ const DigitalDocumentsView = ({ documents, onView }: DigitalDocumentsViewProps) 
   };
 
   return (
-    <main className='mt-14'>
+    <main className='mt-5 md:mt-14 px-4 sm:px-6 md:px-8 lg:px-10'>
       <div className='w-full'>
         {/* Documents Card */}
         <div className='digital-documents-card'>
           {/* Header */}
-          <div className='digital-documents-header'>
+          <div className='digital-documents-header flex-col sm:flex-row gap-4'>
             <Typography variant='h3' color='primary'>
               Digital Documents
             </Typography>
 
-            <div className='digital-documents-actions'>
+            <div className='digital-documents-actions ml-auto'>
               <Button
                 variant='outlined'
                 size='small'
@@ -81,67 +81,70 @@ const DigitalDocumentsView = ({ documents, onView }: DigitalDocumentsViewProps) 
           </div>
 
           {/* Table Content */}
-          <CardContent className='p-0'>
-            <table className='documents-table'>
-              <tbody>
-                {sortedDocuments.map(document => (
-                  <tr key={document.id} className='document-row'>
-                    {/* Icon Cell */}
-                    <td className='icon-cell'>
-                      <div className='icon-container'>{getIcon(document.category)}</div>
-                    </td>
+          <CardContent className='p-0 overflow-x-auto md:overflow-visible'>
+            <div className='table-wrapper overflow-x-auto'>
+              <table className='documents-table min-w-full md:w-full'>
+                <tbody>
+                  {sortedDocuments.map(document => (
+                    <tr key={document.id} className='document-row'>
+                      {/* Icon Cell */}
+                      <td className='icon-cell'>
+                        <div className='icon-container'>{getIcon(document.category)}</div>
+                      </td>
 
-                    {/* Title and Details Cell */}
-                    <td className='document-info-cell'>
-                      <Typography variant='body2' color='primary' className='document-title'>
-                        {document.title}
-                      </Typography>
-                      <Typography variant='body2' color='muted' className='document-meta'>
-                        {document.category} • {document.size}
-                      </Typography>
-                    </td>
+                      {/* Title and Details Cell */}
+                      <td className='document-info-cell'>
+                        <div className='document-title'>{document.title}</div>
 
-                    {/* Date Cell */}
-                    <td className='date-cell'>
-                      <Typography variant='body2' color='caption' className='date-text'>
-                        Modified {document.date}
-                      </Typography>
-                    </td>
+                        <div className='document-meta'>
+                          {document.category} • {document.size}
+                        </div>
+                      </td>
 
-                    {/* Actions Cell */}
-                    <td className='actions-cell'>
-                      <div className='actions-container'>
-                        <Button
-                          variant='text'
-                          size='small'
-                          onClick={() => onView(document.viewUrl)}
-                          startIcon={<FiEye size={16} />}
-                          aria-label={`View ${document.title}`}
-                        >
-                          View
-                        </Button>
+                      {/* Date Cell */}
+                      <td className='date-cell'>
+                        <div className='date-text'>Modified {document.date}</div>
+                      </td>
 
-                        <a
-                          href={document.downloadUrl}
-                          download
-                          className='action-link'
-                          aria-label={`Download ${document.title}`}
-                        >
-                          <FiDownload size={16} />
-                          <span>Download</span>
-                        </a>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+                      {/* Actions Cell */}
+                      <td className='actions-cell'>
+                        <div className='actions-container'>
+                          <Button
+                            variant='text'
+                            size='small'
+                            onClick={() => onView(document.viewUrl)}
+                            startIcon={<FiEye size={16} />}
+                            aria-label={`View ${document.title}`}
+                          >
+                            View
+                          </Button>
+
+                          <a
+                            href={document.downloadUrl}
+                            download
+                            className='action-link'
+                            aria-label={`Download ${document.title}`}
+                          >
+                            <FiDownload size={16} />
+                            <span>Download</span>
+                          </a>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </CardContent>
         </div>
 
         {/* Archived Documents Link */}
-        <div className='archived-link-container'>
-          <a href='#' className='archived-link' aria-label='View documents from prior to 2023'>
+        <div className='archived-link-container text-center mt-4'>
+          <a
+            href='#'
+            className='archived-link text-sm md:text-base'
+            aria-label='View documents from prior to 2023'
+          >
             View Archived Documents (Prior to 2023)
           </a>
         </div>

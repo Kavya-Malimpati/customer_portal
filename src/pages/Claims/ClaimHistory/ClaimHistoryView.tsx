@@ -98,22 +98,19 @@ const ClaimHistoryView = ({ data }: Props) => {
 {
   field: 'status',
   headerName: 'STATUS',
-  align: 'left' as const,
+  align: 'left',
   width: '160px',
-  renderCell: (row: Record<string, unknown>) => {
-    const claim = getClaimRow(row);
-    return (
-      <span
-        className={`status-badge ${
-          claim.status.toLowerCase() === 'paid'
-            ? 'status-paid'
-            : 'status-archived'
-        }`}
-      >
-        {claim.status}
-      </span>
-    );
-  },
+  renderCell: (row: ClaimHistoryItem) => (
+    <span
+      className={`status-badge ${
+        row.status.toLowerCase() === 'paid'
+          ? 'status-paid'
+          : 'status-archived'
+      }`}
+    >
+      {row.status}
+    </span>
+  ),
 },
     {
       field: 'action',
@@ -155,7 +152,7 @@ const ClaimHistoryView = ({ data }: Props) => {
         variant="outlined"
         size="md"
       />
-{/* you can use the same componet which you will be doing for roadside assitant for displaying the content and add some design to modal it is very plain */}
+
       <Modal
         isOpen={isOpen}
         onClose={handleClose}

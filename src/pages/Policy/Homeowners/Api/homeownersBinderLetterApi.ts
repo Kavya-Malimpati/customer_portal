@@ -5,7 +5,7 @@ export const getHomeownersBinderLetterApi = async (): Promise<PolicyDocument | n
   Promise.resolve({
     id: 'home-binder-2026-01',
     title: 'Binder Letter',
-    description: 'Proof of temporary insurance coverage.',
+    description: 'Proof of temporary Homeowners Insurance Coverage.',
     fileMeta: 'PDF • 1.0 MB',
     downloadUrl: '/home/binder/home-binder-2026-01.pdf',
   });

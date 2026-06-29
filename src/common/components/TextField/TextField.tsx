@@ -26,7 +26,7 @@ export interface Props {
   isValid?: boolean;
   hasError?: boolean;
   errorMessage?: string;
-  validationRules?: Record<string, any>;
+  validationRules?: Record<string, string | number | boolean>;
   autoComplete?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
@@ -56,7 +56,7 @@ const TextField = ({
   error,
   size = 'md',
   startDecorator,
-  variant = 'default',
+  variant = 'outlined',
   autoFocus = false,
   isRequired,
   isValid,
@@ -84,17 +84,17 @@ const TextField = ({
   const errorId = fieldError ? `${fieldId}-error` : undefined;
   const sizeClasses = useMemo(() => {
     const sizes = {
-      sm: 'px-2 py-1 text-sm h-8',
-      md: 'px-3 py-2 text-base h-10',
+      sm: 'px-3 py-2 text-sm h-9',
+      md: 'px-4 py-2 text-base h-10',
       lg: 'px-4 py-3 text-lg h-12',
     };
     return sizes[size];
   }, [size]);
   const variantClasses = useMemo(() => {
     const variants = {
-      default: 'border border-gray-300 bg-white hover:border-gray-400 focus:border-blue-500',
-      outlined: 'border-2 border-gray-300 bg-white hover:border-gray-400 focus:border-blue-500',
-      filled: 'border-b-2 border-gray-300 bg-gray-50 hover:bg-gray-100 focus:border-blue-500',
+      default: 'border border-[var(--border-color)] bg-[var(--bg-surface)] hover:border-[var(--border-color-hover)] focus:border-[var(--border-color-focus)] focus:outline-none',
+      outlined: 'border border-[var(--border-color)] bg-[var(--bg-surface)] hover:border-[var(--border-color-hover)] focus:border-[var(--border-color-focus)] focus:outline-none',
+      filled: 'border-b border-[var(--border-color)] bg-[var(--bg-muted)] hover:bg-[var(--bg-hover)] focus:border-[var(--border-color-focus)] focus:outline-none',
     };
     return variants[variant];
   }, [variant]);
@@ -104,19 +104,17 @@ const TextField = ({
   const isInvalid = fieldError || isFieldInvalid;
   const inputClasses = [
     'w-full',
-    'rounded-lg',
+    'rounded-[var(--radius-md)]',
     'font-normal',
+    'font-[var(--font-family-sans)]',
+    'text-[var(--text-primary)]',
     'transition-all',
-    'focus-visible:outline-none',
-    'focus-visible:ring-2',
-    'focus-visible:ring-blue-500',
-    'focus-visible:ring-offset-2',
+    'duration-[var(--transition-fast)]',
     sizeClasses,
     variantClasses,
-    isInvalid ? 'border-red-500 focus:border-red-600' : '',
-    disabled ? 'opacity-50 cursor-not-allowed' : '',
-    readOnly ? 'cursor-default bg-gray-50' : '',
-    startDecorator || endDecorator ? 'px-0' : '',
+    isInvalid ? 'border-[var(--color-error)] focus:border-[var(--color-error)]' : '',
+    disabled ? 'opacity-50 cursor-not-allowed bg-[var(--bg-muted)]' : '',
+    readOnly ? 'cursor-default bg-[var(--bg-muted)]' : '',
     className,
   ]
     .filter(Boolean)
@@ -127,8 +125,7 @@ const TextField = ({
         <label
           id={labelId}
           htmlFor={fieldId}
-          className={`text-sm font-medium 'text-gray-700'
-          } ${isFieldRequired ? 'after:content-["*"] after:ml-1 after:text-red-500' : ''}`}
+          className={`text-sm font-medium text-[var(--text-primary)] ${isFieldRequired ? "after:content-['*'] after:ml-1 after:text-[var(--color-error)]" : ''}`}
         >
           {label}
         </label>
@@ -136,7 +133,7 @@ const TextField = ({
       <div className='flex items-center w-full'>
         {startDecorator && (
           <div
-            className={`flex items-center px-3 py-2 text-gray-600 ${size === 'sm' ? 'text-sm' : 'text-base'}`}
+            className={`flex items-center px-3 py-2 text-[var(--text-secondary)] ${size === 'sm' ? 'text-sm' : 'text-base'}`}
           >
             {startDecorator}
           </div>
@@ -167,14 +164,14 @@ const TextField = ({
         />
         {endDecorator && (
           <div
-            className={`flex items-center px-3 py-2 text-gray-600 ${size === 'sm' ? 'text-sm' : 'text-base'}`}
+            className={`flex items-center px-3 py-2 text-[var(--text-secondary)] ${size === 'sm' ? 'text-sm' : 'text-base'}`}
           >
             {endDecorator}
           </div>
         )}
       </div>
       {fieldError && (
-        <span id={errorId} className='text-sm text-red-600' role='alert'>
+        <span id={errorId} className='text-sm text-[var(--color-error)]' role='alert'>
           {fieldError}
         </span>
       )}
@@ -182,4 +179,3 @@ const TextField = ({
   );
 };
 export default TextField;
-

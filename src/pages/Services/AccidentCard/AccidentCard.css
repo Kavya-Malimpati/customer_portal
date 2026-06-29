@@ -1,4 +1,3 @@
-
 .accident-card {
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
@@ -49,6 +48,7 @@
   align-items: center;
   text-align: center;
   z-index: 1;
+  color: var(--color-white);
 }
 
 .step-circle {
@@ -64,15 +64,17 @@
 }
 
 .step-title {
+  font-size: var(--font-size-md);
   font-weight: var(--font-weight-semibold);
   margin-bottom: var(--space-2);
+  text-align: center;
 }
 
 .step-desc {
   max-width: 170px;
   font-size: var(--font-size-sm);
-  line-height: 1.4;
   color: var(--text-muted);
+  text-align: center;
 }
 
 .accident-footer {
@@ -141,6 +143,15 @@
 @media (max-width: 576px) {
   .accident-header {
     padding: var(--space-4);
+  }
+
+  .accident-header h3,
+  .accident-title {
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 21px !important;
+    line-height: 1.3;
   }
 
   .accident-footer {

@@ -1,0 +1,30 @@
+.document-subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary, #6b7280);
+  line-height: 1.5;
+}
+
+.vault-title {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+}
+
+.category-title {
+  margin-top: 1rem;
+  color: #000;
+  font-size: var(--font-size-sm) !important;
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.5;
+}
+
+.category-description {
+  margin-top: 0.5rem;
+  color: #6b7280;
+  font-size: var(--font-size-xs) !important;
+  line-height: 1.5;
+}
+
+.file-count {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}

@@ -1,4 +1,4 @@
-import { Button, Card, CardContent, LabelValue, Typography } from '../../../../common/components';
+import { Button, Card, CardContent, Typography } from '../../../../common/components';
 import type { AutoPolicy } from '../interfaces';
 import '../../styles/PolicySummaryCardView.css';
 import { BsPerson } from 'react-icons/bs';
@@ -12,7 +12,7 @@ interface Props {
 }
 
 const PolicySummaryCardView = ({ policy, isExpanded, onToggleExpand }: Props) => (
-  <Card variant='outlined'>
+  <Card>
     <CardContent className='policy-summary-card-content'>
       <div className='policy-summary-header'>
         <Typography variant='h3' color='secondary'>
@@ -32,16 +32,14 @@ const PolicySummaryCardView = ({ policy, isExpanded, onToggleExpand }: Props) =>
             </div>
             <div className='policy-summary-coverage-list'>
               {(isExpanded ? policy.coverage : policy.coverage.slice(0, 2)).map((c, index) => (
-                <LabelValue
-                  key={index}
-                  orientation='vertical'
-                  label={c.type}
-                  value={c.value}
-                  labelVariant='body2'
-                  valueVariant='body1'
-                  labelColor='secondary'
-                  valueColor='primary'
-                />
+                <div key={index}>
+                  <Typography variant='body2' color='secondary'>
+                    {c.type}
+                  </Typography>
+                  <Typography variant='body1' color='primary'>
+                    {c.value}
+                  </Typography>
+                </div>
               ))}
             </div>
           </div>
@@ -55,87 +53,82 @@ const PolicySummaryCardView = ({ policy, isExpanded, onToggleExpand }: Props) =>
             </div>
 
             <div className='policy-summary-lob-grid'>
-              <LabelValue
-                orientation='vertical'
-                label='VIN'
-                value={policy.vehicle.vin}
-                labelVariant='body2'
-                valueVariant='body1'
-                labelColor='secondary'
-                valueColor='primary'
-              />
+              <div>
+                <Typography variant='body2' color='secondary'>
+                  VIN
+                </Typography>
+                <Typography variant='body1' color='primary'>
+                  {policy.vehicle.vin}
+                </Typography>
+              </div>
 
-              <LabelValue
-                orientation='vertical'
-                label='License Plate'
-                value={policy.vehicle.licensePlate}
-                labelVariant='body2'
-                valueVariant='body1'
-                labelColor='secondary'
-                valueColor='primary'
-              />
+              <div>
+                <Typography variant='body2' color='secondary'>
+                  License Plate
+                </Typography>
+                <Typography variant='body1' color='primary'>
+                  {policy.vehicle.licensePlate}
+                </Typography>
+              </div>
 
-              <LabelValue
-                orientation='vertical'
-                label='Vehicle'
-                value={`${policy.vehicle.year} ${policy.vehicle.make} ${policy.vehicle.model}`}
-                labelVariant='body2'
-                valueVariant='body1'
-                labelColor='secondary'
-                valueColor='primary'
-              />
+              <div>
+                <Typography variant='body2' color='secondary'>
+                  Vehicle
+                </Typography>
+                <Typography variant='body1' color='primary'>
+                  {policy.vehicle.year} {policy.vehicle.make} {policy.vehicle.model}
+                </Typography>
+              </div>
 
-              <LabelValue
-                orientation='vertical'
-                label='Usage Type'
-                value={policy.vehicle.usageType}
-                labelVariant='body2'
-                valueVariant='body1'
-                labelColor='secondary'
-                valueColor='primary'
-              />
+              <div>
+                <Typography variant='body2' color='secondary'>
+                  Usage Type
+                </Typography>
+                <Typography variant='body1' color='primary'>
+                  {policy.vehicle.usageType}
+                </Typography>
+              </div>
+
               {/* Expanded-only fields */}
               {isExpanded && (
                 <>
-                  <LabelValue
-                    orientation='vertical'
-                    label='Annual Mileage'
-                    value={`${policy.vehicle.annualMileage.toLocaleString()} miles`}
-                    labelVariant='body2'
-                    valueVariant='body1'
-                    labelColor='secondary'
-                    valueColor='primary'
-                  />
+                  <div>
+                    <Typography variant='body2' color='secondary'>
+                      Annual Mileage
+                    </Typography>
+                    <Typography variant='body1' color='primary'>
+                      {policy.vehicle.annualMileage.toLocaleString()} miles
+                    </Typography>
+                  </div>
 
-                  <LabelValue
-                    orientation='vertical'
-                    label='Ownership Status'
-                    value={policy.vehicle.ownershipStatus}
-                    labelVariant='body2'
-                    valueVariant='body1'
-                    labelColor='secondary'
-                    valueColor='primary'
-                  />
+                  <div>
+                    <Typography variant='body2' color='secondary'>
+                      Ownership Status
+                    </Typography>
+                    <Typography variant='body1' color='primary'>
+                      {policy.vehicle.ownershipStatus}
+                    </Typography>
+                  </div>
 
-                  <LabelValue
-                    orientation='vertical'
-                    label='Garaging Address'
-                    value={policy.vehicle.garagingAddress}
-                    labelVariant='body2'
-                    valueVariant='body1'
-                    labelColor='secondary'
-                    valueColor='primary'
-                  />
+                  <div className='md:col-span-2'>
+                    <Typography variant='body2' color='secondary'>
+                      Garaging Address
+                    </Typography>
+                    <Typography variant='body1' color='primary'>
+                      {policy.vehicle.garagingAddress}
+                    </Typography>
+                  </div>
 
-                  <LabelValue
-                    orientation='vertical'
-                    label='Prior Insurance'
-                    value={policy.vehicle.priorInsurance}
-                    labelVariant='body2'
-                    valueVariant='body1'
-                    labelColor='secondary'
-                    valueColor='primary'
-                  />
+                  {policy.vehicle.priorInsurance && (
+                    <div className='policy-summary-span-2'>
+                      <Typography variant='body2' color='secondary'>
+                        Prior Insurance
+                      </Typography>
+                      <Typography variant='body1' color='primary'>
+                        {policy.vehicle.priorInsurance}
+                      </Typography>
+                    </div>
+                  )}
                 </>
               )}
             </div>

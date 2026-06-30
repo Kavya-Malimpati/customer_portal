@@ -8,6 +8,8 @@ import Claims from './pages/Claims';
 import BillingPage from './pages/Billing/BillingPage';
 import ServicesPage from './pages/Services/ServicesPage';
 import PolicyPage from './pages/Policy/PolicyPage';
+import AutoQuotePage from './pages/Policy/AutoQuoteFrom/AutoQuotePage';
+import HomeownersQuotePage from './pages/Policy/HomeOwnerQuoteFrom/HomeownersQuotePage';
 
 function App() {
   const navigate = useNavigate();
@@ -26,6 +28,26 @@ function App() {
           </MainLayout>
         }
       />
+
+    <Route
+        path='/quoteAuto'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <AutoQuotePage />
+          </MainLayout>
+        }
+      />
+
+ <Route
+        path='/quoteHome'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <HomeownersQuotePage />
+          </MainLayout>
+        }
+      />
+
+
       <Route
         path='/settings'
         element={

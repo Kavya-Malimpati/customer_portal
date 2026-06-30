@@ -1,0 +1,208 @@
+{
+  "propertyAddress": {
+    "id": "propertyAddress",
+    "type": "text",
+    "name": "propertyAddress",
+    "placeholder": "Enter property address",
+    "label": "Property Address",
+    "value": ""
+  },
+
+  "propertyType": {
+    "id": "propertyType",
+    "type": "select",
+    "name": "propertyType",
+    "label": "Property Type",
+    "value": "",
+    "options": [
+      {
+        "value": "",
+        "label": "Select Property Type"
+      },
+      {
+        "value": "single_family",
+        "label": "Single Family"
+      },
+      {
+        "value": "condo",
+        "label": "Condo"
+      },
+      {
+        "value": "townhouse",
+        "label": "Townhouse"
+      }
+    ]
+  },
+
+  "yearBuilt": {
+    "id": "yearBuilt",
+    "type": "text",
+    "name": "yearBuilt",
+    "label": "Year Built",
+    "placeholder": "Enter year built",
+    "value": ""
+  },
+
+  "constructionType": {
+    "id": "constructionType",
+    "type": "select",
+    "name": "constructionType",
+    "label": "Construction Type",
+    "value": "",
+    "options": [
+      {
+        "value": "",
+        "label": "Select Construction Type"
+      },
+      {
+        "value": "frame",
+        "label": "Frame"
+      },
+      {
+        "value": "brick",
+        "label": "Brick"
+      },
+      {
+        "value": "concrete",
+        "label": "Concrete"
+      }
+    ]
+  },
+
+  "roofType": {
+    "id": "roofType",
+    "type": "select",
+    "name": "roofType",
+    "label": "Roof Type",
+    "value": "",
+    "options": [
+      {
+        "value": "",
+        "label": "Select Roof Type"
+      },
+      {
+        "value": "asphalt",
+        "label": "Asphalt"
+      },
+      {
+        "value": "metal",
+        "label": "Metal"
+      },
+      {
+        "value": "tile",
+        "label": "Tile"
+      }
+    ]
+  },
+
+  "roofAge": {
+    "id": "roofAge",
+    "type": "text",
+    "name": "roofAge",
+    "label": "Roof Age",
+    "placeholder": "Enter roof age",
+    "value": ""
+  },
+
+  "squareFootage": {
+    "id": "squareFootage",
+    "type": "text",
+    "name": "squareFootage",
+    "label": "Square Footage",
+    "placeholder": "Enter square footage",
+    "value": ""
+  },
+
+  "stories": {
+    "id": "stories",
+    "type": "text",
+    "name": "stories",
+    "label": "Number Of Stories",
+    "placeholder": "Enter stories",
+    "value": ""
+  },
+
+  "occupancyType": {
+    "id": "occupancyType",
+    "type": "select",
+    "name": "occupancyType",
+    "label": "Occupancy Type",
+    "value": "",
+    "options": [
+      {
+        "value": "",
+        "label": "Select Occupancy Type"
+      },
+      {
+        "value": "owner",
+        "label": "Owner Occupied"
+      },
+      {
+        "value": "tenant",
+        "label": "Tenant Occupied"
+      },
+      {
+        "value": "vacant",
+        "label": "Vacant"
+      }
+    ]
+  },
+
+  "estimatedValue": {
+    "id": "estimatedValue",
+    "type": "text",
+    "name": "estimatedValue",
+    "label": "Estimated Property Value",
+    "placeholder": "Enter property value",
+    "value": ""
+  },
+
+  "replacementCost": {
+    "id": "replacementCost",
+    "type": "text",
+    "name": "replacementCost",
+    "label": "Replacement Cost",
+    "placeholder": "Enter replacement cost",
+    "value": ""
+  },
+
+  "smokeDetector": {
+    "id": "smokeDetector",
+    "type": "checkbox",
+    "name": "smokeDetector",
+    "label": "Smoke Detector",
+    "value": false
+  },
+
+  "fireAlarm": {
+    "id": "fireAlarm",
+    "type": "checkbox",
+    "name": "fireAlarm",
+    "label": "Fire Alarm System",
+    "value": false
+  },
+
+  "sprinklerSystem": {
+    "id": "sprinklerSystem",
+    "type": "checkbox",
+    "name": "sprinklerSystem",
+    "label": "Sprinkler System",
+    "value": false
+  },
+
+  "burglarAlarm": {
+    "id": "burglarAlarm",
+    "type": "checkbox",
+    "name": "burglarAlarm",
+    "label": "Burglar Alarm",
+    "value": false
+  },
+
+  "priorClaims": {
+    "id": "priorClaims",
+    "type": "checkbox",
+    "name": "priorClaims",
+    "label": "Prior Claims",
+    "value": false
+  }
+}

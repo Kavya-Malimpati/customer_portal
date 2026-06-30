@@ -1,0 +1,100 @@
+.property-page {
+  width: 100%;
+  min-height: 100%;
+ 
+}
+
+.property-card {
+  width: 100%;
+}
+
+#property-details-form {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+
+.section-title {
+  margin-bottom: var(--space-2);
+  color: var(--text-heading);
+  font-weight: var(--font-weight-semibold);
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: var(--space-4);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(320px, 1fr));
+  column-gap: var(--space-8);
+  row-gap: var(--space-6);
+  align-items: start;
+}
+
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-5);
+  align-items: center;
+}
+
+/* ------------------------------
+   Large Tablet
+------------------------------- */
+
+@media (max-width: 1024px) {
+  .section {
+    padding: var(--space-6);
+  }
+
+  .form-grid {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: var(--space-6);
+  }
+
+  .checkbox-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ------------------------------
+   Tablet
+------------------------------- */
+
+@media (max-width: 768px) {
+  .section {
+    padding: var(--space-5);
+  }
+
+  .section-title {
+    margin-bottom: var(--space-6);
+  }
+
+  .full-width {
+    margin-bottom: var(--space-6);
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    row-gap: var(--space-5);
+  }
+
+  .checkbox-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+}
+
+/* ------------------------------
+   Mobile
+------------------------------- */
+
+@media (max-width: 480px) {
+  .section {
+    padding: var(--space-4);
+  }
+}

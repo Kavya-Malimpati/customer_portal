@@ -105,13 +105,13 @@
     gap: var(--space-2);
   }
 
-  .feedback-stars {
+  /* .feedback-stars {
     justify-content: center;
   }
 
   .feedback-link {
     justify-content: center;
-  }
+  } */
 
   .star {
     font-size: 1rem;

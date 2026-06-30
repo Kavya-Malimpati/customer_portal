@@ -1,0 +1,232 @@
+{
+  "vin": {
+    "id": "vin",
+    "type": "text",
+    "name": "vin",
+    "placeholder": "Enter VIN",
+    "label": "VIN",
+    "value": ""
+  },
+
+  "usageType": {
+    "id": "usageType",
+    "type": "select",
+    "name": "usageType",
+    "label": "Usage Type",
+    "value": "",
+    "options": [
+      {
+        "value": "",
+        "label": "Select Usage Type"
+      },
+      {
+        "value": "personal",
+        "label": "Personal"
+      },
+      {
+        "value": "business",
+        "label": "Business"
+      },
+      {
+        "value": "rideshare",
+        "label": "Ride Share"
+      }
+    ]
+  },
+
+  "year": {
+    "id": "year",
+    "type": "text",
+    "name": "year",
+    "placeholder": "Enter vehicle year",
+    "label": "Year",
+    "value": ""
+  },
+
+  "make": {
+    "id": "make",
+    "type": "text",
+    "name": "make",
+    "placeholder": "Enter vehicle make",
+    "label": "Make",
+    "value": ""
+  },
+
+  "model": {
+    "id": "model",
+    "type": "text",
+    "name": "model",
+    "placeholder": "Enter vehicle model",
+    "label": "Model",
+    "value": ""
+  },
+
+  "trim": {
+    "id": "trim",
+    "type": "text",
+    "name": "trim",
+    "placeholder": "Enter vehicle trim",
+    "label": "Trim",
+    "value": ""
+  },
+
+  "annualMileage": {
+    "id": "annualMileage",
+    "type": "text",
+    "name": "annualMileage",
+    "placeholder": "Enter annual mileage",
+    "label": "Annual Mileage",
+    "value": ""
+  },
+
+  "ownershipStatus": {
+    "id": "ownershipStatus",
+    "type": "select",
+    "name": "ownershipStatus",
+    "label": "Ownership Status",
+    "value": "",
+    "options": [
+      {
+        "value": "",
+        "label": "Select Ownership Status"
+      },
+      {
+        "value": "owned",
+        "label": "Owned"
+      },
+      {
+        "value": "leased",
+        "label": "Leased"
+      },
+      {
+        "value": "financed",
+        "label": "Financed"
+      }
+    ]
+  },
+
+  "garagingAddress": {
+    "id": "garagingAddress",
+    "type": "text",
+    "name": "garagingAddress",
+    "placeholder": "Enter garaging address",
+    "label": "Garaging Address",
+    "value": ""
+  },
+
+  "driverFirstName": {
+    "id": "driverFirstName",
+    "type": "text",
+    "name": "driverFirstName",
+    "placeholder": "Enter first name",
+    "label": "First Name",
+    "value": ""
+  },
+
+  "driverLastName": {
+    "id": "driverLastName",
+    "type": "text",
+    "name": "driverLastName",
+    "placeholder": "Enter last name",
+    "label": "Last Name",
+    "value": ""
+  },
+
+  "driverDob": {
+    "id": "driverDob",
+    "type": "date",
+    "name": "driverDob",
+    "label": "Date Of Birth",
+    "value": ""
+  },
+
+  "licenseNumber": {
+    "id": "licenseNumber",
+    "type": "text",
+    "name": "licenseNumber",
+    "placeholder": "Enter license number",
+    "label": "License Number",
+    "value": ""
+  },
+
+  "licenseState": {
+    "id": "licenseState",
+    "type": "select",
+    "name": "licenseState",
+    "label": "License State",
+    "value": "",
+    "options": [
+      {
+        "value": "",
+        "label": "Select State"
+      },
+      {
+        "value": "NY",
+        "label": "New York"
+      },
+      {
+        "value": "CA",
+        "label": "California"
+      },
+      {
+        "value": "TX",
+        "label": "Texas"
+      },
+      {
+        "value": "FL",
+        "label": "Florida"
+      }
+    ]
+  },
+
+  "yearsLicensed": {
+    "id": "yearsLicensed",
+    "type": "text",
+    "name": "yearsLicensed",
+    "placeholder": "Enter years licensed",
+    "label": "Years Licensed",
+    "value": ""
+  },
+
+  "maritalStatus": {
+    "id": "maritalStatus",
+    "type": "select",
+    "name": "maritalStatus",
+    "label": "Marital Status",
+    "value": "",
+    "options": [
+      {
+        "value": "",
+        "label": "Select Status"
+      },
+      {
+        "value": "single",
+        "label": "Single"
+      },
+      {
+        "value": "married",
+        "label": "Married"
+      },
+      {
+        "value": "divorced",
+        "label": "Divorced"
+      }
+    ]
+  },
+
+  "priorClaims": {
+    "id": "priorClaims",
+    "type": "checkbox",
+    "name": "priorClaims",
+    "label": "Prior Claims",
+    "value": false
+  },
+
+  "priorViolations": {
+    "id": "priorViolations",
+    "type": "checkbox",
+    "name": "priorViolations",
+    "label": "Prior Violations",
+    "value": false
+  }
+}

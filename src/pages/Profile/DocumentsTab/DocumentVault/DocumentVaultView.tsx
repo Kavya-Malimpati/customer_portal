@@ -1,3 +1,5 @@
+import './DocumentVault.css';
+
 import {
 	FiChevronRight,
 	FiHeart,
@@ -14,7 +16,7 @@ import {
 	Typography,
 } from '../../../../common/components';
 
-import type { DocumentVaultViewProps } from './interfaces';
+import type { DocumentVaultViewProps } from './interface';
 
 const DOCUMENT_CATEGORIES = [
   {
@@ -45,19 +47,19 @@ const DOCUMENT_CATEGORIES = [
 
 const DocumentVaultView = ({ documents, onUpload }: DocumentVaultViewProps) => {
   return (
-    <main className='mt-5'>
+    <main className='mt-5 px-4 sm:px-6 md:px-8 lg:px-10'>
       <section className='w-full'>
         {/* Header */}
-        <header className='flex items-center justify-between mb-6'>
+        <header className='flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-4'>
           <div>
             <Typography variant='h3' color='primary'>
               Document Repository
             </Typography>
 
-            <Typography variant='body2'>Manage your certificates securely.</Typography>
+            <div className='document-subtitle'>Manage your certificates securely.</div>
           </div>
 
-          <div>
+          <div className='w-full sm:w-auto'>
             <input
               type='file'
               id='upload-top'
@@ -65,7 +67,7 @@ const DocumentVaultView = ({ documents, onUpload }: DocumentVaultViewProps) => {
               accept='.pdf,.png,.jpg,.jpeg'
               className='hidden'
               onChange={e => {
-                onUpload(e.target.files, 'ID Proofs');
+                onUpload(e.target.files);
                 e.target.value = '';
               }}
             />
@@ -75,6 +77,7 @@ const DocumentVaultView = ({ documents, onUpload }: DocumentVaultViewProps) => {
               color='primary'
               startIcon={<FiUpload size={18} />}
               onClick={() => document.getElementById('upload-top')?.click()}
+              className='w-full sm:w-auto'
             >
               Upload New
             </Button>
@@ -83,24 +86,21 @@ const DocumentVaultView = ({ documents, onUpload }: DocumentVaultViewProps) => {
 
         {/* Section Title */}
         <div className='mb-4 flex items-center gap-2'>
-          <FiLock className='text-[var(--color-primary)]' size={20} />
-          <Typography
-            variant='body1'
-            color='primary'
-            style={{ fontWeight: 'var(--font-weight-semibold)' }}
-          >
-            Secure Document Vault
-          </Typography>
+          <FiLock className='text-[var(--color-primary)]' size={18} />
+          <div className='vault-title'>Secure Document Vault</div>
         </div>
 
         {/* Category Cards */}
-        <div className='flex w-full gap-6'>
+        <div className='flex w-full gap-4 md:gap-6 flex-wrap lg:flex-nowrap'>
           {DOCUMENT_CATEGORIES.map(category => {
             const Icon = category.icon;
-            const fileCount = documents.filter(doc => doc.category === category.title).length;
+            const fileCount = documents.length;
 
             return (
-              <div key={category.title} className='flex-1 min-w-0'>
+              <div
+                key={category.title}
+                className='flex-1 min-w-0 basis-full sm:basis-1/2 lg:basis-1/3'
+              >
                 <div className='border border-gray-300 rounded-lg h-full'>
                   <Card className='rounded-lg shadow-sm h-full w-full p-0'>
                     <CardContent className='p-5 flex flex-col h-full'>
@@ -112,27 +112,14 @@ const DocumentVaultView = ({ documents, onUpload }: DocumentVaultViewProps) => {
                       </div>
 
                       {/* Title */}
-                      <Typography
-                        variant='body1'
-                        className='mt-4 !text-black'
-                        style={{ fontWeight: 'var(--font-weight-semibold)' }}
-                      >
-                        {category.title}
-                      </Typography>
+                      <div className='category-title'>{category.title}</div>
 
                       {/* Description */}
-                      <Typography variant='body2' className='mt-2 text-gray-500'>
-                        {category.description}
-                      </Typography>
+                      <div className='category-description'>{category.description}</div>
 
                       {/* Footer */}
                       <div className='mt-auto pt-6 flex items-center justify-between'>
-                        <Typography
-                          variant='body2'
-                          className={`font-medium ${category.countColor}`}
-                        >
-                          {fileCount} Files
-                        </Typography>
+                        <div className={`file-count ${category.countColor}`}>{fileCount} Files</div>
 
                         <FiChevronRight size={18} className={category.countColor} />
                       </div>

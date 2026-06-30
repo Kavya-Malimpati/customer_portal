@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+
 import OffersView from './OffersView';
-import type { OffersProps, OfferItem } from './IOffers';
+
+import type { OffersProps, OfferItem } from './interfaces';
 
 const Offers: React.FC<OffersProps> = ({ offers }) => {
   const [offerList, setOfferList] = useState<OfferItem[]>([]);
@@ -9,7 +11,6 @@ const Offers: React.FC<OffersProps> = ({ offers }) => {
     if (offers?.length) {
       setOfferList(offers);
     } else {
-     
       setOfferList([
         {
           id: 1,

@@ -103,7 +103,6 @@ const RegisterFNOLView = ({
               value={currentStep}
               type='non-linear'
               orientation='horizontal'
-              alternativeLabel
               color='primary'
               size='sm'
             />

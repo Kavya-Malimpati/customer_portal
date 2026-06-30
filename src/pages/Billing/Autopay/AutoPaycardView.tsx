@@ -7,7 +7,6 @@ const AutoPayCardView = ({ state, onToggle, onUpdatePaymentMethod }: AutoPayCard
   const { enabled, paymentMethod, nextChargeAmount, nextChargeDate } = state;
 
   return (
-    // padding is not matching the total balance due it is not consitent.
     <div className="w-full min-h-[270px] flex flex-col">
       <Card
         variant="outlined"

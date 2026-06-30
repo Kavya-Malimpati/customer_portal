@@ -38,13 +38,7 @@
     "type": "select",
     "name": "weatherConditions",
     "label": "Weather Conditions",
-    "value": "",
-    "options": [
-      {
-        "value": "",
-        "label": "Select Weather"
-      }
-    ]
+    "value": ""
   },
 
   "roadConditions": {
@@ -52,12 +46,6 @@
     "type": "select",
     "name": "roadConditions",
     "label": "Road Conditions",
-    "value": "",
-    "options": [
-      {
-        "value": "",
-        "label": "Select Road Condition"
-      }
-    ]
+    "value": ""
   }
 }

@@ -1,13 +1,16 @@
 import './App.css';
+
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
+
 import MainLayout from './common/MainLayout';
-import Home from './pages/Home';
-import Settings from './pages/Profile/Settings';
-import ProfilePage from './pages/Profile/ProfilePage';
-import Claims from './pages/Claims';
 import BillingPage from './pages/Billing/BillingPage';
-import ServicesPage from './pages/Services/ServicesPage';
+import Claims from './pages/Claims';
+import Home from './pages/Home';
 import PolicyPage from './pages/Policy/PolicyPage';
+import ProfilePage from './pages/Profile/ProfilePage';
+import Settings from './pages/Profile/Settings';
+import ServicesPage from './pages/Services/ServicesPage';
+import TestPage from './pages/TestPage';
 import FNOLPage from './pages/Claims/FNOL/FNOLPage';
 import ClaimSuccessPage from './pages/Claims/FNOL/ClaimsSuccess/ClaimSuccessPage';
 
@@ -80,17 +83,28 @@ function App() {
       />
 
       <Route
-       path='/claims/fnol/:claimType'
-      element={
-      <MainLayout onLogout={handleLogout}>
-        <FNOLPage />
-        </MainLayout>} />
+        path='/claims/fnol/:claimType'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <FNOLPage />
+          </MainLayout>
+        }
+      />
 
       <Route
         path='/claims/fnol/success'
         element={
           <MainLayout onLogout={handleLogout}>
             <ClaimSuccessPage />
+          </MainLayout>
+        }
+      />
+
+      <Route
+        path='/test'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <TestPage />
           </MainLayout>
         }
       />

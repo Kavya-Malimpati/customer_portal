@@ -138,7 +138,7 @@ hr {
   display: flex;
   justify-content: space-between;
   margin: var(--space-2) 0;
-  /* font-weight: var(--font-weight-semibold); */
+  font-weight: var(--font-weight-semibold);
 }
 .expense-header {
   display: flex;
@@ -157,6 +157,13 @@ hr {
   /* font-weight: var(--font-weight-semibold); */
   color: var(--color-primary);
 }
+.bar {
+  height: 6px;
+  background: var(--color-gray-200);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin: var(--space-2) 0;
+}
 
 .resolution{
   font-weight: var(--font-weight-semibold);
@@ -165,7 +172,13 @@ hr {
 .text{
   font-weight: var(--font-weight-semibold);
 }
-
+ 
+.fill {
+  width: 75%;
+  height: 100%;
+  background: var(--color-success);
+  border-radius: var(--radius-full);
+}
 .expense-text {
   font-size: var(--font-size-xs);
   color: var(--color-gray-500);
@@ -262,9 +275,6 @@ hr {
   }
 }
 
-/* ===========================
-   Tablet (1024px and below)
-=========================== */
 
 @media (max-width: 1024px) {
   .claim-layout {
@@ -284,9 +294,6 @@ hr {
   }
 }
 
-/* ===========================
-   Mobile (768px and below)
-=========================== */
 
 @media (max-width: 768px) {
   .claim-layout {
@@ -329,10 +336,6 @@ hr {
     flex-wrap: wrap;
   }
 }
-
-/* ===========================
-   Small Mobile (600px)
-=========================== */
 
 @media (max-width: 600px) {
   .claim-box-claim {

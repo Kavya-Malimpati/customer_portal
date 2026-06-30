@@ -1,4 +1,4 @@
-import { Card, CardContent, Typography } from '../../../../common/components';
+import { Card, CardContent, LabelValue } from '../../../../common/components';
 
 import type { StepContentProps } from '../../../../common/components/MultiStepForm/types';
 
@@ -17,7 +17,9 @@ const getValue = (field: unknown): string => {
   if (typeof field === 'object' && field !== null && 'value' in field) {
     const value = (field as { value?: unknown }).value;
 
-    return value !== undefined && value !== null && value !== '' ? String(value) : '-';
+    return value !== undefined && value !== null && value !== ''
+      ? String(value)
+      : '-';
   }
 
   return '-';
@@ -31,70 +33,122 @@ const ReviewAndSubmitView = ({ data }: StepContentProps) => {
       <Card>
         <CardContent>
           <div className='summary-grid'>
-            <div className='summary-item'>
-              <Typography variant='body2'>Claim Type</Typography>
-              <Typography>{getValue(formData.claimDetails?.claimType)}</Typography>
-            </div>
+            <LabelValue
+              className='summary-item'
+              orientation='vertical'
+              label='Claim Type'
+              value={getValue(formData.claimDetails?.claimType)}
+              labelVariant='body2'
+              valueVariant='body1'
+            />
 
-            <div className='summary-item'>
-              <Typography variant='body2'>Policy</Typography>
-              <Typography>{getValue(formData.claimDetails?.policy)}</Typography>
-            </div>
+            <LabelValue
+              className='summary-item'
+              orientation='vertical'
+              label='Policy'
+              value={getValue(formData.claimDetails?.policy)}
+              labelVariant='body2'
+              valueVariant='body1'
+            />
 
-            <div className='summary-item'>
-              <Typography variant='body2'>Loss Type</Typography>
-              <Typography>{getValue(formData.claimDetails?.lossType)}</Typography>
-            </div>
+            <LabelValue
+              className='summary-item'
+              orientation='vertical'
+              label='Loss Type'
+              value={getValue(formData.claimDetails?.lossType)}
+              labelVariant='body2'
+              valueVariant='body1'
+            />
 
-            <div className='summary-item'>
-              <Typography variant='body2'>Date Of Loss</Typography>
-              <Typography>{getValue(formData.incidentDetails?.dateOfLoss)}</Typography>
-            </div>
+            <LabelValue
+              className='summary-item'
+              orientation='vertical'
+              label='Date Of Loss'
+              value={getValue(formData.incidentDetails?.dateOfLoss)}
+              labelVariant='body2'
+              valueVariant='body1'
+            />
 
-            <div className='summary-item'>
-              <Typography variant='body2'>Time Of Loss</Typography>
-              <Typography>{getValue(formData.incidentDetails?.timeOfLoss)}</Typography>
-            </div>
+            <LabelValue
+              className='summary-item'
+              orientation='vertical'
+              label='Time Of Loss'
+              value={getValue(formData.incidentDetails?.timeOfLoss)}
+              labelVariant='body2'
+              valueVariant='body1'
+            />
 
-            <div className='summary-item'>
-              <Typography variant='body2'>Location</Typography>
-              <Typography>{getValue(formData.incidentDetails?.location)}</Typography>
-            </div>
+            <LabelValue
+              className='summary-item'
+              orientation='vertical'
+              label='Location'
+              value={getValue(formData.incidentDetails?.location)}
+              labelVariant='body2'
+              valueVariant='body1'
+            />
 
-            <div className='summary-item'>
-              <Typography variant='body2'>Description</Typography>
-              <Typography>{getValue(formData.incidentDetails?.description)}</Typography>
-            </div>
+            <LabelValue
+              className='summary-item'
+              orientation='vertical'
+              label='Description'
+              value={getValue(formData.incidentDetails?.description)}
+              labelVariant='body2'
+              valueVariant='body1'
+            />
 
-            <div className='summary-item'>
-              <Typography variant='body2'>Injuries</Typography>
-              <Typography>{getValue(formData.partiesAndDamage?.injuries)}</Typography>
-            </div>
+            <LabelValue
+              className='summary-item'
+              orientation='vertical'
+              label='Injuries'
+              value={getValue(formData.partiesAndDamage?.injuries)}
+              labelVariant='body2'
+              valueVariant='body1'
+            />
 
-            <div className='summary-item'>
-              <Typography variant='body2'>Police Report Number</Typography>
-              <Typography>{getValue(formData.partiesAndDamage?.policeReportNumber)}</Typography>
-            </div>
+            <LabelValue
+              className='summary-item'
+              orientation='vertical'
+              label='Police Report Number'
+              value={getValue(formData.partiesAndDamage?.policeReportNumber)}
+              labelVariant='body2'
+              valueVariant='body1'
+            />
 
-            <div className='summary-item'>
-              <Typography variant='body2'>Photos Uploaded</Typography>
-              <Typography>{formData.uploadEvidence?.photos?.length ?? 0}</Typography>
-            </div>
+            <LabelValue
+              className='summary-item'
+              orientation='vertical'
+              label='Photos Uploaded'
+              value={formData.uploadEvidence?.photos?.length ?? 0}
+              labelVariant='body2'
+              valueVariant='body1'
+            />
 
-            <div className='summary-item'>
-              <Typography variant='body2'>Videos Uploaded</Typography>
-              <Typography>{formData.uploadEvidence?.videos?.length ?? 0}</Typography>
-            </div>
+            <LabelValue
+              className='summary-item'
+              orientation='vertical'
+              label='Videos Uploaded'
+              value={formData.uploadEvidence?.videos?.length ?? 0}
+              labelVariant='body2'
+              valueVariant='body1'
+            />
 
-            <div className='summary-item'>
-              <Typography variant='body2'>Reports Uploaded</Typography>
-              <Typography>{formData.uploadEvidence?.reports?.length ?? 0}</Typography>
-            </div>
+            <LabelValue
+              className='summary-item'
+              orientation='vertical'
+              label='Reports Uploaded'
+              value={formData.uploadEvidence?.reports?.length ?? 0}
+              labelVariant='body2'
+              valueVariant='body1'
+            />
 
-            <div className='summary-item'>
-              <Typography variant='body2'>Estimates Uploaded</Typography>
-              <Typography>{formData.uploadEvidence?.estimates?.length ?? 0}</Typography>
-            </div>
+            <LabelValue
+              className='summary-item'
+              orientation='vertical'
+              label='Estimates Uploaded'
+              value={formData.uploadEvidence?.estimates?.length ?? 0}
+              labelVariant='body2'
+              valueVariant='body1'
+            />
           </div>
         </CardContent>
       </Card>

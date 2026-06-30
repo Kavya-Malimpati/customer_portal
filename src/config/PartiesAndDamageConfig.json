@@ -52,10 +52,6 @@
     "value": "",
     "options": [
       {
-        "value": "",
-        "label": "Select"
-      },
-      {
         "value": "Yes",
         "label": "Yes"
       },
@@ -101,10 +97,6 @@
     "value": "",
     "options": [
       {
-        "value": "",
-        "label": "Select"
-      },
-      {
         "value": "Yes",
         "label": "Yes"
       },
@@ -123,10 +115,6 @@
     "value": "",
     "options": [
       {
-        "value": "",
-        "label": "Select"
-      },
-      {
         "value": "Yes",
         "label": "Yes"
       },
@@ -144,10 +132,6 @@
     "label": "Third Party Involved",
     "value": "",
     "options": [
-      {
-        "value": "",
-        "label": "Select"
-      },
       {
         "value": "Yes",
         "label": "Yes"

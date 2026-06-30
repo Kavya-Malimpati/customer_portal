@@ -16,10 +16,6 @@ const incidentDetailsConfig = incidentDetailsConfigJson as IncidentDetailsFormDa
 
 const WEATHER_OPTIONS: Option[] = [
   {
-    value: '',
-    label: 'Select Weather',
-  },
-  {
     value: 'Sunny',
     label: 'Sunny',
   },
@@ -38,10 +34,6 @@ const WEATHER_OPTIONS: Option[] = [
 ];
 
 const ROAD_OPTIONS: Option[] = [
-  {
-    value: '',
-    label: 'Select Road Condition',
-  },
   {
     value: 'Dry',
     label: 'Dry',

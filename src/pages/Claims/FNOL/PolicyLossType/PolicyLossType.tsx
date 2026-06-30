@@ -42,13 +42,7 @@ const PolicyLossType = ({ data, onDataChange }: StepContentProps) => {
 
     policy: {
       ...currentFormData.policy,
-      options: [
-        {
-          value: '',
-          label: 'Select Policy',
-        },
-        ...(claimType === 'auto' ? AUTO_POLICIES : HOME_POLICIES),
-      ],
+      options: claimType === 'auto' ? AUTO_POLICIES : HOME_POLICIES,
     },
 
     lossType: {
@@ -100,8 +94,7 @@ const PolicyLossType = ({ data, onDataChange }: StepContentProps) => {
 
     Fire: 'Fire damage to your home is generally covered under your homeowners policy.',
 
-    'Water / Plumbing':
-      'Sudden and accidental water damage is generally covered. Gradual damage may not be covered.',
+    'Water / Plumbing': 'Sudden and accidental water damage is generally covered. Gradual damage may not be covered.',
 
     Storm: 'Storm damage is generally covered according to your policy coverage.',
 

@@ -3,7 +3,12 @@ import './HelpCard.css';
 import { useState } from 'react';
 import { FiSearch } from 'react-icons/fi';
 
-import { Card, CardContent, Typography } from '../../../common/components';
+import {
+	Card,
+	CardContent,
+	TextField,
+	Typography,
+} from '../../../common/components';
 
 import type { HelpCardViewProps } from './interfaces';
 const HelpCardView = ({ items, onSearch }: HelpCardViewProps) => {
@@ -17,7 +22,6 @@ const HelpCardView = ({ items, onSearch }: HelpCardViewProps) => {
 
   return (
     <>
-
       <div className='help-card-container'>
         <Card variant='outlined' className='help-card-wrapper'>
           {/* Header */}
@@ -28,8 +32,8 @@ const HelpCardView = ({ items, onSearch }: HelpCardViewProps) => {
 
             {/* Search Bar */}
             <div className='help-card-search'>
-              <FiSearch className='search-icon' size={18} />
-              <input
+              <FiSearch className='search-icon' size={17} />
+              <TextField
                 type='text'
                 placeholder='Search FAQs...'
                 value={searchQuery}
@@ -39,12 +43,12 @@ const HelpCardView = ({ items, onSearch }: HelpCardViewProps) => {
               />
             </div>
           </div>
-{/* this are not buttons they are action cards */}
+
           {/* Cards Grid */}
           <CardContent className='help-card-content'>
             <div className='help-cards-grid'>
               {items.map(item => (
-                <button
+                <Card
                   key={item.id}
                   onClick={item.onClick}
                   className='help-card-item'
@@ -57,7 +61,7 @@ const HelpCardView = ({ items, onSearch }: HelpCardViewProps) => {
                   <Typography variant='body2' color='muted' className='help-card-item-subtitle'>
                     {item.subtitle}
                   </Typography>
-                </button>
+                </Card>
               ))}
             </div>
           </CardContent>

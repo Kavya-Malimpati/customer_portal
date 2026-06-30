@@ -1,5 +1,3 @@
-
-
 .safety-tips-card {
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
@@ -65,13 +63,15 @@
 }
 
 .safety-tip-title {
+  font-size: var(--font-size-md);
   margin-bottom: var(--space-1);
   font-weight: var(--font-weight-semibold);
 }
 
 .safety-tip-description {
+  font-size: var(--font-size-sm);
   margin-top: var(--space-1);
-  line-height: var(--line-height-normal);
+  color: var(--text-muted);
 }
 
 /* ==========================

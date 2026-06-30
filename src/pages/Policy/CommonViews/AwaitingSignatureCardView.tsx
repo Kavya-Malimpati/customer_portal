@@ -24,7 +24,7 @@ const AwaitingSignatureCardView = ({ fetchAwaitingSignature }: Props) => {
   if (!doc) return null;
 
   return (
-    <Card variant='outlined' className='awaiting-signature-card'>
+    <Card className='awaiting-signature-card'>
       <CardContent className='awaiting-signature-card-content'>
         <div className='awaiting-signature-card-header'>
           <div className='awaiting-signature-icon'>

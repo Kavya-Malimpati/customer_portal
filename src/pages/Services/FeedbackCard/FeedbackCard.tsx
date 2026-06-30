@@ -1,24 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import FeedbackCardView from './/FeedbackCardView';
-import type { FeedbackCardProps } from './IFeedbackCard';
+import React, { useState } from 'react';
+
+import FeedbackCardView from './FeedbackCardView';
+
+import type { FeedbackCardProps } from './interfaces';
 
 const FeedbackCard: React.FC<FeedbackCardProps> = ({ rating }) => {
-  const [currentRating, setCurrentRating] = useState(0);
+  const [currentRating, setCurrentRating] = useState(rating !== undefined ? rating : 4);
 
-  useEffect(() => {
-    if (rating !== undefined) {
-      setCurrentRating(rating);
-    } else {
-      setCurrentRating(4);
-    }
-  }, [rating]);
-
-  return (
-    <FeedbackCardView
-      rating={currentRating}
-      onRate={setCurrentRating}
-    />
-  );
+  return <FeedbackCardView rating={currentRating} onRate={setCurrentRating} />;
 };
 
 export default FeedbackCard;

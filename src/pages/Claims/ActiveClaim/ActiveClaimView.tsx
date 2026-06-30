@@ -50,7 +50,6 @@ const ActiveClaimView = ({ data, currentIndex, formatStatus }: Props) => {
               id='claim-stepper'
               value={currentIndex}
               orientation='horizontal'
-              alternativeLabel
               color='primary'
               size='md'
               steps={[

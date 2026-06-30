@@ -1,5 +1,7 @@
+import { useNavigate } from 'react-router-dom';
 import { Tabs, Tab } from '../../common/components/Tabs';
 import Typography from '../../common/components/Typography/Typography';
+import { Button } from '../../common/components';
 import type { PolicyTabKey } from './PolicyTabs/interfaces';
 import type { PolicyPageViewProps } from './interfaces';
 import '../Policy/styles/PolicyPageView.css';
@@ -11,32 +13,59 @@ const PolicyPageView = ({
   components,
   onTabChange,
 }: PolicyPageViewProps) => {
+  const navigate = useNavigate();
+
   return (
-    <div className='policy-page-tabs'>
-      {/* Heading & Subheading */}
+    <div className="policy-page-tabs">
       {activeTabMeta && (
-        <div className='policy-page-tab-heading'>
-          <Typography variant='h2' color='primary'>
-            {activeTabMeta.heading}
-          </Typography>
-          <Typography color='secondary' className='policy-page-tab-subheading'>
-            {activeTabMeta.subheading}
-          </Typography>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginBottom: '20px',
+          }}
+        >
+          {/* Heading & Subheading */}
+          <div className="policy-page-tab-heading">
+            <Typography variant="h2" color='primary'>
+              {activeTabMeta.heading}
+            </Typography>
+
+            <Typography
+              color="secondary"
+              className="policy-page-tab-subheading"
+            >
+              {activeTabMeta.subheading}
+            </Typography>
+          </div>
+
+         <div>
+          {activeTab === 'homeowners' && (
+            <Button onClick={() => navigate('/quoteHome')}>
+              Get a Quote for Home
+            </Button>
+          )}
+
+          {activeTab === 'personalAuto' && (
+            <Button onClick={() => navigate('/quoteAuto')}>
+              Get an Quote for Auto
+            </Button>
+          )}
+        </div>
         </div>
       )}
 
-      {/* Tabs Navigation */}
       <Tabs
         value={activeTab}
         onChange={value => onTabChange(value as PolicyTabKey)}
-        variant='basic'
+        variant="basic"
       >
         {tabs.map(tab => (
           <Tab key={tab.key} value={tab.key} label={tab.label} />
         ))}
       </Tabs>
 
-      {/*Tab content */}
       <div>
         {tabs.map(tab => {
           const Component = components[tab.key];
@@ -46,4 +75,5 @@ const PolicyPageView = ({
     </div>
   );
 };
+
 export default PolicyPageView;

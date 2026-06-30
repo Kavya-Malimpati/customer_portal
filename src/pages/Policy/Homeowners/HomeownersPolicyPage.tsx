@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { getHomeownersPolicyDetailsApi } from './Api/homeownersPolicyApi';
+
 import type { HomeownersPolicy } from './interfaces';
 
 import HomeownersPolicyPageView from './HomeownersPolicyPageView';
+import { getHomeownersPolicyDetailsApi } from './Api/homeownersPolicyApi';
 
 const HomeownersPolicyPage = () => {
   const navigate = useNavigate();

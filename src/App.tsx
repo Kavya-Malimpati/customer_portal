@@ -7,6 +7,8 @@ import BillingPage from './pages/Billing/BillingPage';
 import Claims from './pages/Claims';
 import Home from './pages/Home';
 import PolicyPage from './pages/Policy/PolicyPage';
+import AutoQuotePage from './pages/Policy/AutoQuoteFrom/AutoQuotePage';
+import HomeownersQuotePage from './pages/Policy/HomeOwnerQuoteFrom/HomeownersQuotePage';
 import ProfilePage from './pages/Profile/ProfilePage';
 import Settings from './pages/Profile/Settings';
 import ServicesPage from './pages/Services/ServicesPage';
@@ -29,6 +31,26 @@ function App() {
           </MainLayout>
         }
       />
+
+    <Route
+        path='/quoteAuto'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <AutoQuotePage />
+          </MainLayout>
+        }
+      />
+
+ <Route
+        path='/quoteHome'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <HomeownersQuotePage />
+          </MainLayout>
+        }
+      />
+
+
       <Route
         path='/settings'
         element={

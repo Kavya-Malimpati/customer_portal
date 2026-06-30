@@ -1,5 +1,5 @@
 import '../../../styles/tokens.css';
-
+ 
 import React, { useState } from 'react';
 export interface CheckboxProps {
   id?: string;
@@ -102,11 +102,24 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
     const currentVariant = variantConfig[variant];
     const checkboxId = id || 'checkbox';
     const containerStyles: React.CSSProperties = {
+      position: 'relative',
       display: 'flex',
       alignItems: 'center',
       gap: 'var(--space-3)',
       opacity: disabled ? 'var(--opacity-disabled)' : 1,
       cursor: disabled ? 'var(--cursor-disabled)' : 'pointer',
+    };
+    const inputStyles: React.CSSProperties = {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: currentSize.width,
+      height: currentSize.height,
+      margin: 0,
+      padding: 0,
+      opacity: 0,
+      cursor: disabled ? 'var(--cursor-disabled)' : 'pointer',
+      zIndex: 1,
     };
     const checkboxDisplayStyles: React.CSSProperties = {
       width: currentSize.width,
@@ -124,6 +137,8 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
           ? `var(--border-width-sm) solid var(--color-error)`
           : currentVariant.border,
       flexShrink: 0,
+      position: 'relative',
+      zIndex: 0,
     };
     const labelStyles: React.CSSProperties = {
       fontSize: currentSize.fontSize,
@@ -161,7 +176,7 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
           onClick={onClick}
           onFocus={onFocus}
           onBlur={onBlur}
-          className='sr-only'
+          style={inputStyles}
           aria-label={ariaLabel || label}
           aria-labelledby={ariaLabelledby}
           aria-describedby={errorId || ariaDescribedby}
@@ -236,3 +251,5 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
 );
 Checkbox.displayName = 'Checkbox';
 export default Checkbox;
+ 
+ 

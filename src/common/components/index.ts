@@ -1,4 +1,5 @@
 
+export { default as LabelValue } from './LabelValue';
 export { default as Accordion } from './Accordion';
 export { default as AutoComplete } from './AutoComplete';
 export { default as Checkbox } from './Checkbox';

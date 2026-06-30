@@ -1,5 +1,4 @@
 import { FiClock } from 'react-icons/fi';
-import { FaShieldAlt } from 'react-icons/fa';
 import './RegisterFNOL.css';
 import type { RegisterFNOLViewProps } from './Interface';
 
@@ -33,9 +32,13 @@ const RegisterFNOLView = ({
         <div className='fnol-selected-claim'>
           <span className='fnol-selected-label'>SELECTED CONTEXT:</span>
 
-          <div className='fnol-selected-text'>{selectedClaim.claimNumber}</div>
+          <div className='fnol-selected-text'>
+            {selectedClaim.claimNumber} 
+          </div>
 
-          <div className='fnol-selected-texts'>| {selectedClaim.vehicle}</div>
+           <div className='fnol-selected-texts'>
+            | {selectedClaim.vehicle}
+          </div>
 
           <Button variant='text'>Change</Button>
         </div>
@@ -66,10 +69,8 @@ const RegisterFNOLView = ({
               <Typography variant='h3' color='primary'>
                 Report New Claim (FNOL)
               </Typography>
-              {/* Use Typography */}
-              <Typography variant='body2'>
-                Initiate a formal claim for vehicle collision or theft.
-              </Typography>
+
+              <p>Initiate a formal claim for vehicle collision or theft.</p>
             </div>
 
             <span className='fnol-badge'>Standard Process</span>
@@ -114,11 +115,9 @@ const RegisterFNOLView = ({
             <Typography variant='body2' className='fnol-subtitle'>
               {repairInfo.description}
             </Typography>
-            {/* Use Icon  */}
 
             <div className='repair-benefit'>
-              <FaShieldAlt size={25} />
-              Direct billing to shop
+              🛡 <span>{repairInfo.benefit}</span>
             </div>
 
             <Button variant='outlined' className='request' fullWidth onClick={onRequestRepair}>

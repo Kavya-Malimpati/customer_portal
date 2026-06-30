@@ -60,7 +60,7 @@ const BillingSummaryView = ({ billingSummary }: BillingSummaryUiProps) => {
             <div className='billing-method'>
               <FiCreditCard size={18} />
 
-              <Typography variant='h5' color='primary'>
+              <Typography variant='h4' color='primary'>
                 {billingSummary.paymentMethod}
               </Typography>
             </div>

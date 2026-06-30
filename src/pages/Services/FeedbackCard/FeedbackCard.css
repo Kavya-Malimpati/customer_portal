@@ -56,6 +56,11 @@
   gap: var(--space-1);
   cursor: pointer;
   margin-top: auto;
+  transition: opacity var(--transition-normal);
+}
+
+.feedback-link:hover {
+  opacity: 0.8;
 }
 
 .feedback-link-text {
@@ -105,13 +110,13 @@
     gap: var(--space-2);
   }
 
-  .feedback-stars {
+  /* .feedback-stars {
     justify-content: center;
   }
 
   .feedback-link {
     justify-content: center;
-  }
+  } */
 
   .star {
     font-size: 1rem;

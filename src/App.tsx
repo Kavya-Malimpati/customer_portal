@@ -1,7 +1,6 @@
 import './App.css';
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import MainLayout from './common/MainLayout';
-// import Home from './pages/Home';
 import Settings from './pages/Profile/Settings';
 import ProfilePage from './pages/Profile/ProfilePage';
 import Claims from './pages/Claims';
@@ -24,7 +23,6 @@ function App() {
         element={
           <MainLayout onLogout={handleLogout}>
             <Dashboard />
-            {/* <Home /> */}
           </MainLayout>
         }
       />

@@ -1,6 +1,14 @@
 import { FaUniversity } from 'react-icons/fa';
-import { Card, CardContent, Typography, Button } from '../../../common/components';
-import LinearProgress from './../../../common/components/Progress/LinearProgress'
+
+import {
+  Card,
+  CardContent,
+  Typography,
+  Button,
+} from '../../../common/components';
+
+import LinearProgress from '../../../common/components/Progress/LinearProgress';
+
 import './ClaimPayoutUi.css';
 
 import type { ClaimPayoutUiProps } from './Interfaces';
@@ -20,59 +28,60 @@ const ClaimPayoutView = ({
         : 100;
 
   return (
-     // padding is not matching the total balance due it is not consitent.
-    <div className="w-full">
+    <div className="claim-wrapper">
       <Card
         variant="outlined"
-        className="border border-gray-200 rounded-xl shadow-sm bg-white h-full"
+        className="claim-card"
       >
-        <CardContent className="p-1 h-full flex flex-col">
-          <div className="claim-header flex items-center gap-2 mb-3">
-            <FaUniversity size={18} color="green" />
+        <CardContent className="claim-content">
+          <div className="claim-header">
+            <FaUniversity
+              size={18}
+              color="#198754"
+            />
 
             <Typography
               variant="h3"
-              className="font-bold text-black"
-              style={{ color: 'var(--text-primary)' }}
+              color="primary"
             >
               Claim Payouts
             </Typography>
           </div>
 
-          <div className="claim-id mb-2">
-            <Typography variant="body1" color="primary">
-              Claim #{claimId}
-            </Typography>
-          </div>
+          <Typography
+            variant="body1"
+            color="primary"
+            className="claim-id"
+          >
+            Claim #{claimId}
+          </Typography>
 
-          <div className="claim-status mb-2">
-            <span className={status === 'processing' ? 'status-processing' : ''}>
+          <div className="claim-status">
+            <span className="status-processing">
               {status.toUpperCase()}
             </span>
           </div>
 
-{/* having this common component should be better  */}
-          <div className='claim-progress mb-2'>
-            <div className='claim-progress-bar h-2 w-full bg-gray-200 rounded'>
-              <div
-                className='claim-progress-fill h-2 rounded bg-green-500'
-                style={{
-                  width: status === 'approved' ? '25%' : status === 'processing' ? '50%' : '100%',
-                }}
-              />
-            </div>
+          <div className="claim-progress">
+            <LinearProgress
+              variant="determinate"
+              value={progressValue}
+              size="sm"
+              color="success"
+            />
           </div>
 
-          <div className="claim-arrival mb-2">
-            <Typography variant="body2" color="body">
-              Expected arrival: {expectedArrival}
-            </Typography>
-          </div>
+          <Typography
+            variant="body2"
+            className="claim-arrival"
+          >
+            Expected arrival: {expectedArrival}
+          </Typography>
 
-          <div className="claim-divider border-t border-gray-300 my-2" />
+          <div className="claim-divider" />
 
-          <div className="claim-method-row flex items-center justify-between pt-3 mt-auto">
-            <Typography variant="body2" color="body">
+          <div className="claim-method-row">
+            <Typography variant="body2">
               Method: {method}
             </Typography>
 

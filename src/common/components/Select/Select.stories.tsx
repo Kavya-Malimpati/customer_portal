@@ -1,7 +1,8 @@
-
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
+
 import Select from './Select';
+
 const meta: Meta<typeof Select> = {
   title: 'Common/Select',
   component: Select,
@@ -323,4 +324,3 @@ export const Combined: SelectStory = {
     },
   },
 };
-

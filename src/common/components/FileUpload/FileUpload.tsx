@@ -24,7 +24,6 @@ export interface FileUploadProps {
   helperText?: React.ReactNode;
   accept?: string;
   multiple?: boolean;
-  showFileName?: boolean;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
@@ -53,7 +52,6 @@ const FileUpload: React.FC<FileUploadProps> = ({
   helperText,
   accept,
   multiple = false,
-  showFileName = true,
   onChange,
   onFocus,
   onBlur,
@@ -185,9 +183,9 @@ const FileUpload: React.FC<FileUploadProps> = ({
     transition: `all var(--transition-normal)`,
     boxShadow: isDragActive ? '0 0 0 3px var(--color-primary)' : 'none',
   };
-  // const placeholderTextStyles: React.CSSProperties = {
-  //   color: 'var(--text-muted)',
-  // };
+  const placeholderTextStyles: React.CSSProperties = {
+    color: 'var(--text-muted)',
+  };
   const clearButtonStyles: React.CSSProperties = {
     fontSize: 'var(--font-size-sm)',
     color: 'var(--text-secondary)',
@@ -255,17 +253,15 @@ const FileUpload: React.FC<FileUploadProps> = ({
         >
           Upload files
         </Button>
-      {showFileName && (
-  <div style={fileDisplayStyles}>
-    <div
-      style={fileNameDisplayStyles}
-      title={typeof title === 'string' ? title : fileNames}
-      aria-live={ariaLive}
-    >
-      {fileNames ? fileNames : 'No files selected'}
-    </div>
-  </div>
-)}
+        <div style={fileDisplayStyles}>
+          <div
+            style={fileNameDisplayStyles}
+            title={typeof title === 'string' ? title : fileNames}
+            aria-live={ariaLive}
+          >
+            {fileNames ? fileNames : <span style={placeholderTextStyles}>No file selected</span>}
+          </div>
+        </div>
         {shouldShowClear ? (
           <button
             type='button'

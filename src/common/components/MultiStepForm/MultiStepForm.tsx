@@ -70,35 +70,45 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({
  
   return (
     <div data-testid={testId} className='multi-step-form'>
-      <div className='step-progress mb-6'>
-        <Stepper
-          steps={Array.from({ length: totalSteps }, (_, index) => ({
-            label: `Step ${index + 1}`,
-            completed: index < currentStep,
-            description:
-              isJsonMode && jsonConfig
-                ? jsonConfig.steps[`step${index + 1}`]?.title
-                : stepData?.[index]?.title,
-          }))}
-          activeStep={currentStep}
-          orientation='horizontal'
-          color='primary'
-          size='md'
-        />
+      <div className='step-progress mb-16 flex justify-center'>
+        <div style={{ width: '100%', maxWidth: '1000px', position: 'relative' }}>
+          <Stepper
+            steps={Array.from({ length: totalSteps }, (_, index) => ({
+              label: `Step ${index + 1}`,
+              completed: index < currentStep,
+              description:
+                isJsonMode && jsonConfig
+                  ? jsonConfig.steps[`step${index + 1}`]?.title
+                  : stepData?.[index]?.title,
+            }))}
+            activeStep={currentStep}
+            orientation='horizontal'
+            color='primary'
+            size='md'
+          />
  
-        <div className='mt-4'>
-          <h2 className='text-xl font-semibold text-gray-900'>
-            {isJsonMode && currentStepConfig
-              ? currentStepConfig.title
-              : stepData?.[currentStep]?.title || `Step ${currentStep + 1}`}
-          </h2>
-          <p className='text-sm text-gray-500'>
-            Step {currentStep + 1} of {totalSteps}
-          </p>
+          <div
+            style={{
+              position: 'absolute',
+              left: 0,
+              top: '105px',
+              margin: 0,
+            }}
+          >
+            <h2 className='text-xl font-semibold !text-gray-900'>
+              {isJsonMode && currentStepConfig
+                ? currentStepConfig.title
+                : stepData?.[currentStep]?.title || `Step ${currentStep + 1}`}
+            </h2>
+ 
+            <p className='text-sm text-gray-600' style={{ margin: 0 }}>
+              Step {currentStep + 1}
+            </p>
+          </div>
         </div>
       </div>
  
-      <div className='step-content mb-8'>
+      <div className='step-content mt-25 mb-8'>
         {isJsonMode && currentStepConfig ? (
           <JsonStepRenderer
             stepConfig={currentStepConfig}

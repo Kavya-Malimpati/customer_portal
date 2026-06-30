@@ -1,0 +1,30 @@
+{
+  "policy": {
+    "id": "policy",
+    "type": "select",
+    "name": "policy",
+    "label": "Affected Policy",
+    "placeholder": "Select Policy",
+    "value": "",
+    "options": [
+      {
+        "value": "",
+        "label": "Select Policy"
+      }
+    ]
+  },
+
+  "lossType": {
+    "id": "lossType",
+    "type": "radio",
+    "name": "lossType",
+    "label": "Loss Type",
+    "value": "",
+    "options": [
+      {
+        "value": "",
+        "label": "Select Loss Type"
+      }
+    ]
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "dateOfLoss": {
+    "id": "dateOfLoss",
+    "type": "date",
+    "name": "dateOfLoss",
+    "label": "Date of Loss",
+    "value": ""
+  },
+
+  "timeOfLoss": {
+    "id": "timeOfLoss",
+    "type": "time",
+    "name": "timeOfLoss",
+    "label": "Time of Loss",
+    "value": ""
+  },
+
+  "location": {
+    "id": "location",
+    "type": "text",
+    "name": "location",
+    "label": "Incident Location",
+    "placeholder": "Enter incident location",
+    "value": ""
+  },
+
+  "description": {
+    "id": "description",
+    "type": "textarea",
+    "name": "description",
+    "label": "Incident Description",
+    "placeholder": "Describe what happened",
+    "value": ""
+  },
+
+  "weatherConditions": {
+    "id": "weatherConditions",
+    "type": "select",
+    "name": "weatherConditions",
+    "label": "Weather Conditions",
+    "value": "",
+    "options": [
+      {
+        "value": "",
+        "label": "Select Weather"
+      }
+    ]
+  },
+
+  "roadConditions": {
+    "id": "roadConditions",
+    "type": "select",
+    "name": "roadConditions",
+    "label": "Road Conditions",
+    "value": "",
+    "options": [
+      {
+        "value": "",
+        "label": "Select Road Condition"
+      }
+    ]
+  }
+}

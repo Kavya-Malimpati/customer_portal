@@ -1,0 +1,50 @@
+.review-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: 100%;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.summary-item {
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+
+.claim-success {
+  padding: 20px;
+  border-radius: 8px;
+  background: var(--color-white);
+  border: 1px solid var(--color-success);
+}
+
+.claim-number {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.next-steps {
+  margin-top: 12px;
+}
+
+.next-steps li {
+  margin-bottom: 8px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+}

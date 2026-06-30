@@ -101,12 +101,26 @@ const Toggle = React.forwardRef<HTMLInputElement, ToggleProps>(
     const currentSize = sizeConfig[size];
  
     const containerStyles: React.CSSProperties = {
+      position: 'relative',
       display: 'flex',
       alignItems: 'center',
       gap: 'var(--space-3)',
       opacity: disabled ? 0.6 : 1,
       cursor: disabled ? 'not-allowed' : 'pointer',
       flexWrap: 'wrap',
+    };
+ 
+    const inputStyles: React.CSSProperties = {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: currentSize.width,
+      height: currentSize.height,
+      margin: 0,
+      padding: 0,
+      opacity: 0,
+      cursor: disabled ? 'not-allowed' : 'pointer',
+      zIndex: 1,
     };
  
     const toggleTrackStyles: React.CSSProperties = {
@@ -192,7 +206,7 @@ const Toggle = React.forwardRef<HTMLInputElement, ToggleProps>(
             onClick={onClick}
             onFocus={onFocus}
             onBlur={onBlur}
-            className="sr-only"
+            style={inputStyles}
             aria-label={ariaLabel || (typeof label === 'string' ? label : undefined)}
             aria-labelledby={ariaLabelledby}
             aria-describedby={errorId || ariaDescribedby}
@@ -248,3 +262,4 @@ const Toggle = React.forwardRef<HTMLInputElement, ToggleProps>(
 );
  
 export default Toggle;
+ 

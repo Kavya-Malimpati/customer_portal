@@ -1,4 +1,4 @@
-
+ 
 import React, { useMemo, useRef, useState } from 'react';
 import Button from '../Button/Button';
 import  FileUploadInput  from './FileUploadInput';
@@ -166,6 +166,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
     border: 'none',
     padding: 0,
     margin: 0,
+    position: 'relative',
   };
   const fileDisplayStyles: React.CSSProperties = {
     minWidth: '120px',
@@ -255,7 +256,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
         >
           Upload files
         </Button>
-      {showFileName && (
+{showFileName && (
   <div style={fileDisplayStyles}>
     <div
       style={fileNameDisplayStyles}
@@ -293,3 +294,5 @@ const FileUpload: React.FC<FileUploadProps> = ({
   );
 };
 export default FileUpload;
+ 
+ 

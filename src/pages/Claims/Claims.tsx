@@ -1,4 +1,3 @@
-// import EvidenceVault from './EvidenceVault/index.ts';
 import ClaimDocuments from './ClaimDocuments/index.ts';
 import AdjusterChat from './Chat/ChatIcon.tsx';
 import './Claim.css';
@@ -19,15 +18,13 @@ const Claims = () => {
           <RoadsideAssistance />
         </section>
 
-        <section className='claims-row claims-row-single'>
+       <section className='claims-row claims-row-single'>
           <ActiveClaim />
         </section>
 
-{/* you dont need to seperate components for this one is enough see how you can do it */}
         <section className='claims-row claims-two-column'>
-          {/* <EvidenceVault /> */}
           <ClaimDocuments />
-        </section>
+        </section> 
 
         <section className='claims-row claims-row-single'>
           <ClaimHistory />

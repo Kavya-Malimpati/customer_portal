@@ -21,7 +21,7 @@ const EvidenceVaultView = ({
       <CardContent>
         <div className='evidence-vault-header'>
           <div>
-            <Typography variant='h3' color='primary' className='evidence-vault-title'>
+            <Typography variant='h3' color='primary'>
               Evidence Vault
             </Typography>
 

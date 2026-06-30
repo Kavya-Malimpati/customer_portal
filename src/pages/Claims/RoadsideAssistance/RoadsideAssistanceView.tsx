@@ -62,7 +62,6 @@ const RoadsideAssistanceView = ({
                 </Typography>
               </div>
             </div>
-            {/* Make a common component and resue it  */}
             <div className='roadside-details'>
               <LabelValue
                 label='Driver Name'

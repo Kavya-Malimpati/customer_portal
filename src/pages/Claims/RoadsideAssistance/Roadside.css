@@ -163,3 +163,142 @@
 .call-icon {
   font-size: 16px;
 }
+
+@media (max-width: 1024px) {
+  .roadside-content {
+    flex-direction: column;
+  }
+
+  .roadside-map-section,
+  .roadside-provider-section {
+    width: 100%;
+    padding: var(--space-5);
+  }
+
+  .roadside-provider-section {
+    border-top: 1px solid var(--border-color);
+  }
+}
+
+@media (max-width: 768px) {
+  .roadside-card {
+    padding: var(--space-2);
+  }
+
+  .roadside-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+
+  .roadside-status-badge {
+    align-self: flex-start;
+  }
+
+  .roadside-map-section,
+  .roadside-provider-section {
+    padding: var(--space-4);
+  }
+
+  .roadside-tracking-card {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-3);
+  }
+
+  .roadside-provider-box {
+    align-items: center;
+  }
+
+  .roadside-details {
+    gap: var(--space-3);
+  }
+
+  .roadside-call-btn,
+  .roadside-provider-section button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .roadside-header {
+    padding: var(--space-3);
+  }
+
+  .roadside-title {
+    font-size: var(--font-size-lg);
+  }
+
+  .roadside-location-label {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .roadside-location-icon {
+    font-size: 34px;
+  }
+
+  .roadside-truck-icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .roadside-arrival {
+    font-size: 15px;
+  }
+
+  .roadside-provider-box {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .roadside-provider-logo {
+    margin-bottom: var(--space-2);
+  }
+
+  .roadside-detail-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .roadside-call-btn {
+    height: 44px;
+  }
+}
+
+@media (max-width: 400px) {
+  .roadside-content {
+    gap: var(--space-3);
+  }
+
+  .roadside-map-section,
+  .roadside-provider-section {
+    padding: var(--space-3);
+  }
+
+  .roadside-tracking-card {
+    padding: var(--space-4);
+  }
+
+  .roadside-header-icon {
+    font-size: 18px;
+  }
+
+  .roadside-location-icon {
+    font-size: 30px;
+  }
+
+  .roadside-provider-name {
+    font-size: var(--font-size-sm);
+  }
+
+  .roadside-provider-partner {
+    font-size: var(--font-size-xs);
+  }
+
+  .call-btn-content {
+    gap: 6px;
+  }
+}

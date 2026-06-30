@@ -11,12 +11,10 @@ const ClaimDocumentsView = ({
   onDownloadDocument,
   onDeleteDocument,
 }: ClaimDocumentsViewProps) => {
-
   return (
     <>
-      <div>
-        <EvidenceVault />
-      </div>
+      <EvidenceVault />
+
       <Card variant='outlined-raised' className='claim-documents-card'>
         <CardContent>
           <div className='claim-documents-header'>
@@ -31,7 +29,6 @@ const ClaimDocumentsView = ({
             </div>
 
             <div className='claim-documents-wrapper'>
-              {/* use common component */}
               <FileUpload
                 id='claim-documents'
                 accept='.pdf,image/*'

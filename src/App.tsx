@@ -8,6 +8,8 @@ import Claims from './pages/Claims';
 import BillingPage from './pages/Billing/BillingPage';
 import ServicesPage from './pages/Services/ServicesPage';
 import PolicyPage from './pages/Policy/PolicyPage';
+import FNOLPage from './pages/Claims/FNOL/FNOLPage';
+import ClaimSuccessPage from './pages/Claims/FNOL/ClaimsSuccess/ClaimSuccessPage';
 
 function App() {
   const navigate = useNavigate();
@@ -76,6 +78,23 @@ function App() {
           </MainLayout>
         }
       />
+
+      <Route
+       path='/claims/fnol/:claimType'
+      element={
+      <MainLayout onLogout={handleLogout}>
+        <FNOLPage />
+        </MainLayout>} />
+
+      <Route
+        path='/claims/fnol/success'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <ClaimSuccessPage />
+          </MainLayout>
+        }
+      />
+
       <Route path='*' element={<Navigate to='/' replace />} />
     </Routes>
   );

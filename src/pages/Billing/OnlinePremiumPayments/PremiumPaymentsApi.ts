@@ -7,3 +7,4 @@ export const getPremiumPaymentsApi = async () => {
     status: 'pending' as 'pending' | 'success' | 'failure',
   };
 };
+  

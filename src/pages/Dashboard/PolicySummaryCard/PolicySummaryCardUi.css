@@ -1,0 +1,132 @@
+.policy-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-5);
+  width: 100%;
+}
+
+.policy-summary-card {
+  border-radius: var(--radius-lg);
+}
+
+.policy-summary-content {
+  padding: var(--space-5);
+}
+
+.policy-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.policy-header-left {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center;
+  justify-content: flex-start;
+
+  gap: var(--space-3);
+
+  flex: 1;
+}
+
+.policy-icon {
+  width: 48px;
+  height: 48px;
+
+  background: #dbeafe;
+  color: var(--color-primary);
+
+  border-radius: var(--radius-md);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+
+.policy-text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.policy-title {
+  margin: 0;
+}
+
+.policy-subtitle {
+  color: var(--color-gray-700);
+  margin-top: 2px;
+}
+
+.policy-status {
+  padding: 6px 14px;
+
+  border-radius: 999px;
+
+  background: #d1fae5;
+  color: #15803d;
+
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+
+  white-space: nowrap;
+}
+
+.policy-divider {
+  border-top: 1px solid var(--color-gray-300);
+  margin: var(--space-4) 0;
+}
+
+.policy-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.policy-label {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+
+  color: var(--color-gray-700);
+
+  margin-bottom: var(--space-1);
+}
+
+.policy-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.policy-footer-icons {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.footer-icon {
+  width: 28px;
+  height: 28px;
+
+  border-radius: 50%;
+
+  background: var(--color-gray-100);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.manage-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+@media (max-width: 1024px) {
+  .policy-summary-grid {
+    grid-template-columns: 1fr;
+  }
+}

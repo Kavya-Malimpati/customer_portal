@@ -1,0 +1,74 @@
+.dashboard-header {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.dashboard-header-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-title {
+  margin: 0 !important;
+}
+
+.dashboard-subtitle {
+  margin-top: var(--space-1);
+}
+
+.dashboard-header-right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-4);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.notification-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.notification-badge {
+  position: absolute;
+  top: 1px;
+  right: -2px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #dc2626;
+}
+
+.help-center-button {
+  min-width: 130px !important;
+}
+
+.profile-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .dashboard-header {
+    flex-direction: row;
+  }
+
+  .dashboard-header-right {
+    flex-direction: row;
+  }
+}

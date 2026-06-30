@@ -1,8 +1,8 @@
 import './App.css';
-
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
-
 import MainLayout from './common/MainLayout';
+<<<<<<< HEAD
+=======
 import BillingPage from './pages/Billing/BillingPage';
 import Claims from './pages/Claims';
 import Home from './pages/Home';
@@ -10,9 +10,14 @@ import PolicyPage from './pages/Policy/PolicyPage';
 import AutoQuotePage from './pages/Policy/AutoQuoteFrom/AutoQuotePage';
 import HomeownersQuotePage from './pages/Policy/HomeOwnerQuoteFrom/HomeownersQuotePage';
 import ProfilePage from './pages/Profile/ProfilePage';
+>>>>>>> 561b6d837a6fa7f3ca8e27875885ecab91bc133a
 import Settings from './pages/Profile/Settings';
+import ProfilePage from './pages/Profile/ProfilePage';
+import Claims from './pages/Claims';
+import BillingPage from './pages/Billing/BillingPage';
 import ServicesPage from './pages/Services/ServicesPage';
-import TestPage from './pages/TestPage';
+import PolicyPage from './pages/Policy/PolicyPage';
+import Dashboard from './pages/Dashboard/Dashboard';
 
 function App() {
   const navigate = useNavigate();
@@ -27,7 +32,7 @@ function App() {
         path='/'
         element={
           <MainLayout onLogout={handleLogout}>
-            <Home />
+            <Dashboard />
           </MainLayout>
         }
       />
@@ -98,14 +103,6 @@ function App() {
         element={
           <MainLayout onLogout={handleLogout}>
             <PolicyPage />
-          </MainLayout>
-        }
-      />
-      <Route
-        path='/test'
-        element={
-          <MainLayout onLogout={handleLogout}>
-            <TestPage />
           </MainLayout>
         }
       />

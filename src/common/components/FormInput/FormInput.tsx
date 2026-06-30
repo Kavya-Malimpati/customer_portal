@@ -2,6 +2,7 @@ import React, { forwardRef } from 'react';
 export interface FormInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
   label?: React.ReactNode;
   required?: boolean;
+  isRequired?: boolean;
   error?: boolean;
   hasError?: boolean;
   errorMessage?: string;
@@ -38,6 +39,7 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
       value,
       label,
       required = false,
+      isRequired,
       disabled = false,
       readOnly = false,
       error = false,
@@ -62,6 +64,7 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
     ref,
   ) => {
     const isErrorState = error || hasError;
+    const isFieldRequired = required || isRequired || false;
     const displayErrorText = errorMessage || (typeof helperText === 'string' ? helperText : '');
     const errorId = isErrorState && displayErrorText ? `${id || 'input'}-error` : undefined;
     const inputRef_ = ref || inputRef;
@@ -73,7 +76,7 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
             className="block text-sm font-semibold text-gray-700 mb-2"
           >
             {label}
-            {required && <span className="text-red-500 ml-1">*</span>}
+            {isFieldRequired && <span className="text-red-500 ml-1">*</span>}
           </label>
         )}
         <input
@@ -85,6 +88,7 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
           value={value}
           disabled={disabled}
           readOnly={readOnly}
+          required={isFieldRequired}
           onChange={onChange}
           onFocus={onFocus}
           onBlur={onBlur}
@@ -93,7 +97,7 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
           aria-describedby={errorId || (helperText ? `${id}-helper` : ariaDescribedby)}
           aria-disabled={ariaDisabled || disabled}
           aria-invalid={ariaInvalid || isErrorState}
-          aria-required={ariaRequired || required}
+          aria-required={ariaRequired || isFieldRequired}
           aria-live={ariaLive}
           className={`w-full transition-all duration-200 text-gray-900 placeholder-gray-400 focus:outline-none
             ${sizeMap[size]}

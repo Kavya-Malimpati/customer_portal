@@ -1,20 +1,18 @@
 import './App.css';
-
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
-
 import MainLayout from './common/MainLayout';
 import BillingPage from './pages/Billing/BillingPage';
 import Claims from './pages/Claims';
-import Home from './pages/Home';
 import PolicyPage from './pages/Policy/PolicyPage';
 import AutoQuotePage from './pages/Policy/AutoQuoteFrom/AutoQuotePage';
 import HomeownersQuotePage from './pages/Policy/HomeOwnerQuoteFrom/HomeownersQuotePage';
 import ProfilePage from './pages/Profile/ProfilePage';
 import Settings from './pages/Profile/Settings';
 import ServicesPage from './pages/Services/ServicesPage';
+import Dashboard from './pages/Dashboard/Dashboard';
 import TestPage from './pages/TestPage';
-import FNOLPage from './pages/Claims/FNOL/FNOLPage';
 import ClaimSuccessPage from './pages/Claims/FNOL/ClaimsSuccess/ClaimSuccessPage';
+import FNOLPage from './pages/Claims/FNOL/FNOLPage';
 
 function App() {
   const navigate = useNavigate();
@@ -29,7 +27,7 @@ function App() {
         path='/'
         element={
           <MainLayout onLogout={handleLogout}>
-            <Home />
+            <Dashboard />
           </MainLayout>
         }
       />

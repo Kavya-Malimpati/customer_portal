@@ -1,14 +1,14 @@
 export interface PaymentMethod {
-  brand: string;      // Visa, AmEx, etc.
-  lastFour: string;   // 4242
-  expiry: string;     // 12/26
+  brand: string;
+  lastFour: string;
+  expiry: string;
 }
 
 export interface AutoPayState {
   enabled: boolean;
   paymentMethod: PaymentMethod;
-  nextChargeAmount: string; // $428.50
-  nextChargeDate: string;   // Oct 15
+  nextChargeAmount: string; 
+  nextChargeDate: string;
 }
 
 export interface AutoPayCardViewProps {

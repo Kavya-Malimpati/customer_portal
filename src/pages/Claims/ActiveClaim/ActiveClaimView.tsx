@@ -1,4 +1,4 @@
-import { Card, Typography, Button, LabelValue, LinearProgress } from '../../../common/components';
+import { Card, Typography, Button, LabelValue } from '../../../common/components';
 import CardHeader from '../../../common/components/Card/CardHeader';
 import CardContent from '../../../common/components/Card/CardContent';
 import CardFooter from '../../../common/components/Card/CardFooter';
@@ -7,6 +7,7 @@ import { FiFileText, FiSearch, FiClipboard, FiCheckCircle } from 'react-icons/fi
 import { FiCalendar } from 'react-icons/fi';
 import type { ActiveClaim } from './Interface';
 import './ActiveClaim.css';
+import LinearProgress from '../../../common/components/Progress/LinearProgress';
 
 interface Props {
   data: ActiveClaim | null;

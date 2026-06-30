@@ -4,8 +4,21 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   multiple?: boolean;
 }
 const FileUploadInput = React.forwardRef<HTMLInputElement, Props>(
-  ({ accept, multiple, className, ...rest }, ref) => {
-    const inputClassName = `sr-only ${className ?? ''}`.trim();
+  ({ accept, multiple, className, style, ...rest }, ref) => {
+    const inputStyles: React.CSSProperties = {
+      position: 'absolute',
+      top: '-9999px',
+      left: '-9999px',
+      width: '1px',
+      height: '1px',
+      margin: 0,
+      padding: 0,
+      opacity: 0,
+      pointerEvents: 'none',
+      zIndex: -1,
+      ...style,
+    };
+ 
     return (
       <input
         ref={ref}
@@ -13,11 +26,11 @@ const FileUploadInput = React.forwardRef<HTMLInputElement, Props>(
         accept={accept}
         {...(multiple ? { multiple: true } : {})}
         {...rest}
-        className={inputClassName}
+        style={inputStyles}
+        className={className}
       />
     );
   }
 );
 FileUploadInput.displayName = 'FileUploadInput';
 export default FileUploadInput;
-

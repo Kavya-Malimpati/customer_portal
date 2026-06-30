@@ -1,7 +1,7 @@
  
 .claim-layout {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: minmax(0, 2fr) minmax(320px, 1fr);
   gap: var(--space-6);
 }
  
@@ -273,4 +273,144 @@ hr {
   #claim-stepper > div {
     min-width: 120px;
   }
+}
+
+
+@media (max-width: 1024px) {
+  .claim-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .right {
+    margin-top: 20px;
+  }
+
+  .claim-footer {
+    flex-direction: column;
+  }
+
+  .box {
+    width: 100%;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .claim-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .claim-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .status-pill {
+    align-self: flex-start;
+  }
+
+  .claim-footer {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .box {
+    width: 100%;
+  }
+
+  .row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .expense-header {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .icon-text {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 600px) {
+  .claim-box-claim {
+    padding: 16px;
+  }
+
+  #claim-stepper {
+    overflow-x: auto;
+    overflow-y: hidden;
+    justify-content: flex-start;
+    padding-bottom: 12px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #claim-stepper > div {
+    min-width: 120px;
+    flex: none;
+  }
+
+  .claim-footer {
+    gap: 12px;
+  }
+
+  .submit {
+    width: 100%;
+  }
+
+  .right .MuiCard-root,
+  .right .card {
+    width: 100%;
+  }
+}
+
+/* ===========================
+   Extra Small (480px)
+=========================== */
+
+@media (max-width: 480px) {
+  .claim-top h3,
+  .claim-top h2 {
+    font-size: 20px;
+  }
+
+  .claim-top p {
+    font-size: 14px;
+  }
+
+  .status-pill {
+    font-size: 12px;
+    padding: 4px 12px;
+  }
+
+  .expense-amount {
+    font-size: 18px;
+  }
+
+  .submit {
+    height: 44px;
+  }
+
+  .claim-box-claim {
+    margin-top: 20px;
+  }
+}
+
+.stepper-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.stepper-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.stepper-wrapper {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

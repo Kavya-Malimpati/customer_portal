@@ -1,5 +1,5 @@
 import { FiTruck, FiMapPin, FiPhone } from 'react-icons/fi';
-import { Typography, Button, Card, CardContent } from '../../../common/components';
+import { Typography, Button, Card, CardContent, LabelValue } from '../../../common/components';
 import type { RoadsideAssistanceViewProps } from './Interface';
 import './Roadside.css';
 
@@ -62,34 +62,33 @@ const RoadsideAssistanceView = ({
                 </Typography>
               </div>
             </div>
-
             <div className='roadside-details'>
-              <div className='roadside-detail-row'>
-                <Typography variant='body2' color='secondary' className='roadside-detail-label'>
-                  Driver Name
-                </Typography>
-                <Typography variant='body2' color='primary' className='roadside-detail-value'>
-                  {provider.driverName}
-                </Typography>
-              </div>
+              <LabelValue
+                label='Driver Name'
+                value={provider.driverName}
+                orientation='horizontal'
+                labelVariant='body1'
+                valueVariant='h5'
+                valueColor='primary'
+              />
 
-              <div className='roadside-detail-row'>
-                <Typography variant='body2' color='secondary' className='roadside-detail-label'>
-                  Vehicle Type
-                </Typography>
-                <Typography variant='body2' color='primary' className='roadside-detail-value'>
-                  {provider.vehicleType}
-                </Typography>
-              </div>
+              <LabelValue
+                label='Vehicle Type'
+                value={provider.vehicleType}
+                orientation='horizontal'
+                labelVariant='body1'
+                valueVariant='h5'
+                valueColor='primary'
+              />
 
-              <div className='roadside-detail-row'>
-                <Typography variant='body2' color='secondary' className='roadside-detail-label'>
-                  Plate Number
-                </Typography>
-                <Typography variant='body2' color='primary' className='roadside-detail-value'>
-                  {provider.plateNumber}
-                </Typography>
-              </div>
+              <LabelValue
+                label='Plate Number'
+                value={provider.plateNumber}
+                orientation='horizontal'
+                labelVariant='body1'
+                valueVariant='h5'
+                valueColor='primary'
+              />
             </div>
 
             <a href='tel:+18005550123' className='call-link'>

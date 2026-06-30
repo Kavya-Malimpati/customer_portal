@@ -5,8 +5,9 @@
 
 .settings-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-3);
+  grid-template-columns: 2fr 1fr;
+  gap: var(--space-6);
+  align-items: start;
 }
 
 .settings-left,
@@ -14,6 +15,7 @@
 .settings-card-section {
   display: flex;
   flex-direction: column;
+  
 }
 
 .settings-left {
@@ -21,14 +23,15 @@
 }
 
 .settings-right {
+  display: flex;
+  flex-direction: column;
   gap: var(--space-5);
+  align-self: start;
 }
-
 .settings-card-section {
   gap: var(--space-4);
 }
 
-/* Shared Flex */
 .section-title,
 .notification-header,
 .notification-info,
@@ -100,7 +103,7 @@
 .theme-section {
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
+  gap: var(--space-2);
 }
 
 .theme-grid {
@@ -187,7 +190,6 @@
   text-align: left;
 }
 
-/* SMS */
 .sms-card {
   padding: var(--space-8);
   margin-top: var(--space-2);
@@ -227,7 +229,6 @@
   white-space: nowrap;
 }
 
-/* Footer */
 .settings-footer {
   display: flex;
   justify-content: flex-end;
@@ -237,7 +238,6 @@
   gap: var(--space-3);
 }
 
-/* Responsive */
 @media (min-width: 768px) {
 
   .settings-grid {

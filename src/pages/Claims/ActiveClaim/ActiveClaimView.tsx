@@ -1,15 +1,13 @@
-import { Card, Typography, Button } from '../../../common/components';
-
+import { Card, Typography, Button, LabelValue } from '../../../common/components';
 import CardHeader from '../../../common/components/Card/CardHeader';
 import CardContent from '../../../common/components/Card/CardContent';
 import CardFooter from '../../../common/components/Card/CardFooter';
 import Stepper from '../../../common/components/Stepper/Stepper';
-
 import { FiFileText, FiSearch, FiClipboard, FiCheckCircle } from 'react-icons/fi';
 import { FiCalendar } from 'react-icons/fi';
-
 import type { ActiveClaim } from './Interface';
 import './ActiveClaim.css';
+import LinearProgress from '../../../common/components/Progress/LinearProgress';
 
 interface Props {
   data: ActiveClaim | null;
@@ -53,7 +51,6 @@ const ActiveClaimView = ({ data, currentIndex, formatStatus }: Props) => {
               id='claim-stepper'
               value={currentIndex}
               orientation='horizontal'
-              alternativeLabel
               color='primary'
               size='md'
               steps={[
@@ -81,21 +78,31 @@ const ActiveClaimView = ({ data, currentIndex, formatStatus }: Props) => {
             />
           </div>
         </CardContent>
+
         <CardFooter className='claim-footer'>
           <div className='box'>
-            <Typography variant='body1'>ESTIMATED RESOLUTION</Typography>
-            <Typography variant='body1' color='primary' className='resolution'>
-              {data?.estimatedResolution ?? '--'}
-            </Typography>
+            <LabelValue
+              orientation='vertical'
+              label='ESTIMATED RESOLUTION'
+              value={data?.estimatedResolution ?? '--'}
+              labelVariant='body1'
+              valueVariant='h5'
+              valueColor='primary'
+            />
           </div>
           <div className='box'>
-            <Typography variant='body1'>TOTAL EST. DAMAGE</Typography>
-            <Typography variant='body1' color='primary' className='resolution'>
-              {data?.damageAmount ?? '--'}
-            </Typography>
+            <LabelValue
+              orientation='vertical'
+              label='TOTAL EST. DAMAGE'
+              value={data?.damageAmount ?? '--'}
+              labelVariant='body1'
+              valueVariant='h5'
+              valueColor='primary'
+            />
           </div>
         </CardFooter>
       </Card>
+
       <div className='right'>
         <Card variant='outlined-raised'>
           <div className='icon-text'>
@@ -105,14 +112,22 @@ const ActiveClaimView = ({ data, currentIndex, formatStatus }: Props) => {
             </Typography>
           </div>
           <CardContent>
-            <div className='row'>
-              <span className='label'>Date & Time</span>
-              May 02, 10:30 AM
-            </div>
-            <div className='row'>
-              <span className='label'>Location</span>
-              Service King, Oakland
-            </div>
+            <LabelValue
+              className='row'
+              orientation='horizontal'
+              label='Date & Time'
+              value='May 02, 10:30 AM'
+              labelVariant='body1'
+              valueVariant='h5'
+            />
+            <LabelValue
+              className='row'
+              orientation='horizontal'
+              label='Location'
+              value='Service King, Oakland'
+              labelVariant='body1'
+              valueVariant='h5'
+            />
           </CardContent>
           <CardFooter>
             <Button variant='outlined' fullWidth>
@@ -133,9 +148,14 @@ const ActiveClaimView = ({ data, currentIndex, formatStatus }: Props) => {
               <span className='expense-title'>Status: Approved</span>
               <span className='expense-amount'>$330.00</span>
             </div>
-            <div className='bar'>
-              <div className='fill' />
-            </div>
+            <LinearProgress
+              value={75}
+              variant='determinate'
+              color='success'
+              size='md'
+              aria-label='Expenses reimbursement progress'
+              aria-valuetext='75% expenses reimbursed'
+            />
             <Typography variant='body1' className='expense-text'>
               75% Expenses Reimbursed
             </Typography>

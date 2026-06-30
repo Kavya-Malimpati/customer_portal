@@ -1,0 +1,27 @@
+.claim-type-selector {
+  width: 100%;
+}
+
+.claim-type-header {
+  margin-bottom: 24px;
+}
+
+.claim-type-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.claim-type-buttons button {
+  min-width: 180px;
+}
+
+@media (max-width: 768px) {
+  .claim-type-buttons {
+    flex-direction: column;
+  }
+
+  .claim-type-buttons button {
+    width: 100%;
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "otherDriverName": {
+    "id": "otherDriverName",
+    "type": "text",
+    "name": "otherDriverName",
+    "label": "Other Driver Name",
+    "placeholder": "Enter other driver's name",
+    "value": ""
+  },
+
+  "otherDriverContact": {
+    "id": "otherDriverContact",
+    "type": "text",
+    "name": "otherDriverContact",
+    "label": "Other Driver Contact",
+    "placeholder": "Enter contact number",
+    "value": ""
+  },
+
+  "insuranceCompany": {
+    "id": "insuranceCompany",
+    "type": "text",
+    "name": "insuranceCompany",
+    "label": "Insurance Company",
+    "placeholder": "Enter insurance company",
+    "value": ""
+  },
+
+  "vehicleInformation": {
+    "id": "vehicleInformation",
+    "type": "text",
+    "name": "vehicleInformation",
+    "label": "Vehicle Information",
+    "placeholder": "Enter vehicle information",
+    "value": ""
+  },
+
+  "witnessInformation": {
+    "id": "witnessInformation",
+    "type": "textarea",
+    "name": "witnessInformation",
+    "label": "Witness Information",
+    "placeholder": "Enter witness information",
+    "value": ""
+  },
+
+  "injuries": {
+    "id": "injuries",
+    "type": "select",
+    "name": "injuries",
+    "label": "Any Injuries?",
+    "value": "",
+    "options": [
+      {
+        "value": "Yes",
+        "label": "Yes"
+      },
+      {
+        "value": "No",
+        "label": "No"
+      }
+    ]
+  },
+
+  "policeReportNumber": {
+    "id": "policeReportNumber",
+    "type": "text",
+    "name": "policeReportNumber",
+    "label": "Police Report Number",
+    "placeholder": "Enter report number",
+    "value": ""
+  },
+
+  "damagedArea": {
+    "id": "damagedArea",
+    "type": "text",
+    "name": "damagedArea",
+    "label": "Damaged Area",
+    "placeholder": "Enter damaged area",
+    "value": ""
+  },
+
+  "damagedProperty": {
+    "id": "damagedProperty",
+    "type": "textarea",
+    "name": "damagedProperty",
+    "label": "Damaged Property",
+    "placeholder": "Describe damaged property",
+    "value": ""
+  },
+
+  "emergencyServices": {
+    "id": "emergencyServices",
+    "type": "select",
+    "name": "emergencyServices",
+    "label": "Emergency Services Called",
+    "value": "",
+    "options": [
+      {
+        "value": "Yes",
+        "label": "Yes"
+      },
+      {
+        "value": "No",
+        "label": "No"
+      }
+    ]
+  },
+
+  "propertyHabitable": {
+    "id": "propertyHabitable",
+    "type": "select",
+    "name": "propertyHabitable",
+    "label": "Property Habitable",
+    "value": "",
+    "options": [
+      {
+        "value": "Yes",
+        "label": "Yes"
+      },
+      {
+        "value": "No",
+        "label": "No"
+      }
+    ]
+  },
+
+  "thirdPartyInvolved": {
+    "id": "thirdPartyInvolved",
+    "type": "select",
+    "name": "thirdPartyInvolved",
+    "label": "Third Party Involved",
+    "value": "",
+    "options": [
+      {
+        "value": "Yes",
+        "label": "Yes"
+      },
+      {
+        "value": "No",
+        "label": "No"
+      }
+    ]
+  },
+
+  "firePoliceReportNumber": {
+    "id": "firePoliceReportNumber",
+    "type": "text",
+    "name": "firePoliceReportNumber",
+    "label": "Police / Fire Report Number",
+    "placeholder": "Enter report number",
+    "value": ""
+  }
+}

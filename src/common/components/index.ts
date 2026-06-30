@@ -1,3 +1,5 @@
+
+export { default as LabelValue } from './LabelValue';
 export { default as Accordion } from './Accordion';
 export { default as AutoComplete } from './AutoComplete';
 export { default as Checkbox } from './Checkbox';
@@ -15,7 +17,6 @@ export { default as Table } from './Table';
 export {default as CardFooter} from './Card/CardFooter';
 export {default as CardHeader} from './Card/CardHeader';
 export {default as LinearProgress} from './Progress/LinearProgress';
-export {default as LabelValue} from './LabelValue';
 // export { default as Progress } from './Progress/CircularProgress'; 
 // two progress components - Circular and Linear. Need to decide on naming convention before exporting
 // export { default as Snackbar } from './Snackbar';

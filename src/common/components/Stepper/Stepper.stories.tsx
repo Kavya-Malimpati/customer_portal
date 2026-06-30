@@ -1,10 +1,11 @@
-
 import { useState } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import type { StepperStep } from './Stepper';
-import Stepper from './Stepper';
+
 import Typography from '../Typography/Typography';
 import StepContent from './StepContent';
+import Stepper from './Stepper';
+
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { StepperStep } from './Stepper';
 const meta = {
   title: 'Components/Stepper',
   component: Stepper,
@@ -39,10 +40,6 @@ const meta = {
     disabled: {
       control: { type: 'boolean' },
       description: 'Disable all interactions',
-    },
-    alternativeLabel: {
-      control: { type: 'boolean' },
-      description: 'Position labels below steps',
     },
   },
 } satisfies Meta<typeof Stepper>;
@@ -103,12 +100,7 @@ export const HorizontalLinear: Story = {
 };
 export const HorizontalNonLinear: Story = {
   args: {
-    steps: [
-      { label: 'Step 1' },
-      { label: 'Step 2' },
-      { label: 'Step 3' },
-      { label: 'Step 4' },
-    ],
+    steps: [{ label: 'Step 1' }, { label: 'Step 2' }, { label: 'Step 3' }, { label: 'Step 4' }],
     value: 0,
     type: 'non-linear',
     orientation: 'horizontal',
@@ -255,7 +247,6 @@ export const AlternativeLabels: Story = {
           value={active}
           type='linear'
           orientation='horizontal'
-          alternativeLabel
           onClick={setActive}
           aria-label='Stepper with alternative label placement'
         />
@@ -580,11 +571,7 @@ export const KeyboardNavigation: Story = {
 };
 export const ControlledStepper: Story = {
   args: {
-    steps: [
-      { label: 'Personal Info' },
-      { label: 'Shipping' },
-      { label: 'Payment' },
-    ],
+    steps: [{ label: 'Personal Info' }, { label: 'Shipping' }, { label: 'Payment' }],
     value: 0,
     type: 'linear',
     orientation: 'horizontal',
@@ -788,7 +775,6 @@ export const AlternativeLabelsDemo = () => {
         activeStep={active}
         type='linear'
         orientation='horizontal'
-        alternativeLabel
         onClick={setActive}
         aria-label='Stepper with alternative label placement'
       />
@@ -1037,4 +1023,3 @@ export const KeyboardNavigationDemo = () => {
     </div>
   );
 };
-

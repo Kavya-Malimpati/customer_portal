@@ -1,7 +1,8 @@
 import React from 'react';
-import { FiTool, FiPackage } from 'react-icons/fi';
 import { FaCarCrash } from 'react-icons/fa';
-import type { OfferItem } from './IOffers';
+import { FiPackage, FiTool } from 'react-icons/fi';
+
+import type { OfferItem } from './interfaces';
 
 interface OfferIconProps {
   type: OfferItem['type'];
@@ -11,21 +12,21 @@ const OfferIcon: React.FC<OfferIconProps> = ({ type }) => {
   switch (type) {
     case 'glass':
       return (
-        <div className="glassicon">
+        <div className='glassicon'>
           <FiTool />
         </div>
       );
 
     case 'roadside':
       return (
-        <div className="roadsideicon">
+        <div className='roadsideicon'>
           <FaCarCrash />
         </div>
       );
 
     case 'bundle':
       return (
-        <div className="bundleicon">
+        <div className='bundleicon'>
           <FiPackage />
         </div>
       );

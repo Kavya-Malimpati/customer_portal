@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import AutoPayCardView from './AutoPaycardView';
+import AutoPayCardView from './AutoPayCardView';
 import type { AutoPayState } from './interfaces';
 
 const AutoPayCard = () => {

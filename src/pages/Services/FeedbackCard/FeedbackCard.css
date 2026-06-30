@@ -56,6 +56,11 @@
   gap: var(--space-1);
   cursor: pointer;
   margin-top: auto;
+  transition: opacity var(--transition-normal);
+}
+
+.feedback-link:hover {
+  opacity: 0.8;
 }
 
 .feedback-link-text {

@@ -2,7 +2,7 @@
 import React, { forwardRef, useImperativeHandle, useRef, useMemo } from 'react';
 const SIZE_VARIANTS = {
   sm: {
-    height: 'h-8',
+    height: 'h-9',
     paddingY: 'py-[var(--space-2)]',
     paddingX: 'px-[var(--space-3)]',
     fontSize: 'text-[var(--font-size-sm)]',
@@ -24,11 +24,11 @@ const VARIANT_STYLES = {
   outlined: {
     base: 'border border-[var(--border-color)] rounded-[var(--radius-md)] bg-[var(--bg-surface)]',
     focus:
-      'focus:border-[var(--border-color-focus)] focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-opacity-35',
+      'focus:border-[var(--border-color-focus)] focus:outline-none',
   },
   filled: {
     base: 'border-none rounded-[var(--radius-md)] bg-[var(--bg-muted)]',
-    focus: 'focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-opacity-35',
+    focus: 'focus:outline-none',
   },
   standard: {
     base: 'border-b border-[var(--border-color)] rounded-none bg-transparent',
@@ -51,7 +51,7 @@ export interface SelectProps {
   id?: string;
   isRequired?: boolean;
   hasError?: boolean;
-  validationRules?: Record<string, any>;
+  validationRules?: Record<string, string | number | boolean>;
   name?: string;
   className?: string;
   value?: string | number;
@@ -103,7 +103,6 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
       'aria-describedby': ariaDescribedby,
       options,
       hasError,
-      validationRules,
       children,
       ...rest
     },
@@ -129,7 +128,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
     const isFieldError = error || hasError || false;
     const errorClasses = useMemo(() => {
       if (!isFieldError) return '';
-      return 'border-[var(--color-error)] focus:border-[var(--color-error)] focus:ring-[var(--color-error)] focus:ring-opacity-35';
+      return 'border-[var(--color-error)]';
     }, [isFieldError]);
     const handleFocus = (e: React.FocusEvent<HTMLSelectElement>) => {
       onFocus?.(e);
@@ -138,11 +137,11 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
       onBlur?.(e);
     };
     const selectValueProps = useMemo(() => {
-      if (value !== undefined) {
-        return { value };
+      if (value !== undefined && value !== null) {
+        return { value: String(value) };
       }
-      if (defaultValue !== undefined) {
-        return { defaultValue };
+      if (defaultValue !== undefined && defaultValue !== null) {
+        return { defaultValue: String(defaultValue) };
       }
       return {};
     }, [value, defaultValue]);
@@ -155,21 +154,19 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
     const describedById = [ariaDescribedby, errorId].filter(Boolean).join(' ');
     return (
       <div className={`flex flex-col gap-2 w-full ${className}`}>
-        {}
         {label && (
           <label
             htmlFor={id ?? htmlFor}
-            className='flex items-center gap-1 text-sm font-medium text-gray-700'
+            className='flex items-center gap-1 text-sm font-medium text-[var(--text-primary)]'
           >
             <span>{label}</span>
             {isRequired && (
-              <span className='text-red-500 font-semibold' aria-label='required'>
+              <span className='text-[var(--color-error)] font-semibold' aria-label='required'>
                 *
               </span>
             )}
           </label>
         )}
-        {}
         <select
           ref={innerRef}
           id={id}
@@ -205,17 +202,17 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
           }}
           {...rest}
         >
+          <option value="">-- Select an option --</option>
           {options && Array.isArray(options) && options.length > 0
             ? options.map((opt: SelectOption) => (
-                <option key={`${opt.value}`} value={opt.value} disabled={opt.disabled}>
+                <option key={`${opt.value}`} value={String(opt.value)} disabled={opt.disabled}>
                   {opt.label}
                 </option>
               ))
             : children}
         </select>
-        {}
         {hasError && (
-          <span id={errorId} className='text-sm text-red-600' role='alert'>
+          <span id={errorId} className='text-sm text-[var(--color-error)]' role='alert'>
             {errorMessage}
           </span>
         )}
@@ -225,4 +222,3 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
 );
 Select.displayName = 'Select';
 export default Select;
-

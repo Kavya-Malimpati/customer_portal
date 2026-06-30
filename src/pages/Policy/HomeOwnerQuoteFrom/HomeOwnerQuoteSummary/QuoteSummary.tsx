@@ -1,6 +1,6 @@
 import type {
   StepContentProps,
-} from '../../../common/components/MultiStepForm/types';
+} from '../../../../common/components/MultiStepForm/types';
 
 import QuoteSummaryView from './QuoteSummaryView';
 

@@ -1,6 +1,6 @@
-
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-vite';
 import Tooltip from './Tooltip';
+
 const meta: Meta<typeof Tooltip> = {
   title: 'Components/Tooltip',
   component: Tooltip,
@@ -23,10 +23,10 @@ const TriggerButton = () => (
       cursor: 'pointer',
       transition: 'background-color var(--transition-normal)',
     }}
-    onMouseEnter={(e) => {
+    onMouseEnter={e => {
       e.currentTarget.style.backgroundColor = 'var(--color-primary-hover)';
     }}
-    onMouseLeave={(e) => {
+    onMouseLeave={e => {
       e.currentTarget.style.backgroundColor = 'var(--color-primary)';
     }}
   >
@@ -35,31 +35,31 @@ const TriggerButton = () => (
 );
 export const Default = () => (
   <div style={{ padding: 'var(--space-12)' }}>
-    <Tooltip title="Tooltip text" placement="top">
+    <Tooltip title='Tooltip text' placement='top'>
       <TriggerButton />
     </Tooltip>
   </div>
 );
 export const SizeSmall = () => (
   <div style={{ padding: 'var(--space-12)' }}>
-    <Tooltip title="Small tooltip" size="sm" placement="top">
+    <Tooltip title='Small tooltip' size='sm' placement='top'>
       <TriggerButton />
     </Tooltip>
   </div>
 );
 export const SizeMedium = () => (
   <div style={{ padding: 'var(--space-12)' }}>
-    <Tooltip title="Medium tooltip with more content" size="md" placement="top">
+    <Tooltip title='Medium tooltip with more content' size='md' placement='top'>
       <TriggerButton />
     </Tooltip>
   </div>
 );
 export const SizeLarge = () => (
   <div style={{ padding: 'var(--space-12)' }}>
-    <Tooltip 
-      title="Large tooltip with even more content for demonstration purposes" 
-      size="lg" 
-      placement="top"
+    <Tooltip
+      title='Large tooltip with even more content for demonstration purposes'
+      size='lg'
+      placement='top'
     >
       <TriggerButton />
     </Tooltip>
@@ -67,60 +67,52 @@ export const SizeLarge = () => (
 );
 export const PlacementTop = () => (
   <div style={{ padding: 'var(--space-12)', display: 'flex', justifyContent: 'center' }}>
-    <Tooltip title="Top placement" placement="top">
+    <Tooltip title='Top placement' placement='top'>
       <TriggerButton />
     </Tooltip>
   </div>
 );
 export const PlacementBottom = () => (
   <div style={{ padding: 'var(--space-12)', display: 'flex', justifyContent: 'center' }}>
-    <Tooltip title="Bottom placement" placement="bottom">
+    <Tooltip title='Bottom placement' placement='bottom'>
       <TriggerButton />
     </Tooltip>
   </div>
 );
 export const PlacementLeft = () => (
   <div style={{ padding: 'var(--space-12)', display: 'flex', justifyContent: 'center' }}>
-    <Tooltip title="Left placement" placement="left">
+    <Tooltip title='Left placement' placement='left'>
       <TriggerButton />
     </Tooltip>
   </div>
 );
 export const PlacementRight = () => (
   <div style={{ padding: 'var(--space-12)', display: 'flex', justifyContent: 'center' }}>
-    <Tooltip title="Right placement" placement="right">
+    <Tooltip title='Right placement' placement='right'>
       <TriggerButton />
     </Tooltip>
   </div>
 );
 export const CustomEnterDelay = () => (
   <div style={{ padding: 'var(--space-12)' }}>
-    <Tooltip 
-      title="Shows after 500ms delay" 
-      placement="top"
-      enterDelay={500}
-    >
+    <Tooltip title='Shows after 500ms delay' placement='top' enterDelay={500}>
       <TriggerButton />
     </Tooltip>
   </div>
 );
 export const CustomLeaveDelay = () => (
   <div style={{ padding: 'var(--space-12)' }}>
-    <Tooltip 
-      title="Stays visible for 800ms" 
-      placement="top"
-      leaveDelay={800}
-    >
+    <Tooltip title='Stays visible for 800ms' placement='top' leaveDelay={800}>
       <TriggerButton />
     </Tooltip>
   </div>
 );
 export const LongContent = () => (
   <div style={{ padding: 'var(--space-12)' }}>
-    <Tooltip 
-      title="This is a longer tooltip that explains a feature in more detail and may wrap to multiple lines" 
-      size="lg"
-      placement="top"
+    <Tooltip
+      title='This is a longer tooltip that explains a feature in more detail and may wrap to multiple lines'
+      size='lg'
+      placement='top'
     >
       <TriggerButton />
     </Tooltip>
@@ -128,14 +120,14 @@ export const LongContent = () => (
 );
 export const RichContent = () => (
   <div style={{ padding: 'var(--space-12)' }}>
-    <Tooltip 
+    <Tooltip
       title={
         <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
           <span>ℹ️</span>
           <span>Click here to learn more</span>
         </div>
       }
-      placement="top"
+      placement='top'
     >
       <TriggerButton />
     </Tooltip>
@@ -152,16 +144,16 @@ export const AllPlacements = () => (
       minHeight: '500px',
     }}
   >
-    <Tooltip title="Top" placement="top">
+    <Tooltip title='Top' placement='top'>
       <TriggerButton />
     </Tooltip>
-    <Tooltip title="Right" placement="right">
+    <Tooltip title='Right' placement='right'>
       <TriggerButton />
     </Tooltip>
-    <Tooltip title="Left" placement="left">
+    <Tooltip title='Left' placement='left'>
       <TriggerButton />
     </Tooltip>
-    <Tooltip title="Bottom" placement="bottom">
+    <Tooltip title='Bottom' placement='bottom'>
       <TriggerButton />
     </Tooltip>
   </div>
@@ -175,27 +167,27 @@ export const AllSizes = () => (
       gap: 'var(--space-8)',
     }}
   >
-    <Tooltip title="Small size" size="sm" placement="right">
+    <Tooltip title='Small size' size='sm' placement='right'>
       <TriggerButton />
     </Tooltip>
-    <Tooltip title="Medium size - This is the default" size="md" placement="right">
+    <Tooltip title='Medium size - This is the default' size='md' placement='right'>
       <TriggerButton />
     </Tooltip>
-    <Tooltip title="Large size with more content for better visibility" size="lg" placement="right">
+    <Tooltip title='Large size with more content for better visibility' size='lg' placement='right'>
       <TriggerButton />
     </Tooltip>
   </div>
 );
 export const WithIcon = () => (
   <div style={{ padding: 'var(--space-12)' }}>
-    <Tooltip 
+    <Tooltip
       title={
         <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
           <span>⭐</span>
           <span>Add to favorites</span>
         </div>
       }
-      placement="top"
+      placement='top'
     >
       <button
         style={{
@@ -218,21 +210,18 @@ export const WithIcon = () => (
 );
 export const KeyboardInteraction = () => (
   <div style={{ padding: 'var(--space-12)' }}>
-    <Tooltip 
-      title="Press Escape to close this tooltip, or blur to hide it" 
-      placement="top"
-    >
+    <Tooltip title='Press Escape to close this tooltip, or blur to hide it' placement='top'>
       <TriggerButton />
     </Tooltip>
   </div>
 );
 export const Accessibility = () => (
   <div style={{ padding: 'var(--space-12)' }}>
-    <Tooltip 
-      title="Help text for form field" 
-      placement="top"
-      aria-label="Help information"
-      aria-describedby="help-description"
+    <Tooltip
+      title='Help text for form field'
+      placement='top'
+      aria-label='Help information'
+      aria-describedby='help-description'
     >
       <TriggerButton />
     </Tooltip>
@@ -248,14 +237,8 @@ export const Comprehensive = () => (
     }}
   >
     <div>
-      <h3 style={{ marginBottom: 'var(--space-4)', color: 'var(--text-primary)' }}>
-        Save Action
-      </h3>
-      <Tooltip 
-        title="Save your changes to the database" 
-        placement="right"
-        size="md"
-      >
+      <h3 style={{ marginBottom: 'var(--space-4)', color: 'var(--text-primary)' }}>Save Action</h3>
+      <Tooltip title='Save your changes to the database' placement='right' size='md'>
         <button
           style={{
             padding: 'var(--space-2) var(--space-4)',
@@ -275,10 +258,10 @@ export const Comprehensive = () => (
       <h3 style={{ marginBottom: 'var(--space-4)', color: 'var(--text-primary)' }}>
         Delete Action
       </h3>
-      <Tooltip 
-        title="Permanently delete this item. This action cannot be undone." 
-        placement="right"
-        size="md"
+      <Tooltip
+        title='Permanently delete this item. This action cannot be undone.'
+        placement='right'
+        size='md'
       >
         <button
           style={{
@@ -299,11 +282,7 @@ export const Comprehensive = () => (
       <h3 style={{ marginBottom: 'var(--space-4)', color: 'var(--text-primary)' }}>
         Download Action
       </h3>
-      <Tooltip 
-        title="Download file (CSV format)" 
-        placement="right"
-        size="md"
-      >
+      <Tooltip title='Download file (CSV format)' placement='right' size='md'>
         <button
           style={{
             padding: 'var(--space-2) var(--space-4)',
@@ -321,4 +300,3 @@ export const Comprehensive = () => (
     </div>
   </div>
 );
-

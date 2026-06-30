@@ -15,10 +15,7 @@
     "label": "Usage Type",
     "value": "",
     "options": [
-      {
-        "value": "",
-        "label": "Select Usage Type"
-      },
+    
       {
         "value": "personal",
         "label": "Personal"
@@ -86,10 +83,7 @@
     "label": "Ownership Status",
     "value": "",
     "options": [
-      {
-        "value": "",
-        "label": "Select Ownership Status"
-      },
+     
       {
         "value": "owned",
         "label": "Owned"
@@ -156,10 +150,7 @@
     "label": "License State",
     "value": "",
     "options": [
-      {
-        "value": "",
-        "label": "Select State"
-      },
+     
       {
         "value": "NY",
         "label": "New York"
@@ -195,10 +186,7 @@
     "label": "Marital Status",
     "value": "",
     "options": [
-      {
-        "value": "",
-        "label": "Select Status"
-      },
+     
       {
         "value": "single",
         "label": "Single"

@@ -15,12 +15,6 @@ export interface FieldConfig {
   isRequired?: boolean;
   hasError: boolean;
   errorMessage: string;
-
-  validationRules?: Record<
-    string,
-    unknown
-  >;
-
   options?: FieldOption[];
 }
 
@@ -42,6 +36,4 @@ export interface VehicleDriverDetailsViewProps {
       HTMLInputElement | HTMLSelectElement
     >,
   ) => void;
-
- 
 }

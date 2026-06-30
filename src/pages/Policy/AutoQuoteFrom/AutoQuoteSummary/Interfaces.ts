@@ -40,9 +40,7 @@ export interface QuoteSummaryData {
   premium: PremiumData;
 }
 
-export interface QuoteSummaryProps {
-  data?: QuoteSummaryData;
-}
+
 
 export interface QuoteSummaryViewProps {
   data: QuoteSummaryData;

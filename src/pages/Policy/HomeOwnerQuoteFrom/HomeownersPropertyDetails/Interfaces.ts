@@ -11,19 +11,10 @@ export interface FieldConfig {
   name: string;
   label: string;
   placeholder?: string;
-
   value: any;
-
   isRequired?: boolean;
-
   hasError?: boolean;
   errorMessage?: string;
-
-  validationRules?: Record<
-    string,
-    unknown
-  >;
-
   options?: FieldOption[];
 }
 

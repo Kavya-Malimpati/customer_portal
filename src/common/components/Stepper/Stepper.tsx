@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
-import Tooltip from '../Tooltip/Tooltip';
 import '../../../styles/tokens.css';
+
+import React, { useState } from 'react';
+
+import Tooltip from '../Tooltip/Tooltip';
+
 export interface StepperStep {
   label: React.ReactNode;
   content?: React.ReactNode;
@@ -23,7 +26,7 @@ export interface StepperProps {
   title?: string;
   activeStep?: number;
   orientation?: 'horizontal' | 'vertical';
-  alternativeLabel?: boolean;
+
   connector?: React.ReactNode;
   color?: 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning' | 'inherit';
   size?: 'sm' | 'md' | 'lg';
@@ -39,30 +42,7 @@ export interface StepperProps {
   'aria-current'?: 'step' | 'page' | 'location' | 'date' | 'time' | boolean;
   'aria-live'?: 'off' | 'polite' | 'assertive';
 }
-const colorConfig: Record<
-  'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning' | 'inherit',
-  { color: string }
-> = {
-  primary: { color: 'var(--color-primary)' },
-  secondary: { color: 'var(--color-secondary)' },
-  error: { color: 'var(--color-error)' },
-  info: { color: 'var(--color-info)' },
-  success: { color: 'var(--color-success)' },
-  warning: { color: 'var(--color-warning)' },
-  inherit: { color: 'inherit' },
-};
-const bgColorConfig: Record<
-  'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning' | 'inherit',
-  { backgroundColor: string }
-> = {
-  primary: { backgroundColor: 'var(--color-primary)' },
-  secondary: { backgroundColor: 'var(--color-secondary)' },
-  error: { backgroundColor: 'var(--color-error)' },
-  info: { backgroundColor: 'var(--color-info)' },
-  success: { backgroundColor: 'var(--color-success)' },
-  warning: { backgroundColor: 'var(--color-warning)' },
-  inherit: { backgroundColor: 'inherit' },
-};
+
 const sizeConfig: Record<
   'sm' | 'md' | 'lg',
   { width: string; height: string; fontSize: string; iconSize: string }
@@ -100,9 +80,6 @@ const Stepper: React.FC<StepperProps> = ({
   title,
   activeStep: legacyActiveStep,
   orientation = 'horizontal',
-  alternativeLabel = false,
-  connector,
-  color = 'primary',
   size = 'md',
   onClick,
   onFocus,
@@ -172,39 +149,19 @@ const Stepper: React.FC<StepperProps> = ({
     isDisabled: boolean | undefined,
   ): React.CSSProperties => {
     const sizeConfig_value = sizeConfig[size] || sizeConfig.md;
-    const colorValue = color as
-      | 'primary'
-      | 'secondary'
-      | 'error'
-      | 'info'
-      | 'success'
-      | 'warning'
-      | 'inherit';
-    let backgroundColor = 'var(--bg-surface)';
-    let borderColor = 'var(--color-secondary)';
-    let textColor = colorConfig[colorValue]?.color || colorConfig.primary.color;
-    if (isActive) {
-      backgroundColor =
-        bgColorConfig[colorValue]?.backgroundColor || bgColorConfig.primary.backgroundColor;
-      borderColor = 'transparent';
-      textColor = 'white';
-    } else if (isCompleted) {
-      backgroundColor = 'var(--color-success)';
-      borderColor = 'var(--color-success)';
-      textColor = 'white';
-    }
+    const backgroundColor = (isActive || isCompleted) ? 'var(--color-info)' : 'var(--color-gray-300)';
     return {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
       borderRadius: 'var(--radius-full)',
-      border: `var(--border-width-md) solid ${borderColor}`,
+      border: `var(--border-width-md) solid ${backgroundColor}`,
       transition: 'all var(--transition-fast)',
       width: sizeConfig_value.width,
       height: sizeConfig_value.height,
       fontWeight: 'var(--font-weight-semibold)',
       backgroundColor,
-      color: textColor,
+      color: 'white',
       cursor: isDisabled ? 'var(--cursor-disabled)' : 'pointer',
       opacity: isDisabled ? 'var(--opacity-disabled)' : 1,
     };
@@ -212,30 +169,23 @@ const Stepper: React.FC<StepperProps> = ({
   const getStepIndicatorContent = (
     stepData: StepperStep,
     stepIndex: number,
-    isCompleted: boolean,
   ): React.ReactNode => {
     if (stepData.icon) return stepData.icon;
-    if (isCompleted) return <span className='text-lg'>✓</span>;
     return <span>{stepIndex + 1}</span>;
   };
-  const sizeConfig_value = sizeConfig[size] || sizeConfig.md;
-  const colorValue = color as
-    | 'primary'
-    | 'secondary'
-    | 'error'
-    | 'info'
-    | 'success'
-    | 'warning'
-    | 'inherit';
+
   const stepperContent = (
     <div
       id={id}
       style={{
         display: 'flex',
         flexDirection: orientation === 'vertical' ? 'column' : 'row',
-        justifyContent:
-          alternativeLabel && orientation === 'horizontal' ? 'space-between' : undefined,
-        gap: 'var(--space-4)',
+        justifyContent: 'center',
+        gap: orientation === 'horizontal' ? '0' : 'var(--space-6)',
+        alignItems: 'center',
+        width: '100%',
+        maxWidth: '1000px',
+        margin: '0 auto',
         ...style,
       }}
       className={className}
@@ -260,86 +210,82 @@ const Stepper: React.FC<StepperProps> = ({
         const stepLabel =
           typeof stepData.label === 'string' ? stepData.label : `Step ${stepIndex + 1}`;
         const stepAriaLabel = ariaLabel || stepLabel;
+
         return (
           <div
             key={stepKey}
             style={{
               display: 'flex',
-              alignItems: 'center',
+              flex: orientation === 'horizontal' ? '1 1 0' : undefined,
+              alignItems: 'flex-start',
+              justifyContent: 'center',
               marginBottom: orientation === 'vertical' ? 'var(--space-4)' : undefined,
-              flexDirection:
-                alternativeLabel && orientation === 'horizontal' ? 'column' : undefined,
-              position: orientation === 'horizontal' ? 'relative' : undefined,
+              flexDirection: 'column',
+              position: 'relative',
+              width: orientation === 'horizontal' ? '100%' : undefined,
             }}
           >
-            {}
-            <button
-              type='button'
-              style={getStepButtonStyle(isActive, isCompleted, isDisabled)}
-              aria-label={stepAriaLabel}
-              onClick={() => handleStepClick(stepIndex)}
-              onKeyDown={e => handleKeyDown(e, stepIndex)}
-              onFocus={() => handleStepFocus(stepIndex)}
-              onBlur={() => handleStepBlur(stepIndex)}
-              disabled={isDisabled || !canNavigate}
-              tabIndex={isActive ? 0 : -1}
-              {...getCurrentStepAriaProps(stepIndex)}
-            >
-              {getStepIndicatorContent(stepData, stepIndex, isCompleted)}
-            </button>
-            {}
+            {/* Connector line after step */}
+            {stepIndex < steps.length - 1 && orientation === 'horizontal' && (
+              <div
+                style={{
+                  position: 'absolute',
+                  top: '22px',
+                  left: 'calc(17% + 24px)',
+                  right: 'calc(17% + 24px)',
+                  height: '2px',
+                  width: 'calc(80% - 24px)',
+                  backgroundColor:
+                    (stepData.completed ?? stepIndex < currentStep)
+                      ? 'var(--color-info)'
+                      : 'var(--color-gray-300)',
+                  transform: 'translateY(-50%)',
+                  zIndex: 0,
+                }}
+              />
+            )}
+
+            {/* Step indicator */}
             <div
               style={{
-                marginTop:
-                  alternativeLabel && orientation === 'horizontal' ? 'var(--space-2)' : undefined,
-                marginLeft:
-                  !alternativeLabel && orientation !== 'vertical' ? 'var(--space-3)' : undefined,
-                textAlign: alternativeLabel ? 'center' : undefined,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                position: 'relative',
+                zIndex: 1,
               }}
             >
-              <p
-                style={{
-                  fontWeight: 'var(--font-weight-semibold)',
-                  fontSize: sizeConfig_value.fontSize,
-                  color: isActive
-                    ? colorConfig[colorValue]?.color || colorConfig.primary.color
-                    : 'var(--color-gray-700)',
-                  margin: 0,
-                }}
+              <button
+                type='button'
+                style={getStepButtonStyle(isActive, isCompleted, isDisabled)}
+                aria-label={stepAriaLabel}
+                onClick={() => handleStepClick(stepIndex)}
+                onKeyDown={e => handleKeyDown(e, stepIndex)}
+                onFocus={() => handleStepFocus(stepIndex)}
+                onBlur={() => handleStepBlur(stepIndex)}
+                disabled={isDisabled || !canNavigate}
+                tabIndex={isActive ? 0 : -1}
+                {...getCurrentStepAriaProps(stepIndex)}
               >
-                {stepData.label}
-              </p>
-              {stepData.description && (
+                {getStepIndicatorContent(stepData, stepIndex)}
+              </button>
+
+              {/* Step label below circle */}
+              {stepData.label && (
                 <p
                   style={{
                     color: 'var(--color-gray-600)',
                     fontSize: 'var(--font-size-xs)',
-                    marginTop: 'var(--space-1)',
-                    margin: 'var(--space-1) 0 0 0',
+                    marginTop: 'var(--space-2)',
+                    margin: 'var(--space-2) 0 0 0',
+                    whiteSpace: 'nowrap',
+                    textAlign: 'center',
                   }}
                 >
-                  {stepData.description}
+                  {stepData.label}
                 </p>
               )}
             </div>
-            {}
-            {stepIndex < steps.length - 1 && (
-              <div
-                style={{
-                  marginLeft: orientation === 'vertical' ? 'var(--space-5)' : undefined,
-                  marginTop: orientation === 'vertical' ? 'var(--space-1)' : undefined,
-                  marginBottom: orientation === 'vertical' ? 'var(--space-1)' : undefined,
-                  height: orientation === 'vertical' ? '32px' : '2px',
-                  width: orientation === 'vertical' ? '2px' : '48px',
-                  position: orientation !== 'vertical' ? 'absolute' : undefined,
-                  top: orientation !== 'vertical' ? '20px' : undefined,
-                  left: orientation !== 'vertical' ? 'calc(100% + 8px)' : undefined,
-                  backgroundColor: isCompleted ? 'var(--color-success)' : 'var(--color-secondary)',
-                }}
-              >
-                {connector}
-              </div>
-            )}
           </div>
         );
       })}

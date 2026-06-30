@@ -2,12 +2,16 @@ import QuoteSummaryView from './QuoteSummaryView';
 
 import type {
   QuoteSummaryData,
-  QuoteSummaryProps,
+  VehicleData,
+  CoverageData,
+  PremiumData,
 } from './Interfaces';
+
+import type { StepContentProps } from '../../../../common/components/MultiStepForm';
 
 const defaultData: QuoteSummaryData = {
   vehicle: {
-    vin: { value: '0' },
+    vin: { value: '' },
     year: { value: '' },
     make: { value: '' },
     model: { value: '' },
@@ -37,14 +41,14 @@ const defaultData: QuoteSummaryData = {
   },
 };
 
-const QuoteSummary = ({
-  data,
-}: QuoteSummaryProps) => {
-  return (
-    <QuoteSummaryView
-      data={data ?? defaultData}
-    />
-  );
+const QuoteSummary = ({ data }: StepContentProps) => {
+  const summaryData: QuoteSummaryData = {
+    vehicle: (data.vehicle as VehicleData) ?? defaultData.vehicle,
+    coverage: (data.coverage as CoverageData) ?? defaultData.coverage,
+    premium: (data.premium as PremiumData) ?? defaultData.premium,
+  };
+
+  return <QuoteSummaryView data={summaryData} />;
 };
 
 export default QuoteSummary;

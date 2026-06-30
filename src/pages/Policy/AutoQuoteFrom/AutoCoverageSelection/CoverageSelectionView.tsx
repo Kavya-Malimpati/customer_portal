@@ -9,7 +9,7 @@ import type {
   CoverageSection,
 } from './Interfaces';
 
-import { autoCoverageConfig } from './autoCoverageConfig';
+import { autoCoverageConfig } from '../../../../config/autoCoverageConfig';
 
 import './CoverageSelection.css';
 

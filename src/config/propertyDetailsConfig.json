@@ -50,10 +50,7 @@
     "label": "Construction Type",
     "value": "",
     "options": [
-      {
-        "value": "",
-        "label": "Select Construction Type"
-      },
+     
       {
         "value": "frame",
         "label": "Frame"
@@ -76,10 +73,7 @@
     "label": "Roof Type",
     "value": "",
     "options": [
-      {
-        "value": "",
-        "label": "Select Roof Type"
-      },
+    
       {
         "value": "asphalt",
         "label": "Asphalt"
@@ -129,10 +123,6 @@
     "label": "Occupancy Type",
     "value": "",
     "options": [
-      {
-        "value": "",
-        "label": "Select Occupancy Type"
-      },
       {
         "value": "owner",
         "label": "Owner Occupied"

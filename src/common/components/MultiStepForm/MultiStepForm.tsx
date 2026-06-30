@@ -74,7 +74,7 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({
         <div style={{ width: '100%', maxWidth: '1000px', position: 'relative' }}>
           <Stepper
             steps={Array.from({ length: totalSteps }, (_, index) => ({
-              label: `Step ${index + 1}`,
+              label: ``,
               completed: index < currentStep,
               description:
                 isJsonMode && jsonConfig
@@ -108,7 +108,7 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({
         </div>
       </div>
  
-      <div className='step-content mt-25 mb-8'>
+      <div className='step-content mt-33 mb-8'>
         {isJsonMode && currentStepConfig ? (
           <JsonStepRenderer
             stepConfig={currentStepConfig}

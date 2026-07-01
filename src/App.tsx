@@ -21,6 +21,11 @@ function App() {
     navigate('/');
   };
 
+  // Skip routing for static document files - let the browser handle them
+  if (window.location.pathname.includes('/documents/')) {
+    return null;
+  }
+
   return (
     <Routes>
       <Route

@@ -1,20 +1,8 @@
 import './DocumentVault.css';
 
-import {
-	FiChevronRight,
-	FiHeart,
-	FiHome,
-	FiLock,
-	FiUpload,
-	FiUser,
-} from 'react-icons/fi';
+import { FiChevronRight, FiHeart, FiHome, FiLock, FiUpload, FiUser } from 'react-icons/fi';
 
-import {
-	Button,
-	Card,
-	CardContent,
-	Typography,
-} from '../../../../common/components';
+import { Button, Card, CardContent, Typography } from '../../../../common/components';
 
 import type { DocumentVaultViewProps } from './interface';
 
@@ -47,7 +35,7 @@ const DOCUMENT_CATEGORIES = [
 
 const DocumentVaultView = ({ documents, onUpload }: DocumentVaultViewProps) => {
   return (
-    <main className='mt-5 px-4 sm:px-6 md:px-8 lg:px-10'>
+    <main className='mt-5 px-0'>
       <section className='w-full'>
         {/* Header */}
         <header className='flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-4'>

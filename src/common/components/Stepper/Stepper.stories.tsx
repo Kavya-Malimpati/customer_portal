@@ -209,7 +209,6 @@ export const AlternativeLabels: Story = {
     value: 0,
     type: 'linear',
     orientation: 'horizontal',
-    alternativeLabel: true,
   },
   render: () => {
     const [active, setActive] = useState(0);

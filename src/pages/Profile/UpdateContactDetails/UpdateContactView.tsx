@@ -64,14 +64,14 @@ const UpdateContactView = ({
             className="form-wrapper"
           >
             <div className="form-grid">
-              <TextField {...formData.phone} onChange={onChange} />
-              <TextField {...formData.email} onChange={onChange} />
-              <TextField {...formData.streetAddress} onChange={onChange} />
-              <TextField {...formData.aptNumber} onChange={onChange} />
-              <TextField {...formData.city} onChange={onChange} />
-              <Select {...formData.state} onChange={onChange} />
-              <TextField {...formData.zipcode} onChange={onChange} />
-              <TextField {...formData.country} onChange={onChange} />
+              <TextField {...formData.phone} validationRules={undefined} onChange={onChange} />
+              <TextField {...formData.email} validationRules={undefined} onChange={onChange} />
+              <TextField {...formData.streetAddress} validationRules={undefined} onChange={onChange} />
+              <TextField {...formData.aptNumber} validationRules={undefined} onChange={onChange} />
+              <TextField {...formData.city} validationRules={undefined} onChange={onChange} />
+              <Select {...formData.state} validationRules={undefined} onChange={onChange} />
+              <TextField {...formData.zipcode} validationRules={undefined} onChange={onChange} />
+              <TextField {...formData.country} validationRules={undefined} onChange={onChange} />
             </div>
           </form>
 

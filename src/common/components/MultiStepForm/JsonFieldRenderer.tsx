@@ -29,7 +29,7 @@ const FieldRenderer: React.FC<FieldRendererProps> = ({
   fieldConfig,
   onChange
 }) => {
-  const { type, value, ...restConfig } = fieldConfig;
+  const { type, value, validationRules, ...restConfig } = fieldConfig;
 
   // Convert unknown value to appropriate type for each component
   const convertValue = (val: unknown, fieldType: string): string | number | undefined => {

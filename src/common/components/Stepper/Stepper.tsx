@@ -41,13 +41,13 @@ export interface StepperProps {
   'aria-current'?: 'step' | 'page' | 'location' | 'date' | 'time' | boolean;
   'aria-live'?: 'off' | 'polite' | 'assertive';
 }
- 
+
 const sizeConfig: Record<'sm' | 'md' | 'lg', { size: string; fontSize: string }> = {
   sm: { size: '44px', fontSize: '14px' },
   md: { size: '56px', fontSize: '18px' },
   lg: { size: '68px', fontSize: '22px' },
 };
- 
+
 const Stepper: React.FC<StepperProps> = ({
   steps,
   id,
@@ -80,9 +80,9 @@ const Stepper: React.FC<StepperProps> = ({
   const currentStep = isControlled
     ? Math.min(controlledValue, max ?? steps.length - 1)
     : (legacyActiveStep ?? uncontrolledValue);
- 
+
   const cfg = sizeConfig[size] || sizeConfig.md;
- 
+
   const handleStepClick = (stepIndex: number) => {
     if (disabled || steps[stepIndex]?.disabled) return;
     const validatedIndex = Math.max(min ?? 0, Math.min(stepIndex, max ?? steps.length - 1));
@@ -93,7 +93,7 @@ const Stepper: React.FC<StepperProps> = ({
     if (!isControlled) setUncontrolledValue(validatedIndex);
     onClick?.(validatedIndex);
   };
- 
+
   const handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>, stepIndex: number) => {
     if (disabled) return;
     let nextStep: number | null = null;
@@ -112,7 +112,7 @@ const Stepper: React.FC<StepperProps> = ({
     }
     if (nextStep !== null && nextStep !== stepIndex) handleStepClick(nextStep);
   };
- 
+
   const getButtonStyle = (
     isActive: boolean,
     isCompleted: boolean,
@@ -139,7 +139,7 @@ const Stepper: React.FC<StepperProps> = ({
       flexShrink: 0,
     };
   };
- 
+
   const stepperContent = (
     <div
       id={id}
@@ -173,7 +173,7 @@ const Stepper: React.FC<StepperProps> = ({
           : stepIndex}`;
         const stepLabel =
           typeof stepData.label === 'string' ? stepData.label : `Step ${stepIndex + 1}`;
- 
+
         return (
           <React.Fragment key={stepKey}>
             {/* Circle button */}
@@ -192,7 +192,7 @@ const Stepper: React.FC<StepperProps> = ({
             >
               {stepData.icon ?? <span>{stepIndex + 1}</span>}
             </button>
- 
+
             {/* Connector only between circles - NOT after last */}
             {stepIndex < steps.length - 1 && orientation === 'horizontal' && (
               <div
@@ -210,8 +210,8 @@ const Stepper: React.FC<StepperProps> = ({
       })}
     </div>
   );
- 
+
   return title ? <Tooltip title={title}>{stepperContent}</Tooltip> : stepperContent;
 };
- 
+
 export default Stepper;

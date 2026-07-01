@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
- 
+
 import Button from '../Button/Button';
 import Stepper from '../Stepper/Stepper';
 import { JsonStepRenderer } from './JsonFieldRenderer';
- 
+
 import type { FormData, MultiStepFormProps } from './types';
- 
+
 const MultiStepForm: React.FC<MultiStepFormProps> = ({
   testId,
   jsonConfig,
@@ -18,35 +18,35 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({
   const [formData, setFormData] = useState<FormData>(initialData);
   const [currentStep, setCurrentStep] = useState<number>(0);
   const [isNextDisabled, setIsNextDisabled] = useState<boolean>(false);
- 
+
   const isJsonMode = !!jsonConfig;
   const totalSteps = isJsonMode ? jsonConfig!.totalSteps : stepData?.length || 0;
- 
+
   let currentStepConfig;
   if (isJsonMode && jsonConfig) {
     currentStepConfig = jsonConfig.steps[`step${currentStep + 1}`];
   }
- 
+
   const isLastStep = currentStep === totalSteps - 1;
- 
+
   const handleStepChange = (stepName: string, data: unknown): void => {
     setFormData(prevData => ({ ...prevData, [stepName]: data }));
   };
- 
+
   const handleSubmit = (): void => { onSubmit(formData); };
- 
+
   const handleNext = (): void => {
     if (isLastStep) handleSubmit();
     else setCurrentStep(prev => prev + 1);
   };
- 
+
   const handleBack = (): void => {
     if (currentStep > 0) {
       setIsNextDisabled(false);
       setCurrentStep(prev => prev - 1);
     }
   };
- 
+
   const setShouldGoNext = (shouldGoNext: boolean): void => {
     setIsNextDisabled(!shouldGoNext);
     if (shouldGoNext) {
@@ -54,14 +54,14 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({
       else setCurrentStep(prev => prev + 1);
     }
   };
- 
+
   return (
     <div data-testid={testId} style={{ width: '100%' }}>
- 
+
       {/* ONE container for both stepper and content - guarantees same width */}
       <div style={{ display: 'flex', justifyContent: 'center', width: '100%', padding: '2rem 2rem 0 2rem' }}>
         <div style={{ width: '100%', maxWidth: '896px', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
- 
+
           {/* Stepper - same width as card below */}
           <Stepper
             steps={Array.from({ length: totalSteps }, (_, index) => ({
@@ -77,14 +77,14 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({
             color='primary'
             size='md'
           />
- 
+
           {/* Title */}
           <h2 style={{ margin: 0, fontSize: '1.5rem', fontWeight: 600, color: '#111827' }}>
             {isJsonMode && currentStepConfig
               ? currentStepConfig.title
               : stepData?.[currentStep]?.title || `Step ${currentStep + 1}`}
           </h2>
- 
+
           {/* Step Content - same width as stepper */}
           <div style={{ paddingBottom: '2rem' }}>
             {isJsonMode && currentStepConfig ? (
@@ -103,10 +103,10 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({
               <div>No step configuration found</div>
             )}
           </div>
- 
+
         </div>
       </div>
- 
+
       {/* Navigation */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '1.5rem 2rem', borderTop: '1px solid #e5e7eb' }}>
         <div style={{ display: 'flex', gap: '0.5rem' }}>
@@ -121,9 +121,9 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({
           {isLastStep ? submitButtonName : 'Next'}
         </Button>
       </div>
- 
+
     </div>
   );
 };
- 
+
 export default MultiStepForm;

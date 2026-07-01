@@ -10,43 +10,58 @@ interface Props {
   onRenew?: () => void;
 }
 
-const PolicyHeaderCardView = ({ policy, onRequestChange, onRenew }: Props) => (
-  <Card className='policy-header-card'>
-    <CardContent className='policy-header-card-content'>
-      <div className='policy-header'>
+const PolicyHeaderCardView = ({
+  policy,
+  onRequestChange,
+  onRenew,
+}: Props) => (
+  <Card className="policy-card">
+    <CardContent className="policy-card-content">
+      <div className="policy-card-container">
+
         {/* LEFT */}
-        <div className='policy-header-left'>
-          <div className='policy-status-line'>
-            <div className='policy-status-badge'>
-              <FaCheckCircle /> {policy.status}
+        <div className="policy-card-info">
+          <div className="policy-card-status-row">
+            <div className="policy-card-status-badge">
+              <FaCheckCircle />
+              <span>{policy.status}</span>
             </div>
 
-            <Typography variant='body2' color='body2'>
+            <Typography variant="body2" color="body2">
               • Policy #{policy.policyNumber}
             </Typography>
           </div>
 
-          <Typography variant='h1' color='primary'>
+          <Typography
+            variant="h1"
+            color="primary"
+            className="policy-card-title"
+          >
             {policy.policyType}
           </Typography>
 
-          <Typography variant='body2' color='body2'>
+          <Typography
+            variant="body2"
+            color="body2"
+            className="policy-card-date"
+          >
             Effective Until: {policy.endDate}
           </Typography>
         </div>
 
         {/* RIGHT */}
-        <div className='policy-header-right'>
+        <div className="policy-card-actions">
           {onRequestChange && (
-            <Button variant='outlined' onClick={onRequestChange}>
-              <span className='button-content'>
+            <Button variant="outlined" onClick={onRequestChange}>
+              <span className="policy-card-button">
                 <FiEdit2 />
                 Request Change
               </span>
             </Button>
           )}
+
           {onRenew && (
-            <Button variant='contained' onClick={onRenew}>
+            <Button variant="contained" onClick={onRenew}>
               Renew Now
             </Button>
           )}

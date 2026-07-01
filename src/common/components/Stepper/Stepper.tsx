@@ -1,9 +1,9 @@
 import '../../../styles/tokens.css';
-
+ 
 import React, { useState } from 'react';
-
+ 
 import Tooltip from '../Tooltip/Tooltip';
-
+ 
 export interface StepperStep {
   label: React.ReactNode;
   content?: React.ReactNode;
@@ -26,7 +26,6 @@ export interface StepperProps {
   title?: string;
   activeStep?: number;
   orientation?: 'horizontal' | 'vertical';
-
   connector?: React.ReactNode;
   color?: 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning' | 'inherit';
   size?: 'sm' | 'md' | 'lg';
@@ -42,30 +41,13 @@ export interface StepperProps {
   'aria-current'?: 'step' | 'page' | 'location' | 'date' | 'time' | boolean;
   'aria-live'?: 'off' | 'polite' | 'assertive';
 }
-
-const sizeConfig: Record<
-  'sm' | 'md' | 'lg',
-  { width: string; height: string; fontSize: string; iconSize: string }
-> = {
-  sm: {
-    width: 'var(--control-height-sm)',
-    height: 'var(--control-height-sm)',
-    fontSize: 'var(--font-size-xs)',
-    iconSize: '14px',
-  },
-  md: {
-    width: 'var(--control-height-md)',
-    height: 'var(--control-height-md)',
-    fontSize: 'var(--font-size-md)',
-    iconSize: '18px',
-  },
-  lg: {
-    width: 'var(--control-height-lg)',
-    height: 'var(--control-height-lg)',
-    fontSize: 'var(--font-size-lg)',
-    iconSize: '24px',
-  },
+ 
+const sizeConfig: Record<'sm' | 'md' | 'lg', { size: string; fontSize: string }> = {
+  sm: { size: '44px', fontSize: '14px' },
+  md: { size: '56px', fontSize: '18px' },
+  lg: { size: '68px', fontSize: '22px' },
 };
+ 
 const Stepper: React.FC<StepperProps> = ({
   steps,
   id,
@@ -98,6 +80,9 @@ const Stepper: React.FC<StepperProps> = ({
   const currentStep = isControlled
     ? Math.min(controlledValue, max ?? steps.length - 1)
     : (legacyActiveStep ?? uncontrolledValue);
+ 
+  const cfg = sizeConfig[size] || sizeConfig.md;
+ 
   const handleStepClick = (stepIndex: number) => {
     if (disabled || steps[stepIndex]?.disabled) return;
     const validatedIndex = Math.max(min ?? 0, Math.min(stepIndex, max ?? steps.length - 1));
@@ -105,17 +90,10 @@ const Stepper: React.FC<StepperProps> = ({
       const canProceed = steps.slice(0, validatedIndex).every(s => s.completed);
       if (!canProceed) return;
     }
-    if (!isControlled) {
-      setUncontrolledValue(validatedIndex);
-    }
+    if (!isControlled) setUncontrolledValue(validatedIndex);
     onClick?.(validatedIndex);
   };
-  const handleStepFocus = (stepIndex: number) => {
-    onFocus?.(stepIndex);
-  };
-  const handleStepBlur = (stepIndex: number) => {
-    onBlur?.(stepIndex);
-  };
+ 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>, stepIndex: number) => {
     if (disabled) return;
     let nextStep: number | null = null;
@@ -132,63 +110,39 @@ const Stepper: React.FC<StepperProps> = ({
       e.preventDefault();
       nextStep = max ?? steps.length - 1;
     }
-    if (nextStep !== null && nextStep !== stepIndex) {
-      handleStepClick(nextStep);
-    }
+    if (nextStep !== null && nextStep !== stepIndex) handleStepClick(nextStep);
   };
-  const getCurrentStepAriaProps = (stepIndex: number) => {
-    const isCurrentStep = stepIndex === currentStep;
-    return {
-      'aria-current': isCurrentStep ? ariaCurrent || 'step' : undefined,
-      'aria-selected': isCurrentStep,
-    };
-  };
-  const getStepButtonStyle = (
+ 
+  const getButtonStyle = (
     isActive: boolean,
     isCompleted: boolean,
     isDisabled: boolean | undefined,
   ): React.CSSProperties => {
-    const sizeConfig_value = sizeConfig[size] || sizeConfig.md;
-    const backgroundColor = (isActive || isCompleted) ? 'var(--color-info)' : 'var(--color-gray-300)';
+    const bg = isActive || isCompleted ? 'var(--color-info)' : 'var(--color-gray-300)';
     return {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      borderRadius: 'var(--radius-full)',
-      border: `var(--border-width-md) solid ${backgroundColor}`,
-      transition: 'all var(--transition-fast)',
-      width: sizeConfig_value.width,
-      height: sizeConfig_value.height,
-      fontWeight: 'var(--font-weight-semibold)',
-      backgroundColor,
+      borderRadius: '50%',
+      border: `2px solid ${bg}`,
+      width: cfg.size,
+      height: cfg.size,
+      minWidth: cfg.size,
+      minHeight: cfg.size,
+      fontSize: cfg.fontSize,
+      fontWeight: '600',
+      backgroundColor: bg,
       color: 'white',
-      cursor: isDisabled ? 'var(--cursor-disabled)' : 'pointer',
-      opacity: isDisabled ? 'var(--opacity-disabled)' : 1,
+      cursor: isDisabled ? 'not-allowed' : 'pointer',
+      opacity: isDisabled ? 0.5 : 1,
+      transition: 'all 0.2s',
+      flexShrink: 0,
     };
   };
-  const getStepIndicatorContent = (
-    stepData: StepperStep,
-    stepIndex: number,
-  ): React.ReactNode => {
-    if (stepData.icon) return stepData.icon;
-    return <span>{stepIndex + 1}</span>;
-  };
-
+ 
   const stepperContent = (
     <div
       id={id}
-      style={{
-        display: 'flex',
-        flexDirection: orientation === 'vertical' ? 'column' : 'row',
-        justifyContent: 'center',
-        gap: orientation === 'horizontal' ? '0' : 'var(--space-6)',
-        alignItems: 'center',
-        width: '100%',
-        maxWidth: '1000px',
-        margin: '0 auto',
-        ...style,
-      }}
-      className={className}
       role='tablist'
       aria-orientation={orientation}
       aria-label={ariaLabel || `Stepper with ${steps.length} steps`}
@@ -197,6 +151,14 @@ const Stepper: React.FC<StepperProps> = ({
       aria-disabled={ariaDisabled ?? disabled}
       aria-controls={ariaControls}
       aria-live={ariaLive}
+      className={className}
+      style={{
+        display: 'flex',
+        flexDirection: orientation === 'vertical' ? 'column' : 'row',
+        alignItems: 'center',
+        width: '100%',
+        ...style,
+      }}
     >
       {steps.map((stepData, stepIndex) => {
         const isActive = stepIndex === currentStep;
@@ -206,91 +168,50 @@ const Stepper: React.FC<StepperProps> = ({
           type === 'non-linear' ||
           stepIndex <= currentStep ||
           (isCompleted && stepIndex === currentStep + 1);
-        const stepKey = `step-${typeof stepData.label === 'string' ? stepData.label.toLowerCase().replaceAll(/\s+/g, '-') : stepIndex}`;
+        const stepKey = `step-${typeof stepData.label === 'string'
+          ? stepData.label.toLowerCase().replaceAll(/\s+/g, '-')
+          : stepIndex}`;
         const stepLabel =
           typeof stepData.label === 'string' ? stepData.label : `Step ${stepIndex + 1}`;
-        const stepAriaLabel = ariaLabel || stepLabel;
-
+ 
         return (
-          <div
-            key={stepKey}
-            style={{
-              display: 'flex',
-              flex: orientation === 'horizontal' ? '1 1 0' : undefined,
-              alignItems: 'flex-start',
-              justifyContent: 'center',
-              marginBottom: orientation === 'vertical' ? 'var(--space-4)' : undefined,
-              flexDirection: 'column',
-              position: 'relative',
-              width: orientation === 'horizontal' ? '100%' : undefined,
-            }}
-          >
-            {/* Connector line after step */}
+          <React.Fragment key={stepKey}>
+            {/* Circle button */}
+            <button
+              type='button'
+              style={getButtonStyle(isActive, isCompleted, isDisabled)}
+              aria-label={ariaLabel || stepLabel}
+              aria-current={isActive ? ariaCurrent || 'step' : undefined}
+              aria-selected={isActive}
+              onClick={() => handleStepClick(stepIndex)}
+              onKeyDown={e => handleKeyDown(e, stepIndex)}
+              onFocus={() => onFocus?.(stepIndex)}
+              onBlur={() => onBlur?.(stepIndex)}
+              disabled={isDisabled || !canNavigate}
+              tabIndex={isActive ? 0 : -1}
+            >
+              {stepData.icon ?? <span>{stepIndex + 1}</span>}
+            </button>
+ 
+            {/* Connector only between circles - NOT after last */}
             {stepIndex < steps.length - 1 && orientation === 'horizontal' && (
               <div
                 style={{
-                  position: 'absolute',
-                  top: '22px',
-                  left: 'calc(17% + 24px)',
-                  right: 'calc(17% + 24px)',
+                  flex: '1 1 0',
                   height: '2px',
-                  width: 'calc(80% - 24px)',
-                  backgroundColor:
-                    (stepData.completed ?? stepIndex < currentStep)
-                      ? 'var(--color-info)'
-                      : 'var(--color-gray-300)',
-                  transform: 'translateY(-50%)',
-                  zIndex: 0,
+                  backgroundColor: isCompleted
+                    ? 'var(--color-info)'
+                    : 'var(--color-gray-300)',
                 }}
               />
             )}
-
-            {/* Step indicator */}
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                position: 'relative',
-                zIndex: 1,
-              }}
-            >
-              <button
-                type='button'
-                style={getStepButtonStyle(isActive, isCompleted, isDisabled)}
-                aria-label={stepAriaLabel}
-                onClick={() => handleStepClick(stepIndex)}
-                onKeyDown={e => handleKeyDown(e, stepIndex)}
-                onFocus={() => handleStepFocus(stepIndex)}
-                onBlur={() => handleStepBlur(stepIndex)}
-                disabled={isDisabled || !canNavigate}
-                tabIndex={isActive ? 0 : -1}
-                {...getCurrentStepAriaProps(stepIndex)}
-              >
-                {getStepIndicatorContent(stepData, stepIndex)}
-              </button>
-
-              {/* Step label below circle */}
-              {stepData.label && (
-                <p
-                  style={{
-                    color: 'var(--color-gray-600)',
-                    fontSize: 'var(--font-size-xs)',
-                    marginTop: 'var(--space-2)',
-                    margin: 'var(--space-2) 0 0 0',
-                    whiteSpace: 'nowrap',
-                    textAlign: 'center',
-                  }}
-                >
-                  {stepData.label}
-                </p>
-              )}
-            </div>
-          </div>
+          </React.Fragment>
         );
       })}
     </div>
   );
+ 
   return title ? <Tooltip title={title}>{stepperContent}</Tooltip> : stepperContent;
 };
+ 
 export default Stepper;

@@ -2,20 +2,20 @@ import './DigitalDocument.css';
 
 import { useState } from 'react';
 import {
-	FiClipboard,
-	FiCreditCard,
-	FiDownload,
-	FiEye,
-	FiFileText,
-	FiFilter,
-	FiShield,
+  FiClipboard,
+  FiCreditCard,
+  FiDownload,
+  FiEye,
+  FiFileText,
+  FiFilter,
+  FiShield,
 } from 'react-icons/fi';
 
 import { Button, CardContent, Typography } from '../../../../common/components';
 
 import type { DigitalDocument, DigitalDocumentsViewProps } from './Interface';
 
-const DigitalDocumentsView = ({ documents, onView }: DigitalDocumentsViewProps) => {
+const DigitalDocumentsView = ({ documents }: DigitalDocumentsViewProps) => {
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
 
   const sortedDocuments = [...documents].sort((a, b) => {
@@ -44,7 +44,7 @@ const DigitalDocumentsView = ({ documents, onView }: DigitalDocumentsViewProps) 
   };
 
   return (
-    <main className='mt-5 md:mt-14 px-4 sm:px-6 md:px-8 lg:px-10'>
+    <main className='mt-5 px-0'>
       <div className='w-full'>
         {/* Documents Card */}
         <div className='digital-documents-card'>
@@ -112,19 +112,13 @@ const DigitalDocumentsView = ({ documents, onView }: DigitalDocumentsViewProps) 
                           <Button
                             variant='text'
                             size='small'
-                            onClick={() => onView(document.viewUrl)}
+                            onClick={() => window.open(document.viewUrl, '_blank')}
                             startIcon={<FiEye size={16} />}
-                            aria-label={`View ${document.title}`}
                           >
                             View
                           </Button>
 
-                          <a
-                            href={document.downloadUrl}
-                            download
-                            className='action-link'
-                            aria-label={`Download ${document.title}`}
-                          >
+                          <a href={document.downloadUrl} download className='action-link'>
                             <FiDownload size={16} />
                             <span>Download</span>
                           </a>

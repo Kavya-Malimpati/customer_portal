@@ -85,9 +85,9 @@ const Login = () => {
                     <form onSubmit={handleSubmit} noValidate>
                         {/* Card Content - Form Inputs */}
                         <CardContent className='p-8 gap-4 flex flex-col'>
-                            <TextField {...formData.email} onChange={handleInputChange} />
-                            <TextField {...formData.password} onChange={handleInputChange} />
-                            <Select {...formData.city} onChange={handleInputChange} />
+                            <TextField {...formData.email} validationRules={undefined} onChange={handleInputChange} />
+                            <TextField {...formData.password} validationRules={undefined} onChange={handleInputChange} />
+                            <Select {...formData.city} validationRules={undefined} onChange={handleInputChange} />
                         </CardContent>
                         {/* Card Actions - Submit Button */}
                         <CardContent className='border-t border-gray-200 px-8 py-6 bg-gray-50'>

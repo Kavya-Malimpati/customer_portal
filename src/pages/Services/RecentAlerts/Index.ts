@@ -1,1 +1,1 @@
-export {default} from './RecentAlerts';
+export { default } from './RecentAlerts';

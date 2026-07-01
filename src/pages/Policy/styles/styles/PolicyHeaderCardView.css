@@ -1,0 +1,59 @@
+.policy-header-card {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  min-height: auto !important;
+}
+
+.policy-header-card-content {
+  padding: var(--space-1) var(--space-3);
+}
+
+/* Main layout */
+.policy-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Left column */
+.policy-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* Right column (actions) */
+.policy-header-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.policy-status-line {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: 2px;
+}
+
+.policy-status-badge {
+  padding: 1px var(--space-2);
+
+  background-color: rgb(48, 247, 3); /* soft green background */
+  color: var(--color-secondary);
+
+  border-radius: var(--radius-full);
+
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+
+  display: inline-flex;
+  align-items: center;
+}
+
+.button-content {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}

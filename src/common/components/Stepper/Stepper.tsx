@@ -1,9 +1,9 @@
 import '../../../styles/tokens.css';
-
+ 
 import React, { useState } from 'react';
-
+ 
 import Tooltip from '../Tooltip/Tooltip';
-
+ 
 export interface StepperStep {
   label: React.ReactNode;
   content?: React.ReactNode;

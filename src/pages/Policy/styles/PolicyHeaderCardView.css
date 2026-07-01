@@ -5,9 +5,7 @@
   min-height: auto !important;
 }
 
-.policy-card-content {
-  padding: var(--space-3) var(--space-6);
-}
+
 
 .policy-card-container {
   display: flex;

@@ -11,7 +11,7 @@ const PolicyLossTypeView = ({
   onChange,
 }: PolicyLossTypeViewProps) => {
   return (
-    <Card variant='outlined' className='policy-container'>
+    <Card variant='outlined' className='policyloss-container'>
       <CardContent>
         <div className='policy-section'>
           <Typography variant='h3' color='primary'>

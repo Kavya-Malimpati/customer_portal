@@ -1,12 +1,12 @@
-.policy-container {
+.policyloss-container {
   display: flex;
   flex-direction: column;
   width: 100%;
-   padding: var(--space-6);
+  padding: var(--space-6);
 }
 
 .policy-section {
-  padding: var(--space-5) 0;
+  padding: var(--space-5) ;
 }
 
 .section-title {

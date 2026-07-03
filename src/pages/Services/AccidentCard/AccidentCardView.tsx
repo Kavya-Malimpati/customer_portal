@@ -9,9 +9,10 @@ import type { StepItem } from './interfaces';
 
 interface Props {
   steps: StepItem[];
+  onStartClaim?: () => void;
 }
 
-const AccidentCardView: React.FC<Props> = ({ steps }) => {
+const AccidentCardView: React.FC<Props> = ({ steps, onStartClaim }) => {
   return (
     <div className='accident-card'>
       <div className='accident-header'>
@@ -42,7 +43,13 @@ const AccidentCardView: React.FC<Props> = ({ steps }) => {
       </div>
 
       <div className='accident-footer'>
-        <Button variant='contained' startIcon={<FiPlusCircle />} className='claim-btn' fullWidth>
+        <Button
+          variant='contained'
+          startIcon={<FiPlusCircle />}
+          className='claim-btn'
+          fullWidth
+          onClick={onStartClaim}
+        >
           Start a New Claim Now
         </Button>
       </div>

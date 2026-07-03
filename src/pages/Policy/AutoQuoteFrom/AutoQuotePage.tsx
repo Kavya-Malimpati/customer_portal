@@ -1,10 +1,11 @@
 import { useNavigate } from 'react-router-dom';
-import PageEngine from '../../../common/PageEngine';
+
+import PageEngine from '../../../PageEngine';
 import CustomerDetails from '../CommonViews/StartNewQuote';
-import VehicleDetails from './VehicleDriverDetails';
 import AutoCoverage from './AutoCoverageSelection';
 import PremiumEstimate from './AutoPremiumEstimate';
 import QuoteSummary from './AutoQuoteSummary/QuoteSummary';
+import VehicleDetails from './VehicleDriverDetails';
 
 const AutoQuotePage = () => {
   const navigate = useNavigate();

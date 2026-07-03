@@ -29,6 +29,7 @@ export interface StepperProps {
   connector?: React.ReactNode;
   color?: 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning' | 'inherit';
   size?: 'sm' | 'md' | 'lg';
+  showStepLabels?: boolean;
   onClick?: (stepIndex: number) => void;
   onFocus?: (stepIndex: number) => void;
   onBlur?: (stepIndex: number) => void;
@@ -63,6 +64,7 @@ const Stepper: React.FC<StepperProps> = ({
   activeStep: legacyActiveStep,
   orientation = 'horizontal',
   size = 'md',
+  showStepLabels = false,
   onClick,
   onFocus,
   onBlur,
@@ -155,7 +157,7 @@ const Stepper: React.FC<StepperProps> = ({
       style={{
         display: 'flex',
         flexDirection: orientation === 'vertical' ? 'column' : 'row',
-        alignItems: 'center',
+        alignItems: showStepLabels ? 'flex-start' : 'center',
         width: '100%',
         ...style,
       }}
@@ -176,7 +178,8 @@ const Stepper: React.FC<StepperProps> = ({
 
         return (
           <React.Fragment key={stepKey}>
-            {/* Circle button */}
+            {/* Step wrapper */}
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}>
             <button
               type='button'
               style={getButtonStyle(isActive, isCompleted, isDisabled)}
@@ -193,12 +196,20 @@ const Stepper: React.FC<StepperProps> = ({
               {stepData.icon ?? <span>{stepIndex + 1}</span>}
             </button>
 
+            {showStepLabels && (
+              <span style={{ fontSize: '12px', color: isActive ? 'var(--color-info)' : 'var(--color-gray-500)', textAlign: 'center', maxWidth: '80px', wordBreak: 'break-word' }}>
+                {stepLabel}
+              </span>
+            )}
+            </div>
             {/* Connector only between circles - NOT after last */}
             {stepIndex < steps.length - 1 && orientation === 'horizontal' && (
               <div
                 style={{
                   flex: '1 1 0',
                   height: '2px',
+                  marginTop: showStepLabels ? `calc(${cfg.size} / 2)` : undefined,
+                  alignSelf: showStepLabels ? 'flex-start' : undefined,
                   backgroundColor: isCompleted
                     ? 'var(--color-info)'
                     : 'var(--color-gray-300)',

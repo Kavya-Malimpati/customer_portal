@@ -10,6 +10,7 @@ const PageEngine: React.FC<PageEngineProps> = ({
   initialData,
   onSubmit,
   onCancel,
+  showStepLabels,
 }) => {
   const stepData = steps.map(step => ({
     id: step.id,
@@ -25,6 +26,7 @@ const PageEngine: React.FC<PageEngineProps> = ({
       initialData={initialData}
       onSubmit={onSubmit}
       onCancel={onCancel}
+      showStepLabels={showStepLabels}
     />
   );
 };

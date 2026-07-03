@@ -1,10 +1,11 @@
-import PageEngine from '../../../common/PageEngine';
 import { useNavigate } from 'react-router-dom';
+
+import PageEngine from '../../../PageEngine';
 import CustomerDetails from '../CommonViews/StartNewQuote';
-import HomeownersCoverage from './HomeownersCoverage';
-import HomeownersPropertyDetails from './HomeownersPropertyDetails';
 import PremiumEstimate from './HomeOwnerPremiumEstimate';
 import QuoteSummary from './HomeOwnerQuoteSummary';
+import HomeownersCoverage from './HomeownersCoverage';
+import HomeownersPropertyDetails from './HomeownersPropertyDetails';
 
 const HomeownersQuotePage = () => {
   const navigate = useNavigate();

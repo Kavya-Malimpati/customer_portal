@@ -1,18 +1,20 @@
 import './App.css';
+
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
+
 import MainLayout from './common/MainLayout';
 import BillingPage from './pages/Billing/BillingPage';
 import Claims from './pages/Claims';
-import PolicyPage from './pages/Policy/PolicyPage';
+import ClaimSuccessPage from './pages/Claims/FNOL/ClaimsSuccess/ClaimSuccessPage';
+import FNOLPage from './pages/Claims/FNOL/FNOLPage';
+import Dashboard from './pages/Dashboard/Dashboard';
 import AutoQuotePage from './pages/Policy/AutoQuoteFrom/AutoQuotePage';
 import HomeownersQuotePage from './pages/Policy/HomeOwnerQuoteFrom/HomeownersQuotePage';
+import PolicyPage from './pages/Policy/PolicyPage';
 import ProfilePage from './pages/Profile/ProfilePage';
 import Settings from './pages/Profile/Settings';
 import ServicesPage from './pages/Services/ServicesPage';
-import Dashboard from './pages/Dashboard/Dashboard';
 import TestPage from './pages/TestPage';
-import ClaimSuccessPage from './pages/Claims/FNOL/ClaimsSuccess/ClaimSuccessPage';
-import FNOLPage from './pages/Claims/FNOL/FNOLPage';
 
 function App() {
   const navigate = useNavigate();
@@ -37,7 +39,7 @@ function App() {
         }
       />
 
-    <Route
+      <Route
         path='/quoteAuto'
         element={
           <MainLayout onLogout={handleLogout}>
@@ -46,7 +48,7 @@ function App() {
         }
       />
 
- <Route
+      <Route
         path='/quoteHome'
         element={
           <MainLayout onLogout={handleLogout}>
@@ -54,7 +56,6 @@ function App() {
           </MainLayout>
         }
       />
-
 
       <Route
         path='/settings'

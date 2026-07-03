@@ -14,6 +14,7 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({
   submitButtonName = 'Submit',
   onCancel,
   initialData = {},
+  showStepLabels = false,
 }) => {
   const [formData, setFormData] = useState<FormData>(initialData);
   const [currentStep, setCurrentStep] = useState<number>(0);
@@ -65,7 +66,11 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({
           {/* Stepper - same width as card below */}
           <Stepper
             steps={Array.from({ length: totalSteps }, (_, index) => ({
-              label: ``,
+              label: showStepLabels
+                ? (isJsonMode && jsonConfig
+                    ? jsonConfig.steps[`step${index + 1}`]?.title
+                    : stepData?.[index]?.title) ?? `Step ${index + 1}`
+                : ``,
               completed: index < currentStep,
               description:
                 isJsonMode && jsonConfig
@@ -76,6 +81,7 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({
             orientation='horizontal'
             color='primary'
             size='md'
+            showStepLabels={showStepLabels}
           />
 
           {/* Title */}

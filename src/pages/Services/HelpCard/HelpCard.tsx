@@ -1,10 +1,25 @@
-import { FaComments, FaBook, FaLightbulb } from 'react-icons/fa';
+import { useState } from 'react';
+import { FaBook, FaComments, FaLightbulb } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 import HelpCardView from './HelpCardView';
 
-import type { HelpCardItem } from './interfaces';
+import type { ChatMessage, HelpCardItem } from './interfaces';
 
 const HelpCard = () => {
+  const navigate = useNavigate();
+  const [isChatOpen, setIsChatOpen] = useState(false);
+  const [isFaqOpen, setIsFaqOpen] = useState(false);
+  const [isLifeEventsOpen, setIsLifeEventsOpen] = useState(false);
+  const [chatInput, setChatInput] = useState('');
+  const [chatMessages, setChatMessages] = useState<ChatMessage[]>([
+    {
+      id: 1,
+      role: 'assistant',
+      text: 'Welcome! How can we help you today?',
+    },
+  ]);
+
   const helpItems: HelpCardItem[] = [
     {
       id: 'chat',
@@ -12,7 +27,7 @@ const HelpCard = () => {
       subtitle: 'LIVE NOW',
       icon: <FaComments size={24} color='var(--color-primary)' />,
       onClick: () => {
-        console.log('Chat with Us clicked');
+        setIsChatOpen(true);
       },
     },
     {
@@ -21,7 +36,7 @@ const HelpCard = () => {
       subtitle: 'SELF-SERVICE',
       icon: <FaBook size={24} color='var(--color-primary)' />,
       onClick: () => {
-        console.log('FAQs & Guides clicked');
+        setIsFaqOpen(true);
       },
     },
     {
@@ -30,7 +45,7 @@ const HelpCard = () => {
       subtitle: 'UPDATES',
       icon: <FaLightbulb size={24} color='var(--color-primary)' />,
       onClick: () => {
-        console.log('Policy Life Events clicked');
+        setIsLifeEventsOpen(true);
       },
     },
   ];
@@ -39,7 +54,64 @@ const HelpCard = () => {
     console.log('Search query:', query);
   };
 
-  return <HelpCardView items={helpItems} onSearch={handleSearch} />;
+  const handleCloseChat = () => {
+    setIsChatOpen(false);
+    setChatInput('');
+    setChatMessages([
+      {
+        id: 1,
+        role: 'assistant',
+        text: 'Welcome! How can we help you today?',
+      },
+    ]);
+    navigate('/services');
+  };
+
+  const handleSendMessage = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const trimmedMessage = chatInput.trim();
+
+    if (!trimmedMessage) {
+      return;
+    }
+
+    const userMessage: ChatMessage = {
+      id: Date.now(),
+      role: 'user',
+      text: trimmedMessage,
+    };
+
+    setChatMessages(previousMessages => [...previousMessages, userMessage]);
+    setChatInput('');
+
+    window.setTimeout(() => {
+      setChatMessages(previousMessages => [
+        ...previousMessages,
+        {
+          id: Date.now() + 1,
+          role: 'assistant',
+          text: 'Thanks for reaching out. A support specialist will follow up shortly.',
+        },
+      ]);
+    }, 250);
+  };
+
+  return (
+    <HelpCardView
+      items={helpItems}
+      onSearch={handleSearch}
+      isChatOpen={isChatOpen}
+      chatMessages={chatMessages}
+      chatInput={chatInput}
+      onChatInputChange={event => setChatInput(event.target.value)}
+      onSendMessage={handleSendMessage}
+      onCloseChat={handleCloseChat}
+      isFaqOpen={isFaqOpen}
+      onToggleFaqs={() => setIsFaqOpen(value => !value)}
+      isLifeEventsOpen={isLifeEventsOpen}
+      onCloseLifeEvents={() => setIsLifeEventsOpen(false)}
+    />
+  );
 };
 
 export default HelpCard;

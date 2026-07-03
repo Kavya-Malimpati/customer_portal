@@ -37,6 +37,7 @@ const TestPage = () => {
       onSubmit={data => {
         console.log(data);
       }}
+      showStepLabels
     />
   );
 };

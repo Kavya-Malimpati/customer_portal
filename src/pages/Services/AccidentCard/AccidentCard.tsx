@@ -1,8 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import AccidentCardView from './AccidentCardView';
+
 import type { AccidentCardProps, StepItem } from './interfaces';
 
 const AccidentCard: React.FC<AccidentCardProps> = ({ steps }) => {
+  const navigate = useNavigate();
   const defaultSteps: StepItem[] = [
     {
       id: 1,
@@ -28,7 +32,11 @@ const AccidentCard: React.FC<AccidentCardProps> = ({ steps }) => {
 
   const stepList = steps?.length ? steps : defaultSteps;
 
-  return <AccidentCardView steps={stepList} />;
+  const handleStartClaim = () => {
+    navigate('/claims');
+  };
+
+  return <AccidentCardView steps={stepList} onStartClaim={handleStartClaim} />;
 };
 
 export default AccidentCard;

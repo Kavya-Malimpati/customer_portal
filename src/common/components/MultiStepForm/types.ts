@@ -113,6 +113,8 @@ export interface MultiStepFormProps {
   onCancel?: () => void;
   // Optional initial form data
   initialData?: FormData;
+  // Show labels below stepper circles
+  showStepLabels?: boolean;
 }
 
 // Navigation parameters for URL routing (if needed)

@@ -1,12 +1,11 @@
 import { useNavigate, useParams } from 'react-router-dom';
 
-import PageEngine from '../../../common/components/PageEngine/PageEngine';
-
-import PolicyLossTypeStep from './PolicyLossType';
+import PageEngine from '../../../PageEngine';
 import IncidentDetailsStep from './IncidentDetails';
 import PartiesAndDamageStep from './PartiesAndDamage';
-import UploadEvidence from './UploadEvidence';
+import PolicyLossTypeStep from './PolicyLossType';
 import ReviewAndSubmit from './ReviewAndSubmit';
+import UploadEvidence from './UploadEvidence';
 
 const FNOLPage = () => {
   const navigate = useNavigate();
@@ -41,25 +40,18 @@ const FNOLPage = () => {
     },
   ];
 
-  const handleSubmit = (
-    data: unknown,
-  ) => {
-    const claimNumber = `CLM-${Math.floor(
-      100000 + Math.random() * 900000,
-    )}`;
+  const handleSubmit = (data: unknown) => {
+    const claimNumber = `CLM-${Math.floor(100000 + Math.random() * 900000)}`;
 
     const adjuster = 'John Smith';
 
-    navigate(
-      '/claims/fnol/success',
-      {
-        state: {
-          claimNumber,
-          adjuster,
-          claimData: data,
-        },
+    navigate('/claims/fnol/success', {
+      state: {
+        claimNumber,
+        adjuster,
+        claimData: data,
       },
-    );
+    });
   };
 
   return (
@@ -68,10 +60,7 @@ const FNOLPage = () => {
       submitButtonName='Submit Claim'
       initialData={{
         claimDetails: {
-          claimType:
-            claimType === 'home'
-              ? 'home'
-              : 'auto',
+          claimType: claimType === 'home' ? 'home' : 'auto',
         },
       }}
       onSubmit={handleSubmit}

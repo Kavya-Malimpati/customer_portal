@@ -20,4 +20,6 @@ export interface PageEngineProps {
   onSubmit: (data: FormData) => void;
 
   onCancel?: () => void;
+
+  showStepLabels?: boolean;
 }

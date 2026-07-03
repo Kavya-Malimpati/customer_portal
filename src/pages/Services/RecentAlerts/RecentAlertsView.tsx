@@ -10,6 +10,7 @@ import type { AlertItem } from './interfaces';
 interface RecentAlertsViewProps {
   alerts: AlertItem[];
   newCount: number;
+  onAlertClick?: (alert: AlertItem) => void;
 }
 
 const getAlertIcon = (type: AlertItem['type']) => {
@@ -25,7 +26,7 @@ const getAlertIcon = (type: AlertItem['type']) => {
   }
 };
 
-const RecentAlertsView: React.FC<RecentAlertsViewProps> = ({ alerts, newCount }) => {
+const RecentAlertsView: React.FC<RecentAlertsViewProps> = ({ alerts, newCount, onAlertClick }) => {
   return (
     <div className='alerts-card'>
       <div className='alerts-header'>
@@ -38,7 +39,14 @@ const RecentAlertsView: React.FC<RecentAlertsViewProps> = ({ alerts, newCount })
 
       <div className='alerts-list'>
         {alerts.map(alert => (
-          <div key={alert.id} className='alert-item'>
+          <Button
+            key={alert.id}
+            type='button'
+            variant='text'
+            color='inherit'
+            className='alert-item'
+            onClick={() => onAlertClick?.(alert)}
+          >
             <div className={`alert-icon ${alert.type}`}>{getAlertIcon(alert.type)}</div>
 
             <div className='alert-content'>
@@ -54,7 +62,7 @@ const RecentAlertsView: React.FC<RecentAlertsViewProps> = ({ alerts, newCount })
                 {alert.time}
               </Typography>
             </div>
-          </div>
+          </Button>
         ))}
       </div>
 

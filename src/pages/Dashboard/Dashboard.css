@@ -5,6 +5,7 @@
 
 .dashboard-alert {
   margin-top: var(--space-5);
+  margin-bottom: var(--space-5);
 }
 
 .dashboard-top-row {
@@ -60,6 +61,6 @@
     grid-template-columns: 1fr;
   }
   .dashboard-fourth-row {
-  grid-template-columns: 1fr;
-}
+    grid-template-columns: 1fr;
+  }
 }

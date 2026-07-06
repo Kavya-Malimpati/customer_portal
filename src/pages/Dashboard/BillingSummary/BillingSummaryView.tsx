@@ -1,4 +1,5 @@
 import { Typography, Button } from '../../../common/components';
+import { useNavigate } from 'react-router-dom';
 
 import { FiCalendar, FiCreditCard, FiCheckCircle } from 'react-icons/fi';
 
@@ -7,11 +8,12 @@ import './BillingSummaryUi.css';
 import type { BillingSummaryUiProps } from './Interfaces';
 
 const BillingSummaryView = ({ billingSummary }: BillingSummaryUiProps) => {
+  const navigate = useNavigate();
   return (
     <div className='billing-summary-wrapper'>
       <div className='billing-summary-card'>
         <div className='billing-summary-header'>
-          <div>
+          <div onClick={() => navigate('/billing')} style={{ cursor: 'pointer' }}>
             <Typography variant='h3' color='primary'>
               TOTAL BALANCE DUE
             </Typography>
@@ -28,7 +30,11 @@ const BillingSummaryView = ({ billingSummary }: BillingSummaryUiProps) => {
           </div>
 
           {billingSummary.autoPayEnabled && (
-            <div className='billing-autopay'>
+            <div
+              className='billing-autopay'
+              onClick={() => navigate('/billing', { state: { target: 'payment-methods' } })}
+              style={{ cursor: 'pointer' }}
+            >
               <FiCheckCircle size={16} />
               <span>Auto-Pay: ON</span>
             </div>
@@ -68,11 +74,19 @@ const BillingSummaryView = ({ billingSummary }: BillingSummaryUiProps) => {
         </div>
 
         <div className='billing-actions'>
-          <Button variant='contained' className='billing-pay-button'>
+          <Button
+            variant='contained'
+            className='billing-pay-button'
+            onClick={() => navigate('/billing', { state: { target: 'premium-payment' } })}
+          >
             Pay Now
           </Button>
 
-          <Button variant='outlined' className='billing-statement-button'>
+          <Button
+            variant='outlined'
+            className='billing-statement-button'
+            onClick={() => navigate('/billing', { state: { target: 'billing-history-footer' } })}
+          >
             View Statement
           </Button>
         </div>

@@ -1,9 +1,9 @@
 import { Typography, Button } from '../../../common/components';
-import { FiBell } from 'react-icons/fi';
-
+import { useNavigate } from 'react-router-dom';
 import './DashboardHeaderUi.css';
 
 const DashboardHeader = () => {
+  const navigate = useNavigate();
   return (
     <div className='dashboard-header'>
       <div className='dashboard-header-left'>
@@ -17,15 +17,13 @@ const DashboardHeader = () => {
       </div>
 
       <div className='dashboard-header-right'>
-        <div className='notification-container'>
-          <FiBell size={22} />
-          <span className='notification-badge' />
-        </div>
-
-        <Button variant='outlined' className='help-center-button'>
+        <Button
+          variant='outlined'
+          className='help-center-button'
+          onClick={() => navigate('/services#help-and-support')}
+        >
           Help Center
         </Button>
-        <div className='profile-avatar'>A</div>
       </div>
     </div>
   );

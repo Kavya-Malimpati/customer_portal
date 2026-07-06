@@ -1,4 +1,5 @@
-import { Typography, Button } from '../../../common/components';
+import { useMemo, useState } from 'react';
+import { Pagination, Typography, Button } from '../../../common/components';
 import Table from '../../../common/components/Table';
 import { FiSearch, FiEye, FiFileText, FiRefreshCw } from 'react-icons/fi';
 import FormInput from '../../../common/components/FormInput';
@@ -9,7 +10,27 @@ interface BillingHistoryViewProps {
   transactions: Transaction[];
 }
 
+const PAGE_SIZE = 5;
+
 const BillingHistoryView = ({ transactions }: BillingHistoryViewProps) => {
+  const [page, setPage] = useState(1);
+
+  const totalPages = Math.max(1, Math.ceil(transactions.length / PAGE_SIZE));
+  const currentPage = Math.min(page, totalPages);
+
+  const paginatedTransactions = useMemo(
+    () => transactions.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE),
+    [currentPage, transactions],
+  );
+
+  const handleViewDocument = (url?: string) => {
+    if (!url) return;
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
+  const startIndex = transactions.length === 0 ? 0 : (currentPage - 1) * PAGE_SIZE + 1;
+  const endIndex = Math.min(currentPage * PAGE_SIZE, transactions.length);
+
   const columns = [
     {
       field: 'date',
@@ -55,7 +76,11 @@ const BillingHistoryView = ({ transactions }: BillingHistoryViewProps) => {
 
       renderCell: (row: Transaction) => (
         <div className='actions'>
-          <Button variant='text' size='small'>
+          <Button
+            variant='text'
+            size='small'
+            onClick={() => handleViewDocument(row.documentUrl)}
+          >
             <span className='action-content'>
               <FiEye size={12} />
               View
@@ -63,7 +88,11 @@ const BillingHistoryView = ({ transactions }: BillingHistoryViewProps) => {
           </Button>
 
           {row.status === 'SUCCESS' ? (
-            <Button variant='text' size='small'>
+            <Button
+              variant='text'
+              size='small'
+              onClick={() => handleViewDocument(row.documentUrl)}
+            >
               <span className='action-content'>
                 <FiFileText size={12} />
                 Receipt
@@ -113,7 +142,7 @@ const BillingHistoryView = ({ transactions }: BillingHistoryViewProps) => {
       <div className='billing-history-table'>
         <Table
           columns={columns}
-          rows={transactions as never[]}
+          rows={paginatedTransactions as never[]}
           sortable={false}
           className='custom-billing-table'
           variant='outlined'
@@ -121,24 +150,25 @@ const BillingHistoryView = ({ transactions }: BillingHistoryViewProps) => {
         />
       </div>
 
-      <div className='billing-history-footer'>
+      <div className='billing-history-footer' id='billing-history-footer'>
         <Typography variant='body2'>
-          Showing 1–10 of 24 transactions
+          Showing {startIndex}–{endIndex} of {transactions.length} transactions
         </Typography>
 
-        <div className='pagination'>
-          <Button variant='text' size='small'>
-            1
-          </Button>
-
-          <Button variant='text' size='small'>
-            2
-          </Button>
-
-          <Button variant='text' size='small'>
-            3
-          </Button>
-        </div>
+        <nav aria-label='Billing history pagination' className='pagination'>
+          {Array.from({ length: totalPages }, (_, index) => {
+            const value = index + 1;
+            return (
+              <Pagination
+                key={value}
+                value={value}
+                selected={value === currentPage}
+                onClick={() => setPage(value)}
+                aria-label={`Page ${value}`}
+              />
+            );
+          })}
+        </nav>
       </div>
     </div>
   );

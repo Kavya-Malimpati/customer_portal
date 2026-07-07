@@ -237,7 +237,15 @@ const Header = ({ onMenuClick }: HeaderProps) => {
 
                 {/* Panel Footer */}
                 <div className='notif-panel-footer'>
-                  <Button variant='text' color='info' size='small' onClick={() => setOpen(false)}>
+                  <Button
+                    variant='text'
+                    color='info'
+                    size='small'
+                    onClick={() => {
+                      setOpen(false);
+                      navigate('/settings');
+                    }}
+                  >
                     Configure Alert Preferences ›
                   </Button>
                 </div>

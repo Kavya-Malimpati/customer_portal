@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from 'react-router-dom';
 
-import PageEngine from '../../../PageEngine';
+import PageEngine from '../../../common/components/PageEngine/PageEngine';
 import IncidentDetailsStep from './IncidentDetails';
 import PartiesAndDamageStep from './PartiesAndDamage';
 import PolicyLossTypeStep from './PolicyLossType';
@@ -64,6 +64,7 @@ const FNOLPage = () => {
         },
       }}
       onSubmit={handleSubmit}
+      onFirstStepBack={() => navigate(-1)}
     />
   );
 };

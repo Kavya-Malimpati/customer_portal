@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-import PageEngine from '../../../PageEngine';
+import PageEngine from '../../../common/components/PageEngine/PageEngine';
 import CustomerDetails from '../CommonViews/StartNewQuote';
 import PremiumEstimate from './HomeOwnerPremiumEstimate';
 import QuoteSummary from './HomeOwnerQuoteSummary';
@@ -45,6 +45,7 @@ const HomeownersQuotePage = () => {
           state: data,
         });
       }}
+      onFirstStepBack={() => navigate(-1)}
     />
   );
 };

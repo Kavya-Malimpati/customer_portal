@@ -1,4 +1,6 @@
 import './ServicesPage.css';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import { Typography } from '../../common/components';
 import AccidentCard from './AccidentCard';
@@ -9,9 +11,17 @@ import RecentAlerts from './RecentAlerts';
 import SafetyTipsCard from './SafetyTipsCard';
 
 const ServicesPage = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash === '#safety-tips') {
+      const target = document.getElementById('safety-tips');
+      target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [location.hash]);
+
   return (
     <>
-    
       <div className='support-guidance-section'>
         <Typography variant='h1' color='primary' className='support-guidance-title'>
           Support & Guidance Hub
@@ -22,7 +32,6 @@ const ServicesPage = () => {
       </div>
       <div className='services-page'>
         <div className='services-grid'>
-          
           <div className='left-section'>
             <HelpCard />
             <AccidentCard />
@@ -33,7 +42,6 @@ const ServicesPage = () => {
             </div>
           </div>
 
-         
           <div className='right-section'>
             <RecentAlerts />
             <Offers />

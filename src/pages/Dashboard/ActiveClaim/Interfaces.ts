@@ -9,4 +9,8 @@ export interface ActiveClaimData {
 
 export interface ActiveClaimUiProps {
   claim: ActiveClaimData;
+  onNavigateToClaims: () => void;
+  onNavigateToChat: () => void;
+  onNavigateToEvidenceVault: () => void;
+  onNavigateToRoadside: () => void;
 }

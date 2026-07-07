@@ -8,7 +8,7 @@ import type { SafetyTipsViewProps } from './interfaces';
 
 const SafetyTipsView = ({ tips }: SafetyTipsViewProps) => {
   return (
-    <Card variant='outlined-raised' className='safety-tips-card'>
+    <Card id='safety-tips' variant='outlined-raised' className='safety-tips-card'>
       <CardContent className='safety-tips-content'>
         <div className='safety-tips-heading'>
           <FaShieldAlt className='shield-icon' />

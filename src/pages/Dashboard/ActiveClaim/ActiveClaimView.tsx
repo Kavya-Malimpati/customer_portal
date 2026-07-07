@@ -1,6 +1,5 @@
 import { FaCarCrash } from 'react-icons/fa';
 import { FiTruck } from 'react-icons/fi';
-import { useNavigate } from 'react-router-dom';
 
 import { Button, Typography, Card, CardContent } from '../../../common/components';
 
@@ -10,16 +9,20 @@ import './ActiveClaimUi.css';
 
 import type { ActiveClaimUiProps } from './Interfaces';
 
-const ActiveClaimView = ({ claim }: ActiveClaimUiProps) => {
-  const navigate = useNavigate();
+const ActiveClaimView = ({
+  claim,
+  onNavigateToChat,
+  onNavigateToEvidenceVault,
+  onNavigateToClaims,
+  onNavigateToRoadside,
+}: ActiveClaimUiProps) => {
   return (
     <div className='active-claim-wrapper'>
-      <Card className='active-claim-card'>
+      <Card className='active-claim-card' aria-label='View all claims'>
         <CardContent className='active-claim-content'>
           <div className='active-claim-header'>
             <div
               className='active-claim-header-left'
-              onClick={() => navigate('/claims')}
               style={{ cursor: 'pointer' }}
             >
               <div className='active-claim-icon'>
@@ -27,7 +30,7 @@ const ActiveClaimView = ({ claim }: ActiveClaimUiProps) => {
               </div>
 
               <div>
-                <Typography variant='h3' color='primary'>
+                <Typography variant='h3' color='primary' onClick={onNavigateToClaims}>
                   Claim #{claim.claimNumber}
                 </Typography>
 
@@ -70,7 +73,14 @@ const ActiveClaimView = ({ claim }: ActiveClaimUiProps) => {
               </div>
             </div>
 
-            <Button variant='text' color='primary'>
+            <Button
+              variant='text'
+              color='primary'
+              onClick={event => {
+                event.stopPropagation();
+                onNavigateToRoadside();
+              }}
+            >
               Track Map
             </Button>
           </div>
@@ -79,12 +89,22 @@ const ActiveClaimView = ({ claim }: ActiveClaimUiProps) => {
             <Button
               variant='contained'
               className='active-upload-button'
-              onClick={() => navigate('/claims', { state: { target: 'evidence-vault' } })}
+              onClick={event => {
+                event.stopPropagation();
+                onNavigateToEvidenceVault();
+              }}
             >
               Upload Photos
             </Button>
 
-            <Button variant='outlined' className='active-adjuster-button'>
+            <Button
+              variant='outlined'
+              className='active-adjuster-button'
+              onClick={event => {
+                event.stopPropagation();
+                onNavigateToChat();
+              }}
+            >
               Contact Adjuster
             </Button>
           </div>

@@ -21,7 +21,10 @@ const ActiveClaimView = ({
       <Card className='active-claim-card' aria-label='View all claims'>
         <CardContent className='active-claim-content'>
           <div className='active-claim-header'>
-            <div className='active-claim-header-left'>
+            <div
+              className='active-claim-header-left'
+              style={{ cursor: 'pointer' }}
+            >
               <div className='active-claim-icon'>
                 <FaCarCrash size={18} />
               </div>

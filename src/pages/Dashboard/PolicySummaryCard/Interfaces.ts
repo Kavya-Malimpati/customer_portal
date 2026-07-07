@@ -1,11 +1,14 @@
-export interface PolicySummaryData {
-  policyType: string;
+export type PolicyType = 'Personal Auto' | 'Homeowners';
+
+export interface PolicySummary {
+  id: number;
+  policyType: PolicyType;
   propertyOrVehicle: string;
   policyNumber: string;
   renewalDate: string;
-  status: 'ACTIVE' | 'PENDING' | 'EXPIRED';
+  status: 'ACTIVE';
 }
 
 export interface PolicySummaryCardUiProps {
-  policies: PolicySummaryData[];
+  policies: PolicySummary[];
 }

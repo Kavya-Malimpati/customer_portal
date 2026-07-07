@@ -1,26 +1,31 @@
 import { useEffect, useState } from 'react';
 
 import PolicySummaryCardView from './PolicySummaryCardView';
-import { getPolicySummaryCardApi } from './PolicySummaryCardApi';
+import { getPolicySummaryApi } from './PolicySummaryCardApi';
 
-import type { PolicySummaryData } from './Interfaces';
+import type { PolicySummary } from './Interfaces';
 
 const PolicySummaryCard = () => {
-  const [policies, setPolicies] = useState<PolicySummaryData[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [policies, setPolicies] = useState<PolicySummary[]>([]);
 
   useEffect(() => {
-    getPolicySummaryCardApi().then(data => {
-      setPolicies(data);
-      setLoading(false);
-    });
+    const fetchPolicies = async () => {
+      const response = await getPolicySummaryApi();
+      setPolicies(response);
+    };
+
+    fetchPolicies();
   }, []);
 
-  if (loading) {
+  if (!policies.length) {
     return null;
   }
 
-  return <PolicySummaryCardView policies={policies} />;
+  return (
+    <PolicySummaryCardView
+      policies={policies}
+    />
+  );
 };
 
 export default PolicySummaryCard;

@@ -1,4 +1,5 @@
 import { FiCreditCard, FiFileText, FiTool } from 'react-icons/fi';
+import { useNavigate } from 'react-router-dom';
 
 import { Card, CardContent, Typography } from '../../../common/components';
 
@@ -6,13 +7,9 @@ import './RecentActivityUi.css';
 
 import type { RecentActivityUiProps } from './Interfaces';
 
-const iconMap = {
-  payment: <FiCreditCard size={18} />,
-  policy: <FiFileText size={18} />,
-  roadside: <FiTool size={18} />,
-};
-
 const RecentActivityView = ({ activities }: RecentActivityUiProps) => {
+  const navigate = useNavigate();
+
   return (
     <div className='recent-activity-wrapper'>
       <Card className='recent-activity-card'>
@@ -21,27 +18,51 @@ const RecentActivityView = ({ activities }: RecentActivityUiProps) => {
             Recent Activity
           </Typography>
 
-          {activities.map((activity, index) => (
-            <div key={activity.id}>
-              <div className='activity-row'>
-                <div className={`activity-icon activity-${activity.icon}`}>
-                  {iconMap[activity.icon as keyof typeof iconMap]}
+          {activities.map((activity, index) => {
+            let icon;
+
+            if (activity.icon === 'payment') {
+              icon = <FiCreditCard size={18} />;
+            } else if (activity.icon === 'policy') {
+              icon = <FiFileText size={18} />;
+            } else {
+              icon = <FiTool size={18} />;
+            }
+
+            return (
+              <div key={activity.id}>
+                <div
+                  className='activity-row'
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => {
+                    if (activity.icon === 'payment') {
+                      navigate('/billing', {
+                        state: { target: 'billing-history-footer' },
+                      });
+                    } else if (activity.icon === 'policy') {
+                      navigate('/policy');
+                    } else {
+                      navigate('/services');
+                    }
+                  }}
+                >
+                  <div className={`activity-icon activity-${activity.icon}`}>{icon}</div>
+
+                  <div className='activity-details'>
+                    <Typography variant='body1' className='activity-title'>
+                      {activity.title}
+                    </Typography>
+
+                    <Typography variant='body2' className='activity-description'>
+                      {activity.description}
+                    </Typography>
+                  </div>
                 </div>
 
-                <div className='activity-details'>
-                  <Typography variant='body1' className='activity-title'>
-                    {activity.title}
-                  </Typography>
-
-                  <Typography variant='body2' className='activity-description'>
-                    {activity.description}
-                  </Typography>
-                </div>
+                {index !== activities.length - 1 && <div className='activity-divider' />}
               </div>
-
-              {index !== activities.length - 1 && <div className='activity-divider' />}
-            </div>
-          ))}
+            );
+          })}
         </CardContent>
       </Card>
     </div>

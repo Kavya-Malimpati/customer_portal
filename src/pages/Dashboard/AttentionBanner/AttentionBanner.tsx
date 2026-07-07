@@ -1,9 +1,24 @@
 import { Typography, Button } from '../../../common/components';
+import { useEffect } from 'react';
+
 import { FiAlertTriangle } from 'react-icons/fi';
 import './AttentionBanner.css';
+import { useNavigate ,useLocation } from 'react-router-dom';
 
+import {  } from 'react-router-dom';
 const AttentionBanner = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
 
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.getElementById(location.hash.substring(1));
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [location]);
+  
   return (
     <div className='attention-banner'>
       <div className='attention-banner-left'>
@@ -22,7 +37,11 @@ const AttentionBanner = () => {
         </div>
       </div>
 
-      <Button variant='contained' className='resolve-button'>
+      <Button
+        variant='contained'
+        className='resolve-button'
+        onClick={() => navigate('/claims#active-claim')}
+      >
         Resolve Now
       </Button>
     </div>

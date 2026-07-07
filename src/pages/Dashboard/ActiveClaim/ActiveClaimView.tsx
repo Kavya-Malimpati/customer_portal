@@ -1,12 +1,8 @@
 import { FaCarCrash } from 'react-icons/fa';
 import { FiTruck } from 'react-icons/fi';
+import { useNavigate } from 'react-router-dom';
 
-import {
-  Button,
-  Typography,
-  Card,
-  CardContent,
-} from '../../../common/components';
+import { Button, Typography, Card, CardContent } from '../../../common/components';
 
 import LinearProgress from '../../../common/components/Progress/LinearProgress';
 
@@ -15,47 +11,39 @@ import './ActiveClaimUi.css';
 import type { ActiveClaimUiProps } from './Interfaces';
 
 const ActiveClaimView = ({ claim }: ActiveClaimUiProps) => {
+  const navigate = useNavigate();
   return (
     <div className='active-claim-wrapper'>
       <Card className='active-claim-card'>
         <CardContent className='active-claim-content'>
           <div className='active-claim-header'>
-            <div className='active-claim-header-left'>
+            <div
+              className='active-claim-header-left'
+              onClick={() => navigate('/claims')}
+              style={{ cursor: 'pointer' }}
+            >
               <div className='active-claim-icon'>
                 <FaCarCrash size={18} />
               </div>
 
               <div>
-                <Typography
-                  variant='h3'
-                  color='primary'
-                >
+                <Typography variant='h3' color='primary'>
                   Claim #{claim.claimNumber}
                 </Typography>
 
-                <Typography
-                  variant='body2'
-                  className='active-claim-type'
-                >
+                <Typography variant='body2' className='active-claim-type'>
                   {claim.claimType}
                 </Typography>
               </div>
             </div>
 
-            <div className='active-claim-status'>
-              {claim.status}
-            </div>
+            <div className='active-claim-status'>{claim.status}</div>
           </div>
 
           <div className='active-claim-progress-header'>
-            <Typography variant='body1'>
-              Status: Processing Payment
-            </Typography>
+            <Typography variant='body1'>Status: Processing Payment</Typography>
 
-            <Typography
-              variant='body1'
-              className='active-claim-progress-text'
-            >
+            <Typography variant='body1' className='active-claim-progress-text'>
               {claim.progress}% Complete
             </Typography>
           </div>
@@ -74,23 +62,15 @@ const ActiveClaimView = ({ claim }: ActiveClaimUiProps) => {
               <FiTruck size={22} />
 
               <div>
-                <Typography variant='body1'>
-                  {claim.towTruckEta}
-                </Typography>
+                <Typography variant='body1'>{claim.towTruckEta}</Typography>
 
-                <Typography
-                  variant='body2'
-                  className='active-tracking-id'
-                >
+                <Typography variant='body2' className='active-tracking-id'>
                   Tracking {claim.trackingId}
                 </Typography>
               </div>
             </div>
 
-            <Button
-              variant='text'
-              color='primary'
-            >
+            <Button variant='text' color='primary'>
               Track Map
             </Button>
           </div>
@@ -99,14 +79,12 @@ const ActiveClaimView = ({ claim }: ActiveClaimUiProps) => {
             <Button
               variant='contained'
               className='active-upload-button'
+              onClick={() => navigate('/claims', { state: { target: 'evidence-vault' } })}
             >
               Upload Photos
             </Button>
 
-            <Button
-              variant='outlined'
-              className='active-adjuster-button'
-            >
+            <Button variant='outlined' className='active-adjuster-button'>
               Contact Adjuster
             </Button>
           </div>

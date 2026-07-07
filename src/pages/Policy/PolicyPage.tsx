@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import tabsConfig from './PolicyTabs/tabs.json';
 import type { PolicyTabMetadata, PolicyTabKey } from './PolicyTabs/interfaces';
@@ -13,7 +14,19 @@ const COMPONENT_MAP: Record<PolicyTabKey, React.ComponentType> = {
 };
 const tabs = tabsConfig as PolicyTabMetadata[];
 const PolicyPage = () => {
-  const [activeTab, setActiveTab] = useState<PolicyTabKey>('personalAuto');
+  const location = useLocation();
+  const locationState = location.state as { activeTab?: PolicyTabKey } | null;
+  
+  const [activeTab, setActiveTab] = useState<PolicyTabKey>(
+    locationState?.activeTab || 'personalAuto'
+  );
+
+  useEffect(() => {
+    if (locationState?.activeTab) {
+      setActiveTab(locationState.activeTab);
+    }
+  }, [locationState?.activeTab]);
+
   const activeTabMetadata = tabs.find(tab => tab.key === activeTab);
   return (
     <PolicyPageView

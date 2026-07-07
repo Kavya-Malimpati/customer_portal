@@ -1,87 +1,98 @@
-import { FiShield, FiHome, FiUser, FiMapPin, FiChevronRight } from 'react-icons/fi';
+import { FiHome, FiShield, FiChevronRight } from 'react-icons/fi';
+import { useNavigate } from 'react-router-dom';
 
 import { Card, CardContent, Typography, Button, LabelValue } from '../../../common/components';
 
 import './PolicySummaryCardUi.css';
 
-import type { PolicySummaryCardUiProps } from './Interfaces';
+import type { PolicySummaryCardUiProps, PolicySummary } from './Interfaces';
 
 const PolicySummaryCardView = ({ policies }: PolicySummaryCardUiProps) => {
+  const navigate = useNavigate();
+
+  const handlePolicyClick = (policy: PolicySummary) => {
+    const policyType = policy.policyType === 'Personal Auto' ? 'personalAuto' : 'homeowners';
+    navigate('/policy', { state: { activeTab: policyType } });
+  };
   return (
-    <div className='policy-summary-grid'>
-      {policies.map(policy => (
-        <Card key={policy.policyNumber} className='policy-summary-card'>
-          <CardContent className='policy-summary-content'>
-            <div className='policy-header'>
-              <div className='policy-header-left'>
-                <div className='policy-icon'>
-                  {policy.policyType === 'Homeowners' ? (
-                    <FiHome size={22} />
-                  ) : (
-                    <FiShield size={22} />
-                  )}
+    <Card variant='outlined' id = 'active-policies' className='policy-summary-card'>
+      <CardContent className='policy-summary-content'>
+        <div className='policy-summary-header'>
+          <Typography variant='h3' color='primary'>
+            Active Insurance Policies
+          </Typography>
+
+          <Button variant='text' color='primary'>
+            <span className='view-all-link'>
+              View all details
+              <FiChevronRight size={16} />
+            </span>
+          </Button>
+        </div>
+
+        <div className='policy-summary-divider' />
+
+        {policies.map((policy: PolicySummary, index) => (
+          <div key={policy.id}>
+            <div
+              className='policy-row'
+              onClick={() => handlePolicyClick(policy)}
+              style={{ cursor: 'pointer' }}
+            >
+              <div className='policy-details'>
+                <div className='policy-title-row'>
+                  <div className='policy-title-left'>
+                    <div className='policy-icon'>
+                      {policy.policyType === 'Personal Auto' ? (
+                        <FiShield size={22} />
+                      ) : (
+                        <FiHome size={22} />
+                      )}
+                    </div>
+
+                    <Typography variant='h5' color='primary'>
+                      {policy.policyType}
+                    </Typography>
+                  </div>
+
+                  <span className='policy-status'>{policy.status}</span>
                 </div>
 
-                <div className='policy-text-container'>
-                  <Typography variant='h3' color='primary' className='policy-title'>
-                    {policy.policyType}
-                  </Typography>
+                <Typography variant='body2' className='policy-subtitle'>
+                  {policy.propertyOrVehicle}
+                </Typography>
 
-                  <Typography variant='body2' className='policy-subtitle'>
-                    {policy.propertyOrVehicle}
-                  </Typography>
+                <div className='policy-info'>
+                  <LabelValue
+                    label='POLICY NUMBER'
+                    value={policy.policyNumber}
+                    orientation='vertical'
+                    labelVariant='body2'
+                    valueVariant='body1'
+                  />
+
+                  <LabelValue
+                    label='RENEWAL DATE'
+                    value={policy.renewalDate}
+                    orientation='vertical'
+                    labelVariant='body2'
+                    valueVariant='body1'
+                  />
                 </div>
               </div>
 
-              <div className='policy-status'>{policy.status}</div>
-            </div>
-
-            <div className='policy-divider' />
-
-            <div className='policy-details'>
-              <LabelValue
-                label='POLICY NUMBER'
-                value={policy.policyNumber}
-                orientation='vertical'
-                labelVariant='body2'
-                valueVariant='body1'
-                className='policy-label-value'
-              />
-
-              <LabelValue
-                label='RENEWAL DATE'
-                value={policy.renewalDate}
-                orientation='vertical'
-                labelVariant='body2'
-                valueVariant='body1'
-                className='policy-label-value'
-              />
-            </div>
-
-            <div className='policy-divider' />
-
-            <div className='policy-footer'>
-              <div className='policy-footer-icons'>
-                <div className='footer-icon'>
-                  <FiUser size={14} />
-                </div>
-
-                <div className='footer-icon'>
-                  <FiMapPin size={14} />
-                </div>
+              <div className='policy-actions'>
+                <Button variant='contained' className='policy-action-button'>
+                  View Limits
+                </Button>
               </div>
-
-              <Button variant='text' color='primary'>
-                <span className='manage-link'>
-                  Manage Coverage
-                  <FiChevronRight />
-                </span>
-              </Button>
             </div>
-          </CardContent>
-        </Card>
-      ))}
-    </div>
+
+            {index !== policies.length - 1 && <div className='policy-summary-divider' />}
+          </div>
+        ))}
+      </CardContent>
+    </Card>
   );
 };
 

@@ -1,5 +1,4 @@
 import './HelpCard.css';
-
 import { useState } from 'react';
 import {
   FaBaby,
@@ -272,7 +271,7 @@ const HelpCardView = ({
 
   return (
     <>
-      <div className='help-card-container'>
+      <div className='help-card-container' id='help-and-support'>
         <Card variant='outlined' className='help-card-wrapper'>
           <div className='help-card-header'>
             <Typography variant='h3' color='primary' className='help-card-title'>

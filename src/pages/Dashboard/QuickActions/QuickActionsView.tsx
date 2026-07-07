@@ -20,7 +20,7 @@ const QuickActionsView = ({ actions }: QuickActionsUiProps) => {
         <Card key={action.id} className='quick-action-card'>
           <CardContent className='quick-action-content'>
             <div className='quick-action-icon'>
-              {iconMap[action.icon as keyof typeof iconMap] ?? <FiFileText size={34} />}
+              {<FiFileText size={34} />}
             </div>
 
             <Typography variant='body1' className='quick-action-title'>

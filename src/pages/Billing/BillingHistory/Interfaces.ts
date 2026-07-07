@@ -6,11 +6,9 @@ export interface Transaction {
   reference?: string;
   amount: string;
   status: 'SUCCESS' | 'FAILED';
+  documentUrl?: string;
 }
 
 export interface BillingHistoryProps {
   transactions: Transaction[];
-  onView: (id: string) => void;
-  onReceipt: (id: string) => void;
-  onRetry: (id: string) => void;
 }

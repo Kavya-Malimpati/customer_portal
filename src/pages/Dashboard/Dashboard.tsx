@@ -8,6 +8,7 @@ import QuickActions from './QuickActions/QuickActions';
 import PolicySummaryCard from './PolicySummaryCard/PolicySummaryCard';
 import RecentActivity from './RecentActivity/RecentActivity';
 import SafetySavings from './SafetySavings/SafetySavings';
+import DashboardSummary from './DashboardSummary/DashboardSummary';
 
 const Dashboard = () => {
   return (
@@ -16,6 +17,9 @@ const Dashboard = () => {
 
       <div className='dashboard-alert'>
         <AttentionBanner />
+      </div>
+      <div className='dashboard-summary'>
+        <DashboardSummary />
       </div>
 
       <div className='dashboard-top-row'>

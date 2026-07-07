@@ -4,13 +4,13 @@ import ClaimTypeSelector from '../ClaimType/ClaimTypeSelector';
 import RegisterFNOLView from './RegisterFNOLView';
 import type { ClaimInfo, FNOLStep, RepairCardInfo } from './Interface';
 
-const RegisterFNOL = () => {
-  const [openClaimModal, setOpenClaimModal] = useState(false);
+interface RegisterFNOLProps {
+  selectedClaim: ClaimInfo;
+  onChangeClaim: () => void;
+}
 
-  const selectedClaim: ClaimInfo = {
-    claimNumber: 'Claim #PC-9902',
-    vehicle: 'Rear-End Collision',
-  };
+const RegisterFNOL = ({ selectedClaim, onChangeClaim }: RegisterFNOLProps) => {
+  const [openClaimModal, setOpenClaimModal] = useState(false);
 
   const steps: FNOLStep[] = [
     { id: 1, title: 'Policy & Loss Type' },
@@ -28,15 +28,11 @@ const RegisterFNOL = () => {
   };
 
   const handleChangeClaim = () => {
-    alert('Change claim clicked');
+    onChangeClaim();
   };
 
   const handleStartReporting = () => {
     setOpenClaimModal(true);
-  };
-
-  const handleRequestRepair = () => {
-    alert('Request repair clicked');
   };
 
   return (
@@ -50,7 +46,6 @@ const RegisterFNOL = () => {
         repairInfo={repairInfo}
         onChangeClaim={handleChangeClaim}
         onStartReporting={handleStartReporting}
-        onRequestRepair={handleRequestRepair}
       />
 
       <Modal

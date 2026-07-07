@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { FiTruck, FiMapPin, FiPhone } from 'react-icons/fi';
 import { Typography, Button, Card, CardContent, LabelValue } from '../../../common/components';
+import Modal from '../../../common/components/Modal';
 import type { RoadsideAssistanceViewProps } from './Interface';
 import './Roadside.css';
 
@@ -8,6 +10,13 @@ const RoadsideAssistanceView = ({
   roadsideStatus,
   onCancelRequest,
 }: RoadsideAssistanceViewProps) => {
+  const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
+
+  const handleCancelRequest = () => {
+    onCancelRequest();
+    setIsCancelModalOpen(true);
+  };
+
   return (
     <Card variant='outlined-raised' className='roadside-card'>
       <CardContent>
@@ -100,12 +109,22 @@ const RoadsideAssistanceView = ({
               </Button>
             </a>
 
-            <Button variant='outlined' fullWidth onClick={onCancelRequest}>
+            <Button variant='outlined' fullWidth onClick={handleCancelRequest}>
               Cancel Request
             </Button>
           </div>
         </div>
       </CardContent>
+
+      <Modal
+        isOpen={isCancelModalOpen}
+        onClose={() => setIsCancelModalOpen(false)}
+        title='Roadside Request'
+      >
+        <Typography variant='body1'>
+          Your roadside assistance request has been cancelled.
+        </Typography>
+      </Modal>
     </Card>
   );
 };

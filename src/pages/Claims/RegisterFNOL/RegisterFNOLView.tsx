@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { FiClock } from 'react-icons/fi';
 import './RegisterFNOL.css';
 import type { RegisterFNOLViewProps } from './Interface';
@@ -9,6 +10,7 @@ import {
   Stepper,
   Card,
 } from '../../../common/components';
+import Modal from '../../../common/components/Modal';
 import { FaShieldAlt } from 'react-icons/fa';
 
 const RegisterFNOLView = ({
@@ -16,17 +18,23 @@ const RegisterFNOLView = ({
   currentStep,
   repairInfo,
   selectedClaim,
+  onChangeClaim,
   onStartReporting,
-  onRequestRepair,
 }: RegisterFNOLViewProps) => {
+  const [isRepairModalOpen, setIsRepairModalOpen] = useState(false);
+
   const stepperSteps = steps.map(step => ({
     label: step.title,
   }));
 
+  const handleRequestRepair = () => {
+    setIsRepairModalOpen(true);
+  };
+
   return (
     <section className='register-fnol-page'>
       <section className='fnol-header-row'>
-        <div>
+        {/* <div>
           <Typography variant='h1' color='primary' className='fnol-title'>
             Good Morning, Alexander
           </Typography>
@@ -34,7 +42,7 @@ const RegisterFNOLView = ({
           <Typography variant='body2' className='fnol-subtitle'>
             Welcome back. You have 2 active claims needing attention.
           </Typography>
-        </div>
+        </div> */}
 
         <div className='fnol-selected-claim' >
           <Typography variant='caption'>
@@ -48,12 +56,12 @@ const RegisterFNOLView = ({
             {selectedClaim.claimNumber} | {selectedClaim.vehicle}
           </Typography>
 
-          <Button variant='text'>
+          <Button variant='text' onClick={onChangeClaim}>
             Change
           </Button>
         </div>
 
-        <div className='fnol-alert'>
+        {/* <div className='fnol-alert'>
           <div className='fnol-alert-icon'>△</div>
 
           <div>
@@ -77,7 +85,7 @@ const RegisterFNOLView = ({
           <Button color='error' variant='text'>
             Resolve Now
           </Button>
-        </div>
+        </div> */}
       </section>
 
       <div className='register-fnol-grid'>
@@ -105,6 +113,7 @@ const RegisterFNOLView = ({
               orientation='horizontal'
               color='primary'
               size='sm'
+              showStepLabels
             />
           </div>
 
@@ -158,13 +167,17 @@ const RegisterFNOLView = ({
               variant='outlined'
               className='request'
               fullWidth
-              onClick={onRequestRepair}
+              onClick={handleRequestRepair}
             >
               Request Repair
             </Button>
           </CardContent>
         </Card>
       </div>
+
+      <Modal isOpen={isRepairModalOpen} onClose={() => setIsRepairModalOpen(false)} title='Repair Request'>
+        <Typography variant='body1'>Your repair request has been received.</Typography>
+      </Modal>
     </section>
   );
 };

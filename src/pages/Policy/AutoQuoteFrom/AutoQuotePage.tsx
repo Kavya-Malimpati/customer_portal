@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-import PageEngine from '../../../PageEngine';
+import PageEngine from '../../../common/components/PageEngine/PageEngine';
 import CustomerDetails from '../CommonViews/StartNewQuote';
 import AutoCoverage from './AutoCoverageSelection';
 import PremiumEstimate from './AutoPremiumEstimate';
@@ -45,6 +45,7 @@ const AutoQuotePage = () => {
           state: data,
         });
       }}
+      onFirstStepBack={() => navigate(-1)}
     />
   );
 };

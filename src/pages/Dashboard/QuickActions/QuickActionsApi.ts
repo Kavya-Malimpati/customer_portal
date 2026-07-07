@@ -8,21 +8,25 @@ export const getQuickActionsApi = async (): Promise<QuickActionItem[]> => {
       id: 1,
       title: 'File a Claim',
       icon: 'claim',
+      route: '/claims#register-fnol',
     },
     {
       id: 2,
       title: 'ID Cards',
       icon: 'idcard',
+      route: '/policy',
     },
     {
       id: 3,
       title: 'Get a Quote',
       icon: 'quote',
+      route: '/policy',
     },
     {
       id: 4,
       title: 'Policy Docs',
       icon: 'docs',
+      route: '/policy',
     },
   ];
 };

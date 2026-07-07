@@ -28,6 +28,7 @@ export interface AutoPolicy {
   startDate: string;
   endDate: string;
   lastUpdated: string;
+  renewalPremium?: string;
 
   coverage: CoverageItem[];
   vehicle: VehicleInformation;

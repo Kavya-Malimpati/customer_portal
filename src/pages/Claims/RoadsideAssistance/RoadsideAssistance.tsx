@@ -19,10 +19,6 @@ const RoadsideAssistance = () => {
     fetchRoadsideData();
   }, []);
 
-  const handleCancelRequest = () => {
-    alert('Roadside assistance request cancelled');
-  };
-
   if (!provider || !roadsideStatus) {
     return null;
   }
@@ -31,7 +27,7 @@ const RoadsideAssistance = () => {
     <RoadsideAssistanceView
       provider={provider}
       roadsideStatus={roadsideStatus}
-      onCancelRequest={handleCancelRequest}
+      onCancelRequest={() => {}}
     />
   );
 };

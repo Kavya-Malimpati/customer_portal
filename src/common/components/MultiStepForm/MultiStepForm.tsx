@@ -15,6 +15,7 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({
   onCancel,
   initialData = {},
   showStepLabels = false,
+  onFirstStepBack,
 }) => {
   const [formData, setFormData] = useState<FormData>(initialData);
   const [currentStep, setCurrentStep] = useState<number>(0);
@@ -34,7 +35,9 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({
     setFormData(prevData => ({ ...prevData, [stepName]: data }));
   };
 
-  const handleSubmit = (): void => { onSubmit(formData); };
+  const handleSubmit = (): void => {
+    onSubmit(formData);
+  };
 
   const handleNext = (): void => {
     if (isLastStep) handleSubmit();
@@ -42,10 +45,13 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({
   };
 
   const handleBack = (): void => {
-    if (currentStep > 0) {
-      setIsNextDisabled(false);
-      setCurrentStep(prev => prev - 1);
+    if (currentStep === 0) {
+      onFirstStepBack?.();
+      return;
     }
+
+    setIsNextDisabled(false);
+    setCurrentStep(prev => prev - 1);
   };
 
   const setShouldGoNext = (shouldGoNext: boolean): void => {
@@ -58,11 +64,24 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({
 
   return (
     <div data-testid={testId} style={{ width: '100%' }}>
-
       {/* ONE container for both stepper and content - guarantees same width */}
-      <div style={{ display: 'flex', justifyContent: 'center', width: '100%', padding: '2rem 2rem 0 2rem' }}>
-        <div style={{ width: '100%', maxWidth: '896px', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          width: '100%',
+          padding: '2rem 2rem 0 2rem',
+        }}
+      >
+        <div
+          style={{
+            width: '100%',
+            maxWidth: '896px',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1.5rem',
+          }}
+        >
           {/* Stepper - same width as card below */}
           <Stepper
             steps={Array.from({ length: totalSteps }, (_, index) => ({
@@ -109,25 +128,34 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({
               <div>No step configuration found</div>
             )}
           </div>
-
         </div>
       </div>
 
       {/* Navigation */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '1.5rem 2rem', borderTop: '1px solid #e5e7eb' }}>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          padding: '1.5rem 2rem',
+          borderTop: '1px solid #e5e7eb',
+        }}
+      >
         <div style={{ display: 'flex', gap: '0.5rem' }}>
-          {currentStep > 0 && (
-            <Button variant='outlined' onClick={handleBack}>Back</Button>
-          )}
+          <Button variant='outlined' onClick={handleBack}>
+            Back
+          </Button>
+
           {onCancel && (
-            <Button variant='text' onClick={onCancel}>Cancel</Button>
+            <Button variant='text' onClick={onCancel}>
+              Cancel
+            </Button>
           )}
         </div>
         <Button variant='contained' onClick={handleNext} disabled={isNextDisabled}>
           {isLastStep ? submitButtonName : 'Next'}
         </Button>
       </div>
-
     </div>
   );
 };

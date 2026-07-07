@@ -13,7 +13,9 @@ const ClaimDocumentsView = ({
 }: ClaimDocumentsViewProps) => {
   return (
     <>
-      <EvidenceVault />
+      <section id='evidence-vault'>
+        <EvidenceVault />
+      </section>
 
       <Card variant='outlined-raised' className='claim-documents-card'>
         <CardContent>

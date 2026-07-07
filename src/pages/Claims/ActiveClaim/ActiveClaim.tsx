@@ -1,26 +1,17 @@
-import { useEffect, useState } from 'react';
-import { fetchActiveClaim } from './ActiveClaimApi';
 import type { ActiveClaim as ActiveClaimType } from './Interface';
 import ActiveClaimView from './ActiveClaimView';
 import { steps, formatStatus, stepLabels } from './constants';
 
-const ActiveClaim = () => {
-  const [data, setData] = useState<ActiveClaimType | null>(null);
+interface ActiveClaimProps {
+  activeClaimData: ActiveClaimType;
+}
 
-  useEffect(() => {
-    const loadActiveClaim = async () => {
-      const response = await fetchActiveClaim();
-      setData(response);
-    };
-
-    loadActiveClaim();
-  }, []);
-
-  const currentIndex = data ? steps.indexOf(data.status) : -1;
+const ActiveClaim = ({ activeClaimData }: ActiveClaimProps) => {
+  const currentIndex = steps.indexOf(activeClaimData.status);
 
   return (
     <ActiveClaimView
-      data={data}
+      data={activeClaimData}
       steps={steps}
       stepLabels={stepLabels}
       currentIndex={currentIndex}

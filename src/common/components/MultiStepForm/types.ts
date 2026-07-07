@@ -115,6 +115,8 @@ export interface MultiStepFormProps {
   initialData?: FormData;
   // Show labels below stepper circles
   showStepLabels?: boolean;
+  // Optional callback when user clicks back on the first step
+  onFirstStepBack?: () => void;
 }
 
 // Navigation parameters for URL routing (if needed)

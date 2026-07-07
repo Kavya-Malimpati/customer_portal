@@ -16,6 +16,21 @@
   margin-bottom: var(--space-4);
 }
 
+.safety-heading-button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+
+.safety-heading-button:hover .safety-heading,
+.safety-heading-button:focus-visible .safety-heading {
+  text-decoration: underline;
+}
+
 .safety-list {
   display: flex;
   flex-direction: column;

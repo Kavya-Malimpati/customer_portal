@@ -11,17 +11,24 @@ import './SafetySavingsUi.css';
 
 import type { SafetySavingsUiProps } from './Interfaces';
 
-const SafetySavingsView = ({ tips }: SafetySavingsUiProps) => {
+const SafetySavingsView = ({ tips, onNavigateSafetyTips }: SafetySavingsUiProps) => {
   return (
     <div className='safety-wrapper'>
       <Card className='safety-card'>
         <CardContent className='safety-content'>
-          <Typography
-            variant='h3'
-            className='safety-heading'
+          <button
+            type='button'
+            className='safety-heading-button'
+            onClick={onNavigateSafetyTips}
+            aria-label='Navigate to Safety Tips in Services'
           >
-            Safety & Savings
-          </Typography>
+            <Typography
+              variant='h3'
+              className='safety-heading'
+            >
+              Safety & Savings
+            </Typography>
+          </button>
 
           <div className='safety-list'>
             {tips.map(tip => (
@@ -63,6 +70,7 @@ const SafetySavingsView = ({ tips }: SafetySavingsUiProps) => {
           <Button
             variant='outlined'
             className='explore-button'
+            onClick={onNavigateSafetyTips}
           >
             Explore All Tips
           </Button>

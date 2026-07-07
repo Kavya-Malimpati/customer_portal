@@ -21,6 +21,8 @@ import { getAutoAwaitingSignatureApi } from './Api/autoAwaitingSignatureApi';
 import { getAutoChangeRequestsApi } from './Api/autoChangeRequestsApi';
 import { getAutoRenewalHistoryApi } from './Api/autoRenewalHistoryApi';
 
+import Modal from '../../../common/components/Modal';
+import { Typography, Button, LabelValue } from '../../../common/components';
 import '../styles/PolicyPageView.css';
 interface Props {
   policy: AutoPolicy;
@@ -30,11 +32,26 @@ interface Props {
 
 const AutoPolicyPageView = ({ policy, headerData }: Props) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isRenewModalOpen, setIsRenewModalOpen] = useState(false);
+  const [hasRenewed, setHasRenewed] = useState(false);
+
+  const handleRenew = () => {
+    setIsRenewModalOpen(true);
+    setHasRenewed(false);
+  };
+
+  const handleConfirmRenewal = () => {
+    setHasRenewed(true);
+  };
 
   return (
     <div className='policy-page'>
       <div className='policy-container'>
-        <PolicyHeaderCardView policy={headerData} onRequestChange={() => {}} onRenew={() => {}} />
+        <PolicyHeaderCardView
+          policy={headerData}
+          onRequestChange={() => {}}
+          onRenew={handleRenew}
+        />
 
         <div className='policy-grid'>
           {/* LEFT */}
@@ -66,6 +83,27 @@ const AutoPolicyPageView = ({ policy, headerData }: Props) => {
             <RenewalHistoryCardView fetchRenewalHistory={getAutoRenewalHistoryApi} />
           </div>
         </div>
+
+        <Modal
+          isOpen={isRenewModalOpen}
+          onClose={() => setIsRenewModalOpen(false)}
+          title='Policy Renewal'
+          maxWidth='500px'
+        >
+          {hasRenewed ? (
+            <Typography variant='body1'>Your policy has been renewed successfully.</Typography>
+          ) : (
+            <div className='renewal-modal-content'>
+              <LabelValue label='Policy Number' value={headerData.policyNumber} />
+              <LabelValue label='Policy Expiry Date' value={headerData.endDate} />
+              <LabelValue label='Renewal Premium' value={policy.renewalPremium} />
+
+              <Button variant='contained' fullWidth onClick={handleConfirmRenewal}>
+                Confirm Renewal
+              </Button>
+            </div>
+          )}
+        </Modal>
       </div>
     </div>
   );

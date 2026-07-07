@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import { Card, Typography, Button, LabelValue } from '../../../common/components';
 import CardHeader from '../../../common/components/Card/CardHeader';
 import CardContent from '../../../common/components/Card/CardContent';
 import CardFooter from '../../../common/components/Card/CardFooter';
 import Stepper from '../../../common/components/Stepper/Stepper';
+import Modal from '../../../common/components/Modal';
 import { FiFileText, FiSearch, FiClipboard, FiCheckCircle } from 'react-icons/fi';
 import { FiCalendar } from 'react-icons/fi';
 import type { ActiveClaim } from './Interface';
@@ -18,6 +20,12 @@ interface Props {
 }
 
 const ActiveClaimView = ({ data, currentIndex, formatStatus }: Props) => {
+  const [isInspectionModalOpen, setIsInspectionModalOpen] = useState(false);
+  const [isReceiptModalOpen, setIsReceiptModalOpen] = useState(false);
+
+  const handleInspectionModalClose = () => setIsInspectionModalOpen(false);
+  const handleReceiptModalClose = () => setIsReceiptModalOpen(false);
+
   return (
     <div className='claim-layout'>
       <Card variant='outlined-raised'>
@@ -75,6 +83,7 @@ const ActiveClaimView = ({ data, currentIndex, formatStatus }: Props) => {
                   icon: <FiCheckCircle />,
                 },
               ]}
+              showStepLabels
             />
           </div>
         </CardContent>
@@ -130,7 +139,7 @@ const ActiveClaimView = ({ data, currentIndex, formatStatus }: Props) => {
             />
           </CardContent>
           <CardFooter>
-            <Button variant='outlined' fullWidth>
+            <Button variant='outlined' fullWidth onClick={() => setIsInspectionModalOpen(true)}>
               View / Reschedule Inspection
             </Button>
           </CardFooter>
@@ -161,12 +170,31 @@ const ActiveClaimView = ({ data, currentIndex, formatStatus }: Props) => {
             </Typography>
           </CardContent>
           <CardFooter>
-            <Button variant='outlined' className='submit' fullWidth>
+            <Button
+              variant='outlined'
+              className='submit'
+              fullWidth
+              onClick={() => setIsReceiptModalOpen(true)}
+            >
               Submit New Receipt
             </Button>
           </CardFooter>
         </Card>
       </div>
+
+      <Modal
+        isOpen={isInspectionModalOpen}
+        onClose={handleInspectionModalClose}
+        title='Inspection Update'
+      >
+        <Typography variant='body1'>
+          Your inspection details will be shared here shortly.
+        </Typography>
+      </Modal>
+
+      <Modal isOpen={isReceiptModalOpen} onClose={handleReceiptModalClose} title='Receipt Upload'>
+        <Typography variant='body1'>Receipt submission is currently being prepared.</Typography>
+      </Modal>
     </div>
   );
 };

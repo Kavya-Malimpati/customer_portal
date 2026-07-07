@@ -6,6 +6,10 @@ import './QuickActionsUi.css';
 
 import type { QuickActionsUiProps, QuickActionItem } from './Interfaces';
 
+interface QuickActionsViewWithHandlerProps extends QuickActionsUiProps {
+  onActionClick: (route: string) => void;
+}
+
 const iconMap = {
   claim: <FiCheckCircle size={34} />,
   idcard: <FiClipboard size={34} />,
@@ -13,11 +17,16 @@ const iconMap = {
   docs: <FiFileText size={34} />,
 };
 
-const QuickActionsView = ({ actions }: QuickActionsUiProps) => {
+const QuickActionsView = ({ actions, onActionClick }: QuickActionsViewWithHandlerProps) => {
   return (
     <div className='quick-actions-grid'>
       {actions.map((action: QuickActionItem) => (
-        <Card key={action.id} className='quick-action-card'>
+        <Card
+          key={action.id}
+          className='quick-action-card'
+          onClick={() => onActionClick(action.route)}
+          style={{ cursor: 'pointer' }}
+        >
           <CardContent className='quick-action-content'>
             <div className='quick-action-icon'>
               {iconMap[action.icon as keyof typeof iconMap] ?? <FiFileText size={34} />}

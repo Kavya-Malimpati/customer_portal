@@ -7,4 +7,5 @@ export interface SafetyTip {
 
 export interface SafetySavingsUiProps {
   tips: SafetyTip[];
+  onNavigateSafetyTips: () => void;
 }

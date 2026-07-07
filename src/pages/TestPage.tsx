@@ -1,6 +1,6 @@
 // pages/TestPage.tsx
 
-import PageEngine from '../PageEngine';
+import PageEngine from '../common/components/PageEngine/PageEngine';
 
 const CustomerStep = () => {
   return <div>Customer Step</div>;

@@ -35,6 +35,10 @@ const RegisterFNOL = ({ selectedClaim, onChangeClaim }: RegisterFNOLProps) => {
     setOpenClaimModal(true);
   };
 
+  const handleRequestRepair = () => {
+    // no-op: the request repair modal is handled by RegisterFNOLView
+  };
+
   return (
     <>
       <RegisterFNOLView
@@ -46,6 +50,7 @@ const RegisterFNOL = ({ selectedClaim, onChangeClaim }: RegisterFNOLProps) => {
         repairInfo={repairInfo}
         onChangeClaim={handleChangeClaim}
         onStartReporting={handleStartReporting}
+        onRequestRepair={handleRequestRepair}
       />
 
       <Modal

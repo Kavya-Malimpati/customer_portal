@@ -15,6 +15,7 @@ import ProfilePage from './pages/Profile/ProfilePage';
 import Settings from './pages/Profile/Settings';
 import ServicesPage from './pages/Services/ServicesPage';
 import TestPage from './pages/TestPage';
+import Claim from './pages/Claim/Claim';
 
 function App() {
   const navigate = useNavigate();
@@ -88,6 +89,15 @@ function App() {
         element={
           <MainLayout onLogout={handleLogout}>
             <Claims />
+          </MainLayout>
+        }
+      />
+
+           <Route
+        path='/claim'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <Claim />
           </MainLayout>
         }
       />

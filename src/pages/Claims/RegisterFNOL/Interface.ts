@@ -24,4 +24,5 @@ export interface RegisterFNOLViewProps {
   repairInfo: RepairCardInfo;
   onChangeClaim: () => void;
   onStartReporting: () => void;
+  onRequestRepair: () => void;
 }

@@ -1,11 +1,12 @@
 import { useNavigate, useParams } from 'react-router-dom';
 
 import PageEngine from '../../../common/components/PageEngine/PageEngine';
+
+import PolicyLossTypeStep from './PolicyLossType';
 import IncidentDetailsStep from './IncidentDetails';
 import PartiesAndDamageStep from './PartiesAndDamage';
-import PolicyLossTypeStep from './PolicyLossType';
-import ReviewAndSubmit from './ReviewAndSubmit';
 import UploadEvidence from './UploadEvidence';
+import ReviewAndSubmit from './ReviewAndSubmit';
 
 const FNOLPage = () => {
   const navigate = useNavigate();

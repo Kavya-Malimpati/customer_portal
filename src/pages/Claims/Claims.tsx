@@ -8,6 +8,7 @@ import ClaimHistory from './ClaimHistory/index.ts';
 import RegisterFNOL from './RegisterFNOL/index.ts';
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+// import Claim from '../Claim/Claim.tsx';
 
 interface ClaimInfo {
   claimNumber: string;
@@ -75,13 +76,17 @@ const Claims = () => {
           <RegisterFNOL selectedClaim={selectedClaim} onChangeClaim={handleChangeClaim} />
         </section>
 
-        <section id='roadside-assistance' className='claims-row claims-row-single'>
+        <section className='claims-row claims-row-single'>
           <RoadsideAssistance />
         </section>
 
         <section id='active-claim' className='claims-row claims-row-single'>
           <ActiveClaim activeClaimData={activeClaimData} />
         </section>
+
+        {/* <section className='claims-row claims-row-single'>
+         <Claim/>
+        </section> */}
 
         <section className='claims-row claims-two-column'>
           <ClaimDocuments />

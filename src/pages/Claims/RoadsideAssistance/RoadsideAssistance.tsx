@@ -19,6 +19,10 @@ const RoadsideAssistance = () => {
     fetchRoadsideData();
   }, []);
 
+  const handleCancelRequest = () => {
+    // no-op: the cancellation modal is handled by RoadsideAssistanceView
+  };
+
   if (!provider || !roadsideStatus) {
     return null;
   }
@@ -27,7 +31,7 @@ const RoadsideAssistance = () => {
     <RoadsideAssistanceView
       provider={provider}
       roadsideStatus={roadsideStatus}
-      onCancelRequest={() => {}}
+      onCancelRequest={handleCancelRequest}
     />
   );
 };

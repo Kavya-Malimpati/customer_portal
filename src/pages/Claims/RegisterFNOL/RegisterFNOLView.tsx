@@ -17,9 +17,10 @@ const RegisterFNOLView = ({
   steps,
   currentStep,
   repairInfo,
-  selectedClaim,
-  onChangeClaim,
+  // selectedClaim,
+  // onChangeClaim,
   onStartReporting,
+  onRequestRepair,
 }: RegisterFNOLViewProps) => {
   const [isRepairModalOpen, setIsRepairModalOpen] = useState(false);
 
@@ -28,6 +29,7 @@ const RegisterFNOLView = ({
   }));
 
   const handleRequestRepair = () => {
+    onRequestRepair();
     setIsRepairModalOpen(true);
   };
 
@@ -44,7 +46,7 @@ const RegisterFNOLView = ({
           </Typography>
         </div> */}
 
-        <div className='fnol-selected-claim' >
+        {/* <div className='fnol-selected-claim' >
           <Typography variant='caption'>
             SELECTED CONTEXT:
           </Typography>
@@ -59,7 +61,7 @@ const RegisterFNOLView = ({
           <Button variant='text' onClick={onChangeClaim}>
             Change
           </Button>
-        </div>
+        </div> */}
 
         {/* <div className='fnol-alert'>
           <div className='fnol-alert-icon'>△</div>

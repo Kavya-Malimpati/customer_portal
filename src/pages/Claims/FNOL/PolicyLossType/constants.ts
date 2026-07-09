@@ -12,13 +12,13 @@ export const AUTO_POLICIES: Option[] = [
 ];
 
 export const HOME_POLICIES: Option[] = [
+  // {
+  //   label: 'HOME-7721 — 14 Maple St, Oakland CA',
+  //   value: 'HOME-7721',
+  // },
   {
-    label: 'HOME-7721 — 14 Maple St, Oakland CA',
-    value: 'HOME-7721',
-  },
-  {
-    label: 'HOME-5503 — 8 River Run Ct',
-    value: 'HOME-5503',
+    label: 'HOME-5544 — 142 Willow Creek',
+    value: 'HOME-5544',
   },
 ];
 

@@ -15,7 +15,8 @@ import ProfilePage from './pages/Profile/ProfilePage';
 import Settings from './pages/Profile/Settings';
 import ServicesPage from './pages/Services/ServicesPage';
 import TestPage from './pages/TestPage';
-import Claim from './pages/Claim/Claim';
+import ChatSupport from './pages/Claims/ChatSupport/ChatSupport';
+import BundlePage from './pages/Policy/Bundle';
 
 function App() {
   const navigate = useNavigate();
@@ -24,129 +25,131 @@ function App() {
     navigate('/');
   };
 
-  // Skip routing for static document files - let the browser handle them
   if (window.location.pathname.includes('/documents/')) {
     return null;
   }
 
   return (
-    <Routes>
-      <Route
-        path='/'
-        element={
-          <MainLayout onLogout={handleLogout}>
-            <Dashboard />
-          </MainLayout>
-        }
-      />
+    <div>
+      <ChatSupport unreadCount={2} />
+      <Routes>
+        <Route
+          path='/'
+          element={
+            <MainLayout onLogout={handleLogout}>
+              <Dashboard />
+            </MainLayout>
+          }
+        />
 
-      <Route
-        path='/quoteAuto'
-        element={
-          <MainLayout onLogout={handleLogout}>
-            <AutoQuotePage />
-          </MainLayout>
-        }
-      />
+        <Route
+          path='/quoteAuto'
+          element={
+            <MainLayout onLogout={handleLogout}>
+              <AutoQuotePage />
+            </MainLayout>
+          }
+        />
 
-      <Route
-        path='/quoteHome'
-        element={
-          <MainLayout onLogout={handleLogout}>
-            <HomeownersQuotePage />
-          </MainLayout>
-        }
-      />
+        <Route
+          path='/quoteHome'
+          element={
+            <MainLayout onLogout={handleLogout}>
+              <HomeownersQuotePage />
+            </MainLayout>
+          }
+        />
 
-      <Route
-        path='/settings'
-        element={
-          <MainLayout onLogout={handleLogout}>
-            <Settings />
-          </MainLayout>
-        }
-      />
-      <Route
-        path='/profile-page'
-        element={
-          <MainLayout onLogout={handleLogout}>
-            <ProfilePage />
-          </MainLayout>
-        }
-      />
+        <Route
+          path='/settings'
+          element={
+            <MainLayout onLogout={handleLogout}>
+              <Settings />
+            </MainLayout>
+          }
+        />
+        <Route
+          path='/profile-page'
+          element={
+            <MainLayout onLogout={handleLogout}>
+              <ProfilePage />
+            </MainLayout>
+          }
+        />
 
-      <Route
-        path='/billing'
-        element={
-          <MainLayout onLogout={handleLogout}>
-            <BillingPage />
-          </MainLayout>
-        }
-      />
+        <Route
+          path='/billing'
+          element={
+            <MainLayout onLogout={handleLogout}>
+              <BillingPage />
+            </MainLayout>
+          }
+        />
 
-      <Route
-        path='/claims'
-        element={
-          <MainLayout onLogout={handleLogout}>
-            <Claims />
-          </MainLayout>
-        }
-      />
+        <Route
+          path='/claims'
+          element={
+            <MainLayout onLogout={handleLogout}>
+              <Claims />
+            </MainLayout>
+          }
+        />
 
-           <Route
-        path='/claim'
-        element={
-          <MainLayout onLogout={handleLogout}>
-            <Claim />
-          </MainLayout>
-        }
-      />
-      <Route
-        path='/services'
-        element={
-          <MainLayout onLogout={handleLogout}>
-            <ServicesPage />
-          </MainLayout>
-        }
-      />
-      <Route
-        path='/policy'
-        element={
-          <MainLayout onLogout={handleLogout}>
-            <PolicyPage />
-          </MainLayout>
-        }
-      />
+        <Route
+          path='/bundle'
+          element={
+            <MainLayout onLogout={handleLogout}>
+              <BundlePage />
+            </MainLayout>
+          }
+        />
+        <Route
+          path='/services'
+          element={
+            <MainLayout onLogout={handleLogout}>
+              <ServicesPage />
+            </MainLayout>
+          }
+        />
+        <Route
+          path='/policy'
+          element={
+            <MainLayout onLogout={handleLogout}>
+              <PolicyPage />
+            </MainLayout>
+          }
+        />
 
-      <Route
-        path='/claims/fnol/:claimType'
-        element={
-          <MainLayout onLogout={handleLogout}>
-            <FNOLPage />
-          </MainLayout>
-        }
-      />
+        <Route
+          path='/claims/fnol/:claimType'
+          element={
+            <MainLayout onLogout={handleLogout}>
+              <FNOLPage />
+            </MainLayout>
+          }
+        />
 
-      <Route
-        path='/claims/fnol/success'
-        element={
-          <MainLayout onLogout={handleLogout}>
-            <ClaimSuccessPage />
-          </MainLayout>
-        }
-      />
+        <Route
+          path='/claims/fnol/success'
+          element={
+            <MainLayout onLogout={handleLogout}>
+              <ClaimSuccessPage />
+            </MainLayout>
+          }
+        />
 
-      <Route
-        path='/test'
-        element={
-          <MainLayout onLogout={handleLogout}>
-            <TestPage />
-          </MainLayout>
-        }
-      />
+        <Route
+          path='/test'
+          element={
+            <MainLayout onLogout={handleLogout}>
+              <TestPage />
+            </MainLayout>
+          }
+        />
 
-      <Route path='*' element={<Navigate to='/' replace />} />
-    </Routes>
+        <Route path='*' element={<Navigate to='/' replace />} />
+      </Routes>
+    </div>
   );
 }
 

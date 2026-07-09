@@ -1,0 +1,173 @@
+.glass-claim-modal {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  width: 100%;
+}
+
+.glass-step-content {
+  margin-top: var(--space-6);
+}
+
+.glass-step {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.glass-step-subtitle {
+  margin-top: var(--space-2);
+  color: var(--text-secondary);
+}
+
+.glass-policy-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.glass-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  align-items: start;
+  margin-top: 24px;
+}
+
+.glass-form-grid > * {
+  width: 100%;
+}
+
+.glass-radio-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+.glass-radio-option input[type='radio'] {
+  margin: 0;
+  cursor: pointer;
+}
+
+.glass-description-box {
+  margin-top: 24px;
+}
+
+.glass-description-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.glass-textarea {
+  width: 100%;
+  min-height: 140px;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-md);
+  font-family: inherit;
+  resize: vertical;
+  outline: none;
+  background: var(--bg-surface);
+  box-sizing: border-box;
+}
+
+.glass-textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.15);
+}
+
+.glass-upload-section {
+  margin-top: 24px;
+}
+
+.glass-review {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.glass-review-card {
+  width: 100%;
+}
+
+.glass-review-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.glass-success {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  text-align: center;
+}
+
+.glass-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-color);
+}
+
+.glass-section-title {
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.glass-radio-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.damage-radio-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.glass-divider {
+  border: 0;
+  border-top: 1px solid #e5e7eb;
+  margin: 24px 0;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .glass-policy-grid,
+  .glass-form-grid,
+  .glass-review-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .glass-radio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .damage-radio-grid {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .glass-footer {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .glass-footer button {
+    width: 100%;
+  }
+
+  .glass-form-grid {
+    gap: 24px;
+  }
+}

@@ -97,7 +97,7 @@ const HomeownersPolicyPageView = ({ policy, headerData }: Props) => {
             <div className='renewal-modal-content'>
               <LabelValue label='Policy Number' value={headerData.policyNumber} />
               <LabelValue label='Policy Expiry Date' value={headerData.endDate} />
-              <LabelValue label='Renewal Premium' value={policy.renewalPremium} />
+              <LabelValue label='Renewal Premium' value={policy.endDate} />
 
               <Button variant='contained' fullWidth onClick={handleConfirmRenewal}>
                 Confirm Renewal

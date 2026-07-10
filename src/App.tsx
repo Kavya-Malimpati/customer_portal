@@ -5,18 +5,19 @@ import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import MainLayout from './common/MainLayout';
 import BillingPage from './pages/Billing/BillingPage';
 import Claims from './pages/Claims';
+import ChatSupport from './pages/Claims/ChatSupport/ChatSupport';
 import ClaimSuccessPage from './pages/Claims/FNOL/ClaimsSuccess/ClaimSuccessPage';
 import FNOLPage from './pages/Claims/FNOL/FNOLPage';
 import Dashboard from './pages/Dashboard/Dashboard';
 import AutoQuotePage from './pages/Policy/AutoQuoteFrom/AutoQuotePage';
+import BundlePage from './pages/Policy/Bundle';
 import HomeownersQuotePage from './pages/Policy/HomeOwnerQuoteFrom/HomeownersQuotePage';
 import PolicyPage from './pages/Policy/PolicyPage';
 import ProfilePage from './pages/Profile/ProfilePage';
 import Settings from './pages/Profile/Settings';
+import FAQsPage from './pages/Services/FAQsPage/FAQsPage';
 import ServicesPage from './pages/Services/ServicesPage';
 import TestPage from './pages/TestPage';
-import ChatSupport from './pages/Claims/ChatSupport/ChatSupport';
-import BundlePage from './pages/Policy/Bundle';
 
 function App() {
   const navigate = useNavigate();
@@ -129,6 +130,23 @@ function App() {
           }
         />
 
+        <Route
+          path='/faqs'
+          element={
+            <MainLayout onLogout={handleLogout}>
+              <FAQsPage />
+            </MainLayout>
+          }
+        />
+
+        <Route
+          path='/test'
+          element={
+            <MainLayout onLogout={handleLogout}>
+              <TestPage />
+            </MainLayout>
+          }
+        />
         <Route
           path='/claims/fnol/success'
           element={

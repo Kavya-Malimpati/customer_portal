@@ -69,6 +69,7 @@ const FeedbackForm: React.FC<FeedbackFormProps> = ({ onClose, initialRating }) =
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successData, setSuccessData] = useState<SuccessData | null>(null);
+  const [hoverRating, setHoverRating] = useState(0);
 
   useEffect(() => {
     setFormData(prev => ({
@@ -248,7 +249,7 @@ const FeedbackForm: React.FC<FeedbackFormProps> = ({ onClose, initialRating }) =
 
         <div className="feedback-content">
           <CardContent>
-            <form id="feedback-form" onSubmit={handleSubmit} className="feedback-form">
+            <form id="feedback-form" onSubmit={handleSubmit} className="feedback-form" noValidate>
               {errors.submit && (
                 <div className="feedback-form-error-banner">
                   <Typography variant="body2" className="feedback-form-error-text">
@@ -286,13 +287,26 @@ const FeedbackForm: React.FC<FeedbackFormProps> = ({ onClose, initialRating }) =
                     Your Rating
                   </Typography>
                   <div className="feedback-form-rating">
-                    {[1, 2, 3, 4, 5].map(star =>
-                      star <= formData.rating ? (
-                        <FaStar key={star} className="feedback-form-star filled" />
+                    {[1, 2, 3, 4, 5].map(star => {
+                      const active = star <= (hoverRating || formData.rating);
+                      return active ? (
+                        <FaStar
+                          key={star}
+                          className="feedback-form-star filled"
+                          onClick={() => setFormData(prev => ({ ...prev, rating: star }))}
+                          onMouseEnter={() => setHoverRating(star)}
+                          onMouseLeave={() => setHoverRating(0)}
+                        />
                       ) : (
-                        <FiStar key={star} className="feedback-form-star" />
-                      ),
-                    )}
+                        <FiStar
+                          key={star}
+                          className="feedback-form-star"
+                          onClick={() => setFormData(prev => ({ ...prev, rating: star }))}
+                          onMouseEnter={() => setHoverRating(star)}
+                          onMouseLeave={() => setHoverRating(0)}
+                        />
+                      );
+                    })}
                   </div>
                 </div>
 
@@ -315,7 +329,6 @@ const FeedbackForm: React.FC<FeedbackFormProps> = ({ onClose, initialRating }) =
                   }}
                   hasError={!!errors.description}
                   errorMessage={errors.description}
-                  required
                   isRequired
                   className="feedback-form-textarea"
                 />

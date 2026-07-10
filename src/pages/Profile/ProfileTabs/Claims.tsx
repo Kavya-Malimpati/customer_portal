@@ -1,12 +1,9 @@
-import RegisterFNOL from '../../Claim/RegisterFNOL';
-
+import RegisterFNOL from '../../Claims/RegisterFNOL';
 
 const AgencyTab = () => {
   return (
     <div>
-      {/* Add Agency related features here */}
-      
-      <RegisterFNOL/>
+      <RegisterFNOL policyType='auto' />
     </div>
   );
 };

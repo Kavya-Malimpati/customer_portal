@@ -9,6 +9,7 @@ const PageEngine: React.FC<PageEngineProps> = ({
   testId = 'page-engine',
   submitButtonName,
   initialData,
+  initialStep,
   onSubmit,
   onCancel,
   showStepLabels,
@@ -26,6 +27,7 @@ const PageEngine: React.FC<PageEngineProps> = ({
       stepData={stepData}
       submitButtonName={submitButtonName}
       initialData={initialData}
+      initialStep={initialStep}
       onSubmit={onSubmit}
       onCancel={onCancel}
       showStepLabels={showStepLabels}

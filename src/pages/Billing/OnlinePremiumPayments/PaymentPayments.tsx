@@ -31,7 +31,7 @@ const PremiumPayment = () => {
     setPaymentModalOpen(true);
   };
 
-  const handlePaymentOptionClick = (option: PaymentOption) => {
+  const handlePaymentOptionClick = (_option: PaymentOption) => {
     setStatus('success');
     setPaymentModalOpen(false);
   };

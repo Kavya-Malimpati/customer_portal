@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import PageEngine from '../../../common/components/PageEngine/PageEngine';
 import CustomerDetails from '../CommonViews/StartNewQuote';
@@ -9,10 +9,15 @@ import VehicleDetails from './VehicleDriverDetails';
 
 const AutoQuotePage = () => {
   const navigate = useNavigate();
+  const { state } = useLocation();
+  const initialData = (state as { initialData?: Record<string, unknown> })?.initialData ?? {};
+  const initialStep = (state as { initialStep?: number })?.initialStep ?? 0;
 
   return (
     <PageEngine
       submitButtonName='Submit Quote'
+      initialData={initialData}
+      initialStep={initialStep}
       steps={[
         {
           id: 'customer',

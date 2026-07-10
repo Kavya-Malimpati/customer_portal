@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
+import { FiArrowLeft } from 'react-icons/fi';
 
 import Button from '../Button/Button';
 import Stepper from '../Stepper/Stepper';
 import { JsonStepRenderer } from './JsonFieldRenderer';
-import { FiArrowLeft } from 'react-icons/fi';
 
 import type { FormData, MultiStepFormProps } from './types';
 
@@ -15,11 +15,12 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({
   submitButtonName = 'Submit',
   onCancel,
   initialData = {},
+  initialStep = 0,
   showStepLabels = false,
   onFirstStepBack,
 }) => {
   const [formData, setFormData] = useState<FormData>(initialData);
-  const [currentStep, setCurrentStep] = useState<number>(0);
+  const [currentStep, setCurrentStep] = useState<number>(initialStep);
   const [isNextDisabled, setIsNextDisabled] = useState<boolean>(false);
 
   const isJsonMode = !!jsonConfig;
@@ -87,9 +88,9 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({
           <Stepper
             steps={Array.from({ length: totalSteps }, (_, index) => ({
               label: showStepLabels
-                ? (isJsonMode && jsonConfig
+                ? ((isJsonMode && jsonConfig
                     ? jsonConfig.steps[`step${index + 1}`]?.title
-                    : stepData?.[index]?.title) ?? `Step ${index + 1}`
+                    : stepData?.[index]?.title) ?? `Step ${index + 1}`)
                 : ``,
               completed: index < currentStep,
               description:
@@ -105,44 +106,43 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({
           />
 
           {/* Title */}
-        <div
-  style={{
-    display: 'flex',
-    alignItems: 'center',
-    gap: '12px',
-  }}
->
-  {currentStep === 0 && (
-   <Button
-  variant="text"
-  onClick={handleBack}
-  ariaLabel="Go Back"
-  style={{
-    minWidth: '40px',
-    width: '40px',
-    height: '40px',
-    padding: 0,
-    cursor: 'pointer',
-  }}
->
-  <FiArrowLeft size={22} />
-</Button>
-  )}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '12px',
+            }}
+          >
+            {currentStep === 0 && (
+              <Button
+                variant='text'
+                onClick={handleBack}
+                ariaLabel='Go Back'
+                style={{
+                  minWidth: '40px',
+                  width: '40px',
+                  height: '40px',
+                  padding: 0,
+                  cursor: 'pointer',
+                }}
+              >
+                <FiArrowLeft size={22} />
+              </Button>
+            )}
 
-  <h2
-    style={{
-      margin: 0,
-      fontSize: '1.5rem',
-      fontWeight: 600,
-      color: 'var(--text-primary)',
-    }}
-  >
-    {isJsonMode && currentStepConfig
-      ? currentStepConfig.title
-      : stepData?.[currentStep]?.title ||
-        `Step ${currentStep + 1}`}
-  </h2>
-</div>
+            <h2
+              style={{
+                margin: 0,
+                fontSize: '1.5rem',
+                fontWeight: 600,
+                color: 'var(--text-primary)',
+              }}
+            >
+              {isJsonMode && currentStepConfig
+                ? currentStepConfig.title
+                : stepData?.[currentStep]?.title || `Step ${currentStep + 1}`}
+            </h2>
+          </div>
 
           {/* Step Content - same width as stepper */}
           <div style={{ paddingBottom: '2rem' }}>
@@ -168,32 +168,38 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({
       {/* Navigation */}
       <div
         style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
           padding: '1.5rem 2rem',
-          borderTop: '1px solid #e5e7eb',
+          display: 'flex',
+          justifyContent: 'center',
         }}
       >
-        <div style={{ display: 'flex', gap: '0.5rem' }}>
-         {currentStep > 0 && (
-  <Button
-    variant="outlined"
-    onClick={handleBack}
-  >
-    Back
-  </Button>
-)}
+        <div
+          style={{
+            width: '100%',
+            maxWidth: '896px',
+            paddingTop: '1.5rem',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}
+        >
+          <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+            {currentStep > 0 && (
+              <Button variant='outlined' onClick={handleBack}>
+                Back
+              </Button>
+            )}
 
-          {onCancel && (
-            <Button variant='text' onClick={onCancel}>
-              Cancel
-            </Button>
-          )}
+            {onCancel && (
+              <Button variant='text' onClick={onCancel}>
+                Cancel
+              </Button>
+            )}
+          </div>
+          <Button variant='contained' onClick={handleNext} disabled={isNextDisabled}>
+            {isLastStep ? submitButtonName : 'Next'}
+          </Button>
         </div>
-        <Button variant='contained' onClick={handleNext} disabled={isNextDisabled}>
-          {isLastStep ? submitButtonName : 'Next'}
-        </Button>
       </div>
     </div>
   );

@@ -86,9 +86,9 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({
           <Stepper
             steps={Array.from({ length: totalSteps }, (_, index) => ({
               label: showStepLabels
-                ? (isJsonMode && jsonConfig
+                ? ((isJsonMode && jsonConfig
                     ? jsonConfig.steps[`step${index + 1}`]?.title
-                    : stepData?.[index]?.title) ?? `Step ${index + 1}`
+                    : stepData?.[index]?.title) ?? `Step ${index + 1}`)
                 : ``,
               completed: index < currentStep,
               description:
@@ -134,27 +134,36 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({
       {/* Navigation */}
       <div
         style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
           padding: '1.5rem 2rem',
-          borderTop: '1px solid #e5e7eb',
+          display: 'flex',
+          justifyContent: 'center',
         }}
       >
-        <div style={{ display: 'flex', gap: '0.5rem' }}>
-          <Button variant='outlined' onClick={handleBack}>
-            Back
-          </Button>
-
-          {onCancel && (
-            <Button variant='text' onClick={onCancel}>
-              Cancel
+        <div
+          style={{
+            width: '100%',
+            maxWidth: '896px',
+            paddingTop: '1.5rem',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}
+        >
+          <div style={{ display: 'flex', gap: '0.5rem' }}>
+            <Button variant='outlined' onClick={handleBack}>
+              Back
             </Button>
-          )}
+
+            {onCancel && (
+              <Button variant='text' onClick={onCancel}>
+                Cancel
+              </Button>
+            )}
+          </div>
+          <Button variant='contained' onClick={handleNext} disabled={isNextDisabled}>
+            {isLastStep ? submitButtonName : 'Next'}
+          </Button>
         </div>
-        <Button variant='contained' onClick={handleNext} disabled={isNextDisabled}>
-          {isLastStep ? submitButtonName : 'Next'}
-        </Button>
       </div>
     </div>
   );

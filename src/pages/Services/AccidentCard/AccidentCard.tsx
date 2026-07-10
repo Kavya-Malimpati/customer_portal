@@ -1,12 +1,12 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-
+import React, { useState } from 'react';
+import Modal from '../../../common/components/Modal';
+import ClaimTypeSelector from '../../Claims/ClaimType/ClaimTypeSelector';
 import AccidentCardView from './AccidentCardView';
 
 import type { AccidentCardProps, StepItem } from './interfaces';
 
 const AccidentCard: React.FC<AccidentCardProps> = ({ steps }) => {
-  const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const defaultSteps: StepItem[] = [
     {
       id: 1,
@@ -33,10 +33,22 @@ const AccidentCard: React.FC<AccidentCardProps> = ({ steps }) => {
   const stepList = steps?.length ? steps : defaultSteps;
 
   const handleStartClaim = () => {
-    navigate('/claims');
+    setIsModalOpen(true);
   };
 
-  return <AccidentCardView steps={stepList} onStartClaim={handleStartClaim} />;
+  return (
+    <>
+      <AccidentCardView steps={stepList} onStartClaim={handleStartClaim} />
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        title='Select Claim Type'
+        maxWidth='500px'
+      >
+        <ClaimTypeSelector onClose={() => setIsModalOpen(false)} />
+      </Modal>
+    </>
+  );
 };
 
 export default AccidentCard;

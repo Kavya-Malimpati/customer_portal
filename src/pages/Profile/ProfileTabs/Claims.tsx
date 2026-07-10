@@ -1,12 +1,12 @@
 import RegisterFNOL from '../../Claims/RegisterFNOL';
 
-
 const AgencyTab = () => {
   return (
     <div>
-      {/* Add Agency related features here */}
-      
-      <RegisterFNOL/>
+      <RegisterFNOL
+        selectedClaim={{ claimNumber: 'MC-8821', vehicle: 'N/A' }}
+        onChangeClaim={() => {}}
+      />
     </div>
   );
 };

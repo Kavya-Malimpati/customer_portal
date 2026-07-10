@@ -1,9 +1,9 @@
 import '../../../styles/tokens.css';
- 
+
 import React, { useState } from 'react';
- 
+
 import Tooltip from '../Tooltip/Tooltip';
- 
+
 export interface StepperStep {
   label: React.ReactNode;
   content?: React.ReactNode;
@@ -44,8 +44,8 @@ export interface StepperProps {
 }
 
 const sizeConfig: Record<'sm' | 'md' | 'lg', { size: string; fontSize: string }> = {
-  sm: { size: '44px', fontSize: '14px' },
-  md: { size: '56px', fontSize: '18px' },
+  sm: { size: '40px', fontSize: '12px' },
+  md: { size: '50px', fontSize: '16px' },
   lg: { size: '68px', fontSize: '22px' },
 };
 
@@ -170,37 +170,49 @@ const Stepper: React.FC<StepperProps> = ({
           type === 'non-linear' ||
           stepIndex <= currentStep ||
           (isCompleted && stepIndex === currentStep + 1);
-        const stepKey = `step-${typeof stepData.label === 'string'
-          ? stepData.label.toLowerCase().replaceAll(/\s+/g, '-')
-          : stepIndex}`;
+        const stepKey = `step-${
+          typeof stepData.label === 'string'
+            ? stepData.label.toLowerCase().replaceAll(/\s+/g, '-')
+            : stepIndex
+        }`;
         const stepLabel =
           typeof stepData.label === 'string' ? stepData.label : `Step ${stepIndex + 1}`;
 
         return (
           <React.Fragment key={stepKey}>
             {/* Step wrapper */}
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}>
-            <button
-              type='button'
-              style={getButtonStyle(isActive, isCompleted, isDisabled)}
-              aria-label={ariaLabel || stepLabel}
-              aria-current={isActive ? ariaCurrent || 'step' : undefined}
-              aria-selected={isActive}
-              onClick={() => handleStepClick(stepIndex)}
-              onKeyDown={e => handleKeyDown(e, stepIndex)}
-              onFocus={() => onFocus?.(stepIndex)}
-              onBlur={() => onBlur?.(stepIndex)}
-              disabled={isDisabled || !canNavigate}
-              tabIndex={isActive ? 0 : -1}
+            <div
+              style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}
             >
-              {stepData.icon ?? <span>{stepIndex + 1}</span>}
-            </button>
+              <button
+                type='button'
+                style={getButtonStyle(isActive, isCompleted, isDisabled)}
+                aria-label={ariaLabel || stepLabel}
+                aria-current={isActive ? ariaCurrent || 'step' : undefined}
+                aria-selected={isActive}
+                onClick={() => handleStepClick(stepIndex)}
+                onKeyDown={e => handleKeyDown(e, stepIndex)}
+                onFocus={() => onFocus?.(stepIndex)}
+                onBlur={() => onBlur?.(stepIndex)}
+                disabled={isDisabled || !canNavigate}
+                tabIndex={isActive ? 0 : -1}
+              >
+                {stepData.icon ?? <span>{stepIndex + 1}</span>}
+              </button>
 
-            {showStepLabels && (
-              <span style={{ fontSize: '12px', color: isActive ? 'var(--color-info)' : 'var(--color-gray-500)', textAlign: 'center', maxWidth: '80px', wordBreak: 'break-word' }}>
-                {stepLabel}
-              </span>
-            )}
+              {showStepLabels && (
+                <span
+                  style={{
+                    fontSize: '12px',
+                    color: isActive ? 'var(--color-info)' : 'var(--color-gray-500)',
+                    textAlign: 'center',
+                    maxWidth: '80px',
+                    wordBreak: 'break-word',
+                  }}
+                >
+                  {stepLabel}
+                </span>
+              )}
             </div>
             {/* Connector only between circles - NOT after last */}
             {stepIndex < steps.length - 1 && orientation === 'horizontal' && (
@@ -210,9 +222,7 @@ const Stepper: React.FC<StepperProps> = ({
                   height: '2px',
                   marginTop: showStepLabels ? `calc(${cfg.size} / 2)` : undefined,
                   alignSelf: showStepLabels ? 'flex-start' : undefined,
-                  backgroundColor: isCompleted
-                    ? 'var(--color-info)'
-                    : 'var(--color-gray-300)',
+                  backgroundColor: isCompleted ? 'var(--color-info)' : 'var(--color-gray-300)',
                 }}
               />
             )}

@@ -3,6 +3,7 @@ export interface OfferItem {
   title: string;
   subtitle: string;
   type: 'glass' | 'roadside' | 'bundle';
+  onOfferClick?: () => void;
 }
 
 export interface OffersProps {

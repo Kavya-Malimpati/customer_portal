@@ -172,7 +172,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
           id={id}
           name={name}
           {...selectValueProps}
-          required={isRequired}
+          required={false}
           disabled={disabled}
           title={title}
           aria-label={ariaLabel}

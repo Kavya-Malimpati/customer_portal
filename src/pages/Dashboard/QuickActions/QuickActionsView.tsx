@@ -1,4 +1,4 @@
-import { FiFileText, FiClipboard, FiCheckCircle, FiDollarSign } from 'react-icons/fi';
+import { FiFileText } from 'react-icons/fi';
 
 import { Card, CardContent, Typography } from '../../../common/components';
 
@@ -10,13 +10,6 @@ interface QuickActionsViewWithHandlerProps extends QuickActionsUiProps {
   onActionClick: (route: string) => void;
 }
 
-const iconMap = {
-  claim: <FiCheckCircle size={34} />,
-  idcard: <FiClipboard size={34} />,
-  quote: <FiDollarSign size={34} />,
-  docs: <FiFileText size={34} />,
-};
-
 const QuickActionsView = ({ actions, onActionClick }: QuickActionsViewWithHandlerProps) => {
   return (
     <div className='quick-actions-grid'>
@@ -25,7 +18,6 @@ const QuickActionsView = ({ actions, onActionClick }: QuickActionsViewWithHandle
           key={action.id}
           className='quick-action-card'
           onClick={() => onActionClick(action.route)}
-          style={{ cursor: 'pointer' }}
         >
           <CardContent className='quick-action-content'>
             <div className='quick-action-icon'>

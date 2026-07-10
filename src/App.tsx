@@ -13,6 +13,7 @@ import HomeownersQuotePage from './pages/Policy/HomeOwnerQuoteFrom/HomeownersQuo
 import PolicyPage from './pages/Policy/PolicyPage';
 import ProfilePage from './pages/Profile/ProfilePage';
 import Settings from './pages/Profile/Settings';
+import FAQsPage from './pages/Services/FAQsPage/FAQsPage';
 import ServicesPage from './pages/Services/ServicesPage';
 import TestPage from './pages/TestPage';
 
@@ -122,6 +123,15 @@ function App() {
         element={
           <MainLayout onLogout={handleLogout}>
             <ClaimSuccessPage />
+          </MainLayout>
+        }
+      />
+
+      <Route
+        path='/faqs'
+        element={
+          <MainLayout onLogout={handleLogout}>
+            <FAQsPage />
           </MainLayout>
         }
       />

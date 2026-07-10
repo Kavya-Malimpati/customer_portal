@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import OffersView from './OffersView';
 
 import type { OffersProps, OfferItem } from './interfaces';
 
 const Offers: React.FC<OffersProps> = ({ offers }) => {
+  const navigate = useNavigate();
   const [offerList, setOfferList] = useState<OfferItem[]>([]);
 
   useEffect(() => {
@@ -23,6 +25,10 @@ const Offers: React.FC<OffersProps> = ({ offers }) => {
           title: 'Roadside Assist',
           subtitle: 'Loyalty Discount Applied',
           type: 'roadside',
+          onOfferClick: () =>
+            navigate('/quoteAuto', {
+              state: { initialData: { coverage: { roadsideAssistance: 'Yes' } } },
+            }),
         },
         {
           id: 3,
@@ -32,7 +38,7 @@ const Offers: React.FC<OffersProps> = ({ offers }) => {
         },
       ]);
     }
-  }, [offers]);
+  }, [offers, navigate]);
 
   return <OffersView offers={offerList} />;
 };

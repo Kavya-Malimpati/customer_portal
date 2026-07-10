@@ -36,7 +36,10 @@ const OffersView: React.FC<OffersViewProps> = ({ offers }) => {
             </div>
 
             <div className='offer-action'>
-              <FiPlus />
+              <FiPlus
+                style={{ cursor: item.onOfferClick ? 'pointer' : 'default' }}
+                onClick={() => item.onOfferClick?.()}
+              />
             </div>
           </div>
         ))}

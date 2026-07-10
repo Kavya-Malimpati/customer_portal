@@ -1,5 +1,7 @@
-import React, { useMemo, useId } from 'react';
 import '../../../styles/tokens.css';
+
+import React, { useId, useMemo } from 'react';
+
 type TextFieldSize = 'sm' | 'md' | 'lg';
 type TextFieldVariant = 'default' | 'outlined' | 'filled';
 export interface Props {
@@ -59,10 +61,8 @@ const TextField = ({
   variant = 'outlined',
   autoFocus = false,
   isRequired,
-  isValid,
   hasError,
   errorMessage,
-  validationRules,
   autoComplete,
   onChange,
   onFocus,
@@ -72,10 +72,12 @@ const TextField = ({
   'aria-describedby': ariaDescribedby,
   'aria-invalid': ariaInvalid,
   'aria-required': ariaRequired,
-  tooltip,
   ...rest
 }: Props) => {
   const isFieldRequired = required || isRequired || false;
+  // Destructure required out of rest to prevent native browser validation popup
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { required: _required, ...safeRest } = { required, ...rest };
   const fieldError = error || errorMessage || '';
   const isFieldInvalid = ariaInvalid || hasError || false;
   const generatedId = useId();
@@ -92,9 +94,12 @@ const TextField = ({
   }, [size]);
   const variantClasses = useMemo(() => {
     const variants = {
-      default: 'border border-[var(--border-color)] bg-[var(--bg-surface)] hover:border-[var(--border-color-hover)] focus:border-[var(--border-color-focus)] focus:outline-none',
-      outlined: 'border border-[var(--border-color)] bg-[var(--bg-surface)] hover:border-[var(--border-color-hover)] focus:border-[var(--border-color-focus)] focus:outline-none',
-      filled: 'border-b border-[var(--border-color)] bg-[var(--bg-muted)] hover:bg-[var(--bg-hover)] focus:border-[var(--border-color-focus)] focus:outline-none',
+      default:
+        'border border-[var(--border-color)] bg-[var(--bg-surface)] hover:border-[var(--border-color-hover)] focus:border-[var(--border-color-focus)] focus:outline-none',
+      outlined:
+        'border border-[var(--border-color)] bg-[var(--bg-surface)] hover:border-[var(--border-color-hover)] focus:border-[var(--border-color-focus)] focus:outline-none',
+      filled:
+        'border-b border-[var(--border-color)] bg-[var(--bg-muted)] hover:bg-[var(--bg-hover)] focus:border-[var(--border-color-focus)] focus:outline-none',
     };
     return variants[variant];
   }, [variant]);
@@ -160,7 +165,7 @@ const TextField = ({
           aria-describedby={descriptionIds || undefined}
           aria-invalid={isInvalid ? 'true' : 'false'}
           aria-required={ariaRequired || isFieldRequired}
-          {...rest}
+          {...safeRest}
         />
         {endDecorator && (
           <div

@@ -153,26 +153,18 @@ const Accordion: React.FC<AccordionProps> = ({
         }}
       >
         <span>{title}</span>
-        <svg
-          style={{
-            width: 'var(--space-5)',
-            height: 'var(--space-5)',
-            transition: `transform var(--transition-normal)`,
-            transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-            flexShrink: 0,
-            stroke: 'var(--text-primary)',
-          }}
-          fill='none'
-          viewBox='0 0 24 24'
+        <span
           aria-hidden='true'
+          style={{
+            fontSize: '1.25rem',
+            lineHeight: 1,
+            flexShrink: 0,
+            color: 'var(--text-primary)',
+            fontWeight: 'var(--font-weight-medium)',
+          }}
         >
-          <path
-            strokeLinecap='round'
-            strokeLinejoin='round'
-            strokeWidth={2}
-            d='M19 14l-7 7m0 0l-7-7m7 7V3'
-          />
-        </svg>
+          {isOpen ? '−' : '+'}
+        </span>
       </button>
       <div
         id={contentId}

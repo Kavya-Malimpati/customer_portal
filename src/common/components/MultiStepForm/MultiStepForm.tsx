@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FiArrowLeft } from 'react-icons/fi';
 
 import Button from '../Button/Button';
 import Stepper from '../Stepper/Stepper';
@@ -14,11 +15,12 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({
   submitButtonName = 'Submit',
   onCancel,
   initialData = {},
+  initialStep = 0,
   showStepLabels = false,
   onFirstStepBack,
 }) => {
   const [formData, setFormData] = useState<FormData>(initialData);
-  const [currentStep, setCurrentStep] = useState<number>(0);
+  const [currentStep, setCurrentStep] = useState<number>(initialStep);
   const [isNextDisabled, setIsNextDisabled] = useState<boolean>(false);
 
   const isJsonMode = !!jsonConfig;
@@ -104,11 +106,43 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({
           />
 
           {/* Title */}
-          <h2 style={{ margin: 0, fontSize: '1.5rem', fontWeight: 600, color: '#111827' }}>
-            {isJsonMode && currentStepConfig
-              ? currentStepConfig.title
-              : stepData?.[currentStep]?.title || `Step ${currentStep + 1}`}
-          </h2>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '12px',
+            }}
+          >
+            {currentStep === 0 && (
+              <Button
+                variant='text'
+                onClick={handleBack}
+                ariaLabel='Go Back'
+                style={{
+                  minWidth: '40px',
+                  width: '40px',
+                  height: '40px',
+                  padding: 0,
+                  cursor: 'pointer',
+                }}
+              >
+                <FiArrowLeft size={22} />
+              </Button>
+            )}
+
+            <h2
+              style={{
+                margin: 0,
+                fontSize: '1.5rem',
+                fontWeight: 600,
+                color: 'var(--text-primary)',
+              }}
+            >
+              {isJsonMode && currentStepConfig
+                ? currentStepConfig.title
+                : stepData?.[currentStep]?.title || `Step ${currentStep + 1}`}
+            </h2>
+          </div>
 
           {/* Step Content - same width as stepper */}
           <div style={{ paddingBottom: '2rem' }}>
@@ -149,10 +183,12 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({
             justifyContent: 'space-between',
           }}
         >
-          <div style={{ display: 'flex', gap: '0.5rem' }}>
-            <Button variant='outlined' onClick={handleBack}>
-              Back
-            </Button>
+          <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+            {currentStep > 0 && (
+              <Button variant='outlined' onClick={handleBack}>
+                Back
+              </Button>
+            )}
 
             {onCancel && (
               <Button variant='text' onClick={onCancel}>

@@ -11,11 +11,13 @@ const AutoQuotePage = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
   const initialData = (state as { initialData?: Record<string, unknown> })?.initialData ?? {};
+  const initialStep = (state as { initialStep?: number })?.initialStep ?? 0;
 
   return (
     <PageEngine
       submitButtonName='Submit Quote'
       initialData={initialData}
+      initialStep={initialStep}
       steps={[
         {
           id: 'customer',

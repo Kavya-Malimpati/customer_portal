@@ -6,9 +6,24 @@ import HelpCardView from './HelpCardView';
 
 import type { HelpCardItem } from './interfaces';
 
+declare global {
+  interface Window {
+    openClaimSupport?: () => void;
+  }
+}
+
 const HelpCard = () => {
   const navigate = useNavigate();
   const [isLifeEventsOpen, setIsLifeEventsOpen] = useState(false);
+
+  const handleOpenClaimSupport = () => {
+    if (typeof window !== 'undefined' && typeof window.openClaimSupport === 'function') {
+      window.openClaimSupport();
+      return;
+    }
+
+    navigate('/claims');
+  };
 
   const helpItems: HelpCardItem[] = [
     {
@@ -16,7 +31,7 @@ const HelpCard = () => {
       title: 'Chat with Us',
       subtitle: 'LIVE NOW',
       icon: <FaComments size={24} color='var(--color-primary)' />,
-      onClick: () => {},
+      onClick: handleOpenClaimSupport,
     },
     {
       id: 'faqs',

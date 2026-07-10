@@ -40,7 +40,7 @@ const PolicyPageView = ({
             </Typography>
           </div>
 
-         <div>
+         {/* <div>
           {activeTab === 'homeowners' && (
             <Button onClick={() => navigate('/quoteHome')}>
               Get a Quote for Home
@@ -52,7 +52,43 @@ const PolicyPageView = ({
               Get an Quote for Auto
             </Button>
           )}
-        </div>
+        </div> */}
+
+        <div
+  style={{
+    display: 'flex',
+    gap: '12px',
+    alignItems: 'center',
+  }}
+>
+  {activeTab === 'homeowners' && (
+    <>
+
+      <Button
+        onClick={() => navigate('/quoteHome')}
+      >
+        Get Quote for Home
+      </Button>
+    </>
+  )}
+
+  {activeTab === 'personalAuto' && (
+    <>
+      <Button
+        variant="outlined"
+        onClick={() => navigate('/bundle')}
+      >
+        Bundle
+      </Button>
+
+      <Button
+        onClick={() => navigate('/quoteAuto')}
+      >
+        Get Quote for Auto
+      </Button>
+    </>
+  )}
+</div>
         </div>
       )}
 

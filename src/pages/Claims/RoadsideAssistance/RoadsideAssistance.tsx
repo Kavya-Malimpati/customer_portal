@@ -7,6 +7,9 @@ const RoadsideAssistance = () => {
   const [provider, setProvider] = useState<DriverProvider | null>(null);
   const [roadsideStatus, setRoadsideStatus] = useState<RoadsideStatus | null>(null);
 
+  const currentLocation =
+   '350 5th Ave, New York, NY 10118';
+
   useEffect(() => {
     const fetchRoadsideData = async () => {
       const providerData = await getRoadsideProvider();
@@ -24,11 +27,12 @@ const RoadsideAssistance = () => {
   }
 
   return (
-    <RoadsideAssistanceView
-      provider={provider}
-      roadsideStatus={roadsideStatus}
-      onCancelRequest={() => {}}
-    />
+   <RoadsideAssistanceView
+  provider={provider}
+  roadsideStatus={roadsideStatus}
+  currentLocation={currentLocation}
+  onCancelRequest={() => {}}
+/>
   );
 };
 

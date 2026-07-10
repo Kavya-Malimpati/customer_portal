@@ -1,6 +1,6 @@
 /**
  * Multi-Step Form Types
- * 
+ *
  * TypeScript interfaces and types for the reusable multi-step form system.
  * Supports JSON-based form configuration using existing common components.
  */
@@ -113,6 +113,8 @@ export interface MultiStepFormProps {
   onCancel?: () => void;
   // Optional initial form data
   initialData?: FormData;
+  // Optional initial step index
+  initialStep?: number;
   // Show labels below stepper circles
   showStepLabels?: boolean;
   // Optional callback when user clicks back on the first step

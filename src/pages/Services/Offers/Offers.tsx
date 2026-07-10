@@ -19,6 +19,15 @@ const Offers: React.FC<OffersProps> = ({ offers }) => {
           title: 'Glass Coverage',
           subtitle: 'Starting at $4/mo',
           type: 'glass',
+          onOfferClick: () =>
+            navigate('/quoteAuto', {
+              state: {
+                initialStep: 2,
+                initialData: {
+                  coverage: { glassCoverage: 'FullGlass' },
+                },
+              },
+            }),
         },
         {
           id: 2,
@@ -27,7 +36,12 @@ const Offers: React.FC<OffersProps> = ({ offers }) => {
           type: 'roadside',
           onOfferClick: () =>
             navigate('/quoteAuto', {
-              state: { initialData: { coverage: { roadsideAssistance: 'Yes' } } },
+              state: {
+                initialStep: 2,
+                initialData: {
+                  coverage: { roadsideAssistance: 'Standard' },
+                },
+              },
             }),
         },
         {

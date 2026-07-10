@@ -3,56 +3,185 @@ export const autoCoverageConfig = [
     title: 'Coverage Options',
     fields: [
       {
-        name: 'liabilityLimit',
+        name: 'liabilityCoverage',
         label: 'Liability Coverage',
         options: [
-          { value: '25/50/25', label: '25/50/25' },
-          { value: '50/100/50', label: '50/100/50' },
-          { value: '100/300/100', label: '100/300/100' },
-          { value: '250/500/250', label: '250/500/250' },
+          {
+            label: 'Bodily Injury Liability',
+            value: 'BI',
+          },
+          {
+            label: 'Property Damage Liability',
+            value: 'PD',
+          },
+          {
+            label: 'Combined Single Limit',
+            value: 'CSL',
+          },
+          {
+            label: 'Split Limit Liability',
+            value: 'SPLIT',
+          },
         ],
       },
       {
         name: 'collisionDeductible',
         label: 'Collision Deductible',
         options: [
-          { value: '$250', label: '$250' },
-          { value: '$500', label: '$500' },
-          { value: '$1000', label: '$1000' },
+          {
+            label: 'Standard Deductible',
+            value: 'Standard',
+          },
+          {
+            label: 'Low Deductible',
+            value: 'Low',
+          },
+          {
+            label: 'High Deductible',
+            value: 'High',
+          },
+          {
+            label: 'Vanishing Deductible',
+            value: 'Vanishing',
+          },
         ],
       },
       {
         name: 'comprehensiveDeductible',
         label: 'Comprehensive Deductible',
         options: [
-          { value: '$250', label: '$250' },
-          { value: '$500', label: '$500' },
-          { value: '$1000', label: '$1000' },
+          {
+            label: 'Standard Comprehensive',
+            value: 'Standard',
+          },
+          {
+            label: 'Glass Coverage Included',
+            value: 'Glass',
+          },
+          {
+            label: 'Glass Coverage Excluded',
+            value: 'NoGlass',
+          },
+          {
+            label: 'High Deductible',
+            value: 'High',
+          },
         ],
       },
       {
         name: 'uninsuredMotorist',
         label: 'Uninsured Motorist',
         options: [
-          { value: '50/100', label: '50/100' },
-          { value: '100/300', label: '100/300' },
+          {
+            label: 'Bodily Injury Only',
+            value: 'UMBI',
+          },
+          {
+            label: 'Property Damage Only',
+            value: 'UMPD',
+          },
+          {
+            label: 'Bodily Injury & Property Damage',
+            value: 'FullUM',
+          },
+          {
+            label: 'Underinsured Motorist Coverage',
+            value: 'UIM',
+          },
         ],
       },
       {
         name: 'medicalCoverage',
         label: 'Medical Coverage',
         options: [
-          { value: '$5,000', label: '$5,000' },
-          { value: '$10,000', label: '$10,000' },
-          { value: '$25,000', label: '$25,000' },
+          {
+            label: 'Medical Payments (MedPay)',
+            value: 'MedPay',
+          },
+          {
+            label: 'Personal Injury Protection (PIP)',
+            value: 'PIP',
+          },
+          {
+            label: 'Enhanced Medical Coverage',
+            value: 'Enhanced',
+          },
+          {
+            label: 'No Medical Coverage',
+            value: 'None',
+          },
         ],
       },
       {
         name: 'roadsideAssistance',
         label: 'Roadside Assistance',
         options: [
-          { value: 'Yes', label: 'Yes' },
-          { value: 'No', label: 'No' },
+          {
+            label: 'Basic Roadside Assistance',
+            value: 'Basic',
+          },
+          {
+            label: 'Standard Roadside Assistance',
+            value: 'Standard',
+          },
+          {
+            label: 'Premium Roadside Assistance',
+            value: 'Premium',
+          },
+          {
+            label: 'Towing Only',
+            value: 'Towing',
+          },
+          {
+            label: 'Roadside Assistance Not Included',
+            value: 'None',
+          },
+        ],
+      },
+      {
+        name: 'glassCoverage',
+        label: 'Glass Coverage',
+        options: [
+          {
+            label: 'Full Glass Coverage',
+            value: 'FullGlass',
+          },
+          {
+            label: 'Windshield Repair',
+            value: 'WindshieldRepair',
+          },
+          {
+            label: 'Windshield Replacement',
+            value: 'WindshieldReplacement',
+          },
+          {
+            label: 'Side Window Glass',
+            value: 'SideWindow',
+          },
+          {
+            label: 'Rear Window Glass',
+            value: 'RearWindow',
+          },
+          {
+            label: 'Sunroof/Moonroof Glass',
+            value: 'Sunroof',
+          },
+          {
+            label: 'OEM Glass Replacement',
+            value: 'OEM',
+          },
+          {
+            label: 'Mobile Glass Repair',
+            value: 'MobileRepair',
+          },
+          {
+            label: 'ADAS Calibration',
+            value: 'ADAS',
+          },
+          {
+            label: 'Glass Deductible Waiver',
+            value: 'DeductibleWaiver',
+          },
         ],
       },
     ],

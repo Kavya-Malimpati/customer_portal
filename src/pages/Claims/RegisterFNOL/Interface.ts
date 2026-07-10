@@ -8,21 +8,10 @@ export interface FNOLStep {
   title: string;
 }
 
-export interface RepairCardInfo {
-  title: string;
-  badge: string;
-  description: string;
-  benefit: string;
-}
-
 export interface RegisterFNOLViewProps {
   customerName: string;
   activeClaimsCount: number;
-  selectedClaim: ClaimInfo;
   steps: FNOLStep[];
   currentStep: number;
-  repairInfo: RepairCardInfo;
-  onChangeClaim: () => void;
   onStartReporting: () => void;
-  onRequestRepair: () => void;
 }

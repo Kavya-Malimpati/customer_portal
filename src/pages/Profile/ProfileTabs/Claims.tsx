@@ -1,4 +1,4 @@
-import RegisterFNOL from '../../Claims/RegisterFNOL';
+import RegisterFNOL from '../../Claim/RegisterFNOL';
 
 
 const AgencyTab = () => {
